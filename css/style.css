@@ -602,3 +602,7 @@ a.search-cta, a.search-cta b { color: #fff; }
 a.search-cta .row-sub { color: rgba(255, 255, 255, .88); }
 a.search-cta .chev { color: rgba(255, 255, 255, .8); }
 a.search-cta .cta-ico { background: rgba(255, 255, 255, .18); color: #fff; box-shadow: none; }
+/* tab-ul activ: fundalul mov rămâne în interiorul barei (înălțime = bara minus marginile) */
+.tabbar { grid-template-rows: minmax(0, 1fr); } /* rândul nu crește după butonul central ridicat */
+.tabbar a { height: auto; align-self: stretch; margin: 5px; min-width: 0; }
+.tabbar .tab-new.active { background: none; } /* butonul central are deja propriul fundal colorat */
