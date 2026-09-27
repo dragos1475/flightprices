@@ -45,6 +45,10 @@ jobs:
     steps:
       - name: Descarcă codul
         uses: actions/checkout@v4
+        with:
+          # mereu ultima versiune (nu cea de la momentul declanșării): dacă au pornit mai multe rulări
+          # la rând (ex. mai multe ștergeri rapide din aplicație), fiecare vede ce a salvat cea dinainte
+          ref: main
 
       - name: Instalează Python 3.12
         uses: actions/setup-python@v5
@@ -87,9 +91,11 @@ jobs:
             exit 0
           fi
           git commit -m "Rezultate zboruri $(TZ=Europe/Bucharest date '+%Y-%m-%d %H:%M')"
-          # Dacă între timp s-a modificat ceva (ex. o alertă din aplicație), ne sincronizăm și reîncercăm
+          # Dacă între timp s-a modificat ceva (ex. o alertă din aplicație), ne sincronizăm și reîncercăm.
+          # La conflict pe fișierele scrise de robot (index.json, status.json) păstrăm versiunea acestei rulări (-X theirs).
           for i in 1 2 3; do
-            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            if git pull --rebase -X theirs origin main && git push origin HEAD:main; then exit 0; fi
+            git rebase --abort 2>/dev/null || true
             sleep 5
           done
           echo "Nu am reușit să salvez rezultatele."
