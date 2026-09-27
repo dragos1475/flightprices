@@ -442,6 +442,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: non
 .dep-card { padding: 12px 14px; position: relative; }
 .dep-card + .dep-card::before { content: ""; position: absolute; top: 0; left: 14px; right: 0; border-top: 1px solid var(--border); }
 .dep-grid { display: grid; grid-template-columns: 1fr 104px 44px; gap: 8px; align-items: center; }
+.dep-grid.one-way { grid-template-columns: 1fr 44px; }
 .dep-returns { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .dep-returns span { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500; color: var(--text-2); background: var(--surface-2); padding: 4px 8px; border-radius: 8px; }
 .dep-returns .ico { width: 12px; height: 12px; color: var(--accent); }

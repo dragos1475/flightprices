@@ -11,16 +11,35 @@ export function isMonitoringOn(alert, day) {
   return true;
 }
 
+/** Alertă/căutare „doar dus” (fără întoarcere). Implicit: dus-întors. */
+export function isOneWay(alert) {
+  return alert.trip_type === 'one_way';
+}
+
+/** Cheia unei combinații în istoric: '2026-11-12_2026-11-16' sau '2026-11-12' (doar dus). */
+export function comboKey(c) {
+  return c.return_date ? `${c.outbound_date}_${c.return_date}` : c.outbound_date;
+}
+
 /**
- * Toate perechile (plecare, întoarcere). Dacă `day` e dat, doar plecările care nu au trecut.
- * Ex.: {date: '2026-11-12', nights: [4, 5]} -> 12.11→16.11 și 12.11→17.11
+ * Toate combinațiile de căutat. Dacă `day` e dat, doar plecările care nu au trecut.
+ * Dus-întors: {date: '2026-11-12', nights: [4, 5]} -> 12.11→16.11 și 12.11→17.11
+ * Doar dus: fiecare dată de plecare este o combinație.
  */
 export function combinations(alert, day = null) {
   const out = [];
   const seen = new Set();
+  const oneWay = isOneWay(alert);
   for (const dep of alert.departures || []) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(dep.date || '')) continue;
     if (day && dep.date < day) continue;
+    if (oneWay) {
+      if (!seen.has(dep.date)) {
+        seen.add(dep.date);
+        out.push({ outbound_date: dep.date, return_date: null, nights: null });
+      }
+      continue;
+    }
     for (const n of dep.nights || []) {
       const nights = parseInt(n, 10);
       if (!Number.isFinite(nights) || nights < 0) continue;
@@ -31,7 +50,7 @@ export function combinations(alert, day = null) {
       out.push({ outbound_date: dep.date, return_date: ret, nights });
     }
   }
-  return out.sort((a, b) => (a.outbound_date + a.return_date).localeCompare(b.outbound_date + b.return_date));
+  return out.sort((a, b) => comboKey(a).localeCompare(comboKey(b)));
 }
 
 export function activeCombinations(alert, day) {
@@ -59,9 +78,11 @@ export function alertStatus(alert, day) {
 export function estimateBudget(alerts, day, days = 30) {
   const perDay = alerts.reduce((s, a) => s + activeCombinations(a, day).length, 0);
   let perMonth = 0;
+  let extraMax = 0; // doar dus-întors are căutare separată pentru întoarcere
   for (let i = 0; i < days; i++) {
     const d = addDays(day, i);
     perMonth += alerts.reduce((s, a) => s + activeCombinations(a, d).length, 0);
+    extraMax += alerts.reduce((s, a) => s + (isOneWay(a) ? 0 : activeCombinations(a, d).length), 0);
   }
-  return { perDay, perMonth, extraMax: perMonth };
+  return { perDay, perMonth, extraMax };
 }

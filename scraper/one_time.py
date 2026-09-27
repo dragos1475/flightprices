@@ -21,7 +21,7 @@ from datetime import datetime, timedelta
 
 from . import alerts as A
 from .config import now, read_json, write_json
-from .notify import flight_line, short_date
+from .notify import combo_text, flight_line
 from .search import new_entry, search_combination
 
 KDF_ITERATIONS = 200_000
@@ -140,7 +140,7 @@ def process(storage, client, credits, notifier, settings, day, state, app_link):
         for combo in combos:
             params = A.search_params(req, combo)
             entry = new_entry(combo, params, A.search_key(params), day)
-            label = f"{sid} {combo['outbound_date']}→{combo['return_date']}"
+            label = f"{sid} {A.combo_label(combo)}"
             if fatal:
                 entry.update(status="error", error=f"Sărită: {fatal}")
             else:
@@ -182,8 +182,7 @@ def _notify(notifier, sid, req, results, app_link):
     lines = []
     for c in combos[:6]:
         f = c["flights"][0] if c.get("flights") else {}
-        lines.append(f"{short_date(c['outbound_date'])}→{short_date(c['return_date'])} ({c['nights']} nopți): "
-                     f"{c['lowest_price']} {cur}")
+        lines.append(f"{combo_text(c)}: {c['lowest_price']} {cur}")
         if f:
             lines.append(f"   {flight_line(f)}")
     if len(combos) > 6:

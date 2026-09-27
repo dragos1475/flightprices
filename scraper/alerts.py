@@ -31,22 +31,48 @@ def is_monitoring_on(alert, day):
     return True
 
 
+def is_one_way(alert):
+    """Alertă/căutare „doar dus” (fără întoarcere). Implicit: dus-întors."""
+    return alert.get("trip_type") == "one_way"
+
+
+def combo_key(combo):
+    """Cheia unei combinații în istoric: '2026-11-12_2026-11-16' (dus-întors) sau '2026-11-12' (doar dus)."""
+    if combo.get("return_date"):
+        return f"{combo['outbound_date']}_{combo['return_date']}"
+    return combo["outbound_date"]
+
+
+def combo_label(combo):
+    """Text scurt pentru log-uri: '2026-11-12→2026-11-16' sau '2026-11-12 (doar dus)'."""
+    if combo.get("return_date"):
+        return f"{combo['outbound_date']}→{combo['return_date']}"
+    return f"{combo['outbound_date']} (doar dus)"
+
+
 def combinations(alert, day=None):
     """
-    Toate perechile (data plecării, data întoarcerii) ale unei alerte.
+    Toate combinațiile de căutat ale unei alerte.
     Dacă `day` e dat, păstrează doar plecările care nu au trecut încă.
 
-    Exemplu: {"date": "2026-11-12", "nights": [4, 5]}
+    Dus-întors: {"date": "2026-11-12", "nights": [4, 5]}
       -> (12.11, 16.11, 4 nopți) și (12.11, 17.11, 5 nopți)
+    Doar dus: fiecare dată de plecare este o combinație (nopțile nu contează).
     """
     result = []
     seen = set()
+    one_way = is_one_way(alert)
     for dep in alert.get("departures", []):
         outbound = parse_date(dep.get("date"))
         if outbound is None:
             continue
         if day is not None and outbound < day:
             continue  # plecarea a trecut
+        if one_way:
+            if outbound not in seen:
+                seen.add(outbound)
+                result.append({"outbound_date": outbound.isoformat(), "return_date": None, "nights": None})
+            continue
         for nights in dep.get("nights", []):
             try:
                 nights = int(nights)
@@ -64,7 +90,7 @@ def combinations(alert, day=None):
                 "return_date": ret.isoformat(),
                 "nights": nights,
             })
-    result.sort(key=lambda c: (c["outbound_date"], c["return_date"]))
+    result.sort(key=lambda c: (c["outbound_date"], c["return_date"] or ""))
     return result
 
 
@@ -107,17 +133,18 @@ def search_params(alert, combo):
     """Parametrii căutării SerpApi `google_flights` pentru o combinație (fără cheia API)."""
     params = {
         "engine": "google_flights",
-        "type": "1",  # 1 = dus-întors
+        "type": "2" if is_one_way(alert) else "1",  # 1 = dus-întors, 2 = doar dus
         "departure_id": ",".join(alert.get("departure_airports", [])),
         "arrival_id": ",".join(alert.get("destination", {}).get("codes", [])),
         "outbound_date": combo["outbound_date"],
-        "return_date": combo["return_date"],
         "currency": alert.get("currency", "EUR"),
         "gl": "ro",
         "hl": "ro",
         "adults": str(int(alert.get("adults", 1) or 1)),
         "show_hidden": "true",
     }
+    if combo.get("return_date"):
+        params["return_date"] = combo["return_date"]
     bags = int(alert.get("bags", 0) or 0)
     if bags > 0:
         params["bags"] = str(bags)
@@ -148,7 +175,9 @@ def validate(alert):
     if not alert.get("destination", {}).get("codes"):
         problems.append("nu are destinație")
     if not combinations(alert):
-        problems.append("nu are nicio zi de plecare cu număr de nopți")
+        problems.append("nu are nicio zi de plecare" if is_one_way(alert) else "nu are nicio zi de plecare cu număr de nopți")
+    if alert.get("trip_type") not in (None, "round_trip", "one_way"):
+        problems.append("tipul călătoriei trebuie să fie round_trip sau one_way")
     if alert.get("currency", "EUR") not in ("EUR", "RON"):
         problems.append("moneda trebuie să fie EUR sau RON")
     if alert.get("max_stops") not in (None, 0, 1, 2):
@@ -167,7 +196,9 @@ def estimate_budget(alerts, day, days=30):
     """
     per_day = sum(len(active_combinations(a, day)) for a in alerts)
     per_month = 0
+    extra = 0  # doar dus-întors are căutare separată pentru întoarcere
     for i in range(days):
         d = day + timedelta(days=i)
         per_month += sum(len(active_combinations(a, d)) for a in alerts)
-    return {"per_day": per_day, "per_month": per_month, "extra_max_per_month": per_month}
+        extra += sum(len(active_combinations(a, d)) for a in alerts if not is_one_way(a))
+    return {"per_day": per_day, "per_month": per_month, "extra_max_per_month": extra}

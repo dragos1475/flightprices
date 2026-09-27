@@ -1,6 +1,7 @@
 // Afișarea rezultatelor (comună pentru alerte și căutări rapide):
 // bilete de zbor, lista combinațiilor și lista tuturor zborurilor cu filtre și sortare.
 
+import { comboKey } from './budget.js';
 import { icon } from './icons.js';
 import { priceLevel } from './state.js';
 import { dateTime, dayDate, duration, h, hour, money } from './util.js';
@@ -8,6 +9,17 @@ import { dateTime, dayDate, duration, h, hour, money } from './util.js';
 /** Preferințe de afișare (păstrate cât timp aplicația e deschisă). */
 export function newView() {
   return { sort: 'price', onlyUnder: false, comboSort: 'date', flightsShown: 25 };
+}
+
+/** Datele unei combinații: 'joi 12.11 → lun 16.11' sau 'joi 12.11' (doar dus). */
+export function comboDates(c, arrow = ' → ') {
+  return c.return_date ? `${dayDate(c.outbound_date)}${arrow}${dayDate(c.return_date)}` : dayDate(c.outbound_date);
+}
+
+/** '4 nopți' sau 'doar dus'. */
+export function comboNights(c) {
+  if (!c.return_date) return 'doar dus';
+  return `${c.nights} ${c.nights === 1 ? 'noapte' : 'nopți'}`;
 }
 
 const isUnder = (price, maxPrice) => maxPrice > 0 && price !== null && price !== undefined && price <= maxPrice;
@@ -30,7 +42,7 @@ export function ticket(f, ctx, showCombo) {
       <div class="end"><div class="t">${hour(f.arrival_time)}${nextDay ? '<sup class="small muted">+1</sup>' : ''}</div><div class="ap">${h(f.to)}</div></div>
     </div>
     ${showCombo || f.stops ? `<div class="ticket-foot">
-      <span>${showCombo ? `${dayDate(f.combo.outbound_date)} → ${dayDate(f.combo.return_date)} · ${f.combo.nights} nopți` : ''}</span>
+      <span>${showCombo ? `${comboDates(f.combo)} · ${comboNights(f.combo)}` : ''}</span>
       <span>${f.stops ? `prin ${h(f.layovers.map((l) => l.airport).join(', '))}` : ''}</span>
     </div>` : ''}
   </div>`;
@@ -61,7 +73,9 @@ export function resultsSections(ctx) {
       </div>
     </div>
     <div class="group" data-box="flights"></div>
-    <p class="section-note">Prețurile sunt totale, dus-întors, pentru toți pasagerii. Orele sunt ale zborului de dus.</p>`;
+    <p class="section-note">${ctx.oneWay
+    ? 'Prețurile sunt doar pentru dus, totale pentru toți pasagerii.'
+    : 'Prețurile sunt totale, dus-întors, pentru toți pasagerii. Orele sunt ale zborului de dus.'}</p>`;
 }
 
 /** Desenează listele și leagă butoanele de filtrare/sortare. */
@@ -102,7 +116,7 @@ function renderCombos(box, ctx) {
   }
   const rows = [...combos].sort((a, b) => view.comboSort === 'price'
     ? (a.lowest_price ?? Infinity) - (b.lowest_price ?? Infinity)
-    : (a.outbound_date + a.return_date).localeCompare(b.outbound_date + b.return_date));
+    : comboKey(a).localeCompare(comboKey(b)));
 
   box.innerHTML = rows.map((c) => {
     const under = isUnder(c.lowest_price, ctx.maxPrice);
@@ -116,8 +130,8 @@ function renderCombos(box, ctx) {
     return `<details class="combo">
       <summary>
         <div style="min-width:0">
-          <div class="combo-dates">${dayDate(c.outbound_date)}<span class="arrow">→</span>${dayDate(c.return_date)}</div>
-          <div class="combo-sub"><span>${c.nights} ${c.nights === 1 ? 'noapte' : 'nopți'}</span>
+          <div class="combo-dates">${comboDates(c, '<span class="arrow">→</span>')}</div>
+          <div class="combo-sub"><span>${comboNights(c)}</span>
             ${lvl ? `<span class="badge ${lvl.cls}">preț ${h(lvl.label)}</span>` : ''}
             ${Array.isArray(range) && range.length ? `<span>tipic ${range.map((v) => money(v)).join('–')}</span>` : ''}</div>
         </div>
@@ -166,6 +180,11 @@ function renderFlights(box, ctx) {
     view.flightsShown += 25;
     renderFlights(box, ctx);
   });
+}
+
+/** Tipul călătoriei, ca text. */
+export function tripLabel(x) {
+  return x.trip_type === 'one_way' ? 'doar dus' : 'dus-întors';
 }
 
 /** Text scurt pentru numărul maxim de escale. */

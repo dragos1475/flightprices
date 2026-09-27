@@ -36,6 +36,7 @@ function toDraft(alert, config) {
     airports: new Set((alert.departure_airports || []).filter((c) => knownAirports.has(c))),
     extraAirports: (alert.departure_airports || []).filter((c) => !knownAirports.has(c)).join(', '),
     destination: alert.destination || null,
+    trip_type: alert.trip_type === 'one_way' ? 'one_way' : 'round_trip',
     departures: (alert.departures || []).map((d) => ({ date: d.date, nights: (d.nights || []).join(', ') })),
     anyAirline: !(alert.airlines || []).length,
     airlineGroups: groups,
@@ -53,6 +54,7 @@ function emptyDraft() {
   return {
     id: null, name: '', active: true, monitor_start: todayRO(), monitor_end: '',
     airports: new Set(['OTP']), extraAirports: '', destination: null,
+    trip_type: 'round_trip',
     departures: [{ date: '', nights: '' }],
     anyAirline: true, airlineGroups: new Set(), extraAirlines: '',
     max_price: '', currency: 'EUR', adults: 1, bags: 0, max_stops: null, return_details: false,
@@ -73,10 +75,11 @@ function parseNights(text) {
 /** Construiește alerta (formatul din data/alerts.json) din starea formularului. */
 function buildAlert() {
   const cfg = state.config;
+  const oneWay = draft.trip_type === 'one_way';
   const departures = draft.departures
     .filter((d) => d.date)
-    .map((d) => ({ date: d.date, nights: parseNights(d.nights) }))
-    .filter((d) => d.nights.length)
+    .map((d) => ({ date: d.date, nights: oneWay ? [] : parseNights(d.nights) }))
+    .filter((d) => oneWay || d.nights.length) // la dus-întors e nevoie de nopți
     .sort((a, b) => a.date.localeCompare(b.date));
   let airlines = [];
   if (!draft.anyAirline) {
@@ -93,6 +96,7 @@ function buildAlert() {
     monitor_end: draft.monitor_end || lastDeparture,
     departure_airports: [...new Set([...draft.airports, ...parseCodes(draft.extraAirports, 3)])],
     destination: draft.destination,
+    trip_type: draft.trip_type,
     departures,
     airlines,
     max_price: Number(draft.max_price) || 0,
@@ -117,6 +121,7 @@ function buildSearchRequest() {
     title: a.name || `${a.departure_airports.join(',')} → ${a.destination?.name || '?'}${firstDate ? ` · ${firstDate.slice(8, 10)}.${firstDate.slice(5, 7)}` : ''}`,
     departure_airports: a.departure_airports,
     destination: a.destination,
+    trip_type: a.trip_type,
     departures: a.departures,
     airlines: a.airlines,
     max_price: a.max_price || null,
@@ -124,7 +129,7 @@ function buildSearchRequest() {
     adults: a.adults,
     bags: a.bags,
     max_stops: a.max_stops,
-    return_details: Boolean(draft.return_details),
+    return_details: a.trip_type !== 'one_way' && Boolean(draft.return_details),
   };
 }
 
@@ -134,7 +139,11 @@ function validate(alert) {
   if (mode === 'alert' && !alert.name) errors.push('Dă un nume alertei.');
   if (!alert.departure_airports.length) errors.push('Alege cel puțin un aeroport de plecare.');
   if (!alert.destination?.codes?.length) errors.push('Alege destinația.');
-  if (!alert.departures.length) errors.push('Adaugă cel puțin o zi de plecare cu numărul de nopți (ex. 4, 5).');
+  if (!alert.departures.length) {
+    errors.push(alert.trip_type === 'one_way'
+      ? 'Adaugă cel puțin o zi de plecare.'
+      : 'Adaugă cel puțin o zi de plecare cu numărul de nopți (ex. 4, 5).');
+  }
   if (alert.departures.length && alert.departures.every((d) => d.date < today)) {
     errors.push('Toate zilele de plecare au trecut deja. Adaugă o dată viitoare.');
   }
@@ -235,10 +244,16 @@ export async function renderForm(app, id, options = {}) {
 
       <div class="section-label"><span>Plecări</span></div>
       <div class="group">
+        <div class="row-stack">
+          <div class="seg full" role="group" aria-label="Tipul călătoriei">
+            <button type="button" data-trip="round_trip" aria-pressed="${draft.trip_type !== 'one_way'}">Dus-întors</button>
+            <button type="button" data-trip="one_way" aria-pressed="${draft.trip_type === 'one_way'}">Doar dus</button>
+          </div>
+        </div>
         <div id="departures"></div>
         <button type="button" class="add-row" id="add-dep">${icon('plus', 18)} Adaugă zi de plecare</button>
       </div>
-      <p class="section-note">Poți scrie mai multe variante de nopți separate prin virgulă (ex. „4, 5”). Data întoarcerii = plecarea + nopțile.</p>
+      <p class="section-note" id="dep-note"></p>
 
       ${isSearch ? '' : `<div class="section-label"><span>Perioada de monitorizare</span></div>
       <div class="group">
@@ -267,7 +282,7 @@ export async function renderForm(app, id, options = {}) {
       <div class="section-label"><span>Preț și pasageri</span></div>
       <div class="group">
         <div class="row-stack">
-          <label class="label" for="f-price">${isSearch ? 'Preț maxim (opțional, doar pentru evidențiere)' : 'Preț maxim dus-întors (total, toți pasagerii)'}</label>
+          <label class="label" for="f-price" id="price-label"></label>
           <div class="price-input">
             <input id="f-price" type="number" inputmode="numeric" min="1" step="1" placeholder="250" value="${h(draft.max_price)}">
             <div class="seg" role="group" aria-label="Moneda">
@@ -285,7 +300,7 @@ export async function renderForm(app, id, options = {}) {
               <button type="button" data-stops="${v === null ? '' : v}" aria-pressed="${draft.max_stops === v}">${l}</button>`).join('')}
           </div>
         </div>
-        ${isSearch ? toggle('f-return', draft.return_details, 'Detalii zbor de întoarcere', 'Pentru cel mai ieftin zbor: +1 credit pe combinație') : ''}
+        ${isSearch ? `<div id="return-box">${toggle('f-return', draft.return_details, 'Detalii zbor de întoarcere', 'Pentru cel mai ieftin zbor: +1 credit pe combinație')}</div>` : ''}
       </div>
 
       <div class="section-label"><span>${isSearch ? 'Cost' : 'Consum de căutări'}</span></div>
@@ -425,15 +440,36 @@ function openDestinationSheet() {
 function renderDepartures() {
   const box = document.getElementById('departures');
   const today = todayRO();
+  const oneWay = draft.trip_type === 'one_way';
   box.innerHTML = draft.departures.map((d, i) => `
     <div class="dep-card" data-i="${i}">
-      <div class="dep-grid">
+      <div class="dep-grid ${oneWay ? 'one-way' : ''}">
         <input type="date" class="dep-date" min="${today}" value="${h(d.date)}" aria-label="Data plecării ${i + 1}">
-        <input type="text" class="dep-nights" inputmode="text" placeholder="nopți: 4, 5" value="${h(d.nights)}" aria-label="Nopți pentru plecarea ${i + 1}">
+        ${oneWay ? '' : `<input type="text" class="dep-nights" inputmode="text" placeholder="nopți: 4, 5" value="${h(d.nights)}" aria-label="Nopți pentru plecarea ${i + 1}">`}
         <button type="button" class="icon-btn dep-del" aria-label="Șterge ziua ${i + 1}" ${draft.departures.length === 1 ? 'disabled' : ''}>${icon('trash', 17)}</button>
       </div>
-      <div class="dep-returns">${returnsText(d) || '<span class="muted" style="background:none;padding:0">Alege data și numărul de nopți</span>'}</div>
+      ${oneWay ? '' : `<div class="dep-returns">${returnsText(d) || '<span class="muted" style="background:none;padding:0">Alege data și numărul de nopți</span>'}</div>`}
     </div>`).join('');
+  syncTripTexts();
+}
+
+/** Textele care depind de tipul călătoriei (dus-întors / doar dus). */
+function syncTripTexts() {
+  const oneWay = draft.trip_type === 'one_way';
+  const note = document.getElementById('dep-note');
+  if (note) {
+    note.textContent = oneWay
+      ? 'Fiecare zi de plecare înseamnă o căutare. Poți adăuga mai multe zile ca să compari prețurile.'
+      : 'Poți scrie mai multe variante de nopți separate prin virgulă (ex. „4, 5”). Data întoarcerii = plecarea + nopțile.';
+  }
+  const label = document.getElementById('price-label');
+  if (label) {
+    label.textContent = mode === 'search'
+      ? `Preț maxim ${oneWay ? 'doar dus' : 'dus-întors'} (opțional, doar pentru evidențiere)`
+      : `Preț maxim ${oneWay ? 'doar dus' : 'dus-întors'} (total, toți pasagerii)`;
+  }
+  const ret = document.getElementById('return-box');
+  if (ret) ret.hidden = oneWay;
 }
 
 // ---------------------------------------------------------------------------
@@ -467,7 +503,7 @@ function renderBudget() {
     <div class="meter ${level}"><div style="width:${Math.min(100, ratio * 100)}%"></div></div>
     <div class="small ${level === 'bad' ? 'bad-text' : 'muted'}" style="margin-top:6px">
       Toate alertele: <b>~${all.perMonth}</b> din ${limit} pe lună${level === 'bad' ? ' — depășești limita!' : level === 'warn' ? ' — aproape de limită' : ''}</div>
-    <p>Când o combinație e sub prag, se face încă o căutare pentru zborul de întoarcere (maxim ${mine.extraMax} în 30 de zile).
+    <p>${mine.extraMax ? `Când o combinație e sub prag, se face încă o căutare pentru zborul de întoarcere (maxim ${mine.extraMax} în 30 de zile).` : ''}
       ${left !== undefined && left !== null ? `Credite rămase: <b>${left}</b>.` : ''}</p>`;
 
   const info = document.getElementById('savebar-info');
@@ -482,7 +518,7 @@ function renderSearchCost(box) {
   const today = todayRO();
   const req = buildAlert();
   const n = combinations(req, today).length;
-  const extra = draft.return_details ? n : 0;
+  const extra = draft.return_details && draft.trip_type !== 'one_way' ? n : 0;
   const max = state.config.settings.one_time_max_searches || 20;
   const left = state.status?.searches_left_after ?? state.status?.searches_left_before;
   const tooMany = n > max;
@@ -581,7 +617,8 @@ function bindEvents(app) {
       const d = draft.departures[Number(card.dataset.i)];
       if (t.classList.contains('dep-date')) d.date = t.value;
       else d.nights = t.value;
-      card.querySelector('.dep-returns').innerHTML = returnsText(d)
+      const returns = card.querySelector('.dep-returns');
+      if (returns) returns.innerHTML = returnsText(d)
         || '<span class="muted" style="background:none;padding:0">Alege data și numărul de nopți</span>';
     }
     renderBudget();
@@ -599,6 +636,14 @@ function bindEvents(app) {
     if (t.id === 'f-return') draft.return_details = t.checked;
     renderBudget();
   });
+
+  // tipul călătoriei
+  app.querySelectorAll('[data-trip]').forEach((b) => b.addEventListener('click', () => {
+    draft.trip_type = b.dataset.trip;
+    app.querySelectorAll('[data-trip]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    renderDepartures();
+    renderBudget();
+  }));
 
   // numărul maxim de escale
   app.querySelectorAll('[data-stops]').forEach((b) => b.addEventListener('click', () => {

@@ -198,10 +198,11 @@ Poți opri oricare canal din `config/settings.json`: `"web_push": false` sau `"n
 1. Numele alertei (ex. „Roma în noiembrie”).
 2. Aeroporturile de plecare (poți alege mai multe).
 3. Destinația: caută după oraș, țară sau cod. Dacă nu o găsești, o adaugi după codul IATA.
-4. Zilele de plecare și, pentru fiecare, numărul de nopți (ex. „4, 5”).
+4. **Dus-întors** sau **Doar dus**, apoi zilele de plecare. La dus-întors scrii pentru fiecare zi și numărul de nopți
+   (ex. „4, 5”). La doar dus nu e nevoie de nopți: fiecare zi de plecare înseamnă o căutare.
 5. Perioada de monitorizare. Dacă lași „până la” gol, monitorizarea se oprește la ultima zi de plecare.
 6. Companiile aeriene (sau „Oricare companie”).
-7. Prețul maxim **total dus-întors, pentru toți pasagerii**, și moneda (EUR sau RON).
+7. Prețul maxim **total pentru toți pasagerii** (dus-întors sau doar dus, după caz) și moneda (EUR sau RON).
 8. Adulți, bagaje de mână și **numărul maxim de escale** (oricâte / direct / max. 1 / max. 2).
 
 Jos vezi **câte căutări consumă** alerta. Apasă **Salvează alerta**. Căutarea pornește automat în 1–2 minute.
@@ -229,6 +230,7 @@ Jos vezi **câte căutări consumă** alerta. Apasă **Salvează alerta**. Căut
 - Plan gratuit: **250 căutări/lună**, adică aproximativ **8 pe zi** în medie.
 
 **Exemplu:** 2 zile de plecare × 2 variante de nopți = 4 combinații = 4 căutări/zi = ~120 pe lună.
+La **doar dus**, aceleași 2 zile = 2 căutări/zi = ~60 pe lună (și nu există căutări pentru întoarcere).
 
 Aplicația îți arată estimarea la crearea alertei și pe ecranul principal și te avertizează dacă depășești 250/lună.
 Estimarea ține cont că plecările trecute nu se mai caută și că alertele expiră.
@@ -302,6 +304,7 @@ Fișierul `data/alerts.json` se poate edita direct pe GitHub (creionul ✏️). 
       "monitor_end": "2026-11-12",
       "departure_airports": ["OTP", "CLJ"],
       "destination": {"id": "ROM-ALL", "name": "Roma (toate aeroporturile)", "codes": ["FCO", "CIA"]},
+      "trip_type": "round_trip",
       "departures": [
         {"date": "2026-11-12", "nights": [4, 5]},
         {"date": "2026-11-13", "nights": [3]}
@@ -319,6 +322,7 @@ Fișierul `data/alerts.json` se poate edita direct pe GitHub (creionul ✏️). 
 
 - `id`: unic, doar litere mici, cifre și cratime (e și numele fișierului de rezultate).
 - `airlines: []` înseamnă **oricare companie**.
+- `trip_type`: `"round_trip"` (dus-întors, implicit) sau `"one_way"` (doar dus; atunci `nights` poate lipsi).
 - `max_stops`: `null` = oricâte escale, `0` = doar directe, `1` = maxim o escală, `2` = maxim două.
 - Datele se scriu `AAAA-LL-ZZ`.
 

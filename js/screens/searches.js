@@ -7,10 +7,12 @@
 
 import { deleteFile, githubLinks, hasWriteAccess, listDir, loadJSON } from '../data.js';
 import { icon } from '../icons.js';
-import { bindResults, maxStopsOf, newView, resultsSections, stopsLabel } from '../results-view.js';
+import {
+  bindResults, comboDates, comboNights, maxStopsOf, newView, resultsSections, stopsLabel, tripLabel,
+} from '../results-view.js';
 import { airlineNames, ensureConfig } from '../state.js';
 import { setNav, skeleton } from '../ui.js';
-import { dateTime, dayDate, h, money, shortDate, toast } from '../util.js';
+import { dateTime, h, money, shortDate, toast } from '../util.js';
 
 const view = newView();
 const POLL_MS = 6000;
@@ -169,14 +171,16 @@ export async function renderSearchResult(app, id) {
         ${doc.status === 'done' ? `
         <div class="hero-price">
           <div>
-            <div class="label">Cel mai mic preț dus-întors</div>
+            <div class="label">Cel mai mic preț ${tripLabel(req)}</div>
             <div class="price-xl ${best && maxPrice && best.lowest_price <= maxPrice ? 'good-text' : ''}">${best ? money(best.lowest_price) : '—'}<small>${cur}</small></div>
           </div>
           ${maxPrice ? `<span class="small muted">prag ${money(maxPrice, cur)}</span>` : ''}
         </div>
-        ${best ? `<div class="hero-sub">${dayDate(best.outbound_date)} → ${dayDate(best.return_date)} · ${best.nights} nopți · ${h((best.flights?.[0]?.airlines || []).join(' / '))}</div>` : ''}` : ''}
+        ${best ? `<div class="hero-sub">${comboDates(best)} · ${comboNights(best)} · ${h((best.flights?.[0]?.airlines || []).join(' / '))}</div>` : ''}` : ''}
         <div class="meta-chips">
-          <span>${icon('calendar')}${(req.departures || []).map((d) => `${shortDate(d.date)} (${(d.nights || []).join('/')}n)`).join(', ')}</span>
+          <span>${icon('plane')}${tripLabel(req)}</span>
+          <span>${icon('calendar')}${(req.departures || []).map((d) => (req.trip_type === 'one_way' || !(d.nights || []).length
+            ? shortDate(d.date) : `${shortDate(d.date)} (${d.nights.join('/')}n)`)).join(', ')}</span>
           <span>${icon('users')}${req.adults || 1} ${Number(req.adults) > 1 ? 'adulți' : 'adult'}</span>
           <span>${icon('bag')}${req.bags || 0} troler${Number(req.bags) === 1 ? '' : 'e'}</span>
           <span>${icon('zap')}${stopsLabel(maxStopsOf(req))}</span>
@@ -190,7 +194,7 @@ export async function renderSearchResult(app, id) {
 
     if (doc.status === 'done') {
       const el = app.querySelector('#results');
-      const ctx = { combos, maxPrice, cur, view };
+      const ctx = { combos, maxPrice, cur, view, oneWay: req.trip_type === 'one_way' };
       el.innerHTML = resultsSections(ctx);
       bindResults(el, ctx);
     }

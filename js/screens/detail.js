@@ -1,15 +1,17 @@
 // Ecranul 3: detaliul unei alerte – preț curent, grafic, combinații și toate zborurile.
 
-import { alertStatus } from '../budget.js';
+import { alertStatus, comboKey, isOneWay } from '../budget.js';
 import { renderChart, SERIES_COLORS } from '../chart.js';
 import { hasWriteAccess, saveAlert } from '../data.js';
 import { icon } from '../icons.js';
-import { bindResults, maxStopsOf, newView, resultsSections, stopsLabel } from '../results-view.js';
+import {
+  bindResults, comboDates, comboNights, maxStopsOf, newView, resultsSections, stopsLabel, tripLabel,
+} from '../results-view.js';
 import {
   airlineNames, airportName, ensureAlerts, ensureConfig, loadHistory, loadResults, state, summarize,
 } from '../state.js';
 import { setNav, skeleton } from '../ui.js';
-import { dateTime, dayDate, h, money, shortDate, toast, todayRO } from '../util.js';
+import { dateTime, h, money, shortDate, toast, todayRO } from '../util.js';
 
 // preferințele de afișare (păstrate cât timp aplicația e deschisă)
 const view = newView();
@@ -67,14 +69,14 @@ export async function renderDetail(app, id) {
 
       <div class="hero-price">
         <div>
-          <div class="label">Cel mai mic preț dus-întors</div>
+          <div class="label">Cel mai mic preț ${tripLabel(alert)}</div>
           <div class="price-xl ${sum.under ? 'good-text' : ''}">${sum.lowest !== null ? money(sum.lowest) : '—'}<small>${cur}</small></div>
         </div>
         ${sum.lowest !== null
           ? (sum.under ? `<span class="badge good">${icon('check')}Sub prag</span>` : '<span class="badge">Peste prag</span>')
           : `<span class="badge ${st.cls}">${st.label}</span>`}
       </div>
-      ${sum.best ? `<div class="hero-sub">${dayDate(sum.best.outbound_date)} → ${dayDate(sum.best.return_date)} · ${sum.best.nights} nopți${bestFlight ? ` · ${h(bestFlight.airlines.join(' / '))}` : ''}</div>` : ''}
+      ${sum.best ? `<div class="hero-sub">${comboDates(sum.best)} · ${comboNights(sum.best)}${bestFlight ? ` · ${h(bestFlight.airlines.join(' / '))}` : ''}</div>` : ''}
 
       ${max ? `<div class="threshold-bar ${sum.under ? 'under' : ''}">
         <div class="track"><div class="fill" style="width:${fillPct}%"></div><div class="mark" style="left:calc(${markPct}% - 1px)"></div></div>
@@ -83,6 +85,7 @@ export async function renderDetail(app, id) {
       </div>` : ''}
 
       <div class="meta-chips">
+        <span>${icon('plane')}${tripLabel(alert)}</span>
         <span>${icon('calendar')}${shortDate(alert.monitor_start)} – ${shortDate(alert.monitor_end)}</span>
         <span>${icon('users')}${alert.adults || 1} ${Number(alert.adults) > 1 ? 'adulți' : 'adult'}</span>
         <span>${icon('bag')}${alert.bags || 0} troler${Number(alert.bags) === 1 ? '' : 'e'}</span>
@@ -104,11 +107,11 @@ export async function renderDetail(app, id) {
   `;
 
   // Grafic: câte o linie pentru fiecare combinație încă valabilă (culoare fixă după ordinea datelor)
-  const activeKeys = sum.combos.map((c) => `${c.outbound_date}_${c.return_date}`).sort();
+  const activeKeys = sum.combos.map(comboKey).sort();
   const series = activeKeys.slice(0, SERIES_COLORS.length).map((key, i) => {
     const [o, r] = key.split('_');
     return {
-      label: `${shortDate(o)}→${shortDate(r)}`,
+      label: r ? `${shortDate(o)}→${shortDate(r)}` : shortDate(o),
       color: SERIES_COLORS[i],
       points: (history?.series?.[key] || []).filter((p) => (p.currency || cur) === cur),
     };
@@ -120,7 +123,7 @@ export async function renderDetail(app, id) {
   }
 
   const resultsEl = app.querySelector('#results');
-  const ctx = { combos: sum.combos, maxPrice: max, cur, view };
+  const ctx = { combos: sum.combos, maxPrice: max, cur, view, oneWay: isOneWay(alert) };
   resultsEl.innerHTML = resultsSections(ctx);
   bindResults(resultsEl, ctx);
 

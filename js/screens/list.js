@@ -1,6 +1,6 @@
 // Ecranul 1: lista alertelor, cu starea fiecăreia, cel mai mic preț curent și evoluția lui.
 
-import { alertStatus, estimateBudget } from '../budget.js';
+import { alertStatus, comboKey, estimateBudget, isOneWay } from '../budget.js';
 import { hasWriteAccess } from '../data.js';
 import { icon } from '../icons.js';
 import {
@@ -104,7 +104,7 @@ function alertCard(alert, st, sum, today) {
   const cur = alert.currency || 'EUR';
   const results = state.results[alert.id];
   const live = st.key === 'active' || st.key === 'scheduled';
-  const keys = sum.combos.map((c) => `${c.outbound_date}_${c.return_date}`);
+  const keys = sum.combos.map(comboKey);
   const series = overallMinSeries(state.history[alert.id], keys, cur).slice(-14);
 
   // Variația față de ziua precedentă
@@ -141,7 +141,7 @@ function alertCard(alert, st, sum, today) {
       <div class="alert-meta">
         ${st.key !== 'active' ? `<span class="badge">${st.label}</span>` : ''}
         ${sum.under && st.key === 'active' ? `<span class="badge good">${icon('check')}Sub prag</span>` : ''}
-        <span>${icon('calendar')}${h(dateText)}</span>
+        <span>${icon('calendar')}${h(dateText)}${isOneWay(alert) ? ' · doar dus' : ''}</span>
         <span>${icon('wallet')}prag ${money(alert.max_price, cur)}</span>
         ${live && series.length >= 2 ? `<span style="margin-left:auto">${sparkline(series, { threshold: Number(alert.max_price) || null })}</span>` : ''}
       </div>

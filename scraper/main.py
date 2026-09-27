@@ -196,7 +196,7 @@ def main():
         searched_any = False
         combos_out = []
         for combo, params, key, old in items:
-            label = f"{alert['id']} {combo['outbound_date']}→{combo['return_date']}"
+            label = f"{alert['id']} {A.combo_label(combo)}"
             if old is not None:
                 combos_out.append(old)  # deja căutată azi cu aceiași parametri
                 continue

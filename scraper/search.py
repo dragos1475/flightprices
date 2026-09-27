@@ -27,8 +27,11 @@ class Credits:
 
 def fallback_google_url(params):
     """Link Google Flights construit de noi, dacă SerpApi nu trimite unul."""
-    q = (f"Flights to {params['arrival_id']} from {params['departure_id']} "
-         f"on {params['outbound_date']} through {params['return_date']}")
+    if params.get("return_date"):
+        q = (f"Flights to {params['arrival_id']} from {params['departure_id']} "
+             f"on {params['outbound_date']} through {params['return_date']}")
+    else:
+        q = f"One way flights to {params['arrival_id']} from {params['departure_id']} on {params['outbound_date']}"
     return "https://www.google.com/travel/flights?hl=ro&curr=" + params["currency"] + "&q=" + quote(q)
 
 
@@ -77,7 +80,8 @@ def search_combination(client, params, entry, credits, *, return_details=False, 
         want = (return_details == "always"
                 or (return_details == "under" and entry["lowest_price"] is not None
                     and max_price and entry["lowest_price"] <= max_price))
-        token = flights[0].get("_departure_token") if flights else None
+        # (la „doar dus” nu există zbor de întoarcere)
+        token = flights[0].get("_departure_token") if flights and params.get("return_date") else None
         if want and token and credits.above(reserve):
             try:
                 ret = client.search({**params, "departure_token": token})

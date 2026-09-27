@@ -35,6 +35,13 @@ def duration(minutes):
     return f"{minutes // 60}h{minutes % 60:02d}"
 
 
+def combo_text(c):
+    """'12.11→16.11 (4 nopți)' sau '12.11 (doar dus)'."""
+    if c.get("return_date"):
+        return f"{short_date(c['outbound_date'])}→{short_date(c['return_date'])} ({c['nights']} nopți)"
+    return f"{short_date(c['outbound_date'])} (doar dus)"
+
+
 def flight_line(f):
     """Un rând scurt despre un zbor: companie, nr. zbor, ore, escale."""
     stops = "direct" if f.get("stops", 0) == 0 else f"{f['stops']} escală" if f["stops"] == 1 else f"{f['stops']} escale"
@@ -60,8 +67,7 @@ def alert_summary(alert, results, app_link):
     lines = [f"Sub prag: {len(under)} din {len(combos)} combinații"]
     for c in under:
         f = c["flights"][0] if c.get("flights") else {}
-        lines.append(f"✅ {short_date(c['outbound_date'])}→{short_date(c['return_date'])} ({c['nights']} nopți): "
-                     f"{c['lowest_price']} {cur}")
+        lines.append(f"✅ {combo_text(c)}: {c['lowest_price']} {cur}")
         if f:
             lines.append(f"   Dus: {flight_line(f)}")
         ret = c.get("return_flight")
@@ -69,7 +75,7 @@ def alert_summary(alert, results, app_link):
             lines.append(f"   Întors: {flight_line(ret)}")
     if over:
         lines.append("Peste prag: " + "; ".join(
-            f"{short_date(c['outbound_date'])}→{short_date(c['return_date'])} {c['lowest_price']}" for c in over))
+            f"{combo_text(c)} {c['lowest_price']}" for c in over))
     errors = [c for c in results.get("combinations", []) if c.get("status") == "error"]
     if errors:
         lines.append(f"⚠️ {len(errors)} căutări eșuate")

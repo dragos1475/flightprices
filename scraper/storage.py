@@ -5,6 +5,7 @@ Salvarea datelor în folderul data/ (sau în alt folder, la --dry-run):
   data/state.json               - ce notificări s-au trimis deja (ca să nu le repetăm)
   data/status.json              - rezumatul ultimei rulări (afișat în aplicație)
 """
+from .alerts import combo_key
 from .config import read_json, write_json
 
 
@@ -37,7 +38,7 @@ class Storage:
             price = combo.get("lowest_price")
             if price is None:
                 continue
-            key = f"{combo['outbound_date']}_{combo['return_date']}"
+            key = combo_key(combo)
             points = [p for p in series.get(key, []) if p.get("date") != day.isoformat()]
             points.append({"date": day.isoformat(), "price": price, "currency": currency})
             points.sort(key=lambda p: p["date"])
