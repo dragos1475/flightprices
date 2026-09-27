@@ -957,3 +957,87 @@ details.combo.flash { animation: flash 1.2s ease; }
 
 .warn-text { color: var(--warn); font-weight: 500; }
 .warn-text:empty { display: none; }
+
+/* =====================================================================
+   Vremea la tine (pagina principală)
+   ===================================================================== */
+.lw-card { padding: 0; overflow: hidden; }
+.lw-now {
+  display: flex; align-items: center; gap: 12px; padding: 16px 16px 12px;
+  background: linear-gradient(135deg, var(--lw-a, #dbeafe), var(--lw-b, #eef2ff)); color: var(--lw-ink, #0f172a);
+}
+.lw-clear { --lw-a: #ffe7b8; --lw-b: #fff6e0; }
+.lw-partly { --lw-a: #dbe9ff; --lw-b: #fff3d6; }
+.lw-cloudy, .lw-fog { --lw-a: #e3e8ef; --lw-b: #f3f5f8; }
+.lw-drizzle, .lw-rain { --lw-a: #cfdcef; --lw-b: #e8eef7; }
+.lw-snow { --lw-a: #e6f0fb; --lw-b: #ffffff; }
+.lw-storm { --lw-a: #c9c6e8; --lw-b: #e4e2f3; }
+.lw-night, .lw-night-cloud { --lw-a: #1d2553; --lw-b: #2d3677; --lw-ink: #f1f5ff; }
+.lw-night .lw-desc, .lw-night-cloud .lw-desc, .lw-night .lw-range, .lw-night-cloud .lw-range, .lw-night .lw-place small, .lw-night-cloud .lw-place small { color: rgba(241, 245, 255, .8); }
+.lw-main { min-width: 0; }
+.lw-place { display: flex; align-items: center; gap: 4px; font-weight: 700; font-size: 14px; }
+.lw-place small { font-weight: 500; color: var(--text-2); margin-left: 4px; font-size: 12px; }
+.lw-temp { font: 800 46px/1 var(--font-display); letter-spacing: -.04em; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.lw-desc { font-size: 13px; font-weight: 600; margin-top: 2px; }
+.lw-range { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+.lw-tip { margin: 12px 14px 0; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); font-size: 13px; font-weight: 500; }
+.lw-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 12px 14px 0; }
+.lw-stats > div { background: var(--surface-2); border-radius: 12px; padding: 8px 10px; min-width: 0; }
+.lw-stats span { display: block; font-size: 11px; color: var(--muted); }
+.lw-stats b { font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lw-arrow { display: inline-block; font-style: normal; transition: transform .6s ease; }
+.lw-hours { display: flex; gap: 6px; overflow-x: auto; padding: 12px 14px 4px; scrollbar-width: none; }
+.lw-hours::-webkit-scrollbar { display: none; }
+.lw-hours > div { flex: 0 0 auto; width: 52px; text-align: center; border-radius: 14px; padding: 8px 2px; background: var(--surface-2); }
+.lw-hours > div.now { background: var(--accent-soft); }
+.lw-hours span { display: block; font-size: 11px; color: var(--muted); font-weight: 600; }
+.lw-hours i { display: block; font-style: normal; font-size: 20px; margin: 4px 0 2px; }
+.lw-hours b { font-size: 14px; font-variant-numeric: tabular-nums; }
+.lw-hours small { display: block; font-size: 10px; color: var(--muted); }
+.lw-hours small.rain { color: var(--s1); font-weight: 700; }
+.lw-days { margin: 8px 14px 0; }
+.lw-days > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 13px; color: var(--accent); padding: 8px 0; }
+.lw-days > summary::-webkit-details-marker { display: none; }
+.lw-days[open] > summary .ico { transform: rotate(180deg); }
+.lw-day { display: grid; grid-template-columns: 52px 44px 32px 1fr 32px; align-items: center; gap: 8px; padding: 7px 0; border-top: 1px solid var(--border); font-size: 13px; }
+.lw-dname { font-weight: 600; }
+.lw-dicon { font-size: 18px; line-height: 1; }
+.lw-dicon small { display: block; font-size: 10px; color: var(--s1); font-weight: 700; }
+.lw-dmin { color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.lw-dmax { font-weight: 700; font-variant-numeric: tabular-nums; }
+.lw-bar { position: relative; height: 6px; border-radius: 3px; background: var(--surface-2); }
+.lw-bar i { position: absolute; top: 0; bottom: 0; border-radius: 3px; background: linear-gradient(90deg, #5aa9e6, #f6c453, #f08a4b); }
+.lw-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); padding: 10px 14px 12px; }
+.lw-ask { display: flex; gap: 12px; padding: 14px; align-items: flex-start; }
+.lw-ask-art .wx-art { width: 64px; height: 64px; }
+.lw-ask b { font: 700 15px/1.2 var(--font-display); }
+.lw-privacy { display: block; font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+/* iconița animată */
+.wx-art { width: 84px; height: 84px; flex: none; overflow: visible; }
+.wx-sun circle { fill: #fbbf24; filter: drop-shadow(0 0 6px rgba(251, 191, 36, .6)); }
+.wx-rays line { stroke: #f59e0b; stroke-width: 3; stroke-linecap: round; }
+.wx-rays { animation: wx-spin 18s linear infinite; transform-origin: 0 0; }
+.wx-cloud path { fill: #fff; stroke: #cbd5e1; stroke-width: 1.2; }
+.wx-cloud.back path { fill: #e2e8f0; }
+.lw-night-cloud .wx-cloud path, .lw-storm .wx-cloud path { fill: #94a3b8; stroke: #64748b; }
+.wx-cloud { animation: wx-drift 6s ease-in-out infinite alternate; }
+.wx-cloud.back { animation-duration: 8s; animation-direction: alternate-reverse; }
+.wx-moon path { fill: #fdf6d8; filter: drop-shadow(0 0 6px rgba(253, 246, 216, .5)); }
+.wx-star { fill: #fff; animation: wx-twinkle 2.4s ease-in-out infinite; }
+.wx-drop { stroke: #3b82f6; stroke-width: 2.4; stroke-linecap: round; animation: wx-fall 1s linear infinite; }
+.wx-drop.small { stroke-width: 1.8; animation-duration: 1.3s; }
+.wx-flake { font-size: 9px; fill: #93c5fd; animation: wx-snow 2.6s linear infinite; }
+.wx-bolt { fill: #facc15; animation: wx-flash 2.8s ease-in-out infinite; }
+.wx-fog line { stroke: #94a3b8; stroke-width: 3; stroke-linecap: round; animation: wx-fogmove 4s ease-in-out infinite alternate; }
+@keyframes wx-spin { to { transform: rotate(360deg); } }
+@keyframes wx-drift { from { transform: translateX(-2px); } to { transform: translateX(4px); } }
+@keyframes wx-twinkle { 0%, 100% { opacity: .2; } 50% { opacity: 1; } }
+@keyframes wx-fall { 0% { transform: translateY(-6px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+@keyframes wx-snow { 0% { transform: translate(0, -8px) rotate(0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translate(3px, 10px) rotate(90deg); opacity: 0; } }
+@keyframes wx-flash { 0%, 70%, 100% { opacity: .15; } 74%, 80% { opacity: 1; } 77% { opacity: .3; } }
+@keyframes wx-fogmove { from { transform: translateX(-3px); } to { transform: translateX(3px); } }
+.wx-art.still * { animation: none !important; }
+@media (prefers-reduced-motion: reduce) { .wx-art * { animation: none !important; } }
+.lw-ask .btn-row { flex-wrap: wrap; }
+.lw-ask .btn-row .btn { flex: 0 0 auto; white-space: nowrap; }

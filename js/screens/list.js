@@ -10,6 +10,7 @@ import { enablePullToRefresh, enableSwipe } from '../gestures.js';
 import { icon } from '../icons.js';
 import { VERDICT_STYLE, verdict } from '../insights.js';
 import { countUp, skyPhase } from '../motion.js';
+import { localWeatherSlot, mountLocalWeather } from '../local-weather.js';
 import { bindOnboarding, onboardingCard } from '../onboarding.js';
 import {
   ensureAlerts, ensureConfig, loadHistory, loadResults, loadStatus, state, summarize,
@@ -82,6 +83,7 @@ function draw(app, animate) {
     </div>
 
     ${onboarding}
+    ${localWeatherSlot()}
     ${statusBanner(status)}
     ${!hasWriteAccess() && !onboarding ? `<a class="banner info" href="#/setari">${icon('key', 18)}<div>Adaugă tokenul GitHub în <b>Setări</b> ca să poți crea și salva alerte din aplicație.</div></a>` : ''}
 
@@ -112,6 +114,7 @@ function draw(app, animate) {
   `;
   bindRefresh(app);
   bindOnboarding(app);
+  mountLocalWeather(app);
   if (animate) countUp(app);
   loadThumbs(app);
   if (hasWriteAccess()) {

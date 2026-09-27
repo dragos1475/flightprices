@@ -286,6 +286,9 @@ companiile și escalele, iar în 1–2 minute vezi toate prețurile. Primești �
   tale (prognoză dacă pleci în următoarele ~15 zile, altfel media din ultimii 3 ani).
 - **EUR ⇄ RON**: comuți moneda afișată din cardul principal sau din Setări (cursul BCE, actualizat zilnic).
   Pragurile și notificările rămân în moneda alertei.
+- **Vremea la tine** pe pagina principală (doar dacă apeși „Arată vremea la mine” și permiți locația): temperatura,
+  „se simte ca”, umiditatea, vântul, UV, calitatea aerului, răsăritul/apusul, un sfat al zilei, următoarele 24 de ore
+  și 7 zile, cu iconițe animate. Se poate ascunde din Setări.
 - **Cerul după ora din zi** pe ecranul principal (răsărit, zi, apus, noapte cu stele) și un **ecran de pornire** animat.
 
 ---
@@ -390,7 +393,8 @@ Ryanair zboară ca FR, RK (UK), AL (Malta Air) și RR (Buzz). În aplicație ale
 - **Tokenul GitHub** stă doar pe telefon și are acces doar la acest repository, doar la conținut. Pune-i dată de expirare.
 - **Topicul ntfy** funcționează ca o parolă: alege un nume lung și aleatoriu.
 - Pentru poze, hartă, vreme și curs, aplicația folosește servicii gratuite, fără cont: Wikipedia/Wikimedia,
-  Open-Meteo, frankfurter.dev (cursul BCE) și jsDelivr (bibliotecile hărții). Ele primesc doar numele orașului,
+  Open-Meteo, frankfurter.dev (cursul BCE), jsDelivr (bibliotecile hărții) și BigDataCloud (numele localității
+  pentru „Vremea la tine”; coordonatele telefonului se rotunjesc la ~1 km și nu se salvează pe GitHub). Ele primesc doar numele orașului,
   coordonatele sau moneda. Dacă un serviciu nu răspunde, partea respectivă pur și simplu nu apare.
 - Fonturile aplicației (Inter și Plus Jakarta Sans) se încarcă de la Google Fonts. Fără internet, aplicația
   folosește fontul telefonului.

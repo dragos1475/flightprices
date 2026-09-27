@@ -5,11 +5,13 @@ import {
 } from '../data.js';
 import { cachedRate, displayCurrency, refreshRate, setDisplayCurrency } from '../currency.js';
 import { icon } from '../icons.js';
+import { localWeatherHidden, setLocalWeatherHidden } from '../local-weather.js';
+
 import {
   currentSubscription, generateVapidKeys, localTestNotification, pushSupport, subscribe, unsubscribe,
 } from '../push.js';
 import { ensureConfig, state } from '../state.js';
-import { setNav } from '../ui.js';
+import { setNav, toggle } from '../ui.js';
 import { copyText, h, toast } from '../util.js';
 
 export async function renderSettings(app) {
@@ -98,9 +100,11 @@ export async function renderSettings(app) {
         </div>
         <p class="hint">Conversia folosește cursul BCE (actualizat zilnic). Pragurile și notificările rămân în moneda alertei.</p>
       </div>
+      ${toggle('s-localweather', !localWeatherHidden(), 'Vremea la tine pe pagina principală', 'Folosește locația telefonului, rotunjită la ~1 km')}
     </div>
     <p class="section-note">Pentru poze, hartă, vreme și curs, aplicația folosește servicii gratuite: Wikipedia, Open-Meteo,
-      frankfurter.dev (BCE) și jsDelivr. Ele primesc doar numele orașului sau moneda, nimic personal.</p>
+      frankfurter.dev (BCE), jsDelivr și BigDataCloud. Primesc doar numele orașului, moneda sau (pentru „Vremea la tine”)
+      locația rotunjită la ~1 km.</p>
 
     <div class="section-label"><span>Căutare rapidă</span></div>
     <div class="group">
@@ -213,6 +217,11 @@ export async function renderSettings(app) {
     await unsubscribe();
     toast('Notificările au fost dezactivate');
     renderSettings(app);
+  });
+
+  app.querySelector('#s-localweather')?.addEventListener('change', (e) => {
+    setLocalWeatherHidden(!e.target.checked);
+    toast(e.target.checked ? 'Vremea apare pe pagina principală' : 'Vremea a fost ascunsă');
   });
 
   app.querySelectorAll('[data-pref-cur]').forEach((b) => b.addEventListener('click', async () => {
