@@ -1,23 +1,25 @@
 {
-  "last_run": "2026-09-28T00:38:44+03:00",
+  "last_run": "2026-09-28T00:42:10+03:00",
   "trigger": "push",
   "dry_run": false,
   "searches_left_before": 243,
-  "searches_used": 0,
-  "planned_searches": 0,
+  "searches_used": 2,
+  "planned_searches": 2,
   "skipped_budget": false,
-  "alerts_searched": [],
+  "alerts_searched": [
+    "bali-from-malpensa-qn6u"
+  ],
   "errors": [],
   "warnings": [],
   "notifications_sent": 0,
   "estimate": {
-    "per_day": 2,
-    "per_month": 60,
-    "extra_max_per_month": 60,
+    "per_day": 4,
+    "per_month": 120,
+    "extra_max_per_month": 120,
     "limit": 250
   },
-  "credits_checked_at": "2026-09-28T00:38:44+03:00",
+  "credits_checked_at": "2026-09-28T00:42:26+03:00",
   "notification_errors": [],
-  "searches_left_after": 243,
-  "this_month_usage": 7
+  "searches_left_after": 241,
+  "this_month_usage": 9
 }
