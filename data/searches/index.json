@@ -1,6 +1,30 @@
 {
   "searches": [
     {
+      "id": "s-20260927-185901-qaq5",
+      "title": "Bucuresti Lisabona",
+      "created_at": "2026-09-27T15:59:01.209Z",
+      "status": "done",
+      "message": null,
+      "lowest_price": 168,
+      "currency": "EUR",
+      "departures": [
+        {
+          "date": "2026-12-24",
+          "nights": [
+            7
+          ]
+        }
+      ],
+      "destination": {
+        "id": "LIS",
+        "name": "Lisabona",
+        "codes": [
+          "LIS"
+        ]
+      }
+    },
+    {
       "id": "s-20260927-174902-f3ez",
       "title": "Bali Ubud",
       "created_at": "2026-09-27T14:49:02.241Z",
@@ -15,7 +39,14 @@
             9
           ]
         }
-      ]
+      ],
+      "destination": {
+        "id": "DPS",
+        "name": "Bali (Denpasar)",
+        "codes": [
+          "DPS"
+        ]
+      }
     }
   ]
 }
