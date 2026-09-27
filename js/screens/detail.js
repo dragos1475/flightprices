@@ -31,7 +31,7 @@ export async function renderDetail(app, id) {
   const alert = alerts.find((a) => a.id === id);
   if (!alert) {
     app.innerHTML = `<div class="card empty"><div class="empty-ico">${icon('info', 28)}</div>
-      <h2>Alerta nu există</h2><p>Poate a fost ștearsă.</p><a class="btn primary" href="#/">Înapoi la alerte</a></div>`;
+      <h2>Alert not found</h2><p>It may have been deleted.</p><a class="btn primary" href="#/">Back to alerts</a></div>`;
     return;
   }
 
@@ -64,8 +64,8 @@ function draw(app, rawAlert, rawResults, rawHistory, animate) {
     title: alert.name,
     back: '#/',
     actions: [
-      ...(hasWriteAccess() ? [{ icon: rawAlert.active === false ? 'play' : 'pause', label: rawAlert.active === false ? 'Pornește' : 'Oprește', id: 'toggle-active' }] : []),
-      { icon: 'edit', label: 'Editează', href: `#/alerta/${encodeURIComponent(alert.id)}/editeaza` },
+      ...(hasWriteAccess() ? [{ icon: rawAlert.active === false ? 'play' : 'pause', label: rawAlert.active === false ? 'Resume' : 'Pause', id: 'toggle-active' }] : []),
+      { icon: 'edit', label: 'Edit', href: `#/alerta/${encodeURIComponent(alert.id)}/editeaza` },
     ],
   });
   view.flightsShown = 25;
@@ -92,13 +92,13 @@ function draw(app, rawAlert, rawResults, rawHistory, animate) {
 
       <div class="hero-price">
         <div>
-          <div class="label">Cel mai mic preț ${tripLabel(alert)}</div>
+          <div class="label">Lowest price · ${tripLabel(alert)}</div>
           <div class="price-xl ${sum.under ? 'good-text' : ''}" style="view-transition-name:${vt}-price">${sum.lowest !== null
             ? `<span data-count="${sum.lowest}">${money(sum.lowest)}</span>` : '—'}<small>${cur}</small></div>
         </div>
         <div class="hero-side">
           ${sum.lowest !== null
-            ? (sum.under ? `<span class="badge good">${icon('check')}Sub prag</span>` : '<span class="badge">Peste prag</span>')
+            ? (sum.under ? `<span class="badge good">${icon('check')}Under target</span>` : '<span class="badge">Over target</span>')
             : `<span class="badge ${st.cls}">${st.label}</span>`}
           ${currencyToggle(rawResults?.currency || rawAlert.currency || 'EUR', cur)}
         </div>
@@ -108,27 +108,27 @@ function draw(app, rawAlert, rawResults, rawHistory, animate) {
 
       ${max ? `<div class="threshold-bar ${sum.under ? 'under' : ''}">
         <div class="track"><div class="fill" style="width:${fillPct}%"></div><div class="mark" style="left:calc(${markPct}% - 1px)"></div></div>
-        <div class="legend-row"><span>${diff === null ? 'Aștept prima căutare' : diff >= 0
-          ? `<span class="good-text">${money(diff, cur)} sub prag</span>` : `${money(-diff, cur)} peste prag`}</span><span>prag ${money(max, cur)}</span></div>
+        <div class="legend-row"><span>${diff === null ? 'Waiting for the first search' : diff >= 0
+          ? `<span class="good-text">${money(diff, cur)} under target</span>` : `${money(-diff, cur)} over target`}</span><span>target ${money(max, cur)}</span></div>
       </div>` : ''}
 
       <div class="meta-chips">
         <span>${icon('plane')}${tripLabel(alert)}</span>
         <span>${icon('calendar')}${shortDate(alert.monitor_start)} – ${shortDate(alert.monitor_end)}</span>
         <span>${icon('clock')}${hoursLabel(alert)}</span>
-        <span>${icon('users')}${alert.adults || 1} ${Number(alert.adults) > 1 ? 'adulți' : 'adult'}</span>
-        <span>${icon('bag')}${alert.bags || 0} troler${Number(alert.bags) === 1 ? '' : 'e'}</span>
+        <span>${icon('users')}${alert.adults || 1} ${Number(alert.adults) > 1 ? 'adults' : 'adult'}</span>
+        <span>${icon('bag')}${alert.bags || 0} carry-on${Number(alert.bags) === 1 ? '' : 's'}</span>
         <span>${icon('zap')}${stopsLabel(maxStopsOf(alert))}</span>
         <span>${icon('plane')}${h(airlineNames(alert.airlines).join(', '))}</span>
       </div>
 
-      ${sum.stale ? `<div class="banner warn">${icon('warning', 18)}<div>Moneda a fost schimbată. Prețurile vor fi în ${cur} după următoarea căutare.</div></div>` : ''}
+      ${sum.stale ? `<div class="banner warn">${icon('warning', 18)}<div>The currency was changed. Prices will be in ${cur} after the next search.</div></div>` : ''}
 
       ${sum.best?.google_flights_url ? `<div class="btn-row" style="margin-top:14px">
-        <a class="btn primary" href="${h(sum.best.google_flights_url)}" target="_blank" rel="noopener">Vezi pe Google Flights ${icon('external', 16)}</a>
-        <button type="button" class="btn icon-share" id="hero-share" aria-label="Partajează">${icon('share', 18)}</button>
+        <a class="btn primary" href="${h(sum.best.google_flights_url)}" target="_blank" rel="noopener">View on Google Flights ${icon('external', 16)}</a>
+        <button type="button" class="btn icon-share" id="hero-share" aria-label="Share">${icon('share', 18)}</button>
       </div>` : ''}
-      <div class="small muted" style="text-align:center;margin-top:10px">Actualizat ${dateTime(results?.updated_at)}</div>
+      <div class="small muted" style="text-align:center;margin-top:10px">Updated ${dateTime(results?.updated_at)}</div>
     </div>
 
     ${verdictCard(v)}
@@ -136,11 +136,11 @@ function draw(app, rawAlert, rawResults, rawHistory, animate) {
     ${tripSection()}
 
     <div id="heat-section">
-      <div class="section-label"><span>Calendar de prețuri</span></div>
+      <div class="section-label"><span>Price calendar</span></div>
       <div class="card"><div id="heatmap"></div></div>
     </div>
 
-    <div class="section-label"><span>Evoluția prețului minim</span></div>
+    <div class="section-label"><span>Lowest price trend</span></div>
     <div class="card"><div id="chart"></div></div>
 
     <div id="results"></div>
@@ -159,7 +159,7 @@ function draw(app, rawAlert, rawResults, rawHistory, animate) {
   renderChart(app.querySelector('#chart'), { series, threshold: max || null, currency: cur, animate });
   if (activeKeys.length > SERIES_COLORS.length) {
     app.querySelector('#chart').insertAdjacentHTML('beforeend',
-      `<p class="small muted" style="margin-top:8px">Graficul arată primele ${SERIES_COLORS.length} combinații din ${activeKeys.length}.</p>`);
+      `<p class="small muted" style="margin-top:8px">The chart shows the first ${SERIES_COLORS.length} of ${activeKeys.length} combinations.</p>`);
   }
 
   const resultsEl = app.querySelector('#results');
@@ -190,7 +190,7 @@ function draw(app, rawAlert, rawResults, rawHistory, animate) {
       const updated = { ...rawAlert, active: rawAlert.active === false, updated_at: new Date().toISOString() };
       const doc = await saveAlert(updated);
       state.alerts = doc.alerts;
-      toast(updated.active ? 'Alerta a fost pornită' : 'Alerta a fost oprită');
+      toast(updated.active ? 'Alert resumed' : 'Alert paused');
       draw(app, updated, rawResults, rawHistory, false);
     } catch (err) {
       toast(err.message, 6000);

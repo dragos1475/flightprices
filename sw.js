@@ -1,7 +1,7 @@
 // Service worker: permite instalarea aplicației, funcționarea offline (ultimele date văzute)
 // și primirea notificărilor push chiar dacă aplicația este închisă.
 
-const CACHE = 'zboruri-v21';
+const CACHE = 'zboruri-v22';
 const SHELL = [
   './',
   'index.html',
@@ -86,15 +86,15 @@ self.addEventListener('push', (event) => {
   try {
     data = event.data ? event.data.json() : {};
   } catch {
-    data = { title: 'Monitor Zboruri', body: event.data ? event.data.text() : '' };
+    data = { title: 'Flight Prices', body: event.data ? event.data.text() : '' };
   }
   event.waitUntil(
-    self.registration.showNotification(data.title || 'Monitor Zboruri', {
+    self.registration.showNotification(data.title || 'Flight Prices', {
       body: data.body || '',
       icon: 'icons/icon-192.png',
       badge: 'icons/badge-96.png',
       data: { url: data.url || './', app_url: data.app_url || './' },
-      actions: data.app_url ? [{ action: 'app', title: 'Deschide aplicația' }] : [],
+      actions: data.app_url ? [{ action: 'app', title: 'Open app' }] : [],
     }),
   );
 });

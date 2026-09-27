@@ -16,7 +16,7 @@ export function setNav({ title = '', back = null, actions = [], large = false } 
   document.querySelector('.navbar').classList.toggle('large', large);
   // stânga: „înapoi” (dacă e cazul) + creditele SerpApi rămase (mereu vizibile)
   document.getElementById('nav-left').innerHTML = (back
-    ? `<a class="nav-btn" href="${h(back)}" aria-label="Înapoi">${icon('back', 24)}</a>`
+    ? `<a class="nav-btn" href="${h(back)}" aria-label="Back">${icon('back', 24)}</a>`
     : '') + creditsSlot();
   document.getElementById('nav-right').innerHTML = actions.map((a) => a.href
     ? `<a class="nav-btn" href="${h(a.href)}" aria-label="${h(a.label)}" title="${h(a.label)}">${icon(a.icon, 22)}</a>`
@@ -35,7 +35,7 @@ export function setTabbarVisible(visible) {
 
 /** Schelet de încărcare: forme gri animate cât timp se citesc datele. */
 export function skeleton(cards = 3) {
-  return `<div class="skeleton-wrap" aria-busy="true" aria-label="Se încarcă">
+  return `<div class="skeleton-wrap" aria-busy="true" aria-label="Loading">
     ${Array.from({ length: cards }, () => `
       <div class="card sk-card">
         <div class="sk sk-line" style="width:45%"></div>
@@ -95,9 +95,9 @@ export function stepper(id, value, min, max, label, hint = '') {
   return `<div class="row">
     <span class="row-main"><span class="row-title">${h(label)}</span>${hint ? `<span class="row-sub">${h(hint)}</span>` : ''}</span>
     <div class="stepper" data-stepper="${id}" data-min="${min}" data-max="${max}">
-      <button type="button" data-step="-1" aria-label="Scade">${icon('minus', 16)}</button>
+      <button type="button" data-step="-1" aria-label="Decrease">${icon('minus', 16)}</button>
       <output id="${id}" aria-live="polite">${value}</output>
-      <button type="button" data-step="1" aria-label="Crește">${icon('plus', 16)}</button>
+      <button type="button" data-step="1" aria-label="Increase">${icon('plus', 16)}</button>
     </div>
   </div>`;
 }

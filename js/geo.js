@@ -13,7 +13,7 @@ const CACHE_PREFIX = 'zboruri.geo.';
  * 'Roma (toate aeroporturile)' -> ['Roma'].
  */
 export function nameCandidates(name) {
-  const clean = String(name || '').replace(/\(toate[^)]*\)/i, '').trim();
+  const clean = String(name || '').replace(/\((toate|all)[^)]*\)/i, '').trim();
   const paren = (clean.match(/\(([^)]+)\)/) || [])[1];
   const base = clean.replace(/\([^)]*\)/g, '').trim();
   const out = [base, base.split(/\s+/)[0], paren].filter(Boolean);
@@ -21,7 +21,7 @@ export function nameCandidates(name) {
 }
 
 async function geocodeName(name, iso) {
-  const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(name)}&count=10&language=ro&format=json`;
+  const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(name)}&count=10&language=en&format=json`;
   const res = await fetch(url);
   if (!res.ok) return null;
   const data = await res.json();

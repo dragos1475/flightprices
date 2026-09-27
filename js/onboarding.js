@@ -15,24 +15,24 @@ function steps({ status, alerts }) {
   return [
     {
       done: isStandalone(),
-      title: 'Instalează aplicația',
-      text: 'iPhone: Safari → Share → „Adaugă pe ecranul principal”. Android: Chrome → ⋮ → „Instalează aplicația”.',
+      title: 'Install the app',
+      text: 'iPhone: Safari → Share → “Add to Home Screen”. Android: Chrome → ⋮ → “Install app”.',
     },
-    { done: hasWriteAccess(), title: 'Conectează GitHub', text: 'Tokenul permite salvarea alertelor din aplicație.', href: '#/setari' },
+    { done: hasWriteAccess(), title: 'Connect GitHub', text: 'The token lets the app save your alerts.', href: '#/setari' },
     {
       done: pushSupport().permission === 'granted',
-      title: 'Activează notificările',
-      text: 'Apoi copiază abonamentul în secretul PUSH_SUBSCRIPTION.',
+      title: 'Enable notifications',
+      text: 'Then copy the subscription into the PUSH_SUBSCRIPTION secret.',
       href: '#/setari',
     },
     {
       done: robotOk,
-      title: 'Verifică robotul de căutare',
-      text: 'Secretul SERPAPI_KEY trebuie adăugat; după prima căutare apare aici bifa.',
+      title: 'Check the search robot',
+      text: 'Add the SERPAPI_KEY secret; the check mark appears here after the first search.',
       href: links.actions,
       external: true,
     },
-    { done: alerts.length > 0, title: 'Creează prima alertă', text: 'Alegi ruta, datele și prețul maxim.', href: '#/alerta/nou' },
+    { done: alerts.length > 0, title: 'Create your first alert', text: 'Pick the route, the dates and your maximum price.', href: '#/alerta/nou' },
   ];
 }
 
@@ -43,8 +43,8 @@ export function onboardingCard(ctx) {
   return `
     <div class="card onboarding" id="onboarding">
       <div class="onb-head">
-        <div><b>Primii pași</b><span class="muted small"> · ${doneCount} din ${list.length}</span></div>
-        <button type="button" class="linklike small" id="onb-hide">Ascunde</button>
+        <div><b>Getting started</b><span class="muted small"> · ${doneCount} of ${list.length}</span></div>
+        <button type="button" class="linklike small" id="onb-hide">Hide</button>
       </div>
       <div class="meter" style="margin:8px 0 6px"><div style="width:${(doneCount / list.length) * 100}%"></div></div>
       ${list.map((s) => {

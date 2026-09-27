@@ -9,16 +9,16 @@ const CACHE_PREFIX = 'zboruri.weather.';
 /** Coduri WMO -> emoji + descriere. */
 export function weatherIcon(code) {
   if (code === null || code === undefined) return { icon: '🌤️', text: '' };
-  if (code === 0) return { icon: '☀️', text: 'senin' };
-  if (code <= 2) return { icon: '🌤️', text: 'parțial însorit' };
-  if (code === 3) return { icon: '☁️', text: 'înnorat' };
-  if (code <= 48) return { icon: '🌫️', text: 'ceață' };
-  if (code <= 57) return { icon: '🌦️', text: 'burniță' };
-  if (code <= 67) return { icon: '🌧️', text: 'ploaie' };
-  if (code <= 77) return { icon: '❄️', text: 'ninsoare' };
-  if (code <= 82) return { icon: '🌧️', text: 'averse' };
-  if (code <= 86) return { icon: '🌨️', text: 'averse de zăpadă' };
-  return { icon: '⛈️', text: 'furtună' };
+  if (code === 0) return { icon: '☀️', text: 'clear' };
+  if (code <= 2) return { icon: '🌤️', text: 'partly sunny' };
+  if (code === 3) return { icon: '☁️', text: 'cloudy' };
+  if (code <= 48) return { icon: '🌫️', text: 'fog' };
+  if (code <= 57) return { icon: '🌦️', text: 'drizzle' };
+  if (code <= 67) return { icon: '🌧️', text: 'rain' };
+  if (code <= 77) return { icon: '❄️', text: 'snow' };
+  if (code <= 82) return { icon: '🌧️', text: 'showers' };
+  if (code <= 86) return { icon: '🌨️', text: 'snow showers' };
+  return { icon: '⛈️', text: 'thunderstorm' };
 }
 
 const shiftYear = (iso, years) => `${Number(iso.slice(0, 4)) - years}${iso.slice(4)}`.replace(/-02-29$/, '-02-28');

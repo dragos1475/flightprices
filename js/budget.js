@@ -83,10 +83,10 @@ export function isActive(alert, day) {
 
 /** Starea alertei: {key, label, cls} pentru eticheta afișată. */
 export function alertStatus(alert, day) {
-  if (alert.active === false) return { key: 'paused', label: 'Oprită', cls: '' };
-  if (alert.monitor_start && day < alert.monitor_start) return { key: 'scheduled', label: 'Programată', cls: 'info' };
-  if (isActive(alert, day)) return { key: 'active', label: 'Activă', cls: 'info' };
-  return { key: 'expired', label: 'Expirată', cls: '' };
+  if (alert.active === false) return { key: 'paused', label: 'Paused', cls: '' };
+  if (alert.monitor_start && day < alert.monitor_start) return { key: 'scheduled', label: 'Scheduled', cls: 'info' };
+  if (isActive(alert, day)) return { key: 'active', label: 'Active', cls: 'info' };
+  return { key: 'expired', label: 'Expired', cls: '' };
 }
 
 /**

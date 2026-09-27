@@ -63,7 +63,7 @@ export async function cityPhoto(names) {
       return JSON.parse(cached);
     } catch { /* ignorăm */ }
   }
-  for (const lang of ['ro', 'en']) {
+  for (const lang of ['en', 'ro']) {
     for (const title of list) {
       try {
         const found = await summary(lang, title);

@@ -18,15 +18,15 @@ export function verdict({ series = [], best, maxPrice = 0, currency = 'EUR' }) {
 
   // minim istoric (avem nevoie de câteva zile de istoric)
   const recordLow = n >= 3 && cur <= Math.min(...prev);
-  if (recordLow) tags.push({ label: `minim din ultimele ${n} zile`, tone: 'good' });
+  if (recordLow) tags.push({ label: `lowest in the last ${n} days`, tone: 'good' });
 
   // câte zile la rând a scăzut / a crescut
   let down = 0;
   let up = 0;
   for (let i = n - 1; i > 0 && series[i].price < series[i - 1].price; i--) down++;
   for (let i = n - 1; i > 0 && series[i].price > series[i - 1].price; i--) up++;
-  if (down >= 2) tags.push({ label: `scade de ${down} zile`, tone: 'good' });
-  if (up >= 2) tags.push({ label: `crește de ${up} zile`, tone: 'bad' });
+  if (down >= 2) tags.push({ label: `falling for ${down} days`, tone: 'good' });
+  if (up >= 2) tags.push({ label: `rising for ${up} days`, tone: 'bad' });
 
   // față de media ultimelor 7 zile
   const recent = prev.slice(-7);
@@ -34,15 +34,15 @@ export function verdict({ series = [], best, maxPrice = 0, currency = 'EUR' }) {
   if (recent.length >= 3) {
     const avg = recent.reduce((s, v) => s + v, 0) / recent.length;
     pct = Math.round(((cur - avg) / avg) * 100);
-    if (Math.abs(pct) >= 5) tags.push({ label: `${pct > 0 ? '+' : '−'}${Math.abs(pct)}% față de media pe 7 zile`, tone: pct < 0 ? 'good' : 'bad' });
+    if (Math.abs(pct) >= 5) tags.push({ label: `${pct > 0 ? '+' : '−'}${Math.abs(pct)}% vs 7-day average`, tone: pct < 0 ? 'good' : 'bad' });
   }
 
   // ce spune Google
   const level = String(best.price_insights?.price_level || '').toLowerCase();
   const range = best.price_insights?.typical_price_range;
-  if (level === 'low') tags.push({ label: 'Google: preț scăzut', tone: 'good' });
-  if (level === 'high') tags.push({ label: 'Google: preț ridicat', tone: 'bad' });
-  if (level === 'typical') tags.push({ label: 'Google: preț obișnuit', tone: '' });
+  if (level === 'low') tags.push({ label: 'Google: low price', tone: 'good' });
+  if (level === 'high') tags.push({ label: 'Google: high price', tone: 'bad' });
+  if (level === 'typical') tags.push({ label: 'Google: typical price', tone: '' });
   const belowRange = Array.isArray(range) && range.length && cur < range[0];
   if (belowRange) tags.push({ label: `sub intervalul tipic (${range.map((v) => money(v)).join('–')})`, tone: 'good' });
 
@@ -52,16 +52,16 @@ export function verdict({ series = [], best, maxPrice = 0, currency = 'EUR' }) {
   if (under && (strong || up >= 2)) {
     return {
       kind: 'buy',
-      title: 'Cumpără acum',
-      text: up >= 2 ? 'Ești sub prag, iar prețul a început să crească.' : 'Ești sub prag și prețul e foarte bun.',
+      title: 'Buy now',
+      text: up >= 2 ? 'You are under your target and the price has started to rise.' : 'You are under your target and the price is very good.',
       tags,
     };
   }
-  if (under) return { kind: 'good', title: 'Preț bun', text: `Sub pragul tău de ${money(maxPrice, currency)}.`, tags };
-  if (down >= 2) return { kind: 'wait', title: 'Mai așteaptă', text: 'Prețul scade de câteva zile la rând.', tags };
-  if (level === 'high' || pct >= 8) return { kind: 'wait', title: 'Mai așteaptă', text: 'Prețul e peste nivelul obișnuit.', tags };
-  if (strong) return { kind: 'good', title: 'Preț bun', text: 'Bun față de obicei, dar încă peste pragul tău.', tags };
-  return { kind: 'watch', title: 'Urmărește', text: 'Nimic special deocamdată.', tags };
+  if (under) return { kind: 'good', title: 'Good price', text: `Under your target of ${money(maxPrice, currency)}.`, tags };
+  if (down >= 2) return { kind: 'wait', title: 'Wait', text: 'The price has been falling for several days.', tags };
+  if (level === 'high' || pct >= 8) return { kind: 'wait', title: 'Wait', text: 'The price is above the usual level.', tags };
+  if (strong) return { kind: 'good', title: 'Good price', text: 'Good compared to usual, but still above your target.', tags };
+  return { kind: 'watch', title: 'Watch', text: 'Nothing special for now.', tags };
 }
 
 export const VERDICT_STYLE = {

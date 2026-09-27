@@ -20,21 +20,21 @@ function dialog() {
  * Cere parola (sau o folosește pe cea memorată până la închiderea aplicației).
  * opts: {action: textul butonului, note: un rând în plus, ex. costul}. Întoarce parola sau null.
  */
-export function askPassword({ action = 'Caută', note = '' } = {}) {
+export function askPassword({ action = 'Search', note = '' } = {}) {
   let remembered = '';
   try { remembered = sessionStorage.getItem(PASSWORD_KEY) || ''; } catch { /* indisponibil */ }
   if (remembered) return Promise.resolve(remembered);
   const dlg = dialog();
   dlg.innerHTML = `
     <form method="dialog" id="pw-form">
-      <h2>${icon('key', 18, 'inline')} Parola de căutare</h2>
+      <h2>${icon('key', 18, 'inline')} Search password</h2>
       ${note ? `<p><b>${note}</b></p>` : ''}
-      <p>Parola nu pleacă de pe telefon: se trimite doar o semnătură, verificată de GitHub cu secretul <code>SEARCH_PASSWORD</code>.</p>
-      <input type="password" id="pw-input" autocomplete="current-password" placeholder="Parola" required>
+      <p>Your password never leaves the phone: only a signature is sent, verified by GitHub with the <code>SEARCH_PASSWORD</code> secret.</p>
+      <input type="password" id="pw-input" autocomplete="current-password" placeholder="Password" required>
       <label class="small" style="display:flex;gap:8px;align-items:center;margin-top:10px">
-        <input type="checkbox" id="pw-remember"> Ține minte până închid aplicația</label>
+        <input type="checkbox" id="pw-remember"> Remember until I close the app</label>
       <div class="btn-row">
-        <button type="button" class="btn" id="pw-cancel">Renunță</button>
+        <button type="button" class="btn" id="pw-cancel">Cancel</button>
         <button type="submit" class="btn primary">${action}</button>
       </div>
     </form>`;

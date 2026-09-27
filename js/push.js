@@ -65,20 +65,20 @@ export async function currentSubscription() {
  */
 export async function subscribe(vapidPublicKey) {
   if (!vapidPublicKey || vapidPublicKey.startsWith('PUNE_AICI')) {
-    throw new Error('Lipsește cheia publică VAPID din config/settings.json. Generează cheile mai jos, în secțiunea „Chei VAPID”.');
+    throw new Error('The VAPID public key is missing from config/settings.json. Generate the keys below, in the “VAPID keys” section.');
   }
   const support = pushSupport();
   if (!support.serviceWorker || !support.pushManager) {
     if (support.ios && !support.standalone) {
-      throw new Error('Pe iPhone, notificările merg doar după ce adaugi aplicația pe ecranul principal (Share → „Adaugă pe ecranul principal”) și o deschizi de acolo.');
+      throw new Error('On iPhone, notifications only work after you add the app to the Home Screen (Share → “Add to Home Screen”) and open it from there.');
     }
-    throw new Error('Acest browser nu suportă notificări push.');
+    throw new Error('This browser does not support push notifications.');
   }
   const permission = await Notification.requestPermission();
-  if (permission !== 'granted') throw new Error('Nu ai permis notificările. Le poți activa din setările telefonului/browserului.');
+  if (permission !== 'granted') throw new Error('Notifications are not allowed. You can enable them in your phone/browser settings.');
 
   const reg = await readyRegistration();
-  if (!reg) throw new Error('Aplicația nu a putut porni serviciul de notificări. Reîncarcă pagina și încearcă din nou.');
+  if (!reg) throw new Error('The app could not start the notification service. Reload the page and try again.');
   const key = base64UrlToBytes(vapidPublicKey);
   let sub = await reg.pushManager.getSubscription();
   // Dacă abonamentul existent a fost făcut cu altă cheie, îl refacem
@@ -103,12 +103,12 @@ export async function unsubscribe() {
 /** Afișează o notificare locală (verifică doar că telefonul poate afișa notificări). */
 export async function localTestNotification() {
   if (!('Notification' in window) || Notification.permission !== 'granted') {
-    throw new Error('Activează mai întâi notificările.');
+    throw new Error('Enable notifications first.');
   }
   const reg = await readyRegistration();
-  if (!reg) throw new Error('Serviciul de notificări nu este pornit. Reîncarcă pagina.');
-  await reg.showNotification('🧪 Test local', {
-    body: 'Telefonul poate afișa notificări. Pentru testul complet, rulează workflow-ul cu „test notificări”.',
+  if (!reg) throw new Error('The notification service is not running. Reload the page.');
+  await reg.showNotification('🧪 Local test', {
+    body: 'Your phone can show notifications. For a full test, run the workflow with “test notificari”.',
     icon: 'icons/icon-192.png',
     badge: 'icons/badge-96.png',
     data: { url: './' },

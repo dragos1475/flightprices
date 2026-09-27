@@ -28,28 +28,28 @@ export function renderHeatmap(container, { combos, maxPrice = 0, currency = 'EUR
 
   container.innerHTML = `
     <div class="heat" style="--cols:${nights.length}">
-      <div class="heat-corner">${oneWay ? 'Plecare' : 'Plecare \\ nopți'}</div>
-      ${nights.map((n) => `<div class="heat-col">${n === null ? 'doar dus' : `${n} ${n === 1 ? 'noapte' : 'nopți'}`}</div>`).join('')}
+      <div class="heat-corner">${oneWay ? 'Departure' : 'Departure \\ nights'}</div>
+      ${nights.map((n) => `<div class="heat-col">${n === null ? 'one way' : `${n} ${n === 1 ? 'night' : 'nights'}`}</div>`).join('')}
       ${dates.map((d) => `
         <div class="heat-row">${dayDate(d)}</div>
         ${nights.map((n) => {
           const c = cell(d, n);
           if (!c || c.lowest_price === null || c.lowest_price === undefined) {
-            return `<div class="heat-cell heat-none" aria-label="fără date">—</div>`;
+            return `<div class="heat-cell heat-none" aria-label="no data">—</div>`;
           }
           const s = strength(c.lowest_price);
           const under = maxPrice > 0 && c.lowest_price <= maxPrice;
           const best = c.lowest_price === lo;
           return `<button type="button" class="heat-cell ${s > 55 ? 'dark' : ''} ${best ? 'best' : ''}" style="--s:${s}%"
             data-key="${h(c.outbound_date)}_${h(c.return_date || '')}"
-            aria-label="${dayDate(d)}${n !== null ? `, ${n} nopți` : ''}: ${money(c.lowest_price, currency)}${under ? ', sub prag' : ''}${best ? ', cel mai ieftin' : ''}">
+            aria-label="${dayDate(d)}${n !== null ? `, ${n} nights` : ''}: ${money(c.lowest_price, currency)}${under ? ', under target' : ''}${best ? ', cheapest' : ''}">
             ${best ? '<i class="heat-star">★</i>' : ''}${money(c.lowest_price)}${under ? '<i class="heat-ok">✓</i>' : ''}
           </button>`;
         }).join('')}`).join('')}
     </div>
     <div class="heat-legend">
-      <span>mai ieftin</span><i class="heat-scale"></i><span>mai scump</span>
-      <span class="muted">· ${currency}${maxPrice > 0 ? ' · ✓ sub prag' : ''} · ★ cel mai ieftin</span>
+      <span>cheaper</span><i class="heat-scale"></i><span>pricier</span>
+      <span class="muted">· ${currency}${maxPrice > 0 ? ' · ✓ under target' : ''} · ★ cheapest</span>
     </div>`;
 
   container.querySelectorAll('.heat-cell[data-key]').forEach((b) => b.addEventListener('click', () => {

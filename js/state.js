@@ -20,7 +20,7 @@ export async function ensureConfig() {
     loadJSON('config/destinations_custom.json').catch(() => null),
     loadJSON('config/settings.json'),
   ]);
-  const customList = (custom?.destinations || []).map((d) => ({ ...d, region: d.region || 'Adăugate de mine', custom: true }));
+  const customList = (custom?.destinations || []).map((d) => ({ ...d, region: d.region || 'Added by me', custom: true }));
   state.config = {
     airports: airports?.airports || [],
     airlines: airlines?.airlines || [],
@@ -66,7 +66,7 @@ export async function loadHistory(id) {
 
 /** Numele companiilor pentru o listă de coduri IATA (grupurile complete apar cu numele lor). */
 export function airlineNames(codes) {
-  if (!codes || !codes.length) return ['Oricare companie'];
+  if (!codes || !codes.length) return ['Any airline'];
   const left = new Set(codes);
   const names = [];
   for (const a of state.config?.airlines || []) {
@@ -103,9 +103,9 @@ export function summarize(alert, results, today) {
 /** Nivelul prețului de la Google, în română. */
 export function priceLevel(level) {
   const map = {
-    low: { label: 'scăzut', cls: 'good' },
-    typical: { label: 'obișnuit', cls: '' },
-    high: { label: 'ridicat', cls: 'bad' },
+    low: { label: 'low', cls: 'good' },
+    typical: { label: 'typical', cls: '' },
+    high: { label: 'high', cls: 'bad' },
   };
   if (!level) return null;
   return map[String(level).toLowerCase()] || { label: level, cls: '' };

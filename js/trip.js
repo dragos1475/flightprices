@@ -8,7 +8,7 @@ import { tripWeather, weatherIcon } from './weather.js';
 
 export function tripSection() {
   return `<div id="trip-section">
-    <div class="section-label"><span>Călătoria</span></div>
+    <div class="section-label"><span>The trip</span></div>
     <div class="card trip-card">
       <div class="trip-map"><div class="sk" style="height:180px;border-radius:14px"></div></div>
       <div class="trip-stats"></div>
@@ -41,9 +41,9 @@ export async function fillTrip(root, { deps, destination, combos, dates }) {
   const shortest = Math.min(...combos.flatMap((c) => (c.flights || []).map((f) => f.total_duration || Infinity)));
   const direct = combos.some((c) => (c.flights || []).some((f) => f.stops === 0));
   const stats = [];
-  if (from && to) stats.push(`<div><b>${new Intl.NumberFormat('ro-RO').format(Math.round(distanceKm(from, to)))} km</b><span>distanță</span></div>`);
-  if (Number.isFinite(shortest)) stats.push(`<div><b>${duration(shortest)}</b><span>cel mai scurt zbor</span></div>`);
-  if (combos.some((c) => c.flights?.length)) stats.push(`<div><b>${direct ? 'Da' : 'Nu'}</b><span>zboruri directe</span></div>`);
+  if (from && to) stats.push(`<div><b>${new Intl.NumberFormat('en-GB').format(Math.round(distanceKm(from, to)))} km</b><span>distance</span></div>`);
+  if (Number.isFinite(shortest)) stats.push(`<div><b>${duration(shortest)}</b><span>shortest flight</span></div>`);
+  if (combos.some((c) => c.flights?.length)) stats.push(`<div><b>${direct ? 'Yes' : 'No'}</b><span>direct flights</span></div>`);
   statsBox.innerHTML = stats.join('');
 
   // --- vremea ---
@@ -57,13 +57,13 @@ export async function fillTrip(root, { deps, destination, combos, dates }) {
           <div class="weather-icon" aria-hidden="true">${wi.icon}</div>
           <div class="row-main">
             <b>${h(to.name)}, ${range}</b>
-            <span class="row-sub">${w.kind === 'forecast' ? 'Prognoză' : `De obicei în aceste zile (media ultimilor ${w.years} ani)`}${wi.text ? ` · ${wi.text}` : ''}</span>
+            <span class="row-sub">${w.kind === 'forecast' ? 'Forecast' : `Usually on these days (average of the last ${w.years} years)`}${wi.text ? ` · ${wi.text}` : ''}</span>
           </div>
           <div class="weather-temp"><b>${Math.round(w.max)}°</b><span>${Math.round(w.min)}°</span></div>
         </div>
         <div class="weather-note">${w.kind === 'forecast'
-          ? `Ploaie probabilă în ${w.rainyDays} din ${w.days} zile`
-          : `Zile cu ploaie: ~${w.rainyDays} din ${w.days}`}</div>
+          ? `Rain likely on ${w.rainyDays} of ${w.days} days`
+          : `Rainy days: ~${w.rainyDays} of ${w.days}`}</div>
         ${w.daily ? `<div class="weather-days">${w.daily.map((d) => `
           <div><span>${shortDate(d.date)}</span><i>${weatherIcon(d.code).icon}</i><b>${Math.round(d.max)}°</b><small>${Math.round(d.min)}°</small></div>`).join('')}</div>` : ''}`;
     }

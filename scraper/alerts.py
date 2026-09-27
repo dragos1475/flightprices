@@ -68,7 +68,7 @@ def combo_label(combo):
     """Text scurt pentru log-uri: '2026-11-12→2026-11-16' sau '2026-11-12 (doar dus)'."""
     if combo.get("return_date"):
         return f"{combo['outbound_date']}→{combo['return_date']}"
-    return f"{combo['outbound_date']} (doar dus)"
+    return f"{combo['outbound_date']} (one way)"
 
 
 def combinations(alert, day=None):
@@ -130,13 +130,13 @@ def is_active(alert, day):
 def status_label(alert, day):
     """Starea alertei, ca text scurt (folosită în rezumate)."""
     if not alert.get("active", True):
-        return "oprită"
+        return "paused"
     start = parse_date(alert.get("monitor_start"))
     if start and day < start:
-        return "programată"
+        return "scheduled"
     if is_active(alert, day):
-        return "activă"
-    return "expirată"
+        return "active"
+    return "expired"
 
 
 def max_stops(alert):
@@ -160,7 +160,7 @@ def search_params(alert, combo):
         "outbound_date": combo["outbound_date"],
         "currency": alert.get("currency", "EUR"),
         "gl": "ro",
-        "hl": "ro",
+        "hl": "en",  # textele de la Google (escale, detalii, opțiuni de rezervare) în engleză
         "adults": str(int(alert.get("adults", 1) or 1)),
         "show_hidden": "true",
     }
@@ -182,7 +182,8 @@ def search_params(alert, combo):
 
 def search_key(params):
     """Amprentă scurtă a unei căutări: dacă parametrii nu s-au schimbat, amprenta e aceeași."""
-    raw = json.dumps(params, sort_keys=True).encode("utf-8")
+    # Limba (hl) nu schimbă prețurile: o fixăm în amprentă, ca schimbarea limbii să nu provoace căutări noi.
+    raw = json.dumps({**params, "hl": "ro"}, sort_keys=True).encode("utf-8")
     return hashlib.sha1(raw).hexdigest()[:16]
 
 
@@ -190,25 +191,25 @@ def validate(alert):
     """Întoarce o listă de probleme (texte în română). Listă goală = alertă validă."""
     problems = []
     if not alert.get("id"):
-        problems.append("lipsește id-ul")
+        problems.append("missing id")
     if not alert.get("departure_airports"):
-        problems.append("nu are aeroporturi de plecare")
+        problems.append("no departure airports")
     if not alert.get("destination", {}).get("codes"):
-        problems.append("nu are destinație")
+        problems.append("no destination")
     if not combinations(alert):
-        problems.append("nu are nicio zi de plecare" if is_one_way(alert) else "nu are nicio zi de plecare cu număr de nopți")
+        problems.append("no departure day" if is_one_way(alert) else "no departure day with a number of nights")
     raw_hours = alert.get("search_hours")
     if raw_hours is not None and (
             not isinstance(raw_hours, list) or not 1 <= len(raw_hours) <= MAX_TIMES_PER_DAY
             or any(not isinstance(h, int) or not 0 <= h <= 23 for h in raw_hours)
             or len(set(raw_hours)) != len(raw_hours)):
-        problems.append(f"orele de căutare trebuie să fie 1–{MAX_TIMES_PER_DAY} ore diferite între 0 și 23")
+        problems.append(f"search times must be 1–{MAX_TIMES_PER_DAY} different hours between 0 and 23")
     if alert.get("trip_type") not in (None, "round_trip", "one_way"):
-        problems.append("tipul călătoriei trebuie să fie round_trip sau one_way")
+        problems.append("trip type must be round_trip or one_way")
     if alert.get("currency", "EUR") not in ("EUR", "RON"):
-        problems.append("moneda trebuie să fie EUR sau RON")
+        problems.append("currency must be EUR or RON")
     if alert.get("max_stops") not in (None, 0, 1, 2):
-        problems.append("numărul maxim de escale trebuie să fie 0, 1, 2 sau gol")
+        problems.append("maximum stops must be 0, 1, 2 or empty")
     return problems
 
 

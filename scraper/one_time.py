@@ -89,46 +89,46 @@ def process(storage, client, credits, notifier, settings, day, state, app_link):
 
         # 1) Verificarea parolei (înainte de orice consum de credite)
         if not password:
-            reject("Secretul SEARCH_PASSWORD nu este setat în GitHub. Nu s-a consumat niciun credit.")
+            reject("The SEARCH_PASSWORD secret is not set in GitHub. No credits were used.")
             continue
         request_text = doc.get("request", "")
         if not signature_ok(sid, request_text, doc.get("sig"), password):
-            reject("Parolă greșită. Nu s-a consumat niciun credit.")
+            reject("Wrong password. No credits were used.")
             continue
         try:
             req = json.loads(request_text)
         except ValueError:
-            reject("Cerere invalidă.")
+            reject("Invalid request.")
             continue
         if req.get("id") != sid:
-            reject("Cerere invalidă (id diferit).")
+            reject("Invalid request (different id).")
             continue
         if sid in done_ids:
-            reject("Această cerere a fost deja procesată.")
+            reject("This request was already processed.")
             continue
         try:
             created = datetime.fromisoformat(req.get("created_at", "").replace("Z", "+00:00"))
         except ValueError:
-            reject("Cerere invalidă (dată lipsă).")
+            reject("Invalid request (missing date).")
             continue
         if now() - created > MAX_AGE or created - now() > timedelta(minutes=10):
-            reject("Cererea a expirat. Pornește căutarea din nou din aplicație.")
+            reject("The request has expired. Start the search again from the app.")
             continue
 
         # 2) Validare și cost
         problems = A.validate({**req, "id": sid})
         if problems:
-            reject("Cerere incompletă: " + ", ".join(problems))
+            reject("Incomplete request: " + ", ".join(problems))
             continue
         combos = A.combinations(req, day)
         if not combos:
-            reject("Toate datele de plecare au trecut.")
+            reject("All departure dates are in the past.")
             continue
         if len(combos) > max_searches:
-            reject(f"Prea multe combinații ({len(combos)}). Maximul pentru o căutare rapidă este {max_searches}.")
+            reject(f"Too many combinations ({len(combos)}). The maximum for a quick search is {max_searches}.")
             continue
         if not credits.enough(len(combos)):
-            reject(f"Credite SerpApi insuficiente: necesare {len(combos)}, rămase {credits.left}.")
+            reject(f"Not enough SerpApi credits: {len(combos)} needed, {credits.left} left.")
             continue
 
         # 3) Căutarea
@@ -142,7 +142,7 @@ def process(storage, client, credits, notifier, settings, day, state, app_link):
             entry = new_entry(combo, params, A.search_key(params), day)
             label = f"{sid} {A.combo_label(combo)}"
             if fatal:
-                entry.update(status="error", error=f"Sărită: {fatal}")
+                entry.update(status="error", error=f"Skipped: {fatal}")
             else:
                 err = search_combination(client, params, entry, credits, return_details=want_return,
                                          max_price=max_price, reserve=reserve, label=label)
@@ -175,7 +175,7 @@ def _notify(notifier, sid, req, results, app_link):
                     key=lambda c: c["lowest_price"])
     app = f"{app_link}#/cautare/{sid}" if app_link else ""
     if not combos:
-        notifier.send(f"🔎 {_title(req)}: niciun zbor găsit", "Nu am găsit zboruri pentru combinațiile cerute.",
+        notifier.send(f"🔎 {_title(req)}: no flights found", "No flights were found for the requested dates.",
                       app_url=app, tags=["mag"])
         return
     best = combos[0]
@@ -186,8 +186,8 @@ def _notify(notifier, sid, req, results, app_link):
         if f:
             lines.append(f"   {flight_line(f)}")
     if len(combos) > 6:
-        lines.append(f"… și încă {len(combos) - 6} combinații în aplicație")
-    notifier.send(f"🔎 {_title(req)}: de la {best['lowest_price']} {cur}", "\n".join(lines),
+        lines.append(f"… and {len(combos) - 6} more combinations in the app")
+    notifier.send(f"🔎 {_title(req)}: from {best['lowest_price']} {cur}", "\n".join(lines),
                   url=best.get("google_flights_url", ""), app_url=app, tags=["mag"], priority=4)
 
 

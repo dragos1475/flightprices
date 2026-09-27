@@ -1,7 +1,7 @@
 {
-  "name": "Monitor Zboruri",
-  "short_name": "Zboruri",
-  "description": "Monitorizarea prețurilor la bilete de avion dus-întors",
+  "name": "Flight Prices",
+  "short_name": "Flight Prices",
+  "description": "Flight price monitoring and alerts",
   "lang": "ro",
   "start_url": "./",
   "scope": "./",

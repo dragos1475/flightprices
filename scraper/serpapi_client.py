@@ -45,7 +45,7 @@ class SerpApiClient:
             r.raise_for_status()
             return r.json()
         except Exception as e:  # noqa: BLE001 - vrem orice eroare, ca text
-            raise SearchError(self._clean(f"Nu am putut verifica creditele SerpApi: {e}"))
+            raise SearchError(self._clean(f"Could not check SerpApi credits: {e}"))
 
     def search(self, params):
         """O căutare google_flights (consumă 1 credit). Întoarce JSON-ul răspunsului."""
@@ -54,7 +54,7 @@ class SerpApiClient:
             try:
                 r = requests.get(SEARCH_URL, params={**params, "api_key": self.api_key}, timeout=90)
             except requests.RequestException as e:
-                last_error = SearchError(self._clean(f"Eroare de rețea: {e}"))
+                last_error = SearchError(self._clean(f"Network error: {e}"))
                 time.sleep(5)
                 continue
 
@@ -64,11 +64,11 @@ class SerpApiClient:
                 data = {}
 
             if r.status_code == 401:
-                raise SearchError("Cheia SerpApi este greșită (401).", fatal=True)
+                raise SearchError("The SerpApi key is wrong (401).", fatal=True)
             if r.status_code == 429:
-                raise SearchError(self._clean(f"Limită SerpApi atinsă (429): {data.get('error', '')}"), fatal=True)
+                raise SearchError(self._clean(f"SerpApi limit reached (429): {data.get('error', '')}"), fatal=True)
             if r.status_code >= 500:
-                last_error = SearchError(f"Eroare server SerpApi ({r.status_code})")
+                last_error = SearchError(f"SerpApi server error ({r.status_code})")
                 time.sleep(5)
                 continue
 
@@ -77,7 +77,7 @@ class SerpApiClient:
             if error and "run out of searches" in error.lower():
                 raise SearchError(self._clean(error), fatal=True)
             if r.status_code != 200 and not error:
-                raise SearchError(f"Răspuns neașteptat de la SerpApi ({r.status_code})")
+                raise SearchError(f"Unexpected response from SerpApi ({r.status_code})")
             self._record(params, data)
             return data
         raise last_error

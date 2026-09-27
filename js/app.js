@@ -73,8 +73,8 @@ async function renderScreen() {
   } catch (e) {
     console.error(e);
     setTabbarVisible(true);
-    app.innerHTML = `<div class="banner bad"><div><b>A apărut o eroare.</b><br>${h(e.message)}</div></div>
-      <a href="#/" class="btn block">Înapoi la alerte</a>`;
+    app.innerHTML = `<div class="banner bad"><div><b>Something went wrong.</b><br>${h(e.message)}</div></div>
+      <a href="#/" class="btn block">Back to alerts</a>`;
   }
 }
 
@@ -104,7 +104,7 @@ function setupSplash() {
     const gate = btn.querySelector('.sb-gate');
     btn.style.setProperty('--fly', `${Math.max(120, btn.clientWidth - gate.offsetLeft - gate.offsetWidth / 2 - 24)}px`);
     btn.classList.add('takeoff');
-    flipText(btn, 'Decolare', 'Bun venit la bord');
+    flipText(btn, 'Take-off', 'Welcome aboard');
     setTimeout(() => {
       splash.classList.add('hide');
       setTimeout(() => splash.remove(), 520);
@@ -134,7 +134,7 @@ function splashReady() {
   setTimeout(() => {
     btn.disabled = false;
     btn.classList.add('ready');
-    flipText(btn, 'Îmbarcare · Poarta 01', 'Intră în aplicație');
+    flipText(btn, 'Boarding · Gate 01', 'Enter the app');
   }, wait);
 }
 setupSplash();

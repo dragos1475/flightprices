@@ -20,11 +20,11 @@ import { dateTime, h, money, shortDate, toast, todayRO } from '../util.js';
 
 export async function renderList(app) {
   setNav({
-    title: 'Zborurile mele',
+    title: 'My flights',
     large: true,
     actions: [
-      { icon: 'refresh', label: 'Reîncarcă', id: 'nav-refresh' },
-      { icon: 'plus', label: 'Alertă nouă', href: '#/alerta/nou' },
+      { icon: 'refresh', label: 'Reload', id: 'nav-refresh' },
+      { icon: 'plus', label: 'New alert', href: '#/alerta/nou' },
     ],
   });
   bindRefresh(app);
@@ -67,9 +67,9 @@ function draw(app, animate) {
   const scheduled = rows.filter((r) => r.st.key === 'scheduled');
   const nextStart = scheduled.map((r) => r.a.monitor_start).sort()[0];
   const headline = [
-    `${activeCount} ${activeCount === 1 ? 'alertă activă' : 'alerte active'}`,
-    scheduled.length ? `${scheduled.length} ${scheduled.length === 1 ? 'programată' : 'programate'} (de la ${shortDate(nextStart)})` : '',
-    underCount ? `<b>${underCount} sub prag</b>` : '',
+    `${activeCount} ${activeCount === 1 ? 'active alert' : 'active alerts'}`,
+    scheduled.length ? `${scheduled.length} scheduled (from ${shortDate(nextStart)})` : '',
+    underCount ? `<b>${underCount} under target</b>` : '',
   ].filter(Boolean).join(' · ');
   const usage = status?.this_month_usage;
 
@@ -78,37 +78,37 @@ function draw(app, animate) {
     <div class="page-head sky sky-${skyPhase()}">
       <div class="sky-orb" aria-hidden="true"></div>
       <div class="sky-greeting">${greeting()}</div>
-      <h1>Zborurile mele</h1>
+      <h1>My flights</h1>
       <p>${headline}</p>
     </div>
 
     ${onboarding}
     ${statusBanner(status)}
-    ${!hasWriteAccess() && !onboarding ? `<a class="banner info" href="#/setari">${icon('key', 18)}<div>Adaugă tokenul GitHub în <b>Setări</b> ca să poți crea și salva alerte din aplicație.</div></a>` : ''}
+    ${!hasWriteAccess() && !onboarding ? `<a class="banner info" href="#/setari">${icon('key', 18)}<div>Add your GitHub token in <b>Settings</b> to create and save alerts from the app.</div></a>` : ''}
 
-    <div class="section-label"><span>Buget căutări</span><span class="muted" style="text-transform:none;letter-spacing:0">${status ? `rulat ${dateTime(status.last_run)}` : ''}</span></div>
+    <div class="section-label"><span>Search budget</span><span class="muted" style="text-transform:none;letter-spacing:0">${status ? `ran ${dateTime(status.last_run)}` : ''}</span></div>
     <div class="card" style="padding:0">
       <div class="summary">
-        <div><b>${budget.perDay}</b><span>căutări azi</span></div>
-        <div><b class="${level === 'bad' ? 'bad-text' : ''}">~${budget.perMonth}</b><span>estimare 30 de zile</span></div>
-        <div><b id="home-credits">${left ?? '—'}</b><span>credite rămase${status?.credits_checked_at ? ` (${shortDate(status.credits_checked_at.slice(0, 10))})` : ''}</span></div>
+        <div><b>${budget.perDay}</b><span>searches today</span></div>
+        <div><b class="${level === 'bad' ? 'bad-text' : ''}">~${budget.perMonth}</b><span>30-day estimate</span></div>
+        <div><b id="home-credits">${left ?? '—'}</b><span>credits left${status?.credits_checked_at ? ` (${shortDate(status.credits_checked_at.slice(0, 10))})` : ''}</span></div>
       </div>
       <div class="budget-foot">
         <div class="meter ${level}"><div style="width:${Math.min(100, ratio * 100)}%"></div></div>
         <div class="small ${level === 'bad' ? 'bad-text' : 'muted'}">${level === 'bad'
-          ? `Estimarea pe următoarele 30 de zile depășește limita de ${limit}/lună. Restrânge sau oprește unele alerte.`
-          : `Estimare pentru următoarele 30 de zile: ${Math.round(ratio * 100)}% din limita de ${limit}/lună (nu sunt căutări făcute).`}</div>
-        ${usage !== undefined && usage !== null ? `<div class="small muted" style="margin-top:2px">Folosite efectiv luna aceasta (SerpApi): <b>${usage}</b></div>` : ''}
+          ? `The estimate for the next 30 days exceeds the ${limit}/month limit. Narrow down or pause some alerts.`
+          : `Estimate for the next 30 days: ${Math.round(ratio * 100)}% of the ${limit}/month limit (not searches already made).`}</div>
+        ${usage !== undefined && usage !== null ? `<div class="small muted" style="margin-top:2px">Actually used this month (SerpApi): <b>${usage}</b></div>` : ''}
       </div>
     </div>
 
-    <div class="section-label"><span>Alerte</span>${rows.length ? `<a href="#/alerta/nou" class="nowrap">+ Alertă nouă</a>` : ''}</div>
+    <div class="section-label"><span>Alerts</span>${rows.length ? `<a href="#/alerta/nou" class="nowrap">+ New alert</a>` : ''}</div>
     ${rows.length ? `<div class="alert-list">${rows.map(({ a, st, sum }) => alertCard(a, st, sum, today)).join('')}</div>` : `
       <div class="card empty">
         <div class="empty-ico">${icon('plane', 30)}</div>
-        <h2>Nicio alertă încă</h2>
-        <p>Creează o alertă și îți spunem când prețul scade sub bugetul tău.</p>
-        <a class="btn primary" href="#/alerta/nou">${icon('plus', 18)} Creează prima alertă</a>
+        <h2>No alerts yet</h2>
+        <p>Create an alert and we will tell you when the price drops under your budget.</p>
+        <a class="btn primary" href="#/alerta/nou">${icon('plus', 18)} Create your first alert</a>
       </div>`}
 
     ${localWeatherSlot()}
@@ -135,15 +135,15 @@ function bindSwipeActions(app) {
       if (b.dataset.swipeAct === 'toggle') {
         const doc = await saveAlert({ ...alert, active: alert.active === false, updated_at: new Date().toISOString() });
         state.alerts = doc.alerts;
-        toast(alert.active === false ? 'Alerta a fost pornită' : 'Alerta a fost oprită');
+        toast(alert.active === false ? 'Alert resumed' : 'Alert paused');
       } else {
-        if (!confirm(`Ștergi alerta „${alert.name}”?`)) {
+        if (!confirm(`Delete the alert “${alert.name}”?`)) {
           b.disabled = false;
           return;
         }
         const doc = await deleteAlert(alert.id, alert.name);
         state.alerts = doc.alerts;
-        toast('Alerta a fost ștearsă');
+        toast('Alert deleted');
       }
       renderList(app);
     } catch (err) {
@@ -160,13 +160,13 @@ function bindRefresh(app) {
 
 function statusBanner(status) {
   if (!status) {
-    return `<div class="banner info">${icon('info', 18)}<div>Căutarea nu a rulat încă. Pornește automat după ce salvezi o alertă.</div></div>`;
+    return `<div class="banner info">${icon('info', 18)}<div>The search has not run yet. It starts automatically after you save an alert.</div></div>`;
   }
   const out = [];
   if (status.skipped_budget) {
-    out.push(`<div class="banner bad">${icon('warning', 18)}<div><b>Căutările au fost sărite</b> — credite SerpApi insuficiente.</div></div>`);
+    out.push(`<div class="banner bad">${icon('warning', 18)}<div><b>Searches were skipped</b> — not enough SerpApi credits.</div></div>`);
   } else if (status.errors?.length) {
-    out.push(`<div class="banner warn">${icon('warning', 18)}<div><b>${status.errors.length} căutări eșuate</b> la ultima rulare.
+    out.push(`<div class="banner warn">${icon('warning', 18)}<div><b>${status.errors.length} failed searches</b> in the last run.
       <ul>${status.errors.slice(0, 3).map((e) => `<li>${h(e.combination)}: ${h(e.message)}</li>`).join('')}</ul></div></div>`);
   }
   const warnings = [...(status.warnings || []), ...(status.notification_errors || [])];
@@ -184,10 +184,10 @@ function depCodes(codes = []) {
 /** Salutul după ora din România. */
 function greeting() {
   const hour = Number(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Bucharest', hour: '2-digit', hour12: false }).format(new Date()));
-  if (hour >= 5 && hour < 12) return 'Bună dimineața';
-  if (hour >= 12 && hour < 18) return 'Bună ziua';
-  if (hour >= 18 && hour < 23) return 'Bună seara';
-  return 'Noapte bună';
+  if (hour >= 5 && hour < 12) return 'Good morning';
+  if (hour >= 12 && hour < 18) return 'Good afternoon';
+  if (hour >= 18 && hour < 23) return 'Good evening';
+  return 'Good night';
 }
 
 /** Miniaturile cu destinația (poze de pe Wikipedia), încărcate după ce lista e afișată. */
@@ -233,9 +233,9 @@ function alertCard(rawAlert, st, rawSum, today) {
   if (!live) {
     priceHtml = sum.lowest !== null ? `<div class="amount muted">${money(sum.lowest)}<small>${cur}</small></div>` : '';
   } else if (sum.stale) {
-    priceHtml = '<span class="small muted">aștept<br>căutarea</span>';
+    priceHtml = '<span class="small muted">waiting for<br>search</span>';
   } else if (sum.lowest === null) {
-    priceHtml = `<span class="small muted">${results ? 'fără zboruri' : 'în curând'}</span>`;
+    priceHtml = `<span class="small muted">${results ? 'no flights' : 'soon'}</span>`;
   } else {
     priceHtml = `<div class="amount ${sum.under ? 'good-text' : ''}" style="view-transition-name:${vt}-price"><span data-count="${sum.lowest}">${money(sum.lowest)}</span><small>${cur}</small></div>
       ${delta}`;
@@ -247,8 +247,8 @@ function alertCard(rawAlert, st, rawSum, today) {
   const flag = destFlag(alert.destination);
   const actions = hasWriteAccess() ? `
       <div class="swipe-actions">
-        <button type="button" data-swipe-act="toggle" data-id="${h(alert.id)}">${icon(alert.active === false ? 'play' : 'pause', 20)}<span>${alert.active === false ? 'Pornește' : 'Oprește'}</span></button>
-        <button type="button" data-swipe-act="delete" data-id="${h(alert.id)}" class="danger">${icon('trash', 20)}<span>Șterge</span></button>
+        <button type="button" data-swipe-act="toggle" data-id="${h(alert.id)}">${icon(alert.active === false ? 'play' : 'pause', 20)}<span>${alert.active === false ? 'Resume' : 'Pause'}</span></button>
+        <button type="button" data-swipe-act="delete" data-id="${h(alert.id)}" class="danger">${icon('trash', 20)}<span>Delete</span></button>
       </div>` : '';
   return `
     <div class="swipe-wrap">${actions}
@@ -262,11 +262,11 @@ function alertCard(rawAlert, st, rawSum, today) {
       </div>
       <div class="alert-price">${priceHtml}</div>
       <div class="alert-meta">
-        ${st.key !== 'active' ? `<span class="badge ${st.key === 'scheduled' ? 'info' : ''}">${st.label}${st.key === 'scheduled' ? ` · de la ${shortDate(alert.monitor_start)}` : ''}</span>` : ''}
+        ${st.key !== 'active' ? `<span class="badge ${st.key === 'scheduled' ? 'info' : ''}">${st.label}${st.key === 'scheduled' ? ` · from ${shortDate(alert.monitor_start)}` : ''}</span>` : ''}
         ${v ? `<span class="badge ${VERDICT_STYLE[v.kind].cls}">${icon(VERDICT_STYLE[v.kind].icon)}${v.title}</span>` : ''}
-        <span>${icon('calendar')}${h(dateText)}${isOneWay(alert) ? ' · doar dus' : ''}</span>
-        ${searchesPerDay(alert) > 1 ? `<span>${icon('clock')}${searchesPerDay(alert)}×/zi</span>` : ''}
-        <span>${icon('wallet')}prag ${money(alert.max_price, cur)}</span>
+        <span>${icon('calendar')}${h(dateText)}${isOneWay(alert) ? ' · one way' : ''}</span>
+        ${searchesPerDay(alert) > 1 ? `<span>${icon('clock')}${searchesPerDay(alert)}×/day</span>` : ''}
+        <span>${icon('wallet')}target ${money(alert.max_price, cur)}</span>
         ${live && series.length >= 2 ? `<span style="margin-left:auto">${sparkline(series, { threshold: Number(alert.max_price) || null })}</span>` : ''}
       </div>
     </a>

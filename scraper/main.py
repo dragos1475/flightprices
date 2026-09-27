@@ -86,9 +86,9 @@ def send_test_notification(settings):
     if problem:
         print("⚠️ ", problem)
     link = app_url(settings)
-    notifier.send("🧪 Test notificare zboruri",
-                  "Dacă vezi acest mesaj, notificările funcționează.\n"
-                  "✅ 12.11→16.11 (4 nopți): 168 EUR\n   Dus: Wizz Air W6 3131 · OTP 06:10→FCO 07:45 · direct",
+    notifier.send("🧪 Flight Prices test notification",
+                  "If you can see this, notifications work.\n"
+                  "✅ 12 Nov→16 Nov (4 nights): 168 EUR\n   Out: Wizz Air W6 3131 · OTP 06:10→FCO 07:45 · direct",
                   url="https://www.google.com/travel/flights", app_url=link, tags=["test_tube"])
     for err in notifier.errors:
         print("❌", err)
@@ -159,7 +159,7 @@ def main():
     for alert in all_alerts:
         problems = A.validate(alert)
         if problems:
-            msg = f"Alerta '{alert.get('name') or alert.get('id')}' ignorată: {', '.join(problems)}"
+            msg = f"Alert '{alert.get('name') or alert.get('id')}' skipped: {', '.join(problems)}"
             print("⚠️ ", msg)
             status["warnings"].append(msg)
         else:
@@ -237,12 +237,12 @@ def main():
     if not credits.enough(needed):
         # Nu ajung creditele: nu căutăm nimic, trimitem un avertisment (o dată pe zi)
         status["skipped_budget"] = True
-        msg = (f"Sunt necesare {needed} căutări, dar mai ai doar {credits.left} credite SerpApi. "
-               f"Căutările de azi au fost sărite. Oprește sau restrânge unele alerte.")
+        msg = (f"{needed} searches are needed, but only {credits.left} SerpApi credits are left. "
+               f"Today's searches were skipped. Pause or narrow down some alerts.")
         print("⚠️ ", msg)
         status["warnings"].append(msg)
         if state.setdefault("warnings", {}).get("budget") != day.isoformat():
-            notifier.send("⚠️ Credite SerpApi insuficiente", msg, app_url=link, tags=["warning"], priority=4)
+            notifier.send("⚠️ Not enough SerpApi credits", msg, app_url=link, tags=["warning"], priority=4)
             state["warnings"]["budget"] = day.isoformat()
         plan = {alert_id: [] for alert_id in plan}  # nimic de căutat
 
@@ -263,7 +263,7 @@ def main():
             if args.hour is not None:
                 entry["searched_at"] = f"{day.isoformat()}T{hour:02d}:30:00+03:00"  # (doar la teste cu --hour)
             if fatal_error:
-                entry.update(status="error", error=f"Sărită: {fatal_error}")
+                entry.update(status="error", error=f"Skipped: {fatal_error}")
                 combos_out.append(entry)
                 continue
             searched_any = True
@@ -325,7 +325,7 @@ def main():
     # Rezumat erori (o notificare, dacă au existat căutări eșuate)
     if status["errors"]:
         lines = [f"{e['combination']}: {e['message']}" for e in status["errors"][:8]]
-        notifier.send(f"⚠️ {len(status['errors'])} căutări eșuate", "\n".join(lines),
+        notifier.send(f"⚠️ {len(status['errors'])} failed searches", "\n".join(lines),
                       app_url=link, tags=["warning"], priority=3)
 
     status["notifications_sent"] = notifier.sent

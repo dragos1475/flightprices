@@ -42,8 +42,8 @@
     {"id": "ram",       "name": "Royal Air Maroc",   "codes": ["AT"]},
     {"id": "tunisair",  "name": "Tunisair",          "codes": ["TU"]},
     {"id": "ethiopian", "name": "Ethiopian Airlines","codes": ["ET"]},
-    {"id": "star",      "name": "Star Alliance (toată alianța)", "codes": ["STAR_ALLIANCE"]},
-    {"id": "skyteam",   "name": "SkyTeam (toată alianța)",       "codes": ["SKYTEAM"]},
-    {"id": "oneworld",  "name": "oneworld (toată alianța)",      "codes": ["ONEWORLD"]}
+    {"id": "star",      "name": "Star Alliance (whole alliance)", "codes": ["STAR_ALLIANCE"]},
+    {"id": "skyteam",   "name": "SkyTeam (whole alliance)",       "codes": ["SKYTEAM"]},
+    {"id": "oneworld",  "name": "oneworld (whole alliance)",      "codes": ["ONEWORLD"]}
   ]
 }

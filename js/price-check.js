@@ -10,7 +10,7 @@ import { icon } from './icons.js';
 import { haptic } from './motion.js';
 import { PASSWORD_KEY, askPassword } from './password.js';
 import { state } from './state.js';
-import { dateTime, h, money, store, toast } from './util.js';
+import { dayDate, h, hour, money, store, toast } from './util.js';
 
 const POLL_MS = 6000;
 const MAX_WAIT_MS = 8 * 60 * 1000;
@@ -62,12 +62,12 @@ function plan(f) {
 function when(iso) {
   const d = new Date(iso);
   if (!iso || isNaN(d)) return '';
-  return new Intl.DateTimeFormat('ro-RO', {
-    timeZone: 'Europe/Bucharest', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit',
+  return new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Bucharest', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit',
   }).format(d);
 }
 
-const credits = (n) => `${n} ${n === 1 ? 'credit' : 'credite'}`;
+const credits = (n) => `${n} ${n === 1 ? 'credit' : 'credits'}`;
 
 /** Locul din bilet unde apare butonul / rezultatul. */
 export function priceSlot(f, ctx) {
@@ -80,28 +80,28 @@ function slotInner(key) {
   const { f, cur } = flights.get(key) || {};
   if (!f) return '';
   const st = live.get(key);
-  const airline = f.airlines?.[0] || 'companie';
+  const airline = f.airlines?.[0] || 'the airline';
   const p = plan(f);
 
   if (st?.phase === 'confirm') {
     const left = state.status?.searches_left_after ?? state.status?.searches_left_before;
     return `<div class="co-box co-confirm">
-      <div class="co-text">Verific cât costă zborul direct la <b>${h(airline)}</b>, fără agenții?
-        <small>Costă ${credits(p.cost)} SerpApi${p.fallback ? ' (întoarcerea e deja cunoscută; 3 doar dacă Google a schimbat între timp datele)' : ''}${left !== undefined && left !== null ? ` · rămase ${left}` : ''}. Rezultatul apare aici în 1–2 minute.</small></div>
+      <div class="co-text">Check the price directly with <b>${h(airline)}</b>, without agencies?
+        <small>Costs ${credits(p.cost)} SerpApi${p.fallback ? ' (the return flight is already known; 3 only if Google has changed the data meanwhile)' : ''}${left !== undefined && left !== null ? ` · ${left} left` : ''}. The result shows up here in 1–2 minutes.</small></div>
       <div class="co-actions">
-        <button type="button" class="btn sm" data-pc="cancel">Renunță</button>
-        <button type="button" class="btn primary sm" data-pc="go">${icon('check', 14)} Verifică</button>
+        <button type="button" class="btn sm" data-pc="cancel">Cancel</button>
+        <button type="button" class="btn primary sm" data-pc="go">${icon('check', 14)} Check</button>
       </div></div>`;
   }
   if (st?.phase === 'sending' || st?.phase === 'pending') {
     return `<div class="co-box co-pending"><span class="spinner"></span>
-      <span class="co-text"><b>${st.phase === 'sending' ? 'Se trimite cererea…' : `Se verifică prețul la ${h(airline)}…`}</b>
-      <small>GitHub întreabă Google Flights · de obicei 1–2 minute. Poți închide ecranul.</small></span></div>`;
+      <span class="co-text"><b>${st.phase === 'sending' ? 'Sending the request…' : `Checking the price with ${h(airline)}…`}</b>
+      <small>GitHub is asking Google Flights · usually 1–2 minutes. You can close this screen.</small></span></div>`;
   }
   if (st?.phase === 'error') {
     return `<div class="co-box co-error">${icon('warning', 16)}
-      <span class="co-text"><b>Nu am putut afla prețul</b><small>${h(st.message)}</small></span>
-      ${p ? `<button type="button" class="btn sm" data-pc="check">Încearcă</button>` : ''}</div>`;
+      <span class="co-text"><b>Could not get the price</b><small>${h(st.message)}</small></span>
+      ${p ? `<button type="button" class="btn sm" data-pc="check">Retry</button>` : ''}</div>`;
   }
 
   let res = null;
@@ -116,7 +116,7 @@ function slotInner(key) {
   if (!p) return '';
   return `<button type="button" class="co-btn" data-pc="check">
     <span class="co-ic">${icon('ticket', 16)}</span>
-    <span class="co-text"><b>Preț la companie</b><small>Cât costă direct la ${h(airline)}, fără agenții · ${credits(p.cost)}</small></span>
+    <span class="co-text"><b>Airline price</b><small>What it costs directly with ${h(airline)}, no agencies · ${credits(p.cost)}</small></span>
     ${icon('chevron', 14)}</button>`;
 }
 
@@ -137,50 +137,50 @@ function resultHtml(res, f, cur, canRecheck) {
     const logo = opt?.logos?.[0];
     main = `<div class="co-main">
       <span class="co-logo">${logo ? `<img src="${h(logo)}" alt="" loading="lazy" onerror="this.remove()">` : icon('check', 16)}</span>
-      <span class="co-name">${h(res.airline_name)}<small>vândut direct de companie${opt?.option_title ? ` · ${h(opt.option_title)}` : ''}</small></span>
+      <span class="co-name">${h(res.airline_name)}<small>sold directly by the airline${opt?.option_title ? ` · ${h(opt.option_title)}` : ''}</small></span>
       <b class="co-price">${money(airlineP.v, airlineP.c)}</b></div>`;
   } else {
     main = `<div class="co-main none">
       <span class="co-logo">${icon('info', 16)}</span>
-      <span class="co-name">Compania nu vinde direct<small>pe Google apar doar agenții pentru această variantă</small></span></div>`;
+      <span class="co-name">Not sold directly by the airline<small>Google only lists agencies for this option</small></span></div>`;
   }
 
   const notes = [];
   if (airlineP && agencyP && agencyP.c === airlineP.c) {
     const diff = airlineP.v - agencyP.v;
     if (diff > 0) {
-      notes.push(`<div class="co-note warn">${h(res.cheapest_agency)} (agenție) e cu <b>${money(diff, airlineP.c)}</b> mai ieftin,
-        dar bagajele, modificările și anulările trec prin agenție.</div>`);
+      notes.push(`<div class="co-note warn">${h(res.cheapest_agency)} (agency) is <b>${money(diff, airlineP.c)}</b> cheaper,
+        but baggage, changes and cancellations go through the agency.</div>`);
     } else {
-      notes.push(`<div class="co-note good">${icon('check', 13)} Cel mai bun preț e chiar la companie${agencyP ? ` (agenții de la ${money(agencyP.v, agencyP.c)})` : ''}.</div>`);
+      notes.push(`<div class="co-note good">${icon('check', 13)} The best price is with the airline itself${agencyP ? ` (agencies from ${money(agencyP.v, agencyP.c)})` : ''}.</div>`);
     }
   } else if (airlineP && !agencyP) {
-    notes.push(`<div class="co-note good">${icon('check', 13)} Doar compania vinde această variantă.</div>`);
+    notes.push(`<div class="co-note good">${icon('check', 13)} Only the airline sells this option.</div>`);
   } else if (!airlineP && agencyP) {
-    notes.push(`<div class="co-note">Cea mai ieftină agenție: <b>${h(res.cheapest_agency)} ${money(agencyP.v, agencyP.c)}</b>.</div>`);
+    notes.push(`<div class="co-note">Cheapest agency: <b>${h(res.cheapest_agency)} ${money(agencyP.v, agencyP.c)}</b>.</div>`);
   }
   if (airlineP && typeof f.price === 'number' && airlineP.c === cur && Math.abs(airlineP.v - f.price) >= 1) {
-    notes.push(`<div class="co-note muted">În căutare apărea ${money(f.price, cur)} (cel mai mic preț, de la oricine).</div>`);
+    notes.push(`<div class="co-note muted">The search showed ${money(f.price, cur)} (lowest price from any seller).</div>`);
   }
   const ret = res.return_flight;
   if (ret) {
-    notes.push(`<div class="co-note muted">${icon('plane', 12)} Cu întoarcerea ${h((ret.flight_numbers || []).join(', '))}
-      · ${h(dateTime(ret.departure_time).replace(/\.\d{4}/, ''))}${ret.stops ? ` · ${ret.stops} escale` : ' · direct'}</div>`);
+    notes.push(`<div class="co-note muted">${icon('plane', 12)} With return flight ${h((ret.flight_numbers || []).join(', '))}
+      · ${h(dayDate(ret.departure_time))} ${h(hour(ret.departure_time))}${ret.stops ? ` · ${ret.stops} ${ret.stops === 1 ? 'stop' : 'stops'}` : ' · direct'}</div>`);
   }
 
   const options = res.options;
   const list = options
-    ? `<details class="co-all"><summary>Toate opțiunile de rezervare (${options.length}) ${icon('chevronDown', 13)}</summary>
+    ? `<details class="co-all"><summary>All booking options (${options.length}) ${icon('chevronDown', 13)}</summary>
       ${options.map((o, i) => ({ o, i })).sort((a, b) => Number(b.o.airline) - Number(a.o.airline)).map(({ o, i }) => `<div class="co-opt ${o.airline ? 'airline' : ''}">
-        <span class="co-opt-name">${h(o.book_with)}<small>${o.airline ? 'companie' : 'agenție'}${o.option_title ? ` · ${h(o.option_title)}` : ''}${o.separate_tickets ? ' · bilete separate' : ''}${o.baggage?.length ? ` · ${h(o.baggage.slice(0, 2).join(', '))}` : ''}</small></span>
+        <span class="co-opt-name">${h(o.book_with)}<small>${o.airline ? 'airline' : 'agency'}${o.option_title ? ` · ${h(o.option_title)}` : ''}${o.separate_tickets ? ' · separate tickets' : ''}${o.baggage?.length ? ` · ${h(o.baggage.slice(0, 2).join(', '))}` : ''}</small></span>
         <b>${o.price === null || o.price === undefined ? '—' : show(o.price)}</b>
-        ${validBooking(o) ? `<button type="button" class="btn ${o.airline ? 'primary' : ''} sm" data-pc="book" data-i="${i}">Rezervă</button>` : ''}
+        ${validBooking(o) ? `<button type="button" class="btn ${o.airline ? 'primary' : ''} sm" data-pc="book" data-i="${i}">Book</button>` : ''}
       </div>`).join('')}</details>`
-    : `<button type="button" class="co-link" data-pc="more" data-id="${h(res.id)}">Toate opțiunile și rezervarea ${icon('chevronDown', 13)}</button>`;
+    : `<button type="button" class="co-link" data-pc="more" data-id="${h(res.id)}">All options and booking ${icon('chevronDown', 13)}</button>`;
 
   return `<div class="co-box co-result">
-    <div class="co-head"><span class="co-tag">${icon('ticket', 12)} Preț la companie</span>
-      <span class="co-when">${h(when(res.checked_at))}${canRecheck ? ` · <button type="button" class="co-link inline" data-pc="check">din nou</button>` : ''}</span></div>
+    <div class="co-head"><span class="co-tag">${icon('ticket', 12)} Airline price</span>
+      <span class="co-when">${h(when(res.checked_at))}${canRecheck ? ` · <button type="button" class="co-link inline" data-pc="check">again</button>` : ''}</span></div>
     ${main}${notes.join('')}${list}</div>`;
 }
 
@@ -251,16 +251,16 @@ async function poll(key, id, since) {
         index.set(key, { id, created_at: doc.created_at, processed_at: doc.processed_at, ...doc.result });
         haptic([10, 40, 10]);
       } else {
-        if (/parol/i.test(doc.message || '')) {
+        if (/password|parol/i.test(doc.message || '')) {
           try { sessionStorage.removeItem(PASSWORD_KEY); } catch { /* indisponibil */ }
         }
-        live.set(key, { phase: 'error', message: doc.message || 'Cererea a fost respinsă.' });
+        live.set(key, { phase: 'error', message: doc.message || 'The request was rejected.' });
       }
       refresh(key);
       return;
     }
     setPending(key, null);
-    live.set(key, { phase: 'error', message: 'GitHub nu a răspuns încă. Verifică tabul Actions sau încearcă mai târziu.' });
+    live.set(key, { phase: 'error', message: 'GitHub has not replied yet. Check the Actions tab or try again later.' });
     refresh(key);
   } finally {
     polling.delete(id);
@@ -271,7 +271,7 @@ async function send(key) {
   const { f } = flights.get(key) || {};
   const p = f && plan(f);
   if (!p) return;
-  const password = await askPassword({ action: 'Verifică', note: `Preț la companie · ${credits(p.cost)}` });
+  const password = await askPassword({ action: 'Check', note: `Airline price · ${credits(p.cost)}` });
   if (!password) {
     live.delete(key);
     refresh(key);
@@ -298,7 +298,7 @@ async function send(key) {
     const sig = await signSearch(id, text, password);
     const doc = { id, status: 'pending', created_at: req.created_at, request: text, sig };
     await createFile(`data/prices/${id}.json`, `${JSON.stringify(doc, null, 2)}\n`,
-      `Preț la companie: ${f.flight_numbers.join(', ')}`);
+      `Airline price: ${f.flight_numbers.join(', ')}`);
     const since = Date.now();
     setPending(key, { id, since });
     live.set(key, { phase: 'pending', id, since });
@@ -320,7 +320,7 @@ async function onClick(e) {
   const action = btn.dataset.pc;
   if (action === 'check') {
     if (!hasWriteAccess()) {
-      toast('Pentru asta ai nevoie de tokenul GitHub (Setări).', 4000);
+      toast('You need the GitHub token for this (Settings).', 4000);
       return;
     }
     haptic();
@@ -334,7 +334,7 @@ async function onClick(e) {
     btn.disabled = true;
     const doc = await loadJSON(`data/prices/${btn.dataset.id}.json`).catch(() => null);
     if (!doc?.result) {
-      toast('Nu am putut încărca opțiunile.');
+      toast('Could not load the options.');
       btn.disabled = false;
       return;
     }

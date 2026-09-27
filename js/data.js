@@ -90,10 +90,10 @@ async function gh(path, options = {}) {
 
 function explainGithubError(status, detail) {
   switch (status) {
-    case 401: return 'Tokenul GitHub este greșit sau a expirat (401).';
-    case 403: return `Tokenul nu are permisiunea necesară (403). Verifică „Contents: Read and write”. ${detail}`;
-    case 404: return 'Repository-ul sau fișierul nu a fost găsit (404). Verifică numele repository-ului și accesul tokenului.';
-    case 409: return 'Fișierul a fost modificat între timp (409). Încearcă din nou.';
+    case 401: return 'The GitHub token is wrong or has expired (401).';
+    case 403: return `The token lacks the required permission (403). Check “Contents: Read and write”. ${detail}`;
+    case 404: return 'Repository or file not found (404). Check the repository name and the token access.';
+    case 409: return 'The file was changed in the meantime (409). Try again.';
     case 422: return `GitHub a refuzat modificarea (422). ${detail}`;
     default: return `Eroare GitHub ${status}. ${detail}`;
   }
@@ -149,7 +149,7 @@ export async function loadJSON(path) {
   }
   const res = await fetch(`${path}?v=${Date.now()}`, { cache: 'no-store' });
   if (res.status === 404) return null;
-  if (!res.ok) throw new Error(`Nu pot citi ${path} (${res.status})`);
+  if (!res.ok) throw new Error(`Cannot read ${path} (${res.status})`);
   return res.json();
 }
 
@@ -159,7 +159,7 @@ export async function loadJSON(path) {
  * Dacă altcineva (ex. robotul de căutare) a modificat fișierul între timp, reîncearcă.
  */
 export async function updateJSONFile(path, change, message, emptyDoc) {
-  if (!hasWriteAccess()) throw new Error('Adaugă tokenul GitHub în Setări ca să poți salva.');
+  if (!hasWriteAccess()) throw new Error('Add your GitHub token in Settings to be able to save.');
   for (let attempt = 0; attempt < 3; attempt++) {
     const file = await readFileApi(path);
     const doc = file ? JSON.parse(file.text) : structuredClone(emptyDoc);
@@ -171,7 +171,7 @@ export async function updateJSONFile(path, change, message, emptyDoc) {
       if (e.status !== 409 && e.status !== 422) throw e;
     }
   }
-  throw new Error('Nu am reușit să salvez după 3 încercări. Încearcă din nou.');
+  throw new Error('Could not save after 3 attempts. Try again.');
 }
 
 /** Adaugă sau înlocuiește o alertă în data/alerts.json. */
@@ -181,14 +181,14 @@ export function saveAlert(alert) {
     const i = doc.alerts.findIndex((a) => a.id === alert.id);
     if (i >= 0) doc.alerts[i] = alert;
     else doc.alerts.push(alert);
-  }, `Alertă salvată: ${alert.name}`, { alerts: [] });
+  }, `Alert saved: ${alert.name}`, { alerts: [] });
 }
 
 /** Șterge o alertă din data/alerts.json. */
 export function deleteAlert(id, name) {
   return updateJSONFile('data/alerts.json', (doc) => {
     doc.alerts = (doc.alerts || []).filter((a) => a.id !== id);
-  }, `Alertă ștearsă: ${name || id}`, { alerts: [] });
+  }, `Alert deleted: ${name || id}`, { alerts: [] });
 }
 
 /** Adaugă o destinație în config/destinations_custom.json. */
@@ -196,14 +196,14 @@ export function saveCustomDestination(dest) {
   return updateJSONFile('config/destinations_custom.json', (doc) => {
     doc.destinations = (doc.destinations || []).filter((d) => d.id !== dest.id);
     doc.destinations.push(dest);
-  }, `Destinație adăugată: ${dest.name}`, { destinations: [] });
+  }, `Destination added: ${dest.name}`, { destinations: [] });
 }
 
 /** Salvează cheia publică VAPID în config/settings.json. */
 export function saveVapidPublicKey(key) {
   return updateJSONFile('config/settings.json', (doc) => {
     doc.vapid_public_key = key;
-  }, 'Cheie publică VAPID actualizată', {});
+  }, 'VAPID public key updated', {});
 }
 
 // ---------------------------------------------------------------------------

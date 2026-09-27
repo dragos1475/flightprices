@@ -22,33 +22,34 @@ export function addDays(iso, days) {
   return d.toISOString().slice(0, 10);
 }
 
-/** '2026-11-12' -> '12.11' */
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+/** '2026-11-12' -> '12 Nov' */
 export function shortDate(iso) {
   if (!iso || iso.length < 10) return iso || '';
-  return `${iso.slice(8, 10)}.${iso.slice(5, 7)}`;
+  return `${Number(iso.slice(8, 10))} ${MONTHS[Number(iso.slice(5, 7)) - 1]}`;
 }
 
-const WEEKDAYS = ['dum', 'lun', 'mar', 'mie', 'joi', 'vin', 'sâm'];
-/** '2026-11-12' -> 'joi 12.11' */
+const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+/** '2026-11-12' -> 'Thu 12 Nov' */
 export function dayDate(iso) {
   if (!iso) return '';
   const d = new Date(iso.slice(0, 10) + 'T12:00:00Z');
   return `${WEEKDAYS[d.getUTCDay()]} ${shortDate(iso)}`;
 }
 
-/** '2026-11-12' -> '12.11.2026' */
+/** '2026-11-12' -> '12 Nov 2026' */
 export function longDate(iso) {
   if (!iso || iso.length < 10) return iso || '';
-  return `${iso.slice(8, 10)}.${iso.slice(5, 7)}.${iso.slice(0, 4)}`;
+  return `${shortDate(iso)} ${iso.slice(0, 4)}`;
 }
 
-/** Data și ora (ex. '2026-09-27T08:17:02+03:00') -> '27.09.2026, 08:17' */
+/** Data și ora (ex. '2026-09-27T08:17:02+03:00') -> '27 Sep 2026, 08:17' */
 export function dateTime(isoDateTime) {
   if (!isoDateTime) return '—';
   const d = new Date(isoDateTime);
   if (isNaN(d)) return isoDateTime;
-  return new Intl.DateTimeFormat('ro-RO', {
-    timeZone: 'Europe/Bucharest', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit',
+  return new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Bucharest', day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit',
   }).format(d);
 }
 
@@ -63,10 +64,10 @@ export function duration(min) {
   return `${Math.floor(min / 60)}h ${String(min % 60).padStart(2, '0')}m`;
 }
 
-/** 1234.5 -> '1.235' (format românesc, fără zecimale) */
+/** 1234.5 -> '1,235' (fără zecimale) */
 export function money(value, currency) {
   if (value === null || value === undefined) return '—';
-  const n = new Intl.NumberFormat('ro-RO', { maximumFractionDigits: 0 }).format(value);
+  const n = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 }).format(value);
   return currency ? `${n} ${currency}` : n;
 }
 
@@ -122,7 +123,7 @@ export async function share({ title, text, url }) {
     }
   }
   const ok = await copyText(url ? `${text}\n${url}` : text);
-  toast(ok ? 'Copiat. Îl poți lipi unde vrei.' : 'Nu am putut partaja.');
+  toast(ok ? 'Copied. You can paste it anywhere.' : 'Could not share.');
 }
 
 /** Citire/scriere sigură în localStorage (poate lipsi în modul privat). */

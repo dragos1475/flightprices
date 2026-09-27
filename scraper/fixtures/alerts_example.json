@@ -2,12 +2,12 @@
   "alerts": [
     {
       "id": "roma-martie",
-      "name": "Roma în martie",
+      "name": "Rome in March",
       "active": true,
       "monitor_start": "2026-09-01",
       "monitor_end": "2027-03-01",
       "departure_airports": ["OTP", "BBU", "CLJ"],
-      "destination": {"id": "ROM-ALL", "name": "Roma (toate aeroporturile)", "codes": ["FCO", "CIA"]},
+      "destination": {"id": "ROM-ALL", "name": "Rome (all airports)", "codes": ["FCO", "CIA"]},
       "departures": [
         {"date": "2027-03-12", "nights": [4, 5]},
         {"date": "2027-03-13", "nights": [3]}
@@ -21,7 +21,7 @@
     },
     {
       "id": "bali-iarna",
-      "name": "Bali în februarie",
+      "name": "Bali in February",
       "active": true,
       "monitor_start": "2026-09-01",
       "monitor_end": "2027-02-01",

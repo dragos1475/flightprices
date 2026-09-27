@@ -5,7 +5,7 @@
 #   3) când se modifică data/alerts.json      - caută doar ce e nou/modificat
 #   4) când aplicația cere o căutare rapidă   - fișier nou în data/searches/
 #   5) când aplicația cere „preț la companie” - fișier nou în data/prices/
-name: Căutare zboruri
+name: Flight search
 
 on:
   schedule:
@@ -16,11 +16,11 @@ on:
   workflow_dispatch:
     inputs:
       force:
-        description: "Caută din nou chiar dacă s-a căutat deja azi (consumă credite)"
+        description: "Search again even if already searched today (uses credits)"
         type: boolean
         default: false
       test_notificari:
-        description: "Doar trimite o notificare de TEST (nu caută, nu consumă credite)"
+        description: "Only send a TEST notification (no search, no credits used)"
         type: boolean
         default: false
   push:

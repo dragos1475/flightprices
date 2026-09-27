@@ -21,14 +21,14 @@ export function renderChart(container, { series, threshold, currency, animate = 
   let drawAnimated = animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const dates = [...new Set(series.flatMap((s) => s.points.map((p) => p.date)))].sort();
   if (!dates.length) {
-    container.innerHTML = '<p class="muted small">Încă nu există istoric. Graficul apare după primele rulări.</p>';
+    container.innerHTML = '<p class="muted small">No history yet. The chart appears after the first runs.</p>';
     return;
   }
 
   // Legenda (mereu prezentă pentru ≥ 2 linii; identitatea nu depinde doar de culoare)
   const legend = series.length > 1 || threshold
     ? `<ul class="legend">${series.map((s) => `<li><i style="background:var(${s.color})"></i>${h(s.label)}</li>`).join('')}
-       ${threshold ? '<li><i style="background:none;border-top:2px dashed var(--text-2);height:0"></i>Prag</li>' : ''}</ul>`
+       ${threshold ? '<li><i style="background:none;border-top:2px dashed var(--text-2);height:0"></i>Target</li>' : ''}</ul>`
     : '';
   container.innerHTML = `${legend}<div class="chart"><div class="tooltip" hidden></div></div>`;
   const wrap = container.querySelector('.chart');
@@ -59,7 +59,7 @@ export function renderChart(container, { series, threshold, currency, animate = 
     svg.setAttribute('width', W);
     svg.setAttribute('height', H);
     svg.setAttribute('role', 'img');
-    svg.setAttribute('aria-label', `Evoluția prețului minim, ${dates.length} zile`);
+    svg.setAttribute('aria-label', `Lowest price trend, ${dates.length} days`);
 
     let html = '<g class="axis">';
     for (let v = lo; v <= hi + 1e-9; v += step) {
@@ -92,7 +92,7 @@ export function renderChart(container, { series, threshold, currency, animate = 
       html += `<circle class="dot" r="4" cx="${x(end.date)}" cy="${y(end.price)}" style="fill:var(${s.color})"/>`;
     }
     if (threshold) {
-      html += `<text class="threshold-label" x="${m.left + 4}" y="${y(threshold) - 5}">prag ${money(threshold)}</text>`;
+      html += `<text class="threshold-label" x="${m.left + 4}" y="${y(threshold) - 5}">target ${money(threshold)}</text>`;
     }
     html += `<line class="crosshair" y1="${m.top}" y2="${m.top + ih}" x1="0" x2="0" visibility="hidden"/>`;
     html += `<g class="hover-dots"></g>`;

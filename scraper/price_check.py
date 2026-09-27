@@ -104,32 +104,32 @@ def process(storage, client, credits, settings, state):
 
         text = doc.get("request", "")
         if not password:
-            reject("Secretul SEARCH_PASSWORD nu este setat în GitHub. Nu s-a consumat niciun credit.")
+            reject("The SEARCH_PASSWORD secret is not set in GitHub. No credits were used.")
             continue
         if not signature_ok(pid, text, doc.get("sig"), password):
-            reject("Parolă greșită. Nu s-a consumat niciun credit.")
+            reject("Wrong password. No credits were used.")
             continue
         try:
             req = json.loads(text)
             created = datetime.fromisoformat(req.get("created_at", "").replace("Z", "+00:00"))
         except ValueError:
-            reject("Cerere invalidă.")
+            reject("Invalid request.")
             continue
         if req.get("id") != pid or pid in done_ids:
-            reject("Cerere invalidă sau deja procesată.")
+            reject("Invalid or already processed request.")
             continue
         if now() - created > MAX_AGE or created - now() > timedelta(minutes=10):
-            reject("Cererea a expirat. Apasă din nou „Preț la companie”.")
+            reject("The request has expired. Tap “Airline price” again.")
             continue
         params = req.get("search_params") or {}
         booking_token = req.get("booking_token")
         departure_token = req.get("departure_token")
         needed = 1 if booking_token else 2
         if not params or not (booking_token or departure_token):
-            reject("Lipsesc datele zborului. Caută din nou ruta și încearcă pe un rezultat nou.")
+            reject("Flight data is missing. Search the route again and try on a new result.")
             continue
         if not credits.enough(needed):
-            reject(f"Credite SerpApi insuficiente: necesare {needed}, rămase {credits.left}.")
+            reject(f"Not enough SerpApi credits: {needed} needed, {credits.left} left.")
             continue
 
         label = f"{pid} {' '.join(req.get('flight_numbers', []))}"
@@ -152,15 +152,15 @@ def process(storage, client, credits, settings, state):
                 credits.use()
                 returning = [] if is_no_results(data) else parse_response(data)["flights"]
                 if not returning:
-                    raise SearchError("Google nu mai are zboruri de întoarcere pentru acest zbor. Caută din nou ruta.")
+                    raise SearchError("Google no longer has return flights for this flight. Search the route again.")
                 chosen = returning[0]
                 result["return_flight"] = strip_private({k: v for k, v in chosen.items()
                                                          if k not in ("departure_token", "booking_token")})
                 if not chosen.get("booking_token"):
-                    raise SearchError("Google nu oferă opțiuni de rezervare pentru acest zbor.")
+                    raise SearchError("Google offers no booking options for this flight.")
                 options = _booking_options(client, params, chosen["booking_token"], credits)
             if options is None:
-                raise SearchError("Nu am putut obține opțiunile de rezervare. Caută din nou ruta.")
+                raise SearchError("Could not get the booking options. Search the route again.")
         except SearchError as e:
             reject(f"{e}")
             errors.append({"alert_id": pid, "combination": label, "message": str(e)})

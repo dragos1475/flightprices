@@ -23,7 +23,7 @@ const level = (n) => (n === null ? '' : n <= 5 ? 'bad' : n <= 25 ? 'warn' : '');
 /** Locul din bara de sus (îl pune setNav pe fiecare ecran). */
 export function creditsSlot() {
   const n = shown ?? creditsLeft();
-  return `<button type="button" class="nav-credits ${level(n)}" id="nav-credits" aria-label="Credite SerpApi rămase">
+  return `<button type="button" class="nav-credits ${level(n)}" id="nav-credits" aria-label="SerpApi credits left">
     ${icon('zap', 13)}<span class="nc-num">${n ?? '—'}</span></button>`;
 }
 
@@ -89,8 +89,8 @@ export function watchCredits() {
     const st = state.status;
     const n = creditsLeft(st);
     toast(n === null
-      ? 'Creditele SerpApi nu au fost verificate încă (apar după prima rulare pe GitHub).'
-      : `Credite SerpApi rămase: ${n}${st?.this_month_usage !== null && st?.this_month_usage !== undefined ? ` · folosite luna aceasta: ${st.this_month_usage}` : ''}${st?.credits_checked_at ? ` · verificat ${dateTime(st.credits_checked_at)}` : ''}`, 5000);
+      ? 'SerpApi credits have not been checked yet (they appear after the first GitHub run).'
+      : `SerpApi credits left: ${n}${st?.this_month_usage !== null && st?.this_month_usage !== undefined ? ` · used this month: ${st.this_month_usage}` : ''}${st?.credits_checked_at ? ` · checked ${dateTime(st.credits_checked_at)}` : ''}`, 5000);
   });
   refreshCredits();
 }

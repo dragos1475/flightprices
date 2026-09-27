@@ -10,6 +10,9 @@ Aplicație personală, **100% gratuită**, care urmărește zilnic prețurile bi
 
 ---
 
+> **Limba aplicației:** interfața aplicației (ecrane, notificări, mesaje) este în **engleză** și se numește **Flight Prices**.
+> Ghidul de mai jos rămâne în română; numele butoanelor apar așa cum le vezi în aplicație.
+
 ## Cuprins
 
 1. [Cum funcționează](#1-cum-funcționează)
@@ -108,7 +111,7 @@ Ai nevoie de: un cont GitHub (gratuit), un cont SerpApi (gratuit), un telefon ș
 Cheile VAPID „semnează” notificările, ca telefonul să știe că vin de la tine. Le generezi o singură dată.
 
 **Varianta A, din aplicație (cea mai simplă):**
-1. Deschide aplicația (adresa de la pasul 3) → **Setări** → secțiunea **3. Chei VAPID** → „Generează chei noi”.
+1. Deschide aplicația (adresa de la pasul 3) → **Setări** → secțiunea **3. Chei VAPID** → „Generate new keys”.
 2. Copiază **cheia publică** și **cheia privată**.
 
 **Varianta B, din terminal:**
@@ -120,7 +123,7 @@ python tools/genereaza_chei_vapid.py
 Apoi:
 - Pune **cheia publică** în fișierul `config/settings.json`, la `"vapid_public_key"`. Editezi fișierul
   direct pe GitHub (creionul ✏️ → *Commit changes*). Cheia publică nu e secretă, aplicația are nevoie de ea.
-  Dacă ai adăugat deja tokenul (pasul 7), butonul „Salvează în config/settings.json” din aplicație face asta automat.
+  Dacă ai adăugat deja tokenul (pasul 7), butonul „Save to settings.json” din aplicație face asta automat.
 - **Cheia privată** merge **doar** în GitHub Secrets (pasul 6). Nu o pune nicăieri altundeva.
 - Opțional, în `config/settings.json` schimbă `"vapid_subject"` într-o adresă de email de contact
   (`mailto:...`). Atenție: fișierul e public.
@@ -150,7 +153,7 @@ Tokenul permite aplicației de pe telefon să modifice fișierul cu alerte. Îl 
    („Metadata: Read” se adaugă automat).
 6. **Generate token**, apoi copiază tokenul (începe cu `github_pat_`).
 7. În aplicație: **Setări → 1. Repository GitHub**. Completează `NUMELE-TAU/zboruri` și tokenul, apoi
-   apasă **Salvează și testează**. Trebuie să apară „✓ Conectat”.
+   apasă **Salvează și testează**. Trebuie să apară „✓ Connected”.
 
 **Riscuri:** tokenul este păstrat doar în memoria aplicației de pe acest telefon. Cine are acces la telefonul
 tău deblocat îl poate folosi, dar doar pentru a modifica fișierele *acestui* repository. Dacă pierzi telefonul,
@@ -202,7 +205,7 @@ Poți opri oricare canal din `config/settings.json`: `"web_push": false` sau `"n
    (ex. „4, 5”). La doar dus nu e nevoie de nopți: fiecare zi de plecare înseamnă o căutare.
 5. Perioada de monitorizare (dacă lași „până la” gol, se oprește la ultima zi de plecare) și **de câte ori pe zi**
    se caută (1–4), cu **ora** fiecărei căutări (ora României). Implicit: o dată, la 08:00.
-6. Companiile aeriene (sau „Oricare companie”).
+6. Companiile aeriene (sau „Any airline”).
 7. Prețul maxim **total pentru toți pasagerii** (dus-întors sau doar dus, după caz) și moneda (EUR sau RON).
 8. Adulți, bagaje de mână și **numărul maxim de escale** (oricâte / direct / max. 1 / max. 2).
 
@@ -210,10 +213,10 @@ Jos vezi **câte căutări consumă** alerta. Apasă **Salvează alerta**. Căut
 
 ### Pasul 12 – Rulare manuală și test
 
-- **Căutare manuală:** GitHub → tab-ul **Actions** → „Căutare zboruri” → **Run workflow** → Run.
-  Nu consumă credite pentru combinațiile deja căutate azi. Bifează „Caută din nou…” dacă vrei totuși o căutare nouă.
-- **Test notificări (fără credite):** același buton, dar bifează **„Doar trimite o notificare de TEST”**.
-  Dacă totul e configurat corect, primești „🧪 Test notificare zboruri” pe telefon.
+- **Căutare manuală:** GitHub → tab-ul **Actions** → „Flight search” → **Run workflow** → Run.
+  Nu consumă credite pentru combinațiile deja căutate azi. Bifează „Search again…” dacă vrei totuși o căutare nouă.
+- **Test notificări (fără credite):** același buton, dar bifează **„Only send a TEST notification”**.
+  Dacă totul e configurat corect, primești „🧪 Flight Prices test notification” pe telefon.
 - **Unde vezi ce s-a întâmplat:** în Actions, click pe rulare → „cauta” → pașii au mesaje în română.
 
 **Când rulează automat:**
@@ -242,22 +245,22 @@ Estimarea ține cont că plecările trecute nu se mai caută și că alertele ex
 (cheia stă în GitHub Secrets), așa că GitHub scrie valoarea exactă în `data/status.json`: după fiecare rulare cu
 căutări și, la fiecare oră, doar dacă s-a schimbat (resetarea lunară, căutări făcute în afara aplicației).
 Aplicația recitește valoarea la fiecare minut, când revii în ea și imediat după o căutare rapidă sau un
-„Preț la companie”. Atinge insigna pentru detalii (folosite luna aceasta, ora verificării).
+„Airline price”. Atinge insigna pentru detalii (folosite luna aceasta, ora verificării).
 
 **Protecție automată:** înainte de fiecare rulare, scriptul verifică gratuit creditele rămase. Dacă nu ajung
 pentru toate căutările, **nu caută nimic** și îți trimite o notificare de avertizare, fără să dea eroare.
 Detaliile de întoarcere se caută doar dacă rămân peste 5 credite de rezervă (setarea `search_reserve`).
 
-**Sfaturi pentru a economisi:** oprește alertele de care nu mai ai nevoie (butonul „Oprește”), folosește mai puține
+**Sfaturi pentru a economisi:** oprește alertele de care nu mai ai nevoie (butonul „Pause”), folosește mai puține
 variante de nopți și scurtează perioada de monitorizare.
 
 ### Căutare rapidă (o singură dată, cu parolă)
 
-Butonul central **„Caută”** face o căutare imediată, fără să creeze o alertă: alegi ruta, datele, nopțile,
+Butonul central **„Search”** face o căutare imediată, fără să creeze o alertă: alegi ruta, datele, nopțile,
 companiile și escalele, iar în 1–2 minute vezi toate prețurile. Primești și o notificare.
 
 - **Cost:** 1 credit pe combinație, plus 1 pe combinație dacă ceri detaliile zborului de întoarcere. Aplicația îți arată
-  costul înainte să apeși „Caută acum”. Maximum 20 de combinații pe căutare (`one_time_max_searches` în `config/settings.json`).
+  costul înainte să apeși „Search now”. Maximum 20 de combinații pe căutare (`one_time_max_searches` în `config/settings.json`).
 - **Parola:** o inventezi tu și o pui în secretul `SEARCH_PASSWORD`. Aplicația ți-o cere la fiecare căutare
   (sau o ține minte până închizi aplicația, dacă bifezi).
 - **De ce e sigur:** parola nu pleacă de pe telefon și nu ajunge în repository-ul public. Aplicația trimite doar o
@@ -271,15 +274,15 @@ companiile și escalele, iar în 1–2 minute vezi toate prețurile. Primești �
 ### Preț la companie (la cerere, pe un singur zbor)
 
 Prețul din listă e cel mai mic de pe Google, **de la oricine** – uneori o agenție (Kiwi.com, eDreams, Gotogate…).
-Pe fiecare zbor ai butonul **„Preț la companie”**: îl apeși, confirmi, introduci parola de căutare, iar în 1–2 minute
+Pe fiecare zbor ai butonul **„Airline price”**: îl apeși, confirmi, introduci parola de căutare, iar în 1–2 minute
 apare direct în biletul respectiv:
 
 - prețul vândut **direct de companie** (sau mesajul că, pe Google, compania nu vinde direct varianta respectivă);
 - cea mai ieftină agenție și diferența de preț (plus avertismentul că la agenții bagajele și modificările trec prin ele);
-- toate opțiunile de rezervare, cu butonul **„Rezervă”** care te duce la companie (prin Google).
+- toate opțiunile de rezervare, cu butonul **„Book”** care te duce la companie (prin Google).
 
 **Cost:** 2 credite la dus-întors (zborurile de întoarcere + opțiunile de rezervare; se alege întoarcerea cea mai
-ieftină), 1 credit la doar dus. Excepție: dacă alerta/căutarea are bifat „detaliile întoarcerii”, pentru cel mai ieftin
+ieftină), 1 credit la doar dus. Excepție: dacă alerta/căutarea are bifat „Return flight details”, pentru cel mai ieftin
 zbor al combinației întoarcerea e deja cunoscută, deci costă tot **1 credit** (dacă între timp Google a schimbat datele,
 GitHub reîncearcă singur prin zborurile de întoarcere). **Nu se face nimic automat:** doar când apeși butonul. Parola se verifică la fel ca la
 căutarea rapidă (greșită = niciun credit consumat). Verificările rămân salvate în `data/prices/` (ultimele 100) și le
@@ -289,7 +292,7 @@ Butonul apare doar la rezultatele căutate **după** această actualizare (au ne
 
 ### Ce găsești în aplicație
 
-- **Verdict „Cumpără acum / Mai așteaptă”** pentru fiecare alertă, calculat din istoricul prețurilor tale și din datele
+- **Verdict „Buy now / Wait”** pentru fiecare alertă, calculat din istoricul prețurilor tale și din datele
   Google (minim istoric, câte zile la rând scade/crește prețul, comparația cu media, nivelul Google). E orientativ.
 - **Calendar de prețuri**: zilele de plecare × numărul de nopți, colorate după preț (mai intens = mai ieftin, ★ = cel mai
   ieftin, ✓ = sub prag). Atingi un pătrat și se deschide combinația respectivă.
@@ -297,7 +300,7 @@ Butonul apare doar la rezultatele căutate **după** această actualizare (au ne
   SerpApi (fără credite în plus). Poți alege mai multe destinații odată (ex. Roma + Napoli + Bari).
 - **Rute și companii**: rezultatele sunt grupate pe rute (ex. OTP→FCO, CLJ→CIA) și în taburi pe companii, cu
   primele 10 variante ale fiecăreia.
-  O companie aleasă care nu apare în rezultat e afișată „n-a apărut” (nu se mai fac căutări separate pentru ea).
+  O companie aleasă care nu apare în rezultat e afișată „not found” (nu se mai fac căutări separate pentru ea).
 - **Detalii zbor**: logo-ul companiei, segmentele cu ore și aeroporturi, escalele (inclusiv cele peste noapte),
   avionul, spațiul pentru picioare, facilitățile și emisiile CO₂ față de tipic.
 - **Partajare**: butonul de lângă „Google Flights” trimite oferta (rută, preț, zboruri, link) pe WhatsApp, Mesaje etc.
@@ -308,8 +311,8 @@ Butonul apare doar la rezultatele căutate **după** această actualizare (au ne
   tale (prognoză dacă pleci în următoarele ~15 zile, altfel media din ultimii 3 ani).
 - **EUR ⇄ RON**: comuți moneda afișată din cardul principal sau din Setări (cursul BCE, actualizat zilnic).
   Pragurile și notificările rămân în moneda alertei.
-- **Vremea la tine** pe pagina principală (doar dacă apeși „Arată vremea la mine” și permiți locația): temperatura,
-  „se simte ca”, umiditatea, vântul, UV, calitatea aerului, răsăritul/apusul, un sfat al zilei, următoarele 24 de ore
+- **Vremea la tine** pe pagina principală (doar dacă apeși „Show my weather” și permiți locația): temperatura,
+  „feels like”, umiditatea, vântul, UV, calitatea aerului, răsăritul/apusul, un sfat al zilei, următoarele 24 de ore
   și 7 zile, cu iconițe animate. Se poate ascunde din Setări.
 - **Cerul după ora din zi** pe ecranul principal (răsărit, zi, apus, noapte cu stele) și un **ecran de pornire** animat.
 
@@ -390,8 +393,8 @@ Toate listele sunt fișiere JSON în `config/`, pe care le poți edita:
 
 | Fișier | Ce conține |
 |---|---|
-| `config/airports.json` | aeroporturile tale de **plecare**, afișate primele în lista „Pleci din” (poți alege însă orice aeroport din listă sau după cod) |
-| `config/destinations.json` | destinațiile (Europa, Turcia, Asia, Africa). O destinație poate avea mai multe coduri, ex. „Londra (toate)” = LHR, LGW, STN, LTN, LCY, SEN |
+| `config/airports.json` | aeroporturile tale de **plecare**, afișate primele în lista „Departing from” (poți alege însă orice aeroport din listă sau după cod) |
+| `config/destinations.json` | destinațiile (Europa, Turcia, Asia, Africa). O destinație poate avea mai multe coduri, ex. „London (all airports)” = LHR, LGW, STN, LTN, LCY, SEN |
 | `config/destinations_custom.json` | destinațiile adăugate de tine din aplicație |
 | `config/airlines.json` | companiile aeriene cu codurile IATA |
 | `config/settings.json` | cheia publică VAPID, canale de notificare, limita lunară, rezerva de credite |
@@ -414,7 +417,7 @@ Ryanair zboară ca FR, RK (UK), AL (Malta Air) și RR (Buzz). În aplicație ale
 - **Topicul ntfy** funcționează ca o parolă: alege un nume lung și aleatoriu.
 - Pentru poze, hartă, vreme și curs, aplicația folosește servicii gratuite, fără cont: Wikipedia/Wikimedia,
   Open-Meteo, frankfurter.dev (cursul BCE), jsDelivr (bibliotecile hărții) și BigDataCloud (numele localității
-  pentru „Vremea la tine”; coordonatele telefonului se rotunjesc la ~1 km și nu se salvează pe GitHub). Ele primesc doar numele orașului,
+  pentru „Weather where you are”; coordonatele telefonului se rotunjesc la ~1 km și nu se salvează pe GitHub). Ele primesc doar numele orașului,
   coordonatele sau moneda. Dacă un serviciu nu răspunde, partea respectivă pur și simplu nu apare.
 - Fonturile aplicației (Inter și Plus Jakarta Sans) se încarcă de la Google Fonts. Fără internet, aplicația
   folosește fontul telefonului.
@@ -428,10 +431,10 @@ Ryanair zboară ca FR, RK (UK), AL (Malta Air) și RR (Buzz). În aplicație ale
 Aplicația trebuie deschisă de pe ecranul principal (nu din Safari), cu iOS 16.4+. Verifică în *Setări iPhone →
 Notificări → Zboruri*. Folosește și ntfy ca rezervă.
 
-**În log apare „abonamentul a expirat (410)”.**
+**În log apare „the subscription has expired (410)”.**
 Deschide aplicația → Setări → Activează notificările → copiază din nou abonamentul în `PUSH_SUBSCRIPTION`.
 
-**„cheile VAPID nu se potrivesc (403)”.**
+**„the VAPID keys do not match (403)”.**
 Cheia publică din `config/settings.json` trebuie să fie pereche cu `VAPID_PRIVATE_KEY`. După ce schimbi cheile,
 reactivează notificările pe telefon și copiază abonamentul nou.
 
@@ -439,11 +442,11 @@ reactivează notificările pe telefon și copiază abonamentul nou.
 Fără token, datele vin prin GitHub Pages, care se actualizează în 1–2 minute după fiecare rulare (uneori până la 10 minute din cauza cache-ului).
 Cu token, datele se citesc direct și sunt mereu la zi.
 
-**„Nu am putut salva” / eroare 403 la salvare.**
+**„Could not save” / eroare 403 la salvare.**
 Tokenul nu are „Contents: Read and write” sau nu are acces la repository-ul corect. Fă altul (pasul 7).
 
 **Nu se găsește niciun zbor.**
-Verifică codurile aeroporturilor și companiilor. Unele companii nu zboară pe ruta aleasă, iar filtrul „doar directe” reduce mult rezultatele.
+Verifică codurile aeroporturilor și companiilor. Unele companii nu zboară pe ruta aleasă, iar filtrul „direct only” reduce mult rezultatele.
 
 **Rularea zilnică nu mai pornește.**
 GitHub oprește rulările programate în repository-urile publice fără activitate timp de 60 de zile. Primești un
@@ -462,14 +465,14 @@ index.html, css/, js/          aplicația (PWA)
   js/app.js                    navigarea între ecrane
   js/screens/                  ecranele: listă, formular, detaliu, căutare rapidă, setări
   js/results-view.js           afișarea rezultatelor (bilete, combinații, filtre, partajare)
-  js/insights.js               verdictul „Cumpără acum / Mai așteaptă”
+  js/insights.js               verdictul „Buy now / Wait”
   js/heatmap.js                calendarul de prețuri
   js/motion.js, gestures.js    animații, ruta animată, glisare, tragere pentru reîmprospătare
-  js/flags.js, onboarding.js   steaguri pe destinații, ghidul „Primii pași”
+  js/flags.js, onboarding.js   steaguri pe destinații, ghidul „Getting started”
   js/geo.js, media.js          coordonatele orașelor (Open-Meteo) și pozele (Wikipedia)
-  js/map.js, trip.js, weather.js  harta traseului, secțiunea „Călătoria”, vremea
+  js/map.js, trip.js, weather.js  harta traseului, secțiunea „The trip”, vremea
   js/currency.js               afișarea în EUR/RON
-  js/price-check.js            butonul „Preț la companie” din bilete
+  js/price-check.js            butonul „Airline price” din bilete
   js/credits.js                creditele SerpApi din bara de sus
   js/password.js               parola de căutare (comună)
   js/budget.js                 calculul combinațiilor și al bugetului (la fel ca scraper/alerts.py)
@@ -485,14 +488,14 @@ data/history/<id>.json         prețul minim pe zi (pentru grafic)
 data/status.json               rezumatul ultimei rulări
 data/state.json                ce notificări s-au trimis (ca să nu se repete)
 data/searches/<id>.json        căutările rapide (cerere semnată + rezultate); index.json = lista lor
-data/prices/<id>.json          verificările „Preț la companie” (cerere semnată + opțiunile de rezervare); index.json
+data/prices/<id>.json          verificările „Airline price” (cerere semnată + opțiunile de rezervare); index.json
 scraper/                       scriptul Python
   main.py                      pornirea și logica principală
   alerts.py                    alerte active, combinații, parametrii SerpApi, buget
   serpapi_client.py            căutări + verificarea creditelor + mod de test
   search.py                    căutarea unei combinații (comună pentru alerte și căutări rapide)
   one_time.py                  căutările rapide: verificarea parolei, căutare, istoric
-  price_check.py               „Preț la companie”: opțiunile de rezervare pentru un zbor, la cerere
+  price_check.py               „Airline price”: opțiunile de rezervare pentru un zbor, la cerere
   notify.py                    Web Push și ntfy
   storage.py                   scrierea fișierelor JSON
   fixtures/                    răspunsuri salvate pentru --dry-run

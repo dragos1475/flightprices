@@ -7,7 +7,7 @@ export const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: r
 
 /** Animează un număr de la 0 (sau `from`) la valoarea finală. Elementele au data-count="137". */
 export function countUp(root = document) {
-  const fmt = new Intl.NumberFormat('ro-RO', { maximumFractionDigits: 0 });
+  const fmt = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
   root.querySelectorAll('[data-count]').forEach((el) => {
     const to = Number(el.dataset.count);
     const node = el.firstChild && el.firstChild.nodeType === 3 ? el.firstChild : null;

@@ -32,7 +32,7 @@ def fallback_google_url(params):
              f"on {params['outbound_date']} through {params['return_date']}")
     else:
         q = f"One way flights to {params['arrival_id']} from {params['departure_id']} on {params['outbound_date']}"
-    return "https://www.google.com/travel/flights?hl=ro&curr=" + params["currency"] + "&q=" + quote(q)
+    return "https://www.google.com/travel/flights?hl=en&curr=" + params["currency"] + "&q=" + quote(q)
 
 
 def new_entry(combo, params, key, day):

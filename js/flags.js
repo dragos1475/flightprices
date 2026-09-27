@@ -13,6 +13,12 @@ const COUNTRY_ISO = {
   polonia: 'PL', portugalia: 'PT', 'regatul unit': 'GB', romania: 'RO', serbia: 'RS', slovacia: 'SK',
   slovenia: 'SI', spania: 'ES', suedia: 'SE', ungaria: 'HU', turcia: 'TR', indonezia: 'ID', thailanda: 'TH',
   vietnam: 'VN', japonia: 'JP', maroc: 'MA', namibia: 'NA', tanzania: 'TZ', tunisia: 'TN',
+  // numele în engleză (lista de destinații e acum în engleză)
+  azerbaijan: 'AZ', belgium: 'BE', 'bosnia and herzegovina': 'BA', czechia: 'CZ', cyprus: 'CY', denmark: 'DK',
+  switzerland: 'CH', finland: 'FI', france: 'FR', germany: 'DE', greece: 'GR', ireland: 'IE', iceland: 'IS',
+  italy: 'IT', latvia: 'LV', lithuania: 'LT', luxembourg: 'LU', 'north macedonia': 'MK', montenegro: 'ME',
+  norway: 'NO', netherlands: 'NL', poland: 'PL', portugal: 'PT', 'united kingdom': 'GB', slovakia: 'SK',
+  spain: 'ES', sweden: 'SE', hungary: 'HU', turkey: 'TR', indonesia: 'ID', thailand: 'TH', japan: 'JP', morocco: 'MA',
 };
 
 /** Cod ISO -> emoji steag (🇷🇴). Gol dacă nu știm țara. */

@@ -19,9 +19,12 @@ NTFY_MAX_BODY = 3800   # ntfy acceptă mesaje de maxim 4096 octeți
 # Formatarea textelor
 # ---------------------------------------------------------------------------
 
+MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
 def short_date(iso):
-    """'2026-11-12' -> '12.11'"""
-    return f"{iso[8:10]}.{iso[5:7]}" if iso and len(iso) >= 10 else iso or ""
+    """'2026-11-12' -> '12 Nov'"""
+    return f"{int(iso[8:10])} {MONTHS[int(iso[5:7]) - 1]}" if iso and len(iso) >= 10 else iso or ""
 
 
 def hour(time_str):
@@ -36,15 +39,16 @@ def duration(minutes):
 
 
 def combo_text(c):
-    """'12.11→16.11 (4 nopți)' sau '12.11 (doar dus)'."""
+    """'12 Nov→16 Nov (4 nights)' sau '12 Nov (one way)'."""
     if c.get("return_date"):
-        return f"{short_date(c['outbound_date'])}→{short_date(c['return_date'])} ({c['nights']} nopți)"
-    return f"{short_date(c['outbound_date'])} (doar dus)"
+        nights = c["nights"]
+        return f"{short_date(c['outbound_date'])}→{short_date(c['return_date'])} ({nights} {'night' if nights == 1 else 'nights'})"
+    return f"{short_date(c['outbound_date'])} (one way)"
 
 
 def flight_line(f):
     """Un rând scurt despre un zbor: companie, nr. zbor, ore, escale."""
-    stops = "direct" if f.get("stops", 0) == 0 else f"{f['stops']} escală" if f["stops"] == 1 else f"{f['stops']} escale"
+    stops = "direct" if f.get("stops", 0) == 0 else f"{f['stops']} stop" if f["stops"] == 1 else f"{f['stops']} stops"
     airlines = "/".join(f.get("airlines", [])) or "?"
     numbers = ", ".join(f.get("flight_numbers", []))
     return (f"{airlines} {numbers} · {f.get('from', '')} {hour(f.get('departure_time'))}"
@@ -63,22 +67,22 @@ def alert_summary(alert, results, app_link):
     over = sorted([c for c in combos if c["lowest_price"] > max_price], key=lambda c: c["lowest_price"])
     best = under[0]
 
-    title = f"✈️ {alert.get('name', alert['id'])}: {best['lowest_price']} {cur} (prag {max_price} {cur})"
-    lines = [f"Sub prag: {len(under)} din {len(combos)} combinații"]
+    title = f"✈️ {alert.get('name', alert['id'])}: {best['lowest_price']} {cur} (target {max_price} {cur})"
+    lines = [f"Under target: {len(under)} of {len(combos)} date combinations"]
     for c in under:
         f = c["flights"][0] if c.get("flights") else {}
         lines.append(f"✅ {combo_text(c)}: {c['lowest_price']} {cur}")
         if f:
-            lines.append(f"   Dus: {flight_line(f)}")
+            lines.append(f"   Out: {flight_line(f)}")
         ret = c.get("return_flight")
         if ret:
-            lines.append(f"   Întors: {flight_line(ret)}")
+            lines.append(f"   Back: {flight_line(ret)}")
     if over:
-        lines.append("Peste prag: " + "; ".join(
+        lines.append("Over target: " + "; ".join(
             f"{combo_text(c)} {c['lowest_price']}" for c in over))
     errors = [c for c in results.get("combinations", []) if c.get("status") == "error"]
     if errors:
-        lines.append(f"⚠️ {len(errors)} căutări eșuate")
+        lines.append(f"⚠️ {len(errors)} failed searches")
     body = "\n".join(lines)
     link = best.get("google_flights_url", "")
     app = f"{app_link}#/alerta/{alert['id']}" if app_link else ""
@@ -88,7 +92,7 @@ def alert_summary(alert, results, app_link):
 def truncate(text, limit):
     if len(text.encode("utf-8")) <= limit:
         return text
-    suffix = "\n… (vezi toate în aplicație)"
+    suffix = "\n… (see all in the app)"
     while len((text + suffix).encode("utf-8")) > limit:
         text = text[: int(len(text) * 0.9)]
     return text.rsplit("\n", 1)[0] + suffix
@@ -123,7 +127,7 @@ class Notifier:
         try:
             data = json.loads(raw)
         except ValueError:
-            self.errors.append("PUSH_SUBSCRIPTION nu este JSON valid (copiază-l exact din aplicație).")
+            self.errors.append("PUSH_SUBSCRIPTION is not valid JSON (copy it exactly from the app).")
             return []
         return data if isinstance(data, list) else [data]
 
@@ -183,17 +187,17 @@ class Notifier:
             except WebPushException as e:
                 status = getattr(e.response, "status_code", None)
                 if status in (404, 410):
-                    msg = (f"Web Push dispozitiv {i}: abonamentul a expirat ({status}). "
-                           "Deschide aplicația > Setări, copiază abonamentul nou în secretul PUSH_SUBSCRIPTION.")
+                    msg = (f"Web Push device {i}: the subscription has expired ({status}). "
+                           "Open the app > Settings and copy the new subscription into the PUSH_SUBSCRIPTION secret.")
                 elif status == 403:
-                    msg = (f"Web Push dispozitiv {i}: cheile VAPID nu se potrivesc (403). Verifică "
-                           "VAPID_PRIVATE_KEY și cheia publică din config/settings.json, apoi reabonează telefonul.")
+                    msg = (f"Web Push device {i}: the VAPID keys do not match (403). Check "
+                           "VAPID_PRIVATE_KEY and the public key in config/settings.json, then re-subscribe the phone.")
                 else:
-                    msg = f"Web Push dispozitiv {i}: {e}"
+                    msg = f"Web Push device {i}: {e}"
                 self.errors.append(msg)
                 print(f"[notificare] {msg}")
             except Exception as e:  # noqa: BLE001
-                self.errors.append(f"Web Push dispozitiv {i}: {e}")
+                self.errors.append(f"Web Push device {i}: {e}")
                 print(f"[notificare] Web Push dispozitiv {i}: {e}")
         return ok
 
@@ -210,7 +214,7 @@ class Notifier:
             message["click"] = url
             actions.append({"action": "view", "label": "Google Flights", "url": url})
         if app_url:
-            actions.append({"action": "view", "label": "Aplicația", "url": app_url})
+            actions.append({"action": "view", "label": "Open app", "url": app_url})
         if actions:
             message["actions"] = actions
         try:
@@ -239,7 +243,7 @@ class Notifier:
             if isinstance(derived, bytes):
                 derived = derived.decode()
             if derived.rstrip("=") != self.vapid_public.rstrip("="):
-                return "VAPID_PUBLIC_KEY nu corespunde cheii VAPID_PRIVATE_KEY."
+                return "VAPID_PUBLIC_KEY does not match VAPID_PRIVATE_KEY."
         except Exception as e:  # noqa: BLE001
-            return f"Cheia VAPID_PRIVATE_KEY nu poate fi citită: {e}"
+            return f"VAPID_PRIVATE_KEY cannot be read: {e}"
         return None
