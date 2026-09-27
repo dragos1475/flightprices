@@ -1,6 +1,6 @@
 // Ecranul 3: detaliul unei alerte – preț curent, verdict, calendar de prețuri, grafic, combinații și zboruri.
 
-import { alertStatus, comboKey, isOneWay } from '../budget.js';
+import { alertStatus, comboKey, hoursLabel, isOneWay } from '../budget.js';
 import { renderChart, SERIES_COLORS } from '../chart.js';
 import { currencyToggle, bindCurrencyToggle, convertedNote } from '../currency-ui.js';
 import { forDisplay } from '../currency.js';
@@ -115,6 +115,7 @@ function draw(app, rawAlert, rawResults, rawHistory, animate) {
       <div class="meta-chips">
         <span>${icon('plane')}${tripLabel(alert)}</span>
         <span>${icon('calendar')}${shortDate(alert.monitor_start)} – ${shortDate(alert.monitor_end)}</span>
+        <span>${icon('clock')}${hoursLabel(alert)}</span>
         <span>${icon('users')}${alert.adults || 1} ${Number(alert.adults) > 1 ? 'adulți' : 'adult'}</span>
         <span>${icon('bag')}${alert.bags || 0} troler${Number(alert.bags) === 1 ? '' : 'e'}</span>
         <span>${icon('zap')}${stopsLabel(maxStopsOf(alert))}</span>

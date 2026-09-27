@@ -200,7 +200,8 @@ Poți opri oricare canal din `config/settings.json`: `"web_push": false` sau `"n
 3. Destinația: caută după oraș, țară sau cod. Dacă nu o găsești, o adaugi după codul IATA.
 4. **Dus-întors** sau **Doar dus**, apoi zilele de plecare. La dus-întors scrii pentru fiecare zi și numărul de nopți
    (ex. „4, 5”). La doar dus nu e nevoie de nopți: fiecare zi de plecare înseamnă o căutare.
-5. Perioada de monitorizare. Dacă lași „până la” gol, monitorizarea se oprește la ultima zi de plecare.
+5. Perioada de monitorizare (dacă lași „până la” gol, se oprește la ultima zi de plecare) și **de câte ori pe zi**
+   se caută (1–4), cu **ora** fiecărei căutări (ora României). Implicit: o dată, la 08:00.
 6. Companiile aeriene (sau „Oricare companie”).
 7. Prețul maxim **total pentru toți pasagerii** (dus-întors sau doar dus, după caz) și moneda (EUR sau RON).
 8. Adulți, bagaje de mână și **numărul maxim de escale** (oricâte / direct / max. 1 / max. 2).
@@ -216,7 +217,9 @@ Jos vezi **câte căutări consumă** alerta. Apasă **Salvează alerta**. Căut
 - **Unde vezi ce s-a întâmplat:** în Actions, click pe rulare → „cauta” → pașii au mesaje în română.
 
 **Când rulează automat:**
-- zilnic la **06:17 UTC**, adică 08:17 iarna și 09:17 vara, ora României. GitHub poate întârzia uneori rularea cu câteva minute;
+- **în fiecare oră** (la minutul 17). Scriptul caută doar alertele care au o oră programată la care nu s-au căutat încă;
+  rulările fără nimic programat se opresc în câteva secunde, fără credite și fără commit. GitHub poate întârzia uneori
+  rularea cu 5–20 de minute; dacă o rulare e sărită, următoarea o recuperează;
 - la fiecare modificare a `data/alerts.json`. Atunci caută **doar combinațiile noi sau modificate**:
   ce s-a căutat deja azi cu aceiași parametri nu se mai caută;
 - la fiecare căutare rapidă pornită din aplicație (fișier nou în `data/searches/`).
@@ -225,7 +228,7 @@ Jos vezi **câte căutări consumă** alerta. Apasă **Salvează alerta**. Căut
 
 ## 3. Bugetul de căutări
 
-- 1 combinație activă = **1 căutare pe zi**.
+- 1 combinație activă = **1 căutare pe zi** pentru fiecare oră programată (ex. 3 combinații căutate la 08:00 și 20:00 = 6 căutări/zi).
 - 1 căutare în plus pentru detaliile zborului de întoarcere, **doar** în zilele în care combinația e sub prag.
 - Plan gratuit: **250 căutări/lună**, adică aproximativ **8 pe zi** în medie.
 
@@ -321,6 +324,7 @@ Fișierul `data/alerts.json` se poate edita direct pe GitHub (creionul ✏️). 
       "departure_airports": ["OTP", "CLJ"],
       "destination": {"id": "ROM-ALL", "name": "Roma (toate aeroporturile)", "codes": ["FCO", "CIA"]},
       "trip_type": "round_trip",
+      "search_hours": [8, 20],
       "departures": [
         {"date": "2026-11-12", "nights": [4, 5]},
         {"date": "2026-11-13", "nights": [3]}
@@ -338,6 +342,7 @@ Fișierul `data/alerts.json` se poate edita direct pe GitHub (creionul ✏️). 
 
 - `id`: unic, doar litere mici, cifre și cratime (e și numele fișierului de rezultate).
 - `airlines: []` înseamnă **oricare companie**.
+- `search_hours`: orele (ora României, 0–23) la care se caută, 1–4 valori diferite. Implicit `[8]`.
 - `trip_type`: `"round_trip"` (dus-întors, implicit) sau `"one_way"` (doar dus; atunci `nights` poate lipsi).
 - `max_stops`: `null` = oricâte escale, `0` = doar directe, `1` = maxim o escală, `2` = maxim două.
 - Datele se scriu `AAAA-LL-ZZ`.

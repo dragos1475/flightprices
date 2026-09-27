@@ -36,6 +36,27 @@ def is_one_way(alert):
     return alert.get("trip_type") == "one_way"
 
 
+# Orele (în România) la care se caută o alertă, dacă nu s-a ales altceva.
+DEFAULT_HOURS = [8]
+MAX_TIMES_PER_DAY = 4
+
+
+def search_hours(alert):
+    """Orele programate ale alertei, sortate (ex. [8, 20]). Implicit: [8]."""
+    raw = alert.get("search_hours")
+    hours = sorted({int(h) for h in (raw or []) if isinstance(h, (int, float)) and 0 <= int(h) <= 23})
+    return hours[:MAX_TIMES_PER_DAY] or list(DEFAULT_HOURS)
+
+
+def searches_per_day(alert):
+    return len(search_hours(alert))
+
+
+def current_slot(alert, hour):
+    """Ultima oră programată care a trecut azi (ex. la 15:xx pentru [8, 20] -> 8). None dacă n-a venit prima."""
+    return max((h for h in search_hours(alert) if h <= hour), default=None)
+
+
 def combo_key(combo):
     """Cheia unei combinații în istoric: '2026-11-12_2026-11-16' (dus-întors) sau '2026-11-12' (doar dus)."""
     if combo.get("return_date"):
@@ -176,6 +197,12 @@ def validate(alert):
         problems.append("nu are destinație")
     if not combinations(alert):
         problems.append("nu are nicio zi de plecare" if is_one_way(alert) else "nu are nicio zi de plecare cu număr de nopți")
+    raw_hours = alert.get("search_hours")
+    if raw_hours is not None and (
+            not isinstance(raw_hours, list) or not 1 <= len(raw_hours) <= MAX_TIMES_PER_DAY
+            or any(not isinstance(h, int) or not 0 <= h <= 23 for h in raw_hours)
+            or len(set(raw_hours)) != len(raw_hours)):
+        problems.append(f"orele de căutare trebuie să fie 1–{MAX_TIMES_PER_DAY} ore diferite între 0 și 23")
     if alert.get("trip_type") not in (None, "round_trip", "one_way"):
         problems.append("tipul călătoriei trebuie să fie round_trip sau one_way")
     if alert.get("currency", "EUR") not in ("EUR", "RON"):
@@ -188,17 +215,20 @@ def validate(alert):
 def estimate_budget(alerts, day, days=30):
     """
     Estimarea consumului de căutări:
-      - per_day: câte căutări se fac azi (1 căutare / combinație activă)
+      - per_day: câte căutări se fac azi (1 căutare / combinație activă, × de câte ori pe zi)
       - per_month: suma pe următoarele `days` zile, ținând cont că alertele
         expiră și că plecările trecute nu se mai caută
       - extra_max_per_month: maximul de căutări suplimentare pentru detaliile
         zborului de întoarcere (1 pe combinație, doar când prețul e sub prag)
     """
-    per_day = sum(len(active_combinations(a, day)) for a in alerts)
+    def count(a, d):
+        return len(active_combinations(a, d)) * searches_per_day(a)
+
+    per_day = sum(count(a, day) for a in alerts)
     per_month = 0
     extra = 0  # doar dus-întors are căutare separată pentru întoarcere
     for i in range(days):
         d = day + timedelta(days=i)
-        per_month += sum(len(active_combinations(a, d)) for a in alerts)
-        extra += sum(len(active_combinations(a, d)) for a in alerts if not is_one_way(a))
+        per_month += sum(count(a, d) for a in alerts)
+        extra += sum(count(a, d) for a in alerts if not is_one_way(a))
     return {"per_day": per_day, "per_month": per_month, "extra_max_per_month": extra}

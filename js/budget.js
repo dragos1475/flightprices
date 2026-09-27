@@ -11,6 +11,26 @@ export function isMonitoringOn(alert, day) {
   return true;
 }
 
+/** Orele implicite (ora României) pentru 1, 2, 3 sau 4 căutări pe zi. */
+export const DEFAULT_HOURS = { 1: [8], 2: [8, 20], 3: [8, 14, 20], 4: [7, 12, 17, 22] };
+
+/** Orele programate ale alertei, sortate (ex. [8, 20]). Implicit: [8]. (La fel ca în scraper/alerts.py.) */
+export function searchHours(alert) {
+  const hours = [...new Set((alert.search_hours || []).map(Number).filter((h) => Number.isInteger(h) && h >= 0 && h <= 23))]
+    .sort((a, b) => a - b).slice(0, 4);
+  return hours.length ? hours : [8];
+}
+
+/** De câte ori pe zi se caută alerta. */
+export function searchesPerDay(alert) {
+  return searchHours(alert).length;
+}
+
+/** '08:00 · 20:00' */
+export function hoursLabel(alert) {
+  return searchHours(alert).map((h) => `${String(h).padStart(2, '0')}:00`).join(' · ');
+}
+
 /** Alertă/căutare „doar dus” (fără întoarcere). Implicit: dus-întors. */
 export function isOneWay(alert) {
   return alert.trip_type === 'one_way';
@@ -71,18 +91,19 @@ export function alertStatus(alert, day) {
 
 /**
  * Estimarea consumului:
- *  perDay   = căutări azi (1 / combinație activă)
+ *  perDay   = căutări azi (1 / combinație activă, × de câte ori pe zi)
  *  perMonth = suma pe următoarele 30 de zile (alertele expiră, plecările trec)
  *  extraMax = maxim căutări extra pentru detaliile de întoarcere (doar sub prag)
  */
 export function estimateBudget(alerts, day, days = 30) {
-  const perDay = alerts.reduce((s, a) => s + activeCombinations(a, day).length, 0);
+  const count = (a, d) => activeCombinations(a, d).length * searchesPerDay(a);
+  const perDay = alerts.reduce((s, a) => s + count(a, day), 0);
   let perMonth = 0;
   let extraMax = 0; // doar dus-întors are căutare separată pentru întoarcere
   for (let i = 0; i < days; i++) {
     const d = addDays(day, i);
-    perMonth += alerts.reduce((s, a) => s + activeCombinations(a, d).length, 0);
-    extraMax += alerts.reduce((s, a) => s + (isOneWay(a) ? 0 : activeCombinations(a, d).length), 0);
+    perMonth += alerts.reduce((s, a) => s + count(a, d), 0);
+    extraMax += alerts.reduce((s, a) => s + (isOneWay(a) ? 0 : count(a, d)), 0);
   }
   return { perDay, perMonth, extraMax };
 }

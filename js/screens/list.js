@@ -1,6 +1,6 @@
 // Ecranul 1: lista alertelor, cu starea fiecăreia, cel mai mic preț curent și evoluția lui.
 
-import { alertStatus, comboKey, estimateBudget, isOneWay } from '../budget.js';
+import { alertStatus, comboKey, estimateBudget, isOneWay, searchesPerDay } from '../budget.js';
 import { forDisplay } from '../currency.js';
 import { deleteAlert, hasWriteAccess, saveAlert } from '../data.js';
 import { locateDestination, nameCandidates } from '../geo.js';
@@ -252,6 +252,7 @@ function alertCard(rawAlert, st, rawSum, today) {
         ${st.key !== 'active' ? `<span class="badge">${st.label}</span>` : ''}
         ${v ? `<span class="badge ${VERDICT_STYLE[v.kind].cls}">${icon(VERDICT_STYLE[v.kind].icon)}${v.title}</span>` : ''}
         <span>${icon('calendar')}${h(dateText)}${isOneWay(alert) ? ' · doar dus' : ''}</span>
+        ${searchesPerDay(alert) > 1 ? `<span>${icon('clock')}${searchesPerDay(alert)}×/zi</span>` : ''}
         <span>${icon('wallet')}prag ${money(alert.max_price, cur)}</span>
         ${live && series.length >= 2 ? `<span style="margin-left:auto">${sparkline(series, { threshold: Number(alert.max_price) || null })}</span>` : ''}
       </div>

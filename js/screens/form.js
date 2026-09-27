@@ -1,7 +1,7 @@
 // Ecranul 2: formularul de creare / editare a unei alerte, cu estimarea căutărilor.
 // Același formular servește și pentru căutarea rapidă (mode = 'search').
 
-import { combinations, estimateBudget } from '../budget.js';
+import { DEFAULT_HOURS, combinations, estimateBudget, searchHours } from '../budget.js';
 import {
   createFile, deleteAlert, githubLinks, hasWriteAccess, loadJSON, saveAlert, saveCustomDestination, signSearch,
 } from '../data.js';
@@ -48,6 +48,7 @@ function toDraft(alert, config) {
     adults: alert.adults || 1,
     bags: alert.bags || 0,
     max_stops: maxStopsOf(alert),
+    search_hours: searchHours(alert),
     return_details: Boolean(alert.return_details),
   };
 }
@@ -59,7 +60,7 @@ function emptyDraft() {
     trip_type: 'round_trip',
     departures: [{ date: '', nights: '' }],
     anyAirline: true, airlineGroups: new Set(), extraAirlines: '',
-    max_price: '', currency: 'EUR', adults: 1, bags: 0, max_stops: null, return_details: false,
+    max_price: '', currency: 'EUR', adults: 1, bags: 0, max_stops: null, return_details: false, search_hours: [8],
   };
 }
 
@@ -106,6 +107,7 @@ function buildAlert() {
     adults: Number(draft.adults) || 1,
     bags: Number(draft.bags) || 0,
     max_stops: draft.max_stops,
+    search_hours: [...new Set(draft.search_hours)].sort((a, b) => a - b),
     updated_at: new Date().toISOString(),
   };
 }
@@ -160,6 +162,9 @@ function validate(alert) {
     if (n > max) errors.push(`O căutare rapidă poate avea cel mult ${max} combinații (acum ${n}).`);
   }
   if (alert.bags > alert.adults) errors.push('Numărul de trolere nu poate depăși numărul de adulți.');
+  if (mode === 'alert' && new Set(draft.search_hours).size !== draft.search_hours.length) {
+    errors.push('Orele de căutare trebuie să fie diferite între ele.');
+  }
   return errors;
 }
 
@@ -265,6 +270,15 @@ export async function renderForm(app, id, options = {}) {
             <div><label class="label" for="f-end">Până la</label><input id="f-end" type="date" value="${h(draft.monitor_end)}"></div>
           </div>
           <p class="hint">Gol la „Până la” = până la ultima zi de plecare.</p>
+        </div>
+        <div class="row-stack">
+          <span class="label">De câte ori pe zi caut</span>
+          <div class="seg full" role="group" aria-label="De câte ori pe zi">
+            ${[1, 2, 3, 4].map((n) => `<button type="button" data-freq="${n}" aria-pressed="${draft.search_hours.length === n}">${n}×</button>`).join('')}
+          </div>
+          <div class="hours-grid" id="hours-grid"></div>
+          <p class="hint">Ora României. GitHub poate porni căutarea cu 5–20 de minute mai târziu.
+            O alertă nouă sau modificată se caută imediat după salvare.</p>
         </div>
       </div>`}
 
@@ -501,7 +515,7 @@ function renderBudget() {
       <div><b>${mine.perDay}</b> <span>căutări / zi</span></div>
       <div style="text-align:right"><b>~${mine.perMonth}</b> <span>în 30 de zile</span></div>
     </div>
-    <div class="small muted" style="margin-bottom:6px">${combos} ${combos === 1 ? 'combinație' : 'combinații'} × 1 căutare pe zi</div>
+    <div class="small muted" style="margin-bottom:6px">${combos} ${combos === 1 ? 'combinație' : 'combinații'} × ${alert.search_hours.length} ${alert.search_hours.length === 1 ? 'căutare' : 'căutări'} pe zi</div>
     <div class="meter ${level}"><div style="width:${Math.min(100, ratio * 100)}%"></div></div>
     <div class="small ${level === 'bad' ? 'bad-text' : 'muted'}" style="margin-top:6px">
       Toate alertele: <b>~${all.perMonth}</b> din ${limit} pe lună${level === 'bad' ? ' — depășești limita!' : level === 'warn' ? ' — aproape de limită' : ''}</div>
@@ -647,6 +661,31 @@ function bindEvents(app) {
     renderDepartures();
     renderBudget();
   }));
+
+  // de câte ori pe zi și la ce ore
+  const hoursGrid = app.querySelector('#hours-grid');
+  const drawHours = () => {
+    if (!hoursGrid) return;
+    hoursGrid.innerHTML = draft.search_hours.map((hr, i) => `
+      <label class="hour-pick"><span>${i + 1}.</span>
+        <select data-hour-index="${i}" aria-label="Ora căutării ${i + 1}">
+          ${Array.from({ length: 24 }, (_, x) => `<option value="${x}" ${x === hr ? 'selected' : ''}>${String(x).padStart(2, '0')}:00</option>`).join('')}
+        </select></label>`).join('');
+  };
+  drawHours();
+  app.querySelectorAll('[data-freq]').forEach((b) => b.addEventListener('click', () => {
+    const n = Number(b.dataset.freq);
+    draft.search_hours = [...DEFAULT_HOURS[n]];
+    app.querySelectorAll('[data-freq]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    drawHours();
+    renderBudget();
+  }));
+  hoursGrid?.addEventListener('change', (e) => {
+    const sel = e.target.closest('[data-hour-index]');
+    if (!sel) return;
+    draft.search_hours[Number(sel.dataset.hourIndex)] = Number(sel.value);
+    renderBudget();
+  });
 
   // numărul maxim de escale
   app.querySelectorAll('[data-stops]').forEach((b) => b.addEventListener('click', () => {

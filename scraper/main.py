@@ -17,11 +17,12 @@ Opțiuni utile:
 import argparse
 import os
 import sys
+from datetime import datetime
 from pathlib import Path
 
 from . import alerts as A
 from . import one_time
-from .config import DATA_DIR, FIXTURES_DIR, ROOT, app_url, load_settings, now, read_json, today
+from .config import DATA_DIR, FIXTURES_DIR, ROOT, TIMEZONE, app_url, load_settings, now, read_json, today
 from .notify import Notifier, alert_summary
 from .search import Credits, new_entry, search_combination
 from .serpapi_client import FakeSerpApiClient, SearchError, SerpApiClient
@@ -37,28 +38,41 @@ def parse_args():
     p.add_argument("--today", default=None, help="simulează altă dată AAAA-LL-ZZ (teste)")
     p.add_argument("--send-notifications", action="store_true", help="la --dry-run: trimite notificările pe bune")
     p.add_argument("--save-responses", action="store_true", help="salvează răspunsurile SerpApi în scraper/fixtures/recorded/")
+    p.add_argument("--hour", type=int, default=None, help="(teste) simulează ora din România (0-23)")
     p.add_argument("--test-notification", action="store_true", help="trimite doar o notificare de test și se oprește")
     p.add_argument("--trigger", default=os.environ.get("GITHUB_EVENT_NAME", "manual"), help="(informativ) ce a pornit rularea")
     return p.parse_args()
 
 
-def plan_searches(alert_list, previous, day, force):
+def searched_hour(entry):
+    """Ora (în România) la care a fost căutată o combinație, din câmpul searched_at."""
+    try:
+        return datetime.fromisoformat(entry["searched_at"]).astimezone(TIMEZONE).hour
+    except (KeyError, TypeError, ValueError):
+        return -1
+
+
+def plan_searches(alert_list, previous, day, force, hour):
     """
-    Decide ce combinații trebuie căutate azi.
-    O combinație NU se mai caută dacă a fost deja căutată azi cu exact aceiași
-    parametri (asta face ca modificarea unei alerte să caute doar ce s-a schimbat).
+    Decide ce combinații trebuie căutate acum (workflow-ul rulează în fiecare oră).
+    Fiecare alertă are orele ei (ex. 08:00 și 20:00). O combinație se caută dacă:
+      - e nouă sau i s-au schimbat parametrii (ex. alertă editată), sau
+      - a trecut o oră programată de la ultima căutare (ex. e 20:xx și ultima căutare a fost la 08:xx).
+    Rulările fără nimic programat nu consumă credite.
     Întoarce: {alert_id: [(combo, params, key, rezultat_vechi_sau_None), ...]}
     """
     plan = {}
     for alert in alert_list:
         old_combos = {c.get("search_key"): c for c in (previous.get(alert["id"]) or {}).get("combinations", [])}
+        slot = A.current_slot(alert, hour)
         items = []
         for combo in A.active_combinations(alert, day):
             params = A.search_params(alert, combo)
             key = A.search_key(params)
             old = old_combos.get(key)
-            reusable = (old is not None and not force and old.get("searched_on") == day.isoformat()
-                        and old.get("status") in ("ok", "no_results"))
+            fresh = (slot is None  # nu a venit încă prima oră programată azi: păstrăm ultimele rezultate
+                     or (old is not None and old.get("searched_on") == day.isoformat() and searched_hour(old) >= slot))
+            reusable = (old is not None and not force and old.get("status") in ("ok", "no_results") and fresh)
             items.append((combo, params, key, old if reusable else None))
         plan[alert["id"]] = items
     return plan
@@ -140,7 +154,9 @@ def main():
 
     state = storage.load_state()
     previous = {a["id"]: storage.load_results(a["id"]) for a in active_alerts}
-    plan = plan_searches(active_alerts, previous, day, args.force)
+    hour = args.hour if args.hour is not None else now().hour
+    print(f"Ora (România): {hour:02d}:xx")
+    plan = plan_searches(active_alerts, previous, day, args.force, hour)
     needed = sum(1 for items in plan.values() for (_, _, _, old) in items if old is None)
     status["planned_searches"] = needed
     print(f"Căutări necesare acum: {needed}")
@@ -148,6 +164,10 @@ def main():
     # 2) Clientul SerpApi (real sau de test). Cheia e necesară doar dacă avem ce căuta.
     link = app_url(settings)
     waiting = one_time.pending(storage)
+    if needed == 0 and not waiting and args.trigger == "schedule":
+        # Rularea din oră în oră: nimic programat acum -> ne oprim fără să scriem nimic (fără commit)
+        print("Nimic programat la ora asta. Gata.")
+        return
     if args.dry_run:
         client = FakeSerpApiClient(day)
     else:
@@ -201,6 +221,8 @@ def main():
                 combos_out.append(old)  # deja căutată azi cu aceiași parametri
                 continue
             entry = new_entry(combo, params, key, day)
+            if args.hour is not None:
+                entry["searched_at"] = f"{day.isoformat()}T{hour:02d}:30:00+03:00"  # (doar la teste cu --hour)
             if fatal_error:
                 entry.update(status="error", error=f"Sărită: {fatal_error}")
                 combos_out.append(entry)
@@ -248,8 +270,13 @@ def main():
         combos = [c for c in results.get("combinations", []) if c.get("lowest_price") is not None]
         if not any(c["lowest_price"] <= alert.get("max_price", 0) for c in combos):
             continue
-        # O singură notificare pe zi, cu excepția cazului în care alerta a fost modificată
-        notify_key = f"{day.isoformat()}|{alert.get('max_price')}|" + ",".join(sorted(c["search_key"] for c in combos))
+        # O notificare pe zi (sau pe parte a zilei, la 2× pe zi), cu excepția cazului în care alerta a fost modificată
+        # Alertele cu mai multe ore pe zi primesc câte un rezumat după fiecare căutare programată
+        slot = A.current_slot(alert, hour)
+        part = f"@{slot}" if A.searches_per_day(alert) > 1 and slot is not None else ""
+        if part and not any(c.get("searched_on") == day.isoformat() and searched_hour(c) >= slot for c in combos):
+            continue  # nu s-a căutat nimic nou de la ultima oră programată: nu repetăm rezumatul
+        notify_key = f"{day.isoformat()}{part}|{alert.get('max_price')}|" + ",".join(sorted(c["search_key"] for c in combos))
         if state.setdefault("notifications", {}).get(alert["id"]) == notify_key and not args.force:
             continue
         title, body, url, app = alert_summary(alert, results, link)

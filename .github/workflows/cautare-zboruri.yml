@@ -8,9 +8,10 @@ name: Căutare zboruri
 
 on:
   schedule:
-    # Cron-ul GitHub este în UTC. 06:17 UTC = 08:17 iarna / 09:17 vara, ora României.
-    # Minutul 17 (nu :00) evită aglomerația de la ora fixă, când GitHub întârzie rulările.
-    - cron: "17 6 * * *"
+    # În fiecare oră, la minutul 17 (nu :00, când GitHub e aglomerat și întârzie rulările).
+    # Scriptul caută doar alertele care au o oră programată (ora României) la care nu s-au căutat încă.
+    # Rulările fără nimic programat se opresc în câteva secunde: fără credite și fără commit.
+    - cron: "17 * * * *"
   workflow_dispatch:
     inputs:
       force:

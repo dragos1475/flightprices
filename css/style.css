@@ -863,3 +863,9 @@ details.combo.flash { animation: flash 1.2s ease; }
 
 .alert-route { white-space: nowrap; }
 .alert-route .codes { flex: none; }
+
+/* orele de căutare din formular */
+.hours-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin-top: 10px; }
+.hour-pick { display: flex; align-items: center; gap: 8px; }
+.hour-pick span { font-size: 12px; font-weight: 600; color: var(--muted); }
+.hour-pick select { height: 40px; }
