@@ -1,0 +1,21 @@
+{
+  "searches": [
+    {
+      "id": "s-20260927-174902-f3ez",
+      "title": "Bali Ubud",
+      "created_at": "2026-09-27T14:49:02.241Z",
+      "status": "done",
+      "message": null,
+      "lowest_price": 727,
+      "currency": "EUR",
+      "departures": [
+        {
+          "date": "2027-02-18",
+          "nights": [
+            9
+          ]
+        }
+      ]
+    }
+  ]
+}
