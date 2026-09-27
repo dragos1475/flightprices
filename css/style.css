@@ -590,3 +590,15 @@ input:focus, select:focus, textarea:focus { border-color: var(--wow-violet); box
 .tabbar .tab-new i { width: 46px; height: 46px; border-radius: 16px; background: linear-gradient(135deg, var(--wow-violet), var(--wow-cyan)); box-shadow: 0 8px 18px color-mix(in srgb, var(--wow-violet) 32%, transparent); }
 @media (max-width: 480px) { main { padding-inline: 13px; } .page-head { padding-top: 20px; } .page-head::after { right: 0; transform: rotate(14deg) scale(.78); } .page-head h1 { max-width: 86%; } .page-head p { max-width: 88%; } .tabbar { left: 10px; right: 10px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+
+/* Corecturi peste stilul din Replit (păstrează aspectul nou, repară funcțiile vizuale) */
+input[type=checkbox], input[type=radio] { min-height: 0; box-shadow: none; }
+.switch { min-height: 0; height: 28px; border-radius: 999px; }
+.btn.sm { min-height: 34px; border-radius: 10px; }
+/* verdele „sub prag” are prioritate față de gradient: e informația principală */
+.price-xl.good-text, .hero-price .price-xl.good-text { background: none; color: var(--good); }
+/* textul de pe butonul „Căutare nouă” trebuie să fie lizibil pe fundalul colorat */
+a.search-cta, a.search-cta b { color: #fff; }
+a.search-cta .row-sub { color: rgba(255, 255, 255, .88); }
+a.search-cta .chev { color: rgba(255, 255, 255, .8); }
+a.search-cta .cta-ico { background: rgba(255, 255, 255, .18); color: #fff; box-shadow: none; }
