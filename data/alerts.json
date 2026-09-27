@@ -43,6 +43,50 @@
       ],
       "updated_at": "2026-09-27T21:38:29.582Z",
       "created_at": "2026-09-27T16:23:26.605Z"
+    },
+    {
+      "id": "bali-from-malpensa-qn6u",
+      "name": "Bali from Malpensa",
+      "active": true,
+      "monitor_start": "2026-09-28",
+      "monitor_end": "2026-12-01",
+      "departure_airports": [
+        "MXP"
+      ],
+      "destination": {
+        "id": "DPS",
+        "name": "Bali (Denpasar)",
+        "codes": [
+          "DPS"
+        ]
+      },
+      "trip_type": "round_trip",
+      "departures": [
+        {
+          "date": "2027-02-18",
+          "nights": [
+            8,
+            9
+          ]
+        }
+      ],
+      "airlines": [
+        "TK",
+        "EK",
+        "QR",
+        "EY",
+        "SQ"
+      ],
+      "max_price": 700,
+      "currency": "EUR",
+      "adults": 1,
+      "bags": 0,
+      "max_stops": null,
+      "search_hours": [
+        12
+      ],
+      "updated_at": "2026-09-27T21:41:56.200Z",
+      "created_at": "2026-09-27T21:41:56.200Z"
     }
   ]
 }
