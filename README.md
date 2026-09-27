@@ -268,6 +268,12 @@ companiile și escalele, iar în 1–2 minute vezi toate prețurile. Primești �
 - **Partajare**: butonul de lângă „Google Flights” trimite oferta (rută, preț, zboruri, link) pe WhatsApp, Mesaje etc.
 - **Gesturi**: trage o alertă spre stânga ca s-o oprești sau s-o ștergi; trage lista în jos ca s-o reîmprospătezi.
 - **Primii pași**: pe ecranul principal, o listă cu bife te ghidează prin configurare (dispare când e totul gata).
+- **Poze cu destinația** (de pe Wikipedia, cu mențiunea sursei) în cardul principal și ca miniaturi în listă.
+- **Călătoria**: hartă cu traseul real, distanța, cel mai scurt zbor găsit și **vremea** la destinație pentru datele
+  tale (prognoză dacă pleci în următoarele ~15 zile, altfel media din ultimii 3 ani).
+- **EUR ⇄ RON**: comuți moneda afișată din cardul principal sau din Setări (cursul BCE, actualizat zilnic).
+  Pragurile și notificările rămân în moneda alertei.
+- **Cerul după ora din zi** pe ecranul principal (răsărit, zi, apus, noapte cu stele) și un **ecran de pornire** animat.
 
 ---
 
@@ -366,6 +372,9 @@ Ryanair zboară ca FR, RK (UK), AL (Malta Air) și RR (Buzz). În aplicație ale
   nici în log-urile publice ale Actions (GitHub le ascunde automat, iar scriptul șterge cheia din mesajele de eroare).
 - **Tokenul GitHub** stă doar pe telefon și are acces doar la acest repository, doar la conținut. Pune-i dată de expirare.
 - **Topicul ntfy** funcționează ca o parolă: alege un nume lung și aleatoriu.
+- Pentru poze, hartă, vreme și curs, aplicația folosește servicii gratuite, fără cont: Wikipedia/Wikimedia,
+  Open-Meteo, frankfurter.dev (cursul BCE) și jsDelivr (bibliotecile hărții). Ele primesc doar numele orașului,
+  coordonatele sau moneda. Dacă un serviciu nu răspunde, partea respectivă pur și simplu nu apare.
 - Fonturile aplicației (Inter și Plus Jakarta Sans) se încarcă de la Google Fonts. Fără internet, aplicația
   folosește fontul telefonului.
 - Nu comite niciodată fișiere `.env` sau `.pem`. Ele sunt deja în `.gitignore`.
@@ -416,6 +425,9 @@ index.html, css/, js/          aplicația (PWA)
   js/heatmap.js                calendarul de prețuri
   js/motion.js, gestures.js    animații, ruta animată, glisare, tragere pentru reîmprospătare
   js/flags.js, onboarding.js   steaguri pe destinații, ghidul „Primii pași”
+  js/geo.js, media.js          coordonatele orașelor (Open-Meteo) și pozele (Wikipedia)
+  js/map.js, trip.js, weather.js  harta traseului, secțiunea „Călătoria”, vremea
+  js/currency.js               afișarea în EUR/RON
   js/budget.js                 calculul combinațiilor și al bugetului (la fel ca scraper/alerts.py)
   js/data.js                   citirea datelor și salvarea prin GitHub API
   js/push.js                   notificări push + generator chei VAPID
@@ -439,5 +451,6 @@ scraper/                       scriptul Python
   storage.py                   scrierea fișierelor JSON
   fixtures/                    răspunsuri salvate pentru --dry-run
 tools/genereaza_chei_vapid.py  generator de chei VAPID
+tools/genereaza_splash.py      generează imaginile de pornire pentru iPhone (icons/splash/)
 .github/workflows/cautare-zboruri.yml   programarea în GitHub Actions
 ```

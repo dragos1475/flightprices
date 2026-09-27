@@ -1,6 +1,7 @@
 // Gesturi: glisare spre stânga pe carduri (acțiuni) și tragere în jos pentru reîmprospătare.
 
 import { icon } from './icons.js';
+import { haptic } from './motion.js';
 
 const OPEN_X = -148; // cât se deschide cardul (lățimea butoanelor din spate)
 
@@ -67,6 +68,7 @@ export function enableSwipe(root) {
       if (dx < OPEN_X / 2) {
         card.style.transform = `translateX(${OPEN_X}px)`;
         card.classList.add('is-open');
+        haptic(10);
         open = card;
       } else {
         close(card);
@@ -127,6 +129,7 @@ export function enablePullToRefresh(onRefresh) {
     startY = null;
     if (pull >= THRESHOLD && !busy) {
       busy = true;
+      haptic(12);
       indicator.classList.add('spinning');
       try {
         await onRefresh();

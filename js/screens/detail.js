@@ -2,15 +2,18 @@
 
 import { alertStatus, comboKey, isOneWay } from '../budget.js';
 import { renderChart, SERIES_COLORS } from '../chart.js';
+import { currencyToggle, bindCurrencyToggle, convertedNote } from '../currency-ui.js';
+import { forDisplay } from '../currency.js';
 import { hasWriteAccess, saveAlert } from '../data.js';
 import { renderHeatmap } from '../heatmap.js';
 import { icon } from '../icons.js';
 import { verdict } from '../insights.js';
 import { celebrate, countUp } from '../motion.js';
 import {
-  bindResults, comboDates, comboNights, focusCombo, heroRoute, maxStopsOf, newView, resultsSections, shareCombo,
-  stopsLabel, tripLabel, verdictCard,
+  bindResults, comboDates, comboNights, decorateHero, focusCombo, heroRoute, maxStopsOf, newView, resultsSections,
+  shareCombo, stopsLabel, tripLabel, verdictCard,
 } from '../results-view.js';
+import { fillTrip, tripDates, tripSection } from '../trip.js';
 import {
   airlineNames, ensureAlerts, ensureConfig, loadHistory, loadResults, state, summarize,
 } from '../state.js';
@@ -45,7 +48,10 @@ export async function renderDetail(app, id) {
   if (!cached || results?.updated_at !== before) draw(app, alert, results, history, !cached);
 }
 
-function draw(app, alert, results, history, animate) {
+function draw(app, rawAlert, rawResults, rawHistory, animate) {
+  // prețurile se afișează în moneda aleasă (EUR/RON); datele salvate rămân neschimbate
+  const disp = forDisplay(rawAlert, rawResults, rawHistory);
+  const { alert, results, history } = disp;
   const id = alert.id;
   const today = todayRO();
   const st = alertStatus(alert, today);
@@ -58,7 +64,7 @@ function draw(app, alert, results, history, animate) {
     title: alert.name,
     back: '#/',
     actions: [
-      ...(hasWriteAccess() ? [{ icon: alert.active === false ? 'play' : 'pause', label: alert.active === false ? 'Pornește' : 'Oprește', id: 'toggle-active' }] : []),
+      ...(hasWriteAccess() ? [{ icon: rawAlert.active === false ? 'play' : 'pause', label: rawAlert.active === false ? 'Pornește' : 'Oprește', id: 'toggle-active' }] : []),
       { icon: 'edit', label: 'Editează', href: `#/alerta/${encodeURIComponent(alert.id)}/editeaza` },
     ],
   });
@@ -90,11 +96,15 @@ function draw(app, alert, results, history, animate) {
           <div class="price-xl ${sum.under ? 'good-text' : ''}" style="view-transition-name:${vt}-price">${sum.lowest !== null
             ? `<span data-count="${sum.lowest}">${money(sum.lowest)}</span>` : '—'}<small>${cur}</small></div>
         </div>
-        ${sum.lowest !== null
-          ? (sum.under ? `<span class="badge good">${icon('check')}Sub prag</span>` : '<span class="badge">Peste prag</span>')
-          : `<span class="badge ${st.cls}">${st.label}</span>`}
+        <div class="hero-side">
+          ${sum.lowest !== null
+            ? (sum.under ? `<span class="badge good">${icon('check')}Sub prag</span>` : '<span class="badge">Peste prag</span>')
+            : `<span class="badge ${st.cls}">${st.label}</span>`}
+          ${currencyToggle(rawResults?.currency || rawAlert.currency || 'EUR', cur)}
+        </div>
       </div>
       ${sum.best ? `<div class="hero-sub">${comboDates(sum.best)} · ${comboNights(sum.best)}${bestFlight ? ` · ${h(bestFlight.airlines.join(' / '))}` : ''}</div>` : ''}
+      ${convertedNote(disp)}
 
       ${max ? `<div class="threshold-bar ${sum.under ? 'under' : ''}">
         <div class="track"><div class="fill" style="width:${fillPct}%"></div><div class="mark" style="left:calc(${markPct}% - 1px)"></div></div>
@@ -121,6 +131,8 @@ function draw(app, alert, results, history, animate) {
     </div>
 
     ${verdictCard(v)}
+
+    ${tripSection()}
 
     <div id="heat-section">
       <div class="section-label"><span>Calendar de prețuri</span></div>
@@ -161,6 +173,10 @@ function draw(app, alert, results, history, animate) {
 
   app.querySelector('#hero-share')?.addEventListener('click', () => shareCombo(ctx, sum.best));
 
+  bindCurrencyToggle(app);
+  decorateHero(app, alert.destination);
+  fillTrip(app, { deps, destination: alert.destination, combos: sum.combos, dates: tripDates(sum.best, alert.departures) });
+
   if (animate) countUp(app);
   if (sum.under && st.key === 'active') celebrate(app.querySelector('.hero'), id, today);
 
@@ -168,11 +184,11 @@ function draw(app, alert, results, history, animate) {
     const btn = e.currentTarget;
     btn.disabled = true;
     try {
-      const updated = { ...alert, active: alert.active === false, updated_at: new Date().toISOString() };
+      const updated = { ...rawAlert, active: rawAlert.active === false, updated_at: new Date().toISOString() };
       const doc = await saveAlert(updated);
       state.alerts = doc.alerts;
       toast(updated.active ? 'Alerta a fost pornită' : 'Alerta a fost oprită');
-      draw(app, updated, results, history, false);
+      draw(app, updated, rawResults, rawHistory, false);
     } catch (err) {
       toast(err.message, 6000);
       btn.disabled = false;

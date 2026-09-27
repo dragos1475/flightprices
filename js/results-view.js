@@ -5,8 +5,10 @@ import { comboKey } from './budget.js';
 import { airportFlag, countryTint, destFlag, destinationIso } from './flags.js';
 import { icon } from './icons.js';
 import { VERDICT_STYLE } from './insights.js';
-import { routeArc } from './motion.js';
-import { airportName, priceLevel } from './state.js';
+import { locateDestination, nameCandidates } from './geo.js';
+import { cityPhoto, loadImage } from './media.js';
+import { routeArc, skyPhase } from './motion.js';
+import { airportName, priceLevel, state } from './state.js';
 import { dateTime, dayDate, duration, h, hour, money, share } from './util.js';
 
 /**
@@ -242,7 +244,10 @@ export function maxStopsOf(x) {
   return x.direct_only ? 0 : null;
 }
 
-/** Ruta din cardul principal: coduri, steaguri și arcul animat. Întoarce {html, tint}. */
+/**
+ * Partea de sus a cardului principal: un „banner” cu cerul momentului zilei (sau poza destinației,
+ * încărcată ulterior de decorateHero), cu ruta, steagurile și arcul animat deasupra.
+ */
 export function heroRoute(deps = [], destination = {}) {
   const codes = destination?.codes || [];
   const fromCode = deps.length > 2 ? `${deps[0]} +${deps.length - 1}` : deps.join(' · ');
@@ -250,16 +255,40 @@ export function heroRoute(deps = [], destination = {}) {
   const toCode = codes.length > 2 ? `${codes[0]} +${codes.length - 1}` : codes.join(' · ');
   const fromFlag = airportFlag(deps[0]);
   const toFlag = destFlag(destination);
+  const phase = skyPhase();
   return {
     tint: countryTint(destinationIso(destination)),
-    html: `<div class="hero-route v2">
-      <div class="iata">${h(fromCode)}</div>
-      <div class="iata right">${h(toCode)}</div>
-      <div class="path">${routeArc()}</div>
-      <div class="place">${fromFlag ? `${fromFlag} ` : ''}${h(fromPlace)}</div>
-      <div class="place right">${toFlag ? `${toFlag} ` : ''}${h(destination?.name || '')}</div>
+    html: `<div class="hero-banner sky-${phase}">
+      <div class="hero-photo" aria-hidden="true"></div>
+      <div class="hero-route v2">
+        <div class="iata">${h(fromCode)}</div>
+        <div class="iata right">${h(toCode)}</div>
+        <div class="path">${routeArc()}</div>
+        <div class="place">${fromFlag ? `${fromFlag} ` : ''}${h(fromPlace)}</div>
+        <div class="place right">${toFlag ? `${toFlag} ` : ''}${h(destination?.name || '')}</div>
+      </div>
+      <a class="photo-credit" hidden target="_blank" rel="noopener">Foto: Wikipedia</a>
     </div>`,
   };
+}
+
+/** Încarcă poza destinației în bannerul cardului principal (dacă găsim una potrivită). */
+export async function decorateHero(root, destination) {
+  const banner = root.querySelector('.hero-banner');
+  if (!banner) return;
+  const full = state.config?.destinations.find((d) => d.id === destination?.id);
+  const name = full?.name || destination?.name || '';
+  const place = await locateDestination(destination);
+  const photo = await cityPhoto([place?.name, ...nameCandidates(name)]);
+  if (!photo || !banner.isConnected) return;
+  const url = await loadImage(photo.hero, photo.original);
+  if (!url || !banner.isConnected) return;
+  banner.querySelector('.hero-photo').style.backgroundImage = `url("${url}")`;
+  banner.classList.add('has-photo');
+  const credit = banner.querySelector('.photo-credit');
+  credit.href = photo.page;
+  credit.title = photo.title;
+  credit.hidden = false;
 }
 
 /** Cardul cu verdictul „Cumpără acum / Mai așteaptă”. */

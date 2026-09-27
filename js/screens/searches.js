@@ -5,6 +5,8 @@
 //   status "done"     -> are rezultate
 //   status "rejected" -> refuzată (parolă greșită, credite insuficiente etc.), fără credite consumate
 
+import { bindCurrencyToggle, convertedNote, currencyToggle } from '../currency-ui.js';
+import { forDisplay } from '../currency.js';
 import { deleteFile, githubLinks, hasWriteAccess, listDir, loadJSON } from '../data.js';
 import { destFlag } from '../flags.js';
 import { enablePullToRefresh } from '../gestures.js';
@@ -13,9 +15,10 @@ import { icon } from '../icons.js';
 import { verdict } from '../insights.js';
 import { countUp } from '../motion.js';
 import {
-  bindResults, comboDates, comboNights, focusCombo, heroRoute, maxStopsOf, newView, resultsSections, shareCombo,
-  stopsLabel, tripLabel, verdictCard,
+  bindResults, comboDates, comboNights, decorateHero, focusCombo, heroRoute, maxStopsOf, newView, resultsSections,
+  shareCombo, stopsLabel, tripLabel, verdictCard,
 } from '../results-view.js';
+import { fillTrip, tripDates, tripSection } from '../trip.js';
 import { airlineNames, ensureConfig } from '../state.js';
 import { setNav, skeleton } from '../ui.js';
 import { dateTime, h, money, shortDate, toast } from '../util.js';
@@ -135,9 +138,11 @@ export async function renderSearchResult(app, id) {
 
   const draw = () => {
     const req = parseRequest(doc);
-    const res = doc.results || {};
-    const cur = res.currency || req.currency || 'EUR';
-    const maxPrice = Number(req.max_price) || 0;
+    // prețurile se afișează în moneda aleasă (EUR/RON)
+    const disp = forDisplay({ ...req, max_price: Number(req.max_price) || 0 }, doc.results, null);
+    const res = disp.results || {};
+    const cur = disp.currency;
+    const maxPrice = Number(disp.alert.max_price) || 0;
     const combos = res.combinations || [];
     const best = combos.filter((c) => c.lowest_price !== null && c.lowest_price !== undefined)
       .sort((a, b) => a.lowest_price - b.lowest_price)[0];
@@ -180,9 +185,13 @@ export async function renderSearchResult(app, id) {
             <div class="price-xl ${best && maxPrice && best.lowest_price <= maxPrice ? 'good-text' : ''}">${best
               ? `<span data-count="${best.lowest_price}">${money(best.lowest_price)}</span>` : '—'}<small>${cur}</small></div>
           </div>
-          ${maxPrice ? `<span class="small muted">prag ${money(maxPrice, cur)}</span>` : ''}
+          <div class="hero-side">
+            ${maxPrice ? `<span class="small muted">prag ${money(maxPrice, cur)}</span>` : ''}
+            ${currencyToggle(doc.results?.currency || req.currency || 'EUR', cur)}
+          </div>
         </div>
-        ${best ? `<div class="hero-sub">${comboDates(best)} · ${comboNights(best)} · ${h((best.flights?.[0]?.airlines || []).join(' / '))}</div>` : ''}` : ''}
+        ${best ? `<div class="hero-sub">${comboDates(best)} · ${comboNights(best)} · ${h((best.flights?.[0]?.airlines || []).join(' / '))}</div>` : ''}
+        ${convertedNote(disp)}` : ''}
         <div class="meta-chips">
           <span>${icon('plane')}${tripLabel(req)}</span>
           <span>${icon('calendar')}${(req.departures || []).map((d) => (req.trip_type === 'one_way' || !(d.nights || []).length
@@ -200,11 +209,16 @@ export async function renderSearchResult(app, id) {
       </div>
       ${head}
       ${verdictCard(v)}
+      ${tripSection()}
       <div id="heat-section" hidden>
         <div class="section-label"><span>Calendar de prețuri</span></div>
         <div class="card"><div id="heatmap"></div></div>
       </div>
       <div id="results"></div>`;
+
+    bindCurrencyToggle(app);
+    decorateHero(app, req.destination);
+    fillTrip(app, { deps, destination: req.destination, combos, dates: tripDates(best, req.departures) });
 
     if (doc.status === 'done') {
       const el = app.querySelector('#results');

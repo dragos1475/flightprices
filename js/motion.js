@@ -69,3 +69,40 @@ export function routeArc() {
     </g>
   </svg>`;
 }
+
+/** Momentul zilei în România: 'dawn' (5–8), 'day' (8–17), 'dusk' (17–20), 'night'. */
+export function skyPhase(date = new Date()) {
+  const hour = Number(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Bucharest', hour: '2-digit', hour12: false }).format(date));
+  if (hour >= 5 && hour < 8) return 'dawn';
+  if (hour >= 8 && hour < 17) return 'day';
+  if (hour >= 17 && hour < 20) return 'dusk';
+  return 'night';
+}
+
+/** Vibrație scurtă (doar pe telefoanele care o suportă, ex. Android). */
+export function haptic(pattern = 8) {
+  try {
+    if (!reducedMotion()) navigator.vibrate?.(pattern);
+  } catch { /* nesuportat */ }
+}
+
+/** Bifă animată pe tot ecranul (după salvare). Se termină singură după ~1 s. */
+export function successCheck(text) {
+  haptic([10, 40, 10]);
+  const el = document.createElement('div');
+  el.className = 'success-overlay';
+  el.setAttribute('role', 'status');
+  el.innerHTML = `<div class="success-box">
+    <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" pathLength="1"/><path d="M15 27l7 7 15-16" pathLength="1"/></svg>
+    <span>${text}</span></div>`;
+  document.body.appendChild(el);
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      el.classList.add('out');
+      setTimeout(() => {
+        el.remove();
+        resolve();
+      }, 250);
+    }, reducedMotion() ? 500 : 950);
+  });
+}

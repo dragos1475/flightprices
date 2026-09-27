@@ -7,6 +7,7 @@ import {
 } from '../data.js';
 import { countryFlag, destFlag } from '../flags.js';
 import { icon } from '../icons.js';
+import { successCheck } from '../motion.js';
 import { maxStopsOf } from '../results-view.js';
 import { ensureAlerts, ensureConfig, loadStatus, state } from '../state.js';
 import { setNav, setTabbarVisible, skeleton, stepper, toggle } from '../ui.js';
@@ -589,7 +590,8 @@ async function submitSearch(app, errBox) {
     const sig = await signSearch(req.id, text, password);
     const doc = { id: req.id, status: 'pending', created_at: req.created_at, request: text, sig };
     await createFile(`data/searches/${req.id}.json`, JSON.stringify(doc, null, 2) + '\n', `Căutare rapidă: ${req.title}`);
-    toast('Căutarea a pornit. Rezultatele apar în 1–2 minute.', 4500);
+    await successCheck('Căutare trimisă');
+    toast('Rezultatele apar în 1–2 minute.', 4000);
     location.hash = `#/cautare/${encodeURIComponent(req.id)}`;
   } catch (err) {
     errBox.innerHTML = `<div class="banner bad">${icon('warning', 18)}<div><b>Nu am putut porni căutarea.</b><br>${h(err.message)}</div></div>`;
@@ -730,7 +732,8 @@ function bindEvents(app) {
     try {
       const doc = await saveAlert(alert);
       state.alerts = doc.alerts;
-      toast('Salvat. Căutarea pornește în 1–2 minute.', 4500);
+      await successCheck(original ? 'Alertă actualizată' : 'Alertă creată');
+      toast('Căutarea pornește în 1–2 minute.', 4000);
       location.hash = `#/alerta/${encodeURIComponent(alert.id)}`;
     } catch (err) {
       errBox.innerHTML = `<div class="banner bad">${icon('warning', 18)}<div><b>Nu am putut salva.</b><br>${h(err.message)}</div></div>`;

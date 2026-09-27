@@ -1,12 +1,15 @@
 // Ecranul 1: lista alertelor, cu starea fiecăreia, cel mai mic preț curent și evoluția lui.
 
 import { alertStatus, comboKey, estimateBudget, isOneWay } from '../budget.js';
+import { forDisplay } from '../currency.js';
 import { deleteAlert, hasWriteAccess, saveAlert } from '../data.js';
+import { locateDestination, nameCandidates } from '../geo.js';
+import { cityPhoto, loadImage } from '../media.js';
 import { destFlag } from '../flags.js';
 import { enablePullToRefresh, enableSwipe } from '../gestures.js';
 import { icon } from '../icons.js';
 import { VERDICT_STYLE, verdict } from '../insights.js';
-import { countUp } from '../motion.js';
+import { countUp, skyPhase } from '../motion.js';
 import { bindOnboarding, onboardingCard } from '../onboarding.js';
 import {
   ensureAlerts, ensureConfig, loadHistory, loadResults, loadStatus, state, summarize,
@@ -63,9 +66,11 @@ function draw(app, animate) {
 
   const onboarding = onboardingCard({ status, alerts });
   app.innerHTML = `
-    <div class="page-head">
+    <div class="page-head sky sky-${skyPhase()}">
+      <div class="sky-orb" aria-hidden="true"></div>
+      <div class="sky-greeting">${greeting()}</div>
       <h1>Zborurile mele</h1>
-      <p>${activeCount} ${activeCount === 1 ? 'alertă activă' : 'alerte active'}${underCount ? ` · <span class="good-text">${underCount} sub prag</span>` : ''}</p>
+      <p>${activeCount} ${activeCount === 1 ? 'alertă activă' : 'alerte active'}${underCount ? ` · <b>${underCount} sub prag</b>` : ''}</p>
     </div>
 
     ${onboarding}
@@ -99,6 +104,7 @@ function draw(app, animate) {
   bindRefresh(app);
   bindOnboarding(app);
   if (animate) countUp(app);
+  loadThumbs(app);
   if (hasWriteAccess()) {
     enableSwipe(app);
     bindSwipeActions(app);
@@ -157,12 +163,46 @@ function statusBanner(status) {
   return out.join('');
 }
 
-function alertCard(alert, st, sum, today) {
-  const cur = alert.currency || 'EUR';
+/** 'OTP · BBU · CLJ' -> 'OTP +2' (ca să încapă pe un rând). */
+function depCodes(codes = []) {
+  return codes.length > 2 ? `${codes[0]} +${codes.length - 1}` : codes.join(' · ');
+}
+
+/** Salutul după ora din România. */
+function greeting() {
+  const hour = Number(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Bucharest', hour: '2-digit', hour12: false }).format(new Date()));
+  if (hour >= 5 && hour < 12) return 'Bună dimineața';
+  if (hour >= 12 && hour < 18) return 'Bună ziua';
+  if (hour >= 18 && hour < 23) return 'Bună seara';
+  return 'Noapte bună';
+}
+
+/** Miniaturile cu destinația (poze de pe Wikipedia), încărcate după ce lista e afișată. */
+function loadThumbs(app) {
+  app.querySelectorAll('[data-thumb]').forEach(async (el) => {
+    const alert = state.alerts.find((a) => a.id === el.dataset.thumb);
+    if (!alert) return;
+    const full = state.config.destinations.find((d) => d.id === alert.destination?.id);
+    const place = await locateDestination(alert.destination);
+    const photo = await cityPhoto([place?.name, ...nameCandidates(full?.name || alert.destination?.name)]);
+    if (!photo || !el.isConnected) return;
+    const url = await loadImage(photo.thumb, photo.original);
+    if (!url || !el.isConnected) return;
+    el.style.backgroundImage = `url("${url}")`;
+    el.classList.add('has-photo');
+  });
+}
+
+function alertCard(rawAlert, st, rawSum, today) {
+  // prețurile se afișează în moneda aleasă (EUR/RON)
+  const disp = forDisplay(rawAlert, state.results[rawAlert.id], state.history[rawAlert.id]);
+  const alert = disp.alert;
+  const sum = disp.converted ? summarize(alert, disp.results, today) : rawSum;
+  const cur = disp.currency;
   const results = state.results[alert.id];
   const live = st.key === 'active' || st.key === 'scheduled';
   const keys = sum.combos.map(comboKey);
-  const series = overallMinSeries(state.history[alert.id], keys, cur).slice(-14);
+  const series = overallMinSeries(disp.history, keys, cur).slice(-14);
 
   // Variația față de ziua precedentă
   let delta = '';
@@ -200,9 +240,12 @@ function alertCard(alert, st, sum, today) {
   return `
     <div class="swipe-wrap">${actions}
     <a class="card alert-card swipe-card ${sum.under && st.key === 'active' ? 'is-under' : ''}" href="#/alerta/${encodeURIComponent(alert.id)}" style="view-transition-name:${vt}">
-      <div style="min-width:0">
+      <div class="alert-head">
+        <span class="thumb" data-thumb="${h(alert.id)}" aria-hidden="true">${flag || '✈️'}</span>
+        <div style="min-width:0">
         <div class="alert-name"><span class="dot ${st.key === 'active' ? 'on' : st.key === 'scheduled' ? 'info' : ''}" title="${st.label}"></span><span>${h(alert.name || alert.id)}</span></div>
-        <div class="alert-route"><span class="codes">${h((alert.departure_airports || []).join(' · '))}</span>${icon('chevron', 14)}<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${flag ? `<span class="flag">${flag}</span> ` : ''}${h(alert.destination?.name || '')}</span></div>
+        <div class="alert-route"><span class="codes">${h(depCodes(alert.departure_airports))}</span>${icon('chevron', 14)}<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${flag ? `<span class="flag">${flag}</span> ` : ''}${h(alert.destination?.name || '')}</span></div>
+        </div>
       </div>
       <div class="alert-price">${priceHtml}</div>
       <div class="alert-meta">

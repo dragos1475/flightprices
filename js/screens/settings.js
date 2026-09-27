@@ -3,6 +3,7 @@
 import {
   getBranch, getRepo, getToken, githubLinks, hasWriteAccess, saveVapidPublicKey, setBranch, setRepo, setToken, testAccess,
 } from '../data.js';
+import { cachedRate, displayCurrency, refreshRate, setDisplayCurrency } from '../currency.js';
 import { icon } from '../icons.js';
 import {
   currentSubscription, generateVapidKeys, localTestNotification, pushSupport, subscribe, unsubscribe,
@@ -86,6 +87,20 @@ export async function renderSettings(app) {
       </div>
     </div>
     <p class="section-note">Test complet de la GitHub până pe telefon: Actions → „Căutare zboruri” → Run workflow → bifează „test notificări”.</p>
+
+    <div class="section-label"><span>Afișare</span></div>
+    <div class="group">
+      <div class="row-stack">
+        <span class="label">Moneda în care văd prețurile</span>
+        <div class="seg full" role="group" aria-label="Moneda afișată">
+          ${[['', 'Ca în alertă'], ['EUR', 'EUR'], ['RON', 'RON']].map(([v, l]) => `
+            <button type="button" data-pref-cur="${v}" aria-pressed="${displayCurrency() === v}">${l}</button>`).join('')}
+        </div>
+        <p class="hint">Conversia folosește cursul BCE (actualizat zilnic). Pragurile și notificările rămân în moneda alertei.</p>
+      </div>
+    </div>
+    <p class="section-note">Pentru poze, hartă, vreme și curs, aplicația folosește servicii gratuite: Wikipedia, Open-Meteo,
+      frankfurter.dev (BCE) și jsDelivr. Ele primesc doar numele orașului sau moneda, nimic personal.</p>
 
     <div class="section-label"><span>Căutare rapidă</span></div>
     <div class="group">
@@ -199,6 +214,17 @@ export async function renderSettings(app) {
     toast('Notificările au fost dezactivate');
     renderSettings(app);
   });
+
+  app.querySelectorAll('[data-pref-cur]').forEach((b) => b.addEventListener('click', async () => {
+    const cur = b.dataset.prefCur;
+    if (cur && !cachedRate() && !(await refreshRate())) {
+      toast('Nu am putut obține cursul EUR/RON. Încearcă din nou când ai internet.');
+      return;
+    }
+    setDisplayCurrency(cur);
+    app.querySelectorAll('[data-pref-cur]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    toast(cur ? `Prețurile se afișează în ${cur}` : 'Prețurile se afișează în moneda fiecărei alerte');
+  }));
 
   app.querySelector('#pw-forget')?.addEventListener('click', () => {
     try { sessionStorage.removeItem('zboruri.search_password'); } catch { /* indisponibil */ }

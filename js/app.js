@@ -11,8 +11,9 @@
 //   #/setari               setări
 
 import { registerServiceWorker } from './push.js';
+import { refreshRate } from './currency.js';
 import { disablePullToRefresh } from './gestures.js';
-import { reducedMotion } from './motion.js';
+import { haptic, reducedMotion } from './motion.js';
 import { setTabbarVisible } from './ui.js';
 import { h } from './util.js';
 import { renderList } from './screens/list.js';
@@ -77,9 +78,32 @@ async function renderScreen() {
 }
 
 window.addEventListener('hashchange', render);
+
+// Ecranul de pornire: rămâne minim ~1 s (animația avionului), apoi dispare lin
+const splashShownAt = performance.now();
+function hideSplash() {
+  const splash = document.getElementById('splash');
+  if (!splash || splash.classList.contains('hide')) return;
+  const wait = Math.max(0, (reducedMotion() ? 300 : 1250) - (performance.now() - splashShownAt));
+  setTimeout(() => {
+    splash.classList.add('hide');
+    setTimeout(() => splash.remove(), 450);
+  }, wait);
+}
+setTimeout(hideSplash, 4000); // siguranță: nu rămâne blocat dacă datele întârzie
+
+// Vibrație scurtă (Android) la butoanele de tip comutator, segment, +/- și tab-uri
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.seg button, .chip, .stepper button, .tabbar a, .heat-cell')) haptic(6);
+});
+document.addEventListener('change', (e) => {
+  if (e.target.matches('.switch')) haptic(8);
+});
+
+refreshRate(); // cursul EUR/RON pentru afișare (o dată pe zi, în fundal)
 // bara de sus capătă umbră și titlu când pagina e derulată
 const navbar = document.querySelector('.navbar');
 const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 36);
 window.addEventListener('scroll', onScroll, { passive: true });
-render();
+Promise.resolve(render()).finally(hideSplash);
 registerServiceWorker();

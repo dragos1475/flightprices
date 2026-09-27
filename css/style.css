@@ -720,3 +720,146 @@ details.combo.flash { animation: flash 1.2s ease; }
   .route-arc .arc-line.draw, .spark-line, .chart .series.draw { animation: none; stroke-dashoffset: 0; }
   .route-arc .arc-line.draw { stroke-dashoffset: 0; }
 }
+
+/* =====================================================================
+   UX „wow” 2: splash, cer după ora din zi, poze, hartă, vreme, monedă
+   ===================================================================== */
+
+/* ---------- ecranul de pornire ---------- */
+#splash {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
+  background: radial-gradient(120% 60% at 50% -10%, color-mix(in srgb, var(--wow-violet, #6258f4) 22%, transparent), transparent 70%), var(--bg);
+  transition: opacity .4s ease, transform .4s ease;
+}
+#splash.hide { opacity: 0; transform: scale(1.04); pointer-events: none; }
+.splash-inner { display: flex; flex-direction: column; align-items: center; transform: translateY(-46px); }
+.splash-logo { border-radius: 22px; box-shadow: 0 14px 34px rgba(37, 99, 235, .28); animation: splash-pop .6s cubic-bezier(.2, 1.4, .4, 1) both; }
+.splash-arc { width: 220px; height: 60px; overflow: visible; margin-top: 6px; }
+.splash-path { fill: none; stroke: var(--wow-violet, #6258f4); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: line-draw 1.3s .1s cubic-bezier(.4, 0, .2, 1) forwards; }
+.splash-plane path { fill: var(--wow-violet, #6258f4); }
+.splash-name { font: 800 28px/1 var(--font-display); letter-spacing: -.04em; color: var(--text); margin-top: 4px; animation: fade-up .5s .35s both; }
+.splash-sub { font-size: 13px; color: var(--muted); margin-top: 6px; animation: fade-up .5s .5s both; }
+@keyframes splash-pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ---------- cerul după momentul zilei ---------- */
+.sky-dawn { background: linear-gradient(180deg, #f59e7a 0%, #e57f9b 48%, #7a6be0 100%); }
+.sky-day { background: linear-gradient(180deg, #2d74d6 0%, #4f95e6 55%, #86b8f0 100%); }
+.sky-dusk { background: linear-gradient(180deg, #2a2766 0%, #6c4596 45%, #e0774f 100%); }
+.sky-night {
+  background:
+    radial-gradient(1.2px 1.2px at 12% 22%, #fff 99%, transparent), radial-gradient(1px 1px at 28% 64%, #fff 99%, transparent),
+    radial-gradient(1.4px 1.4px at 46% 18%, #fff 99%, transparent), radial-gradient(1px 1px at 63% 48%, #fff 99%, transparent),
+    radial-gradient(1.2px 1.2px at 78% 26%, #fff 99%, transparent), radial-gradient(1px 1px at 88% 70%, #fff 99%, transparent),
+    radial-gradient(1px 1px at 36% 40%, #fff 99%, transparent), radial-gradient(1.3px 1.3px at 55% 80%, #fff 99%, transparent),
+    linear-gradient(180deg, #0a0f24 0%, #18204a 65%, #2b2f6a 100%);
+}
+
+/* bannerul de pe ecranul de alerte */
+.page-head.sky { color: #fff; border-radius: 26px; padding: 22px 20px 20px; margin: 4px 0 6px; overflow: hidden; box-shadow: 0 12px 30px rgba(15, 23, 42, .18); }
+.page-head.sky::after { display: none; }
+.page-head.sky h1 { color: #fff; max-width: 75%; text-shadow: 0 2px 12px rgba(0, 0, 0, .18); }
+.page-head.sky p { color: rgba(255, 255, 255, .88); max-width: 80%; }
+.page-head.sky p b { color: #fff; }
+.sky-greeting { position: relative; z-index: 1; font-size: 13px; font-weight: 600; color: rgba(255, 255, 255, .85); margin-bottom: 4px; }
+.sky-orb { position: absolute; right: 22px; top: 18px; width: 54px; height: 54px; border-radius: 50%; }
+.sky-dawn .sky-orb { background: radial-gradient(circle, #fff6d5 30%, #ffc27a 65%, transparent 70%); box-shadow: 0 0 40px #ffcf8a; top: 44px; }
+.sky-day .sky-orb { background: radial-gradient(circle, #fffbe6 35%, #ffe07a 62%, transparent 68%); box-shadow: 0 0 50px rgba(255, 230, 140, .9); }
+.sky-dusk .sky-orb { background: radial-gradient(circle, #ffe0b8 30%, #ff9a5c 64%, transparent 70%); box-shadow: 0 0 44px #ff9a5c; top: 50px; }
+.sky-night .sky-orb { background: radial-gradient(circle at 35% 35%, #fdfbf2 0 40%, #e7e3d4 58%, transparent 62%); box-shadow: 0 0 30px rgba(255, 255, 240, .35); width: 42px; height: 42px; }
+
+/* ---------- bannerul din cardul principal (cer sau poză) ---------- */
+.hero-banner {
+  position: relative; overflow: hidden; margin: -16px -16px 14px; padding: 18px 16px 12px; min-height: 142px;
+  border-radius: 22px 22px 0 0; color: #fff; display: flex; flex-direction: column; justify-content: flex-end;
+}
+.hero-photo { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity .6s ease; }
+.hero-banner.has-photo .hero-photo { opacity: 1; animation: ken-burns 16s ease-in-out infinite alternate; }
+.hero-banner::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .05) 0%, rgba(0, 0, 0, .15) 40%, rgba(0, 0, 0, .55) 100%); }
+.hero-banner > .hero-route, .hero-banner > .photo-credit { position: relative; z-index: 1; }
+.hero-banner .iata { color: #fff; text-shadow: 0 2px 10px rgba(0, 0, 0, .35); }
+.hero-banner .place { color: rgba(255, 255, 255, .92); text-shadow: 0 1px 6px rgba(0, 0, 0, .4); }
+.hero-banner .route-arc .arc-bg { stroke: rgba(255, 255, 255, .45); }
+.hero-banner .route-arc .arc-line { stroke: #fff; }
+.hero-banner .route-arc .arc-dot { fill: rgba(0, 0, 0, .25); stroke: #fff; }
+.hero-banner .route-arc .arc-dot.end { fill: #fff; }
+.hero-banner .route-arc .arc-plane path { fill: #fff; }
+.photo-credit { position: absolute !important; right: 10px; top: 8px; font-size: 10px; color: rgba(255, 255, 255, .85);
+  background: rgba(0, 0, 0, .28); padding: 2px 7px; border-radius: 999px; backdrop-filter: blur(4px); }
+@keyframes ken-burns { from { transform: scale(1.02) translate(0, 0); } to { transform: scale(1.12) translate(-2%, -2%); } }
+
+/* ---------- miniaturi pe cardurile de alerte ---------- */
+.alert-head { display: flex; gap: 12px; align-items: center; min-width: 0; }
+.thumb {
+  width: 46px; height: 46px; flex: none; border-radius: 14px; display: grid; place-items: center; font-size: 22px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--wow-violet, #6258f4) 18%, var(--surface)), var(--surface-2));
+  background-size: cover; background-position: center; box-shadow: inset 0 0 0 1px var(--border);
+}
+.thumb.has-photo { font-size: 0; animation: fade-in .4s ease; }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------- călătoria: harta, distanța, vremea ---------- */
+.trip-card { padding: 12px; }
+.route-map { display: block; width: 100%; height: auto; touch-action: pan-y; }
+.map-sphere { fill: color-mix(in srgb, var(--s1) 12%, var(--surface)); stroke: var(--border); }
+.map-grid { fill: none; stroke: color-mix(in srgb, var(--s1) 14%, transparent); stroke-width: .6; }
+.map-land { fill: var(--surface-3); stroke: var(--surface); stroke-width: .5; }
+.map-route { fill: none; stroke: var(--wow-violet, var(--accent)); stroke-width: 2.6; stroke-linecap: round; }
+.map-route.draw { stroke-dasharray: 1; animation: line-draw 1.6s .2s ease-out backwards; }
+.map-dot { fill: var(--surface); stroke: var(--wow-violet, var(--accent)); stroke-width: 2.5; }
+.map-dot.end { fill: var(--wow-violet, var(--accent)); }
+.map-label { font: 700 11px/1 var(--font-ui); fill: var(--text); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+.trip-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 8px; margin-top: 10px; }
+.trip-stats:empty { display: none; }
+.trip-stats > div { background: var(--surface-2); border-radius: 12px; padding: 8px 10px; }
+.trip-stats b { display: block; font: 700 15px/1.2 var(--font-display); font-variant-numeric: tabular-nums; }
+.trip-stats span { font-size: 11px; color: var(--muted); }
+.trip-weather:empty { display: none; }
+.trip-weather { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+.weather { display: flex; align-items: center; gap: 12px; }
+.weather-icon { font-size: 34px; line-height: 1; }
+.weather .row-main b { font-weight: 600; }
+.weather-temp { text-align: right; }
+.weather-temp b { display: block; font: 800 22px/1 var(--font-display); }
+.weather-temp span { font-size: 13px; color: var(--muted); }
+.weather-note { font-size: 12px; color: var(--text-2); margin-top: 8px; }
+.weather-days { display: flex; gap: 6px; overflow-x: auto; margin-top: 10px; padding-bottom: 2px; }
+.weather-days > div { flex: 0 0 auto; min-width: 54px; text-align: center; background: var(--surface-2); border-radius: 12px; padding: 6px 4px; }
+.weather-days span { display: block; font-size: 10px; color: var(--muted); }
+.weather-days i { display: block; font-style: normal; font-size: 18px; margin: 2px 0; }
+.weather-days b { font-size: 12px; }
+.weather-days small { font-size: 11px; color: var(--muted); margin-left: 2px; }
+
+/* ---------- moneda afișată ---------- */
+.hero-side { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.cur-toggle { padding: 2px; }
+.cur-toggle button { height: 24px; padding: 0 9px; font-size: 11px; }
+.converted-note { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+/* ---------- bifa de succes ---------- */
+.success-overlay { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; background: color-mix(in srgb, var(--bg) 55%, transparent);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); animation: fade-in .2s ease; transition: opacity .25s; }
+.success-overlay.out { opacity: 0; }
+.success-box { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 24px 28px; border-radius: 24px; background: var(--surface);
+  box-shadow: var(--shadow-lg); font: 700 15px/1.2 var(--font-display); animation: splash-pop .45s cubic-bezier(.2, 1.4, .4, 1) both; }
+.success-box svg { width: 64px; height: 64px; }
+.success-box circle { fill: none; stroke: var(--good); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; animation: line-draw .5s ease-out forwards; }
+.success-box path { fill: none; stroke: var(--good); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: line-draw .35s .4s ease-out forwards; }
+
+/* ---------- micro-animații la atingere ---------- */
+.chip span:active, .seg button:active, .stepper button:active { transform: scale(.94); }
+.chip span, .seg button, .stepper button { transition: transform .12s ease, background .15s, color .15s; }
+.tabbar a.active svg { animation: tab-pop .35s cubic-bezier(.2, 1.6, .4, 1); }
+@keyframes tab-pop { 0% { transform: scale(.8); } 100% { transform: scale(1); } }
+.switch:active::after { width: 26px; }
+.switch:checked:active::after { transform: translateX(14px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner.has-photo .hero-photo, .splash-logo, .splash-name, .splash-sub, .tabbar a.active svg { animation: none; }
+  .splash-path, .map-route.draw { animation: none; stroke-dashoffset: 0; }
+  .success-box circle, .success-box path { animation: none; stroke-dashoffset: 0; }
+}
+
+.alert-route { white-space: nowrap; }
+.alert-route .codes { flex: none; }
