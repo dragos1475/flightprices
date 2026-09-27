@@ -271,7 +271,11 @@ companiile și escalele, iar în 1–2 minute vezi toate prețurile. Primești �
 - **Mai multe aeroporturi, destinații și companii într-o singură căutare**: toate se trimit într-un singur apel
   SerpApi (fără credite în plus). Poți alege mai multe destinații odată (ex. Roma + Napoli + Bari).
 - **Rute și companii**: rezultatele sunt grupate pe rute (ex. OTP→FCO, CLJ→CIA) și în taburi pe companii, cu
-  primele 10 variante ale fiecăreia. Companiile alese care n-au zboruri apar marcate „fără zboruri”.
+  primele 10 variante ale fiecăreia.
+- **Verifică fiecare companie aleasă** (opțiune în formular; bifată implicit la căutarea rapidă, nebifată la alerte):
+  dacă o companie aleasă nu apare în rezultat, se mai face **un singur apel** doar pentru companiile lipsă
+  (+1 credit pe combinație, doar când e nevoie). În taburi, o companie verificată separat și fără zboruri apare
+  „nu zboară aici”; una neverificată apare „n-a apărut” (poate fi și din cauza limitei de rezultate Google).
 - **Detalii zbor**: logo-ul companiei, segmentele cu ore și aeroporturi, escalele (inclusiv cele peste noapte),
   avionul, spațiul pentru picioare, facilitățile și emisiile CO₂ față de tipic.
 - **Partajare**: butonul de lângă „Google Flights” trimite oferta (rută, preț, zboruri, link) pe WhatsApp, Mesaje etc.
@@ -331,6 +335,7 @@ Fișierul `data/alerts.json` se poate edita direct pe GitHub (creionul ✏️). 
       "destination": {"id": "ROM-ALL", "name": "Roma (toate aeroporturile)", "codes": ["FCO", "CIA"]},
       "trip_type": "round_trip",
       "search_hours": [8, 20],
+      "complete_airlines": false,
       "departures": [
         {"date": "2026-11-12", "nights": [4, 5]},
         {"date": "2026-11-13", "nights": [3]}
@@ -348,6 +353,7 @@ Fișierul `data/alerts.json` se poate edita direct pe GitHub (creionul ✏️). 
 
 - `id`: unic, doar litere mici, cifre și cratime (e și numele fișierului de rezultate).
 - `airlines: []` înseamnă **oricare companie**.
+- `complete_airlines`: `true` = dacă o companie aleasă lipsește din rezultat, încă un apel doar pentru ea.
 - `search_hours`: orele (ora României, 0–23) la care se caută, 1–4 valori diferite. Implicit `[8]`.
 - `trip_type`: `"round_trip"` (dus-întors, implicit) sau `"one_way"` (doar dus; atunci `nights` poate lipsi).
 - `max_stops`: `null` = oricâte escale, `0` = doar directe, `1` = maxim o escală, `2` = maxim două.

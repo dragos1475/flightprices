@@ -145,7 +145,8 @@ def process(storage, client, credits, notifier, settings, day, state, app_link):
                 entry.update(status="error", error=f"Sărită: {fatal}")
             else:
                 err = search_combination(client, params, entry, credits, return_details=want_return,
-                                         max_price=max_price, reserve=reserve, label=label)
+                                         max_price=max_price, reserve=reserve, label=label,
+                                         complete_airlines=bool(req.get("complete_airlines")))
                 if err:
                     errors.append({"alert_id": sid, "combination": label, "message": str(err)})
                     if err.fatal:

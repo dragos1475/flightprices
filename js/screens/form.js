@@ -50,6 +50,8 @@ function toDraft(alert, config) {
     max_stops: maxStopsOf(alert),
     search_hours: searchHours(alert),
     return_details: Boolean(alert.return_details),
+    // verificarea fiecărei companii: implicit DA la căutarea rapidă, NU la alerte (costă zilnic)
+    complete_airlines: alert.complete_airlines ?? mode === 'search',
   };
 }
 
@@ -61,6 +63,7 @@ function emptyDraft() {
     departures: [{ date: '', nights: '' }],
     anyAirline: true, airlineGroups: new Set(), extraAirlines: '',
     max_price: '', currency: 'EUR', adults: 1, bags: 0, max_stops: null, return_details: false, search_hours: [8],
+    complete_airlines: mode === 'search',
   };
 }
 
@@ -108,6 +111,7 @@ function buildAlert() {
     bags: Number(draft.bags) || 0,
     max_stops: draft.max_stops,
     search_hours: [...new Set(draft.search_hours)].sort((a, b) => a - b),
+    complete_airlines: !draft.anyAirline && Boolean(draft.complete_airlines),
     updated_at: new Date().toISOString(),
   };
 }
@@ -134,6 +138,7 @@ function buildSearchRequest() {
     bags: a.bags,
     max_stops: a.max_stops,
     return_details: a.trip_type !== 'one_way' && Boolean(draft.return_details),
+    complete_airlines: a.complete_airlines,
   };
 }
 
@@ -292,6 +297,10 @@ export async function renderForm(app, id, options = {}) {
           </div>
           <label class="label" for="f-extra-airlines" style="margin-top:12px">Alte coduri IATA (opțional)</label>
           <input type="text" id="f-extra-airlines" placeholder="ex. VY, U2" value="${h(draft.extraAirlines)}" autocapitalize="characters">
+        </div>
+        <div id="complete-box" ${draft.anyAirline ? 'hidden' : ''}>
+          ${toggle('f-complete', draft.complete_airlines, 'Verifică fiecare companie aleasă',
+            'Dacă una lipsește din rezultat, mai caut o dată doar pentru ea: +1 credit pe combinație, doar când e nevoie')}
         </div>
       </div>
 
@@ -564,6 +573,7 @@ function renderBudget() {
     <div class="small ${level === 'bad' ? 'bad-text' : 'muted'}" style="margin-top:6px">
       Toate alertele: <b>~${all.perMonth}</b> din ${limit} pe lună${level === 'bad' ? ' — depășești limita!' : level === 'warn' ? ' — aproape de limită' : ''}</div>
     <p>${mine.extraMax ? `Când o combinație e sub prag, se face încă o căutare pentru zborul de întoarcere (maxim ${mine.extraMax} în 30 de zile).` : ''}
+      ${alert.complete_airlines ? `Verificarea fiecărei companii poate adăuga până la ${mine.perMonth} căutări în 30 de zile (doar când lipsește o companie).` : ''}
       ${left !== undefined && left !== null ? `Credite rămase: <b>${left}</b>.` : ''}</p>`;
 
   const info = document.getElementById('savebar-info');
@@ -578,7 +588,8 @@ function renderSearchCost(box) {
   const today = todayRO();
   const req = buildAlert();
   const n = combinations(req, today).length;
-  const extra = draft.return_details && draft.trip_type !== 'one_way' ? n : 0;
+  const complete = draft.complete_airlines && !draft.anyAirline ? n : 0;
+  const extra = (draft.return_details && draft.trip_type !== 'one_way' ? n : 0) + complete;
   const max = state.config.settings.one_time_max_searches || 20;
   const left = state.status?.searches_left_after ?? state.status?.searches_left_before;
   const tooMany = n > max;
@@ -590,7 +601,8 @@ function renderSearchCost(box) {
     </div>
     ${tooMany ? `<div class="small bad-text">Maxim ${max} combinații pe căutare.</div>` : ''}
     ${notEnough ? `<div class="small bad-text">Nu ai destule credite (rămase: ${left}).</div>` : ''}
-    <p>1 credit pentru fiecare combinație${extra ? ', plus până la 1 credit pentru detaliile întoarcerii' : ''}.
+    <p>1 credit pentru fiecare combinație${extra - complete ? ', plus până la 1 credit pentru detaliile întoarcerii' : ''}${complete
+      ? ', plus până la 1 credit dacă lipsește vreo companie aleasă' : ''}.
       ${left !== undefined && left !== null ? `Credite rămase: <b>${left}</b>.` : ''}
       Dacă parola e greșită, nu se consumă nimic.</p>`;
   const info = document.getElementById('savebar-info');
@@ -693,8 +705,10 @@ function bindEvents(app) {
     if (t.id === 'f-any-airline') {
       draft.anyAirline = t.checked;
       app.querySelector('#airline-box').hidden = t.checked;
+      app.querySelector('#complete-box').hidden = t.checked;
     }
     if (t.id === 'f-return') draft.return_details = t.checked;
+    if (t.id === 'f-complete') draft.complete_airlines = t.checked;
     renderBudget();
   });
 

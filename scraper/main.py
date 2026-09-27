@@ -232,7 +232,8 @@ def main():
                 client, params, entry, credits,
                 # detaliile întoarcerii: doar pentru cel mai ieftin zbor, doar dacă e sub prag
                 return_details="under" if settings.get("return_details_for_cheapest", True) else False,
-                max_price=alert.get("max_price", 0), reserve=reserve, label=label)
+                max_price=alert.get("max_price", 0), reserve=reserve, label=label,
+                complete_airlines=bool(alert.get("complete_airlines")))
             if err:
                 status["errors"].append({"alert_id": alert["id"], "combination": label, "message": str(err)})
                 if err.fatal:

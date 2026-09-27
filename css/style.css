@@ -952,3 +952,5 @@ details.combo.flash { animation: flash 1.2s ease; }
 .pick-item.picked .row-title { color: var(--accent); font-weight: 600; }
 .route-tiles, .air-tabs { scrollbar-width: none; }
 .route-tiles::-webkit-scrollbar, .air-tabs::-webkit-scrollbar { display: none; }
+
+.second-pass { color: var(--accent); font-weight: 600; }
