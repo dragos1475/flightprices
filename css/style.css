@@ -944,6 +944,8 @@ details.combo.flash { animation: flash 1.2s ease; }
 .air-head { padding: 10px 14px 4px; font-size: 12px; font-weight: 600; color: var(--muted); }
 
 /* selecția mai multor destinații */
+.dest-chip small { opacity: .7; font-weight: 500; }
+.dest-pick + .dest-pick { border-top: 1px solid var(--border); }
 .dest-selected { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 10px; min-height: 30px; }
 .dest-chip { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 10px; border-radius: 999px; border: 0;
   background: var(--accent-soft); color: var(--accent); font: 600 12px/1 var(--font-ui); cursor: pointer; }

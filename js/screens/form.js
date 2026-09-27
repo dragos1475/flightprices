@@ -28,15 +28,13 @@ function toDraft(alert, config) {
       a.codes.forEach((c) => codes.delete(c));
     }
   }
-  const knownAirports = new Set(config.airports.map((a) => a.code));
   return {
     id: alert.id,
     name: alert.name || '',
     active: alert.active !== false,
     monitor_start: alert.monitor_start || todayRO(),
     monitor_end: alert.monitor_end || '',
-    airports: new Set((alert.departure_airports || []).filter((c) => knownAirports.has(c))),
-    extraAirports: (alert.departure_airports || []).filter((c) => !knownAirports.has(c)).join(', '),
+    airports: new Set(alert.departure_airports || []),
     destination: alert.destination || null,
     trip_type: alert.trip_type === 'one_way' ? 'one_way' : 'round_trip',
     departures: (alert.departures || []).map((d) => ({ date: d.date, nights: (d.nights || []).join(', ') })),
@@ -56,7 +54,7 @@ function toDraft(alert, config) {
 function emptyDraft() {
   return {
     id: null, name: '', active: true, monitor_start: todayRO(), monitor_end: '',
-    airports: new Set(['OTP']), extraAirports: '', destination: null,
+    airports: new Set(['OTP']), destination: null,
     trip_type: 'round_trip',
     departures: [{ date: '', nights: '' }],
     anyAirline: true, airlineGroups: new Set(), extraAirlines: '',
@@ -97,7 +95,7 @@ function buildAlert() {
     active: draft.active,
     monitor_start: draft.monitor_start || todayRO(),
     monitor_end: draft.monitor_end || lastDeparture,
-    departure_airports: [...new Set([...draft.airports, ...parseCodes(draft.extraAirports, 3)])],
+    departure_airports: [...draft.airports],
     destination: draft.destination,
     trip_type: draft.trip_type,
     departures,
@@ -142,6 +140,7 @@ function validate(alert) {
   const today = todayRO();
   if (mode === 'alert' && !alert.name) errors.push('Dă un nume alertei.');
   if (!alert.departure_airports.length) errors.push('Alege cel puțin un aeroport de plecare.');
+  if (alert.departure_airports.length > MAX_CODES) errors.push(`Maxim ${MAX_CODES} aeroporturi de plecare într-o căutare.`);
   if (!alert.destination?.codes?.length) errors.push('Alege destinația.');
   if (!alert.departures.length) {
     errors.push(alert.trip_type === 'one_way'
@@ -235,17 +234,7 @@ export async function renderForm(app, id, options = {}) {
 
       <div class="section-label"><span>Rută</span></div>
       <div class="group">
-        <div class="row-stack">
-          <span class="label">Pleci din</span>
-          <div class="chips">${cfg.airports.map((a) => `
-            <label class="chip"><input type="checkbox" name="airport" value="${h(a.code)}" ${draft.airports.has(a.code) ? 'checked' : ''}>
-            <span><b>${h(a.code)}</b>${h(a.name)}</span></label>`).join('')}
-          </div>
-          <details style="margin-top:10px" ${draft.extraAirports ? 'open' : ''}>
-            <summary class="small" style="color:var(--accent);cursor:pointer;font-weight:600">Alt aeroport (cod IATA)</summary>
-            <input type="text" id="f-extra-airports" style="margin-top:8px" placeholder="ex. VIE, BEG" value="${h(draft.extraAirports)}" autocapitalize="characters">
-          </details>
-        </div>
+        <button type="button" class="dest-pick" id="orig-open"></button>
         <button type="button" class="dest-pick" id="dest-open"></button>
       </div>
 
@@ -326,7 +315,7 @@ export async function renderForm(app, id, options = {}) {
       ${original ? `<button type="button" class="btn danger block" id="delete-btn" style="margin-top:18px">${icon('trash', 18)} Șterge alerta</button>` : ''}
     </form>
 
-    <dialog class="sheet" id="dest-sheet" aria-label="Alege destinația"></dialog>
+    <dialog class="sheet" id="place-sheet" aria-label="Alege"></dialog>
     <dialog class="modal" id="json-dialog"></dialog>
   `;
 
@@ -338,6 +327,7 @@ export async function renderForm(app, id, options = {}) {
       <button type="submit" form="alert-form" class="btn primary" id="save-btn">${isSearch ? `${icon('search', 16)} Caută acum` : hasWriteAccess() ? 'Salvează' : 'Pregătește'}</button>
     </div></div>`);
 
+  renderOrigins();
   renderDestination();
   renderDepartures();
   renderBudget();
@@ -371,18 +361,182 @@ function mergeDestinations(parts) {
   };
 }
 
-function openDestinationSheet() {
-  const sheet = document.getElementById('dest-sheet');
+/** Numărul maxim de aeroporturi într-o căutare (plecare sau destinație). */
+const MAX_CODES = 7;
+
+/**
+ * Ecranul de alegere (sheet) comun pentru plecări și destinații: listă mare cu căutare,
+ * selecție multiplă (toate se caută împreună, într-un singur apel), maxim MAX_CODES aeroporturi.
+ * opts: {title, placeholder, emptyText, items, picked, addHtml, bindAdd(sheet, add), onDone(picked)}
+ *   items: [{id, name, country, region, codes, group?}]; picked: [{id, name, codes}]
+ */
+function openPlaceSheet(opts) {
+  const sheet = document.getElementById('place-sheet');
+  sheet.setAttribute('aria-label', opts.title);
   sheet.innerHTML = `
     <div class="sheet-head">
       <div class="sheet-grip"></div>
-      <div class="sheet-title"><h2>Destinații</h2>
+      <div class="sheet-title"><h2>${h(opts.title)}</h2>
         <button type="button" class="btn primary sm" id="sheet-done">Gata</button></div>
-      <div class="search-box">${icon('search', 18)}<input type="search" id="dest-search" placeholder="Caută: Roma, Bali, Japonia, FCO…" autocomplete="off"></div>
-      <div class="dest-selected" id="dest-selected"></div>
+      <div class="search-box">${icon('search', 18)}<input type="search" id="place-search" placeholder="${h(opts.placeholder)}" autocomplete="off"></div>
+      <div class="dest-selected" id="place-selected"></div>
     </div>
     <div class="sheet-body">
-      <div id="dest-list"></div>
+      <div id="place-list"></div>
+      ${opts.addHtml}
+    </div>`;
+
+  const search = sheet.querySelector('#place-search');
+  const list = sheet.querySelector('#place-list');
+  const selectedBox = sheet.querySelector('#place-selected');
+  let picked = opts.picked.map((p) => ({ ...p, codes: [...p.codes] }));
+  const totalCodes = () => new Set(picked.flatMap((p) => p.codes)).size;
+  // un aeroport e bifat dacă e ales direct sau prin codul lui (ex. la editarea unei alerte)
+  const matches = (p, d) => p.id === d.id || (d.codes.length === 1 && p.codes.length === 1 && p.codes[0] === d.codes[0]);
+  const isPicked = (d) => picked.some((p) => matches(p, d));
+
+  const drawSelected = () => {
+    selectedBox.innerHTML = picked.length ? `${picked.map((p, i) => `
+      <button type="button" class="dest-chip" data-unpick="${i}">${destFlag(p) ? `${destFlag(p)} ` : ''}${h(p.name)}${p.codes.length === 1 && p.name !== p.codes[0] ? ` <small>${h(p.codes[0])}</small>` : ''} ${icon('close', 12)}</button>`).join('')}
+      <span class="small ${totalCodes() > MAX_CODES ? 'bad-text' : 'muted'}">${totalCodes()} ${totalCodes() === 1 ? 'aeroport' : 'aeroporturi'}${totalCodes() > MAX_CODES ? ` (maxim ${MAX_CODES})` : ''}</span>`
+      : `<span class="small muted">${h(opts.emptyText)}</span>`;
+  };
+  const draw = () => {
+    const q = fold(search.value.trim());
+    let items = opts.items;
+    if (q) {
+      items = items.filter((d) => !d.group && fold(`${d.name} ${d.country} ${d.codes.join(' ')} ${d.id}`).includes(q));
+      items = [...items].sort((a, b) => (fold(b.id) === q) - (fold(a.id) === q));
+    }
+    items = items.slice(0, 140);
+    const groups = [];
+    for (const d of items) {
+      const g = d.group || `${d.country} · ${d.region}`;
+      if (!groups.length || groups[groups.length - 1].g !== g) groups.push({ g, flag: d.group ? '' : countryFlag(d.country), items: [] });
+      groups[groups.length - 1].items.push(d);
+    }
+    list.innerHTML = groups.map(({ g, flag, items: its }) => `
+      <div class="pick-group">${flag ? `${flag} ` : ''}${h(g)}</div>
+      <div class="group">${its.map((d) => `
+        <button type="button" class="pick-item ${isPicked(d) ? 'picked' : ''}" data-id="${h(d.id)}" aria-pressed="${isPicked(d)}">
+          <span class="pick-code ${d.codes.length > 1 ? 'multi' : ''}">${d.codes.length > 1 ? `${d.codes.length}×` : h(d.codes[0])}</span>
+          <span class="row-main"><span class="row-title">${h(d.name)}</span>${d.codes.length > 1
+            ? `<span class="row-sub">${h(d.codes.join(', '))}</span>` : d.group && d.country ? `<span class="row-sub">${h(d.country)}</span>` : ''}</span>
+          <span class="pick-check">${icon('check', 14)}</span>
+        </button>`).join('')}</div>`).join('')
+      || '<p class="muted" style="padding:16px 4px">Nimic găsit. Adaugă mai jos după codul IATA.</p>';
+  };
+  const redraw = () => { drawSelected(); draw(); };
+  const add = (place) => {
+    if (!picked.some((p) => matches(p, place))) picked.push(place);
+    redraw();
+  };
+  redraw();
+  search.addEventListener('input', draw);
+
+  selectedBox.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-unpick]');
+    if (!b) return;
+    picked.splice(Number(b.dataset.unpick), 1);
+    redraw();
+  });
+  list.addEventListener('click', (e) => {
+    const b = e.target.closest('.pick-item');
+    if (!b) return;
+    const d = opts.items.find((x) => x.id === b.dataset.id);
+    if (isPicked(d)) picked = picked.filter((p) => !matches(p, d));
+    else picked.push({ id: d.id, name: d.name, country: d.country, codes: [...d.codes] });
+    redraw();
+  });
+  sheet.querySelector('#sheet-done').onclick = () => {
+    if (totalCodes() > MAX_CODES) {
+      toast(`Prea multe aeroporturi (${totalCodes()}). Maxim ${MAX_CODES} într-o căutare.`);
+      return;
+    }
+    opts.onDone(picked);
+    renderBudget();
+    sheet.close();
+  };
+  sheet.onclick = (e) => { if (e.target === sheet) sheet.close(); };
+  opts.bindAdd(sheet, add);
+
+  sheet.showModal();
+  setTimeout(() => search.focus(), 250);
+}
+
+// ---------------------------------------------------------------------------
+// Plecarea: aceeași listă mare ca la destinații, cu aeroporturile tale frecvente primele
+// ---------------------------------------------------------------------------
+/** Numele unui aeroport după cod (din lista de plecări sau din destinații). */
+function codeName(code) {
+  const own = state.config.airports.find((a) => a.code === code);
+  if (own) return { name: own.name, country: '' };
+  const d = state.config.destinations.find((x) => x.codes.length === 1 && x.codes[0] === code);
+  return d ? { name: d.name, country: d.country } : { name: code, country: '' };
+}
+
+function renderOrigins() {
+  const btn = document.getElementById('orig-open');
+  const codes = [...draft.airports];
+  const names = codes.map((c) => codeName(c).name);
+  btn.innerHTML = `
+    <span class="row-icon">${icon('plane', 16)}</span>
+    <span class="row-main">${codes.length
+      ? `<span class="row-sub">${codes.length > 1 ? `Pleci din ${codes.length} aeroporturi, căutate împreună` : 'Pleci din'}</span>
+         <b>${h(names.join(' / '))}</b><span class="row-sub">${h(codes.join(', '))}</span>`
+      : '<span class="row-title">Alege de unde pleci</span><span class="row-sub">Unul sau mai multe aeroporturi: oraș, țară sau cod IATA</span>'}</span>
+    <span class="chev muted">${icon('chevron', 18)}</span>`;
+}
+
+function openOriginSheet() {
+  const own = state.config.airports.map((a) => {
+    const known = state.config.destinations.find((x) => x.codes.length === 1 && x.codes[0] === a.code);
+    return { id: `own:${a.code}`, name: a.name, country: known?.country || '', region: '', codes: [a.code], group: 'Aeroporturile tale' };
+  });
+  openPlaceSheet({
+    title: 'Pleci din',
+    placeholder: 'Caută: București, Viena, Italia, OTP…',
+    emptyText: 'Atinge unul sau mai multe aeroporturi. Toate se caută împreună, fără credite în plus.',
+    items: [...own, ...state.config.destinations],
+    picked: [...draft.airports].map((c) => ({ id: c, ...codeName(c), codes: [c] })),
+    addHtml: `
+      <div class="section-label"><span>Nu îl găsești? Adaugă-l după cod</span></div>
+      <div class="group"><div class="row-stack">
+        <label class="label" for="no-codes">Cod(uri) IATA</label>
+        <input type="text" id="no-codes" placeholder="ex. VIE, BEG" autocapitalize="characters">
+        <button type="button" class="btn tonal block" id="no-add" style="margin-top:12px">Adaugă</button>
+        <p class="hint">Codul IATA îl găsești căutând „cod IATA aeroport &lt;oraș&gt;”. Mai multe coduri se separă prin virgulă.</p>
+      </div></div>`,
+    bindAdd(sheet, add) {
+      sheet.querySelector('#no-add').onclick = () => {
+        const input = sheet.querySelector('#no-codes');
+        const codes = parseCodes(input.value, 3);
+        if (!codes.length) {
+          toast('Scrie cel puțin un cod IATA de 3 litere');
+          return;
+        }
+        codes.forEach((c) => add({ id: c, ...codeName(c), codes: [c] }));
+        input.value = '';
+      };
+    },
+    onDone(picked) {
+      draft.airports = new Set(picked.flatMap((p) => p.codes));
+      renderOrigins();
+    },
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Destinația
+// ---------------------------------------------------------------------------
+function openDestinationSheet() {
+  openPlaceSheet({
+    title: 'Destinații',
+    placeholder: 'Caută: Roma, Bali, Japonia, FCO…',
+    emptyText: 'Atinge una sau mai multe destinații. Toate se caută împreună, fără credite în plus.',
+    items: state.config.destinations,
+    picked: draft.destination ? (draft.destination.parts || [draft.destination]) : [],
+    addHtml: `
       <div class="section-label"><span>Nu o găsești? Adaug-o</span></div>
       <div class="group"><div class="row-stack">
         <label class="label" for="nd-name">Nume</label>
@@ -394,104 +548,35 @@ function openDestinationSheet() {
         ${hasWriteAccess() ? '<label class="check small" style="display:flex;gap:8px;align-items:center;margin-top:10px"><input type="checkbox" id="nd-save" checked> Salvează în lista mea</label>' : ''}
         <button type="button" class="btn tonal block" id="nd-add" style="margin-top:12px">Folosește destinația</button>
         <p class="hint">Codul IATA îl găsești căutând „cod IATA aeroport &lt;oraș&gt;”. Mai multe coduri se separă prin virgulă.</p>
-      </div></div>
-    </div>`;
-
-  const search = sheet.querySelector('#dest-search');
-  const list = sheet.querySelector('#dest-list');
-  const selectedBox = sheet.querySelector('#dest-selected');
-  const MAX_CODES = 7;
-  // selecția curentă (poate avea mai multe destinații, căutate împreună într-un singur apel)
-  let picked = draft.destination ? (draft.destination.parts || [draft.destination]).map((p) => ({ ...p })) : [];
-  const totalCodes = () => new Set(picked.flatMap((p) => p.codes)).size;
-  const drawSelected = () => {
-    selectedBox.innerHTML = picked.length ? `${picked.map((p) => `
-      <button type="button" class="dest-chip" data-unpick="${h(p.id)}">${destFlag(p) ? `${destFlag(p)} ` : ''}${h(p.name)} ${icon('close', 12)}</button>`).join('')}
-      <span class="small ${totalCodes() > MAX_CODES ? 'bad-text' : 'muted'}">${totalCodes()} aeroporturi${totalCodes() > MAX_CODES ? ` (maxim ${MAX_CODES})` : ''}</span>`
-      : '<span class="small muted">Atinge una sau mai multe destinații. Toate se caută împreună, fără credite în plus.</span>';
-    selectedBox.querySelectorAll('[data-unpick]').forEach((b) => b.addEventListener('click', () => {
-      picked = picked.filter((p) => p.id !== b.dataset.unpick);
-      drawSelected();
-      draw();
-    }));
-  };
-  const draw = () => {
-    const q = fold(search.value.trim());
-    let items = state.config.destinations;
-    if (q) {
-      items = items.filter((d) => fold(`${d.name} ${d.country} ${d.codes.join(' ')} ${d.id}`).includes(q));
-      items = [...items].sort((a, b) => (fold(b.id) === q) - (fold(a.id) === q));
-    }
-    items = items.slice(0, 120);
-    const groups = [];
-    for (const d of items) {
-      const g = `${d.country} · ${d.region}`;
-      if (!groups.length || groups[groups.length - 1].g !== g) groups.push({ g, items: [] });
-      groups[groups.length - 1].items.push(d);
-    }
-    list.innerHTML = groups.map(({ g, items: its }) => `
-      <div class="pick-group">${countryFlag(its[0].country) ? `${countryFlag(its[0].country)} ` : ''}${h(g)}</div>
-      <div class="group">${its.map((d) => `
-        <button type="button" class="pick-item ${picked.some((p) => p.id === d.id) ? 'picked' : ''}" data-id="${h(d.id)}" aria-pressed="${picked.some((p) => p.id === d.id)}">
-          <span class="pick-code ${d.codes.length > 1 ? 'multi' : ''}">${d.codes.length > 1 ? `${d.codes.length}×` : h(d.codes[0])}</span>
-          <span class="row-main"><span class="row-title">${h(d.name)}</span>${d.codes.length > 1 ? `<span class="row-sub">${h(d.codes.join(', '))}</span>` : ''}</span>
-          <span class="pick-check">${icon('check', 14)}</span>
-        </button>`).join('')}</div>`).join('')
-      || '<p class="muted" style="padding:16px 4px">Nicio destinație găsită. Adaug-o mai jos după codul IATA.</p>';
-  };
-  draw();
-  drawSelected();
-  search.addEventListener('input', draw);
-
-  const toggle = (dest) => {
-    picked = picked.some((p) => p.id === dest.id) ? picked.filter((p) => p.id !== dest.id) : [...picked, dest];
-    drawSelected();
-    draw();
-  };
-  list.addEventListener('click', (e) => {
-    const b = e.target.closest('.pick-item');
-    if (!b) return;
-    const d = state.config.destinations.find((x) => x.id === b.dataset.id);
-    toggle({ id: d.id, name: d.name, codes: [...d.codes] });
+      </div></div>`,
+    bindAdd(sheet, add) {
+      sheet.querySelector('#nd-add').onclick = async () => {
+        const name = sheet.querySelector('#nd-name').value.trim();
+        const codes = parseCodes(sheet.querySelector('#nd-codes').value, 3);
+        const country = sheet.querySelector('#nd-country').value.trim() || 'Altele';
+        if (!name || !codes.length) {
+          toast('Completează numele și cel puțin un cod IATA de 3 litere');
+          return;
+        }
+        const dest = { id: codes.join('-'), name, country, region: 'Adăugate de mine', codes };
+        if (sheet.querySelector('#nd-save')?.checked) {
+          try {
+            await saveCustomDestination(dest);
+            state.config.destinations = [{ ...dest, custom: true }, ...state.config.destinations.filter((d) => d.id !== dest.id)];
+            toast('Destinația a fost salvată în lista ta');
+          } catch (e) {
+            toast(`Folosită, dar nesalvată în listă: ${e.message}`, 6000);
+          }
+        }
+        add({ id: dest.id, name, country, codes });
+        toast('Destinația a fost adăugată în selecție');
+      };
+    },
+    onDone(picked) {
+      draft.destination = mergeDestinations(picked);
+      renderDestination();
+    },
   });
-  sheet.querySelector('#sheet-done').onclick = () => {
-    if (totalCodes() > MAX_CODES) {
-      toast(`Prea multe aeroporturi (${totalCodes()}). Maxim ${MAX_CODES} într-o căutare.`);
-      return;
-    }
-    draft.destination = mergeDestinations(picked);
-    renderDestination();
-    renderBudget();
-    sheet.close();
-  };
-  sheet.addEventListener('click', (e) => { if (e.target === sheet) sheet.close(); });
-
-  sheet.querySelector('#nd-add').onclick = async () => {
-    const name = sheet.querySelector('#nd-name').value.trim();
-    const codes = parseCodes(sheet.querySelector('#nd-codes').value, 3);
-    const country = sheet.querySelector('#nd-country').value.trim() || 'Altele';
-    if (!name || !codes.length) {
-      toast('Completează numele și cel puțin un cod IATA de 3 litere');
-      return;
-    }
-    const dest = { id: codes.join('-'), name, country, region: 'Adăugate de mine', codes };
-    if (sheet.querySelector('#nd-save')?.checked) {
-      try {
-        await saveCustomDestination(dest);
-        state.config.destinations = [{ ...dest, custom: true }, ...state.config.destinations.filter((d) => d.id !== dest.id)];
-        toast('Destinația a fost salvată în lista ta');
-      } catch (e) {
-        toast(`Folosită, dar nesalvată în listă: ${e.message}`, 6000);
-      }
-    }
-    if (!picked.some((p) => p.id === dest.id)) picked.push({ id: dest.id, name, codes });
-    drawSelected();
-    draw();
-    toast('Destinația a fost adăugată în selecție');
-  };
-
-  sheet.showModal();
-  setTimeout(() => search.focus(), 250);
 }
 
 // ---------------------------------------------------------------------------
@@ -654,7 +739,6 @@ function bindEvents(app) {
     if (t.id === 'f-name') draft.name = t.value;
     if (t.id === 'f-start') draft.monitor_start = t.value;
     if (t.id === 'f-end') draft.monitor_end = t.value;
-    if (t.id === 'f-extra-airports') draft.extraAirports = t.value;
     if (t.id === 'f-extra-airlines') draft.extraAirlines = t.value;
     if (t.id === 'f-price') draft.max_price = t.value;
     if (t.classList.contains('dep-date') || t.classList.contains('dep-nights')) {
@@ -672,7 +756,6 @@ function bindEvents(app) {
   form.addEventListener('change', (e) => {
     const t = e.target;
     if (t.id === 'f-active') draft.active = t.checked;
-    if (t.name === 'airport') t.checked ? draft.airports.add(t.value) : draft.airports.delete(t.value);
     if (t.name === 'airline') t.checked ? draft.airlineGroups.add(t.value) : draft.airlineGroups.delete(t.value);
     if (t.id === 'f-any-airline') {
       draft.anyAirline = t.checked;
@@ -748,6 +831,7 @@ function bindEvents(app) {
   }));
   syncSteppers();
 
+  app.querySelector('#orig-open').onclick = openOriginSheet;
   app.querySelector('#dest-open').onclick = openDestinationSheet;
 
   app.querySelector('#add-dep').onclick = () => {

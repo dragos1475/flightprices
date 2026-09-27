@@ -1,7 +1,7 @@
 // Service worker: permite instalarea aplicației, funcționarea offline (ultimele date văzute)
 // și primirea notificărilor push chiar dacă aplicația este închisă.
 
-const CACHE = 'zboruri-v16';
+const CACHE = 'zboruri-v18';
 const SHELL = [
   './',
   'index.html',

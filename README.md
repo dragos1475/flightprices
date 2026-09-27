@@ -384,7 +384,7 @@ Toate listele sunt fișiere JSON în `config/`, pe care le poți edita:
 
 | Fișier | Ce conține |
 |---|---|
-| `config/airports.json` | aeroporturile de **plecare** din formular |
+| `config/airports.json` | aeroporturile tale de **plecare**, afișate primele în lista „Pleci din” (poți alege însă orice aeroport din listă sau după cod) |
 | `config/destinations.json` | destinațiile (Europa, Turcia, Asia, Africa). O destinație poate avea mai multe coduri, ex. „Londra (toate)” = LHR, LGW, STN, LTN, LCY, SEN |
 | `config/destinations_custom.json` | destinațiile adăugate de tine din aplicație |
 | `config/airlines.json` | companiile aeriene cu codurile IATA |

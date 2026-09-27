@@ -78,9 +78,11 @@ export function airlineNames(codes) {
   return [...names, ...left];
 }
 
-/** Nume aeroport de plecare după cod. */
+/** Nume aeroport după cod (lista de plecări, apoi lista de destinații). */
 export function airportName(code) {
-  return state.config?.airports.find((a) => a.code === code)?.name || code;
+  return state.config?.airports.find((a) => a.code === code)?.name
+    || state.config?.destinations.find((d) => d.codes.length === 1 && d.codes[0] === code)?.name
+    || code;
 }
 
 /**
