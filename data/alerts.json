@@ -39,9 +39,10 @@
       "bags": 0,
       "max_stops": null,
       "search_hours": [
-        8
+        8,
+        20
       ],
-      "updated_at": "2026-09-27T16:25:04.230Z",
+      "updated_at": "2026-09-27T21:12:00.498Z",
       "created_at": "2026-09-27T16:23:26.605Z"
     }
   ]
