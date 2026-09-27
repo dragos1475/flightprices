@@ -1,6 +1,30 @@
 {
   "searches": [
     {
+      "id": "s-20260928-004347-tcgx",
+      "title": "Athens Bali",
+      "created_at": "2026-09-27T21:43:47.939Z",
+      "status": "done",
+      "message": null,
+      "lowest_price": 779,
+      "currency": "EUR",
+      "departures": [
+        {
+          "date": "2027-02-18",
+          "nights": [
+            8
+          ]
+        }
+      ],
+      "destination": {
+        "id": "DPS",
+        "name": "Bali (Denpasar)",
+        "codes": [
+          "DPS"
+        ]
+      }
+    },
+    {
       "id": "s-20260928-000021-crd1",
       "title": "Milano Bali earlier",
       "created_at": "2026-09-27T21:00:21.977Z",
