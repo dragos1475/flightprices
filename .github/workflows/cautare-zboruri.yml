@@ -4,6 +4,7 @@
 #   2) manual, din tab-ul Actions             - "Run workflow"
 #   3) când se modifică data/alerts.json      - caută doar ce e nou/modificat
 #   4) când aplicația cere o căutare rapidă   - fișier nou în data/searches/
+#   5) când aplicația cere „preț la companie” - fișier nou în data/prices/
 name: Căutare zboruri
 
 on:
@@ -27,6 +28,7 @@ on:
     paths:
       - data/alerts.json
       - data/searches/**
+      - data/prices/**
 
 permissions:
   contents: write # necesar pentru a salva rezultatele în repository

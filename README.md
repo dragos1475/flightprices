@@ -262,6 +262,23 @@ companiile și escalele, iar în 1–2 minute vezi toate prețurile. Primești �
   cu aceiași parametri sau o poți **șterge**.
 - Ai nevoie și de tokenul GitHub pe telefon (pasul 7), la fel ca pentru alerte.
 
+### Preț la companie (la cerere, pe un singur zbor)
+
+Prețul din listă e cel mai mic de pe Google, **de la oricine** – uneori o agenție (Kiwi.com, eDreams, Gotogate…).
+Pe fiecare zbor ai butonul **„Preț la companie”**: îl apeși, confirmi, introduci parola de căutare, iar în 1–2 minute
+apare direct în biletul respectiv:
+
+- prețul vândut **direct de companie** (sau mesajul că, pe Google, compania nu vinde direct varianta respectivă);
+- cea mai ieftină agenție și diferența de preț (plus avertismentul că la agenții bagajele și modificările trec prin ele);
+- toate opțiunile de rezervare, cu butonul **„Rezervă”** care te duce la companie (prin Google).
+
+**Cost:** 2 credite la dus-întors (zborurile de întoarcere + opțiunile de rezervare; se alege întoarcerea cea mai
+ieftină), 1 credit la doar dus. **Nu se face nimic automat:** doar când apeși butonul. Parola se verifică la fel ca la
+căutarea rapidă (greșită = niciun credit consumat). Verificările rămân salvate în `data/prices/` (ultimele 100) și le
+vezi din nou în bilet, cu ora verificării.
+
+Butonul apare doar la rezultatele căutate **după** această actualizare (au nevoie de jetoanele Google salvate).
+
 ### Ce găsești în aplicație
 
 - **Verdict „Cumpără acum / Mai așteaptă”** pentru fiecare alertă, calculat din istoricul prețurilor tale și din datele
@@ -272,10 +289,7 @@ companiile și escalele, iar în 1–2 minute vezi toate prețurile. Primești �
   SerpApi (fără credite în plus). Poți alege mai multe destinații odată (ex. Roma + Napoli + Bari).
 - **Rute și companii**: rezultatele sunt grupate pe rute (ex. OTP→FCO, CLJ→CIA) și în taburi pe companii, cu
   primele 10 variante ale fiecăreia.
-- **Verifică fiecare companie aleasă** (opțiune în formular; bifată implicit la căutarea rapidă, nebifată la alerte):
-  dacă o companie aleasă nu apare în rezultat, se mai face **un singur apel** doar pentru companiile lipsă
-  (+1 credit pe combinație, doar când e nevoie). În taburi, o companie verificată separat și fără zboruri apare
-  „nu zboară aici”; una neverificată apare „n-a apărut” (poate fi și din cauza limitei de rezultate Google).
+  O companie aleasă care nu apare în rezultat e afișată „n-a apărut” (nu se mai fac căutări separate pentru ea).
 - **Detalii zbor**: logo-ul companiei, segmentele cu ore și aeroporturi, escalele (inclusiv cele peste noapte),
   avionul, spațiul pentru picioare, facilitățile și emisiile CO₂ față de tipic.
 - **Partajare**: butonul de lângă „Google Flights” trimite oferta (rută, preț, zboruri, link) pe WhatsApp, Mesaje etc.
@@ -338,7 +352,6 @@ Fișierul `data/alerts.json` se poate edita direct pe GitHub (creionul ✏️). 
       "destination": {"id": "ROM-ALL", "name": "Roma (toate aeroporturile)", "codes": ["FCO", "CIA"]},
       "trip_type": "round_trip",
       "search_hours": [8, 20],
-      "complete_airlines": false,
       "departures": [
         {"date": "2026-11-12", "nights": [4, 5]},
         {"date": "2026-11-13", "nights": [3]}
@@ -356,7 +369,6 @@ Fișierul `data/alerts.json` se poate edita direct pe GitHub (creionul ✏️). 
 
 - `id`: unic, doar litere mici, cifre și cratime (e și numele fișierului de rezultate).
 - `airlines: []` înseamnă **oricare companie**.
-- `complete_airlines`: `true` = dacă o companie aleasă lipsește din rezultat, încă un apel doar pentru ea.
 - `search_hours`: orele (ora României, 0–23) la care se caută, 1–4 valori diferite. Implicit `[8]`.
 - `trip_type`: `"round_trip"` (dus-întors, implicit) sau `"one_way"` (doar dus; atunci `nights` poate lipsi).
 - `max_stops`: `null` = oricâte escale, `0` = doar directe, `1` = maxim o escală, `2` = maxim două.
@@ -449,6 +461,8 @@ index.html, css/, js/          aplicația (PWA)
   js/geo.js, media.js          coordonatele orașelor (Open-Meteo) și pozele (Wikipedia)
   js/map.js, trip.js, weather.js  harta traseului, secțiunea „Călătoria”, vremea
   js/currency.js               afișarea în EUR/RON
+  js/price-check.js            butonul „Preț la companie” din bilete
+  js/password.js               parola de căutare (comună)
   js/budget.js                 calculul combinațiilor și al bugetului (la fel ca scraper/alerts.py)
   js/data.js                   citirea datelor și salvarea prin GitHub API
   js/push.js                   notificări push + generator chei VAPID
@@ -462,12 +476,14 @@ data/history/<id>.json         prețul minim pe zi (pentru grafic)
 data/status.json               rezumatul ultimei rulări
 data/state.json                ce notificări s-au trimis (ca să nu se repete)
 data/searches/<id>.json        căutările rapide (cerere semnată + rezultate); index.json = lista lor
+data/prices/<id>.json          verificările „Preț la companie” (cerere semnată + opțiunile de rezervare); index.json
 scraper/                       scriptul Python
   main.py                      pornirea și logica principală
   alerts.py                    alerte active, combinații, parametrii SerpApi, buget
   serpapi_client.py            căutări + verificarea creditelor + mod de test
   search.py                    căutarea unei combinații (comună pentru alerte și căutări rapide)
   one_time.py                  căutările rapide: verificarea parolei, căutare, istoric
+  price_check.py               „Preț la companie”: opțiunile de rezervare pentru un zbor, la cerere
   notify.py                    Web Push și ntfy
   storage.py                   scrierea fișierelor JSON
   fixtures/                    răspunsuri salvate pentru --dry-run

@@ -101,6 +101,7 @@ class FakeSerpApiClient:
         self.outbound = read_json(FIXTURES_DIR / "google_flights_roundtrip.json")
         self.returning = read_json(FIXTURES_DIR / "google_flights_return.json")
         self.account_data = read_json(FIXTURES_DIR / "account.json")
+        self.booking = read_json(FIXTURES_DIR / "google_flights_booking.json")
 
     def account(self):
         return copy.deepcopy(self.account_data)
@@ -110,6 +111,8 @@ class FakeSerpApiClient:
         recorded = read_json(FIXTURES_DIR / "recorded" / f"{fixture_name(params)}.json")
         if recorded:
             return recorded
+        if "booking_token" in params:
+            return copy.deepcopy(self.booking)
         is_return = "departure_token" in params
         data = copy.deepcopy(self.returning if is_return else self.outbound)
 
@@ -196,8 +199,9 @@ def _parse_flight(item, is_best):
         "stops": len(layovers),
         "layovers": layovers,
         "legs": legs,
-        # folosit doar în timpul rulării (pentru detaliile de întoarcere); nu se salvează
-        "_departure_token": item.get("departure_token"),
+        # jetoane Google: departure_token (dus-întors: alegerea întoarcerii), booking_token (opțiunile de rezervare)
+        "departure_token": item.get("departure_token"),
+        "booking_token": item.get("booking_token"),
     }
 
 

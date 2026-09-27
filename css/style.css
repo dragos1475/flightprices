@@ -953,7 +953,6 @@ details.combo.flash { animation: flash 1.2s ease; }
 .route-tiles, .air-tabs { scrollbar-width: none; }
 .route-tiles::-webkit-scrollbar, .air-tabs::-webkit-scrollbar { display: none; }
 
-.second-pass { color: var(--accent); font-weight: 600; }
 
 .warn-text { color: var(--warn); font-weight: 500; }
 .warn-text:empty { display: none; }
@@ -1041,3 +1040,50 @@ details.combo.flash { animation: flash 1.2s ease; }
 @media (prefers-reduced-motion: reduce) { .wx-art * { animation: none !important; } }
 .lw-ask .btn-row { flex-wrap: wrap; }
 .lw-ask .btn-row .btn { flex: 0 0 auto; white-space: nowrap; }
+
+/* ---------- „Preț la companie” (în bilet, doar la cerere) ---------- */
+.co:empty { display: none; }
+.co { margin-top: 10px; }
+.co-btn { display: flex; align-items: center; gap: 10px; width: 100%; padding: 9px 12px; border: 1px dashed color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 12px; background: color-mix(in srgb, var(--accent) 6%, transparent); color: var(--text); text-align: left; font: inherit; cursor: pointer; }
+.co-btn:active { transform: scale(.985); }
+.co-btn > svg:last-child { color: var(--muted); flex-shrink: 0; }
+.co-ic { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; background: var(--accent); color: #fff; flex-shrink: 0; }
+.co-text { flex: 1; min-width: 0; font-size: 13px; line-height: 1.35; }
+.co-text small { display: block; color: var(--muted); font-size: 11.5px; margin-top: 1px; }
+.co-box { border-radius: 12px; padding: 10px 12px; background: var(--surface-2, color-mix(in srgb, var(--text) 4%, transparent)); font-size: 13px; }
+.co-confirm, .co-pending, .co-error { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.co-confirm .co-text { flex-basis: 220px; }
+.co-actions { display: flex; gap: 8px; margin-left: auto; }
+.co-pending .spinner { flex-shrink: 0; }
+.co-error { color: var(--text); }
+.co-error > svg { color: var(--bad, #d33); flex-shrink: 0; }
+.co-result { background: color-mix(in srgb, var(--good, #1a9f5a) 7%, var(--surface)); border: 1px solid color-mix(in srgb, var(--good, #1a9f5a) 25%, transparent); }
+.co-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
+.co-tag { white-space: nowrap; display: inline-flex; align-items: center; gap: 4px; font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--good, #1a9f5a); }
+.co-when { font-size: 11px; color: var(--muted); white-space: nowrap; }
+.co-main { display: flex; align-items: center; gap: 10px; }
+.co-logo { width: 30px; height: 30px; border-radius: 8px; background: #fff; display: grid; place-items: center; overflow: hidden; flex-shrink: 0; box-shadow: 0 0 0 1px rgba(0,0,0,.06); color: var(--good, #1a9f5a); }
+.co-logo img { width: 24px; height: 24px; object-fit: contain; }
+.co-main.none .co-logo { color: var(--muted); }
+.co-name { flex: 1; min-width: 0; font-weight: 600; }
+.co-name small { display: block; font-weight: 400; color: var(--muted); font-size: 11.5px; }
+.co-price { font-size: 19px; font-weight: 700; letter-spacing: -.01em; color: var(--good, #1a9f5a); font-variant-numeric: tabular-nums; }
+.co-note { margin-top: 7px; font-size: 12px; line-height: 1.45; color: var(--text-2, var(--text)); }
+.co-note svg { display: inline-block; vertical-align: -2px; margin-right: 3px; }
+.co-note.good { color: var(--good, #1a9f5a); }
+.co-note.warn { color: var(--warn); }
+.co-note.muted { color: var(--muted); }
+.co-link { background: none; border: 0; padding: 0; margin-top: 8px; font: inherit; font-size: 12.5px; font-weight: 600; color: var(--accent); cursor: pointer; display: inline-flex; align-items: center; gap: 4px; }
+.co-link.inline { margin: 0; font-size: 11px; }
+.co-all { margin-top: 8px; }
+.co-all > summary { list-style: none; cursor: pointer; font-size: 12.5px; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 4px; }
+.co-all > summary::-webkit-details-marker { display: none; }
+.co-all[open] > summary svg { transform: rotate(180deg); }
+.co-opt { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid var(--border, rgba(0,0,0,.08)); }
+.co-opt:first-of-type { margin-top: 6px; }
+.co-opt-name { flex: 1; min-width: 0; font-size: 13px; }
+.co-opt-name small { display: block; color: var(--muted); font-size: 11px; }
+.co-opt.airline .co-opt-name { font-weight: 600; }
+.co-opt.airline .co-opt-name small { color: var(--good, #1a9f5a); }
+.co-opt b { font-variant-numeric: tabular-nums; }

@@ -8,6 +8,7 @@ import {
 import { countryFlag, destFlag } from '../flags.js';
 import { icon } from '../icons.js';
 import { successCheck } from '../motion.js';
+import { askPassword } from '../password.js';
 import { maxStopsOf } from '../results-view.js';
 import { ensureAlerts, ensureConfig, loadStatus, state } from '../state.js';
 import { setNav, setTabbarVisible, skeleton, stepper, toggle } from '../ui.js';
@@ -16,7 +17,6 @@ import { addDays, copyText, dayDate, fold, h, shortDate, slugify, toast, todayRO
 let draft = null;    // alerta în lucru (starea formularului)
 let original = null; // alerta originală (la editare)
 let mode = 'alert';  // 'alert' = alertă zilnică, 'search' = căutare rapidă (o singură dată)
-const PASSWORD_KEY = 'zboruri.search_password';
 
 /** Transformă o alertă salvată în starea formularului. */
 function toDraft(alert, config) {
@@ -50,8 +50,6 @@ function toDraft(alert, config) {
     max_stops: maxStopsOf(alert),
     search_hours: searchHours(alert),
     return_details: Boolean(alert.return_details),
-    // verificarea fiecărei companii: implicit DA la căutarea rapidă, NU la alerte (costă zilnic)
-    complete_airlines: alert.complete_airlines ?? mode === 'search',
   };
 }
 
@@ -63,7 +61,6 @@ function emptyDraft() {
     departures: [{ date: '', nights: '' }],
     anyAirline: true, airlineGroups: new Set(), extraAirlines: '',
     max_price: '', currency: 'EUR', adults: 1, bags: 0, max_stops: null, return_details: false, search_hours: [8],
-    complete_airlines: mode === 'search',
   };
 }
 
@@ -111,7 +108,6 @@ function buildAlert() {
     bags: Number(draft.bags) || 0,
     max_stops: draft.max_stops,
     search_hours: [...new Set(draft.search_hours)].sort((a, b) => a - b),
-    complete_airlines: !draft.anyAirline && Boolean(draft.complete_airlines),
     updated_at: new Date().toISOString(),
   };
 }
@@ -138,7 +134,6 @@ function buildSearchRequest() {
     bags: a.bags,
     max_stops: a.max_stops,
     return_details: a.trip_type !== 'one_way' && Boolean(draft.return_details),
-    complete_airlines: a.complete_airlines,
   };
 }
 
@@ -299,10 +294,6 @@ export async function renderForm(app, id, options = {}) {
           <label class="label" for="f-extra-airlines" style="margin-top:12px">Alte coduri IATA (opțional)</label>
           <input type="text" id="f-extra-airlines" placeholder="ex. VY, U2" value="${h(draft.extraAirlines)}" autocapitalize="characters">
         </div>
-        <div id="complete-box" ${draft.anyAirline ? 'hidden' : ''}>
-          ${toggle('f-complete', draft.complete_airlines, 'Verifică fiecare companie aleasă',
-            'Dacă una lipsește din rezultat, mai caut o dată doar pentru ea: +1 credit pe combinație, doar când e nevoie')}
-        </div>
       </div>
 
       <div class="section-label"><span>Preț și pasageri</span></div>
@@ -337,7 +328,6 @@ export async function renderForm(app, id, options = {}) {
 
     <dialog class="sheet" id="dest-sheet" aria-label="Alege destinația"></dialog>
     <dialog class="modal" id="json-dialog"></dialog>
-    <dialog class="modal" id="password-dialog"></dialog>
   `;
 
   // Bara fixă de jos cu estimarea și butonul Salvează (în afara <main>)
@@ -593,7 +583,6 @@ function renderBudget() {
     <div class="small ${level === 'bad' ? 'bad-text' : 'muted'}" style="margin-top:6px">
       Toate alertele: <b>~${all.perMonth}</b> din ${limit} pe lună${level === 'bad' ? ' — depășești limita!' : level === 'warn' ? ' — aproape de limită' : ''}</div>
     <p>${mine.extraMax ? `Când o combinație e sub prag, se face încă o căutare pentru zborul de întoarcere (maxim ${mine.extraMax} în 30 de zile).` : ''}
-      ${alert.complete_airlines ? `Verificarea fiecărei companii poate adăuga până la ${mine.perMonth} căutări în 30 de zile (doar când lipsește o companie).` : ''}
       ${left !== undefined && left !== null ? `Credite rămase: <b>${left}</b>.` : ''}</p>`;
 
   const info = document.getElementById('savebar-info');
@@ -608,8 +597,7 @@ function renderSearchCost(box) {
   const today = todayRO();
   const req = buildAlert();
   const n = combinations(req, today).length;
-  const complete = draft.complete_airlines && !draft.anyAirline ? n : 0;
-  const extra = (draft.return_details && draft.trip_type !== 'one_way' ? n : 0) + complete;
+  const extra = draft.return_details && draft.trip_type !== 'one_way' ? n : 0;
   const max = state.config.settings.one_time_max_searches || 20;
   const left = state.status?.searches_left_after ?? state.status?.searches_left_before;
   const tooMany = n > max;
@@ -621,8 +609,7 @@ function renderSearchCost(box) {
     </div>
     ${tooMany ? `<div class="small bad-text">Maxim ${max} combinații pe căutare.</div>` : ''}
     ${notEnough ? `<div class="small bad-text">Nu ai destule credite (rămase: ${left}).</div>` : ''}
-    <p>1 credit pentru fiecare combinație${extra - complete ? ', plus până la 1 credit pentru detaliile întoarcerii' : ''}${complete
-      ? ', plus până la 1 credit dacă lipsește vreo companie aleasă' : ''}.
+    <p>1 credit pentru fiecare combinație${extra ? ', plus până la 1 credit pentru detaliile întoarcerii' : ''}.
       ${left !== undefined && left !== null ? `Credite rămase: <b>${left}</b>.` : ''}
       Dacă parola e greșită, nu se consumă nimic.</p>`;
   const info = document.getElementById('savebar-info');
@@ -632,45 +619,10 @@ function renderSearchCost(box) {
   }
 }
 
-/** Cere parola de căutare (sau o folosește pe cea memorată până la închiderea aplicației). */
-function askPassword(app) {
-  let remembered = '';
-  try { remembered = sessionStorage.getItem(PASSWORD_KEY) || ''; } catch { /* indisponibil */ }
-  if (remembered) return Promise.resolve(remembered);
-  const dlg = app.querySelector('#password-dialog');
-  dlg.innerHTML = `
-    <form method="dialog" id="pw-form">
-      <h2>${icon('key', 18, 'inline')} Parola de căutare</h2>
-      <p>Parola nu pleacă de pe telefon: se trimite doar o semnătură, verificată de GitHub cu secretul <code>SEARCH_PASSWORD</code>.</p>
-      <input type="password" id="pw-input" autocomplete="current-password" placeholder="Parola" required>
-      <label class="small" style="display:flex;gap:8px;align-items:center;margin-top:10px">
-        <input type="checkbox" id="pw-remember"> Ține minte până închid aplicația</label>
-      <div class="btn-row">
-        <button type="button" class="btn" id="pw-cancel">Renunță</button>
-        <button type="submit" class="btn primary">Caută</button>
-      </div>
-    </form>`;
-  return new Promise((resolve) => {
-    dlg.querySelector('#pw-cancel').onclick = () => { dlg.close(); resolve(null); };
-    dlg.querySelector('#pw-form').onsubmit = (e) => {
-      e.preventDefault();
-      const pw = dlg.querySelector('#pw-input').value;
-      if (!pw) return;
-      if (dlg.querySelector('#pw-remember').checked) {
-        try { sessionStorage.setItem(PASSWORD_KEY, pw); } catch { /* indisponibil */ }
-      }
-      dlg.close();
-      resolve(pw);
-    };
-    dlg.showModal();
-    setTimeout(() => dlg.querySelector('#pw-input').focus(), 50);
-  });
-}
-
 /** Trimite căutarea rapidă: semnează cererea și o scrie în data/searches/<id>.json. */
 async function submitSearch(app, errBox) {
   const req = buildSearchRequest();
-  const password = await askPassword(app);
+  const password = await askPassword();
   if (!password) return;
   const btn = document.getElementById('save-btn');
   btn.disabled = true;
@@ -725,10 +677,8 @@ function bindEvents(app) {
     if (t.id === 'f-any-airline') {
       draft.anyAirline = t.checked;
       app.querySelector('#airline-box').hidden = t.checked;
-      app.querySelector('#complete-box').hidden = t.checked;
     }
     if (t.id === 'f-return') draft.return_details = t.checked;
-    if (t.id === 'f-complete') draft.complete_airlines = t.checked;
     renderBudget();
   });
 

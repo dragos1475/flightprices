@@ -48,6 +48,12 @@ function factor(from, to) {
   return null;
 }
 
+/** Convertește o sumă (pentru afișare); null dacă nu avem curs. */
+export function convertPrice(value, from, to) {
+  const f = factor(from, to);
+  return f === null || typeof value !== 'number' ? null : Math.round(value * f);
+}
+
 const conv = (v, f) => (typeof v === 'number' ? Math.round(v * f) : v);
 
 /**

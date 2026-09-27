@@ -1,0 +1,55 @@
+{
+  "_info": "Exemplu de răspuns SerpApi cu booking_token (folosit doar la --dry-run).",
+  "booking_options": [
+    {
+      "together": {
+        "book_with": "Wizz Air",
+        "airline": true,
+        "airline_logos": [
+          "https://www.gstatic.com/flights/airline_logos/70px/W6.png"
+        ],
+        "marketed_as": [
+          "W6 3131",
+          "W6 3132"
+        ],
+        "price": 181,
+        "option_title": "Basic",
+        "baggage_prices": [
+          "1 bagaj de mână mic inclus"
+        ],
+        "extensions": [
+          "Fără bagaj de cală"
+        ],
+        "booking_request": {
+          "url": "https://www.google.com/travel/clk/f",
+          "post_data": "u=EXEMPLU"
+        }
+      }
+    },
+    {
+      "together": {
+        "book_with": "Kiwi.com",
+        "airline": false,
+        "price": 164,
+        "booking_request": {
+          "url": "https://www.google.com/travel/clk/f",
+          "post_data": "u=EXEMPLU2"
+        }
+      }
+    },
+    {
+      "together": {
+        "book_with": "eDreams",
+        "airline": false,
+        "price": 189
+      }
+    },
+    {
+      "together": {
+        "book_with": "Gotogate",
+        "airline": false,
+        "price": 198
+      }
+    }
+  ]
+}

@@ -21,7 +21,7 @@ from datetime import datetime
 from pathlib import Path
 
 from . import alerts as A
-from . import one_time
+from . import one_time, price_check
 from .config import DATA_DIR, FIXTURES_DIR, ROOT, TIMEZONE, app_url, load_settings, now, read_json, today
 from .notify import Notifier, alert_summary
 from .search import Credits, new_entry, search_combination
@@ -163,7 +163,7 @@ def main():
 
     # 2) Clientul SerpApi (real sau de test). Cheia e necesară doar dacă avem ce căuta.
     link = app_url(settings)
-    waiting = one_time.pending(storage)
+    waiting = one_time.pending(storage) + price_check.pending(storage)
     if needed == 0 and not waiting and args.trigger == "schedule":
         # Rularea din oră în oră: nimic programat acum -> ne oprim fără să scriem nimic (fără commit)
         print("Nimic programat la ora asta. Gata.")
@@ -203,6 +203,8 @@ def main():
 
     # 4) Căutările rapide (pornite din aplicație) au prioritate: cineva așteaptă rezultatul
     status["errors"].extend(one_time.process(storage, client, credits, notifier, settings, day, state, link))
+    # „Preț la companie” (cerut din aplicație pentru un zbor anume)
+    status["errors"].extend(price_check.process(storage, client, credits, settings, state))
 
     if not credits.enough(needed):
         # Nu ajung creditele: nu căutăm nimic, trimitem un avertisment (o dată pe zi)
@@ -241,8 +243,7 @@ def main():
                 client, params, entry, credits,
                 # detaliile întoarcerii: doar pentru cel mai ieftin zbor, doar dacă e sub prag
                 return_details="under" if settings.get("return_details_for_cheapest", True) else False,
-                max_price=alert.get("max_price", 0), reserve=reserve, label=label,
-                complete_airlines=bool(alert.get("complete_airlines")))
+                max_price=alert.get("max_price", 0), reserve=reserve, label=label)
             if err:
                 status["errors"].append({"alert_id": alert["id"], "combination": label, "message": str(err)})
                 if err.fatal:

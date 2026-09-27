@@ -7,6 +7,7 @@ import { icon } from './icons.js';
 import { VERDICT_STYLE } from './insights.js';
 import { locateDestination, nameCandidates } from './geo.js';
 import { cityPhoto, loadImage } from './media.js';
+import { bindPriceChecks, priceSlot } from './price-check.js';
 import { routeArc, skyPhase } from './motion.js';
 import { airportName, priceLevel, state } from './state.js';
 import { dateTime, dayDate, duration, fold, h, hour, money, share } from './util.js';
@@ -124,8 +125,7 @@ export function ticket(f, ctx, showCombo) {
   const overnight = (f.layovers || []).some((l) => l.overnight);
   return `<div class="ticket">
     <div class="ticket-head">
-      <div class="ticket-airline">${flightLogos(f)}<span class="ticket-names">${h(f.airlines.join(' / '))}<small>${h(f.flight_numbers.join(', '))}${f.second_pass
-        ? ' · <b class="second-pass" title="Nu apăruse în primul rezultat; găsit la verificarea separată a companiei">a 2-a verificare</b>' : ''}</small></span></div>
+      <div class="ticket-airline">${flightLogos(f)}<span class="ticket-names">${h(f.airlines.join(' / '))}<small>${h(f.flight_numbers.join(', '))}</small></span></div>
       <div class="ticket-price ${under ? 'under' : ''}">${money(f.price, ctx.cur)}</div>
     </div>
     <div class="ticket-times">
@@ -137,6 +137,7 @@ export function ticket(f, ctx, showCombo) {
       <span>${showCombo ? `${comboDates(f.combo)} · ${comboNights(f.combo)}` : ''}</span>
       <span>${f.stops ? `prin ${h(f.layovers.map((l) => l.airport).join(', '))}` : ''}${overnight ? ' · 🌙 peste noapte' : ''}</span>
     </div>
+    ${priceSlot(f, ctx)}
     ${flightDetails(f)}
   </div>`;
 }
@@ -190,6 +191,7 @@ export function bindResults(root, ctx) {
   };
   redrawCombos();
   redrawFlights();
+  bindPriceChecks(root); // „Preț la companie” (doar la cerere, din fiecare bilet)
 
   root.querySelectorAll('[data-csort]').forEach((b) => b.addEventListener('click', () => {
     view.comboSort = b.dataset.csort;
@@ -351,8 +353,6 @@ function renderAirlineTabs(box, ctx, redraw) {
   });
   const list = [...map.values()].sort((a, b) => a.min - b.min);
   const missing = expectedAirlines(ctx).filter((n) => !list.some((e) => sameAirline(n, e.name)));
-  // verificată separat (completarea automată) = sigur nu zboară; altfel doar „nu a apărut în rezultat”
-  const checked = ctx.combos.length > 0 && ctx.combos.every((c) => c.airlines_checked || c.status === 'no_results');
   if (ctx.view.airline && !map.has(ctx.view.airline)) ctx.view.airline = null;
   if (list.length < 2 && !missing.length) {
     box.innerHTML = '';
@@ -366,10 +366,8 @@ function renderAirlineTabs(box, ctx, redraw) {
         ${logo(e.logo, e.name, 22)}<span class="at-name">${h(e.name)}</span>
         <span class="at-price">de la ${money(e.min, ctx.cur)} · ${e.count}</span></button>`).join('')}
     ${missing.map((n) => `
-      <span class="air-tab none" title="${checked
-        ? 'Verificată separat: compania nu are zboruri pentru aceste date și rute'
-        : 'Compania a fost inclusă în căutare, dar nu a apărut în rezultat (poate fi și din cauza limitei de rezultate Google)'}">
-        ${logo('', n, 22)}<span class="at-name">${h(n)}</span><span class="at-price">${checked ? 'nu zboară aici' : 'n-a apărut'}</span></span>`).join('')}`;
+      <span class="air-tab none" title="Compania a fost inclusă în căutare, dar nu a apărut în rezultat">
+        ${logo('', n, 22)}<span class="at-name">${h(n)}</span><span class="at-price">n-a apărut</span></span>`).join('')}`;
   box.querySelectorAll('[data-airline]').forEach((b) => b.addEventListener('click', () => {
     ctx.view.airline = b.dataset.airline || null;
     ctx.view.airlineAll = false;
