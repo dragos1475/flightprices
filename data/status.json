@@ -1,23 +1,23 @@
 {
-  "last_run": "2026-09-27T23:33:35+03:00",
+  "last_run": "2026-09-27T23:48:04+03:00",
   "trigger": "push",
   "dry_run": false,
   "searches_left_before": 247,
-  "searches_used": 0,
+  "searches_used": 1,
   "planned_searches": 0,
   "skipped_budget": false,
   "alerts_searched": [],
   "errors": [],
   "warnings": [],
-  "notifications_sent": 0,
+  "notifications_sent": 1,
   "estimate": {
     "per_day": 0,
     "per_month": 58,
     "extra_max_per_month": 58,
     "limit": 250
   },
-  "credits_checked_at": "2026-09-27T23:33:35+03:00",
+  "credits_checked_at": "2026-09-27T23:48:04+03:00",
   "notification_errors": [],
-  "searches_left_after": 247,
-  "this_month_usage": 3
+  "searches_left_after": 246,
+  "this_month_usage": 4
 }

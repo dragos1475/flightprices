@@ -1,7 +1,2386 @@
 {
   "id": "s-20260927-234740-1q1q",
-  "status": "pending",
+  "status": "done",
   "created_at": "2026-09-27T20:47:40.024Z",
   "request": "{\"id\":\"s-20260927-234740-1q1q\",\"created_at\":\"2026-09-27T20:47:40.024Z\",\"title\":\"Milan Bali\",\"departure_airports\":[\"MXP\"],\"destination\":{\"id\":\"DPS\",\"name\":\"Bali (Denpasar)\",\"codes\":[\"DPS\"]},\"trip_type\":\"round_trip\",\"departures\":[{\"date\":\"2027-02-18\",\"nights\":[8]}],\"airlines\":[\"TK\",\"EK\",\"QR\",\"EY\",\"SQ\"],\"max_price\":700,\"currency\":\"EUR\",\"adults\":1,\"bags\":0,\"max_stops\":null,\"return_details\":false}",
-  "sig": "8c5c366161c77298fad9d0721d8f494ba0e2db4aeaa4ae9c70abd74e1d8022ed"
+  "sig": "8c5c366161c77298fad9d0721d8f494ba0e2db4aeaa4ae9c70abd74e1d8022ed",
+  "processed_at": "2026-09-27T23:48:04+03:00",
+  "message": null,
+  "results": {
+    "currency": "EUR",
+    "max_price": 700.0,
+    "lowest_price": 720,
+    "combinations": [
+      {
+        "outbound_date": "2027-02-18",
+        "return_date": "2027-02-26",
+        "nights": 8,
+        "search_key": "377fe77a4bfcf44e",
+        "searched_on": "2026-09-27",
+        "search_params": {
+          "engine": "google_flights",
+          "type": "1",
+          "departure_id": "MXP",
+          "arrival_id": "DPS",
+          "outbound_date": "2027-02-18",
+          "currency": "EUR",
+          "gl": "ro",
+          "hl": "ro",
+          "adults": "1",
+          "show_hidden": "true",
+          "return_date": "2027-02-26",
+          "include_airlines": "TK,EK,QR,EY,SQ"
+        },
+        "searched_at": "2026-09-27T23:48:04+03:00",
+        "status": "ok",
+        "error": null,
+        "flights": [
+          {
+            "price": 720,
+            "is_best": true,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+            "carbon_diff": -17,
+            "airlines": [
+              "Turkish Airlines"
+            ],
+            "flight_numbers": [
+              "TK 1876",
+              "TK 66"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 18:50",
+            "arrival_time": "2027-02-19 19:30",
+            "total_duration": 1060,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "IST",
+                "name": "Istanbul Airport",
+                "duration": 125,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 1876",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "IST",
+                "to_name": "Istanbul Airport",
+                "departure_time": "2027-02-18 18:50",
+                "arrival_time": "2027-02-18 23:50",
+                "duration": 180,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 138 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 66",
+                "from": "IST",
+                "from_name": "Istanbul Airport",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 01:55",
+                "arrival_time": "2027-02-19 19:30",
+                "duration": 755,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 540 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZzFVU3pFNE56WjhWRXMyTmlNeEdnc0k5YkVFRUFJYUEwVlZVamdjY0w3L0JBPT0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJJU1QiLG51bGwsIlRLIiwiMTg3NiJdLFsiSVNUIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEsiLCI2NiJdXV0=",
+            "booking_token": null
+          },
+          {
+            "price": 720,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+            "carbon_diff": -12,
+            "airlines": [
+              "Turkish Airlines"
+            ],
+            "flight_numbers": [
+              "TK 1878",
+              "TK 66"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 06:55",
+            "arrival_time": "2027-02-19 19:30",
+            "total_duration": 1775,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "IST",
+                "name": "Istanbul Airport",
+                "duration": 835,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 1878",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "IST",
+                "to_name": "Istanbul Airport",
+                "departure_time": "2027-02-18 06:55",
+                "arrival_time": "2027-02-18 12:00",
+                "duration": 185,
+                "airplane": "Airbus A321 (Sharklets)",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 176 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 66",
+                "from": "IST",
+                "from_name": "Istanbul Airport",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 01:55",
+                "arrival_time": "2027-02-19 19:30",
+                "duration": 755,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 540 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RVU3pFNE56aDhWRXMyTmhvTENQV3hCQkFDR2dORlZWSTRISEMrL3dRPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": 720,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+            "carbon_diff": -11,
+            "airlines": [
+              "Turkish Airlines"
+            ],
+            "flight_numbers": [
+              "TK 1878",
+              "TK 310"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 06:55",
+            "arrival_time": "2027-02-19 20:05",
+            "total_duration": 1810,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "IST",
+                "name": "Istanbul Airport",
+                "duration": 865,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 1878",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "IST",
+                "to_name": "Istanbul Airport",
+                "departure_time": "2027-02-18 06:55",
+                "arrival_time": "2027-02-18 12:00",
+                "duration": 185,
+                "airplane": "Airbus A321 (Sharklets)",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 176 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 310",
+                "from": "IST",
+                "from_name": "Istanbul Airport",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 02:25",
+                "arrival_time": "2027-02-19 20:05",
+                "duration": 760,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 554 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3hVU3pFNE56aDhWRXN6TVRBYUN3ajFzUVFRQWhvRFJWVlNPQnh3dnY4RSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
+            "booking_token": null
+          },
+          {
+            "price": 720,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+            "carbon_diff": -18,
+            "airlines": [
+              "Turkish Airlines"
+            ],
+            "flight_numbers": [
+              "TK 1874",
+              "TK 66"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 11:05",
+            "arrival_time": "2027-02-19 19:30",
+            "total_duration": 1525,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "IST",
+                "name": "Istanbul Airport",
+                "duration": 590,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 1874",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "IST",
+                "to_name": "Istanbul Airport",
+                "departure_time": "2027-02-18 11:05",
+                "arrival_time": "2027-02-18 16:05",
+                "duration": 180,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 130 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 66",
+                "from": "IST",
+                "from_name": "Istanbul Airport",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 01:55",
+                "arrival_time": "2027-02-19 19:30",
+                "duration": 755,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 540 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RVU3pFNE56UjhWRXMyTmhvTENQV3hCQkFDR2dORlZWSTRISEMrL3dRPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": 720,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+            "carbon_diff": -16,
+            "airlines": [
+              "Turkish Airlines"
+            ],
+            "flight_numbers": [
+              "TK 1874",
+              "TK 310"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 11:05",
+            "arrival_time": "2027-02-19 20:05",
+            "total_duration": 1560,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "IST",
+                "name": "Istanbul Airport",
+                "duration": 620,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 1874",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "IST",
+                "to_name": "Istanbul Airport",
+                "departure_time": "2027-02-18 11:05",
+                "arrival_time": "2027-02-18 16:05",
+                "duration": 180,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 130 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 310",
+                "from": "IST",
+                "from_name": "Istanbul Airport",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 02:25",
+                "arrival_time": "2027-02-19 20:05",
+                "duration": 760,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 554 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3hVU3pFNE56UjhWRXN6TVRBYUN3ajFzUVFRQWhvRFJWVlNPQnh3dnY4RSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
+            "booking_token": null
+          },
+          {
+            "price": 720,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+            "carbon_diff": -16,
+            "airlines": [
+              "Turkish Airlines"
+            ],
+            "flight_numbers": [
+              "TK 1896",
+              "TK 66"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 14:35",
+            "arrival_time": "2027-02-19 19:30",
+            "total_duration": 1315,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "IST",
+                "name": "Istanbul Airport",
+                "duration": 385,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 1896",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "IST",
+                "to_name": "Istanbul Airport",
+                "departure_time": "2027-02-18 14:35",
+                "arrival_time": "2027-02-18 19:30",
+                "duration": 175,
+                "airplane": "Airbus A321neo",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "76 cm",
+                "extensions": [
+                  "Average legroom (76 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 144 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 66",
+                "from": "IST",
+                "from_name": "Istanbul Airport",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 01:55",
+                "arrival_time": "2027-02-19 19:30",
+                "duration": 755,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 540 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RVU3pFNE9UWjhWRXMyTmhvTENQV3hCQkFDR2dORlZWSTRISEMrL3dRPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": 720,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+            "carbon_diff": -15,
+            "airlines": [
+              "Turkish Airlines"
+            ],
+            "flight_numbers": [
+              "TK 1896",
+              "TK 310"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 14:35",
+            "arrival_time": "2027-02-19 20:05",
+            "total_duration": 1350,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "IST",
+                "name": "Istanbul Airport",
+                "duration": 415,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 1896",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "IST",
+                "to_name": "Istanbul Airport",
+                "departure_time": "2027-02-18 14:35",
+                "arrival_time": "2027-02-18 19:30",
+                "duration": 175,
+                "airplane": "Airbus A321neo",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "76 cm",
+                "extensions": [
+                  "Average legroom (76 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 144 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 310",
+                "from": "IST",
+                "from_name": "Istanbul Airport",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 02:25",
+                "arrival_time": "2027-02-19 20:05",
+                "duration": 760,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 554 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3hVU3pFNE9UWjhWRXN6TVRBYUN3ajFzUVFRQWhvRFJWVlNPQnh3dnY4RSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
+            "booking_token": null
+          },
+          {
+            "price": 720,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+            "carbon_diff": -15,
+            "airlines": [
+              "Turkish Airlines"
+            ],
+            "flight_numbers": [
+              "TK 1876",
+              "TK 310"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 18:50",
+            "arrival_time": "2027-02-19 20:05",
+            "total_duration": 1095,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "IST",
+                "name": "Istanbul Airport",
+                "duration": 155,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 1876",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "IST",
+                "to_name": "Istanbul Airport",
+                "departure_time": "2027-02-18 18:50",
+                "arrival_time": "2027-02-18 23:50",
+                "duration": 180,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 138 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Turkish Airlines",
+                "flight_number": "TK 310",
+                "from": "IST",
+                "from_name": "Istanbul Airport",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 02:25",
+                "arrival_time": "2027-02-19 20:05",
+                "duration": 760,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 554 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZzVVU3pFNE56WjhWRXN6TVRBak1Sb0xDUFd4QkJBQ0dnTkZWVkk0SEhDKy93UT0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJJU1QiLG51bGwsIlRLIiwiMTg3NiJdLFsiSVNUIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEsiLCIzMTAiXV1d",
+            "booking_token": null
+          },
+          {
+            "price": 837,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+            "carbon_diff": -8,
+            "airlines": [
+              "Etihad"
+            ],
+            "flight_numbers": [
+              "EY 82",
+              "EY 478"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 10:30",
+            "arrival_time": "2027-02-19 22:15",
+            "total_duration": 1725,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "AUH",
+                "name": "Zayed International Airport",
+                "duration": 800,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Etihad",
+                "flight_number": "EY 82",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "AUH",
+                "to_name": "Zayed International Airport",
+                "departure_time": "2027-02-18 10:30",
+                "arrival_time": "2027-02-18 19:30",
+                "duration": 360,
+                "airplane": "Boeing 787",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 324 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Etihad",
+                "flight_number": "EY 478",
+                "from": "AUH",
+                "from_name": "Zayed International Airport",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 08:50",
+                "arrival_time": "2027-02-19 22:15",
+                "duration": 565,
+                "airplane": "Boeing 787",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 431 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3BGV1RneWZFVlpORGM0R2dzSTA0MEZFQUlhQTBWVlVqZ2NjUEhuQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+            "booking_token": null
+          },
+          {
+            "price": 837,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+            "carbon_diff": 1,
+            "airlines": [
+              "Etihad"
+            ],
+            "flight_numbers": [
+              "EY 80",
+              "EY 478"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 21:35",
+            "arrival_time": "2027-02-19 22:15",
+            "total_duration": 1060,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "AUH",
+                "name": "Zayed International Airport",
+                "duration": 110,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Etihad",
+                "flight_number": "EY 80",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "AUH",
+                "to_name": "Zayed International Airport",
+                "departure_time": "2027-02-18 21:35",
+                "arrival_time": "2027-02-19 07:00",
+                "duration": 385,
+                "airplane": "Airbus A321neo",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+                "legroom": "76 cm",
+                "extensions": [
+                  "Average legroom (76 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 398 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              },
+              {
+                "airline": "Etihad",
+                "flight_number": "EY 478",
+                "from": "AUH",
+                "from_name": "Zayed International Airport",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 08:50",
+                "arrival_time": "2027-02-19 22:15",
+                "duration": 565,
+                "airplane": "Boeing 787",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 431 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3BGV1Rnd2ZFVlpORGM0R2dzSTA0MEZFQUlhQTBWVlVqZ2NjUEhuQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+            "booking_token": null
+          },
+          {
+            "price": 838,
+            "is_best": true,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+            "carbon_diff": 5,
+            "airlines": [
+              "Etihad"
+            ],
+            "flight_numbers": [
+              "EY 82",
+              "EY 476"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 10:30",
+            "arrival_time": "2027-02-19 11:35",
+            "total_duration": 1085,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "AUH",
+                "name": "Zayed International Airport",
+                "duration": 160,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Etihad",
+                "flight_number": "EY 82",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "AUH",
+                "to_name": "Zayed International Airport",
+                "departure_time": "2027-02-18 10:30",
+                "arrival_time": "2027-02-18 19:30",
+                "duration": 360,
+                "airplane": "Boeing 787",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 324 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Etihad",
+                "flight_number": "EY 476",
+                "from": "AUH",
+                "from_name": "Zayed International Airport",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-18 22:10",
+                "arrival_time": "2027-02-19 11:35",
+                "duration": 565,
+                "airplane": "Boeing 777",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 533 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3BGV1RneWZFVlpORGMyR2dzSXQ0NEZFQUlhQTBWVlVqZ2NjT1BvQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+            "booking_token": null
+          },
+          {
+            "price": 838,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+            "carbon_diff": 14,
+            "airlines": [
+              "Etihad"
+            ],
+            "flight_numbers": [
+              "EY 80",
+              "EY 476"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 21:35",
+            "arrival_time": "2027-02-20 11:35",
+            "total_duration": 1860,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "AUH",
+                "name": "Zayed International Airport",
+                "duration": 910,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Etihad",
+                "flight_number": "EY 80",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "AUH",
+                "to_name": "Zayed International Airport",
+                "departure_time": "2027-02-18 21:35",
+                "arrival_time": "2027-02-19 07:00",
+                "duration": 385,
+                "airplane": "Airbus A321neo",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+                "legroom": "76 cm",
+                "extensions": [
+                  "Average legroom (76 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 398 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              },
+              {
+                "airline": "Etihad",
+                "flight_number": "EY 476",
+                "from": "AUH",
+                "from_name": "Zayed International Airport",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 22:10",
+                "arrival_time": "2027-02-20 11:35",
+                "duration": 565,
+                "airplane": "Boeing 777",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 533 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3BGV1Rnd2ZFVlpORGMyR2dzSXQ0NEZFQUlhQTBWVlVqZ2NjT1BvQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+            "booking_token": null
+          },
+          {
+            "price": 840,
+            "is_best": true,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+            "carbon_diff": -2,
+            "airlines": [
+              "Qatar Airways"
+            ],
+            "flight_numbers": [
+              "QR 128",
+              "QR 962"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 15:10",
+            "arrival_time": "2027-02-19 17:20",
+            "total_duration": 1150,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "DOH",
+                "name": "Aeroportul Internațional Hamad",
+                "duration": 235,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Qatar Airways",
+                "flight_number": "QR 128",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "DOH",
+                "to_name": "Aeroportul Internațional Hamad",
+                "departure_time": "2027-02-18 15:10",
+                "arrival_time": "2027-02-18 22:55",
+                "duration": 345,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 326 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Qatar Airways",
+                "flight_number": "QR 962",
+                "from": "DOH",
+                "from_name": "Aeroportul Internațional Hamad",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 02:50",
+                "arrival_time": "2027-02-19 17:20",
+                "duration": 570,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 478 kg"
+                ],
+                "overnight": true,
+                "often_delayed": true
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZzFSVWpFeU9IeFJVamsyTWlNeEdnc0k0WThGRUFJYUEwVlZVamdjY0tYcUJRPT0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJET0giLG51bGwsIlFSIiwiMTI4Il0sWyJET0giLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJRUiIsIjk2MiJdXV0=",
+            "booking_token": null
+          },
+          {
+            "price": 840,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+            "carbon_diff": -2,
+            "airlines": [
+              "Qatar Airways"
+            ],
+            "flight_numbers": [
+              "QR 124",
+              "QR 962"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 08:55",
+            "arrival_time": "2027-02-19 17:20",
+            "total_duration": 1525,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "DOH",
+                "name": "Aeroportul Internațional Hamad",
+                "duration": 610,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Qatar Airways",
+                "flight_number": "QR 124",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "DOH",
+                "to_name": "Aeroportul Internațional Hamad",
+                "departure_time": "2027-02-18 08:55",
+                "arrival_time": "2027-02-18 16:40",
+                "duration": 345,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 326 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Qatar Airways",
+                "flight_number": "QR 962",
+                "from": "DOH",
+                "from_name": "Aeroportul Internațional Hamad",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 02:50",
+                "arrival_time": "2027-02-19 17:20",
+                "duration": 570,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 478 kg"
+                ],
+                "overnight": true,
+                "often_delayed": true
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RSVWpFeU5IeFJVamsyTWhvTENPR1BCUkFDR2dORlZWSTRISENsNmdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": 840,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+            "carbon_diff": 3,
+            "airlines": [
+              "Qatar Airways"
+            ],
+            "flight_numbers": [
+              "QR 128",
+              "QR 960"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 15:10",
+            "arrival_time": "2027-02-19 22:40",
+            "total_duration": 1470,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "DOH",
+                "name": "Aeroportul Internațional Hamad",
+                "duration": 555,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Qatar Airways",
+                "flight_number": "QR 128",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "DOH",
+                "to_name": "Aeroportul Internațional Hamad",
+                "departure_time": "2027-02-18 15:10",
+                "arrival_time": "2027-02-18 22:55",
+                "duration": 345,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 326 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Qatar Airways",
+                "flight_number": "QR 960",
+                "from": "DOH",
+                "from_name": "Aeroportul Internațional Hamad",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 08:10",
+                "arrival_time": "2027-02-19 22:40",
+                "duration": 570,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 512 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RSVWpFeU9IeFJVamsyTUJvTENPR1BCUkFDR2dORlZWSTRISENsNmdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": 842,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+            "carbon_diff": 3,
+            "airlines": [
+              "Qatar Airways"
+            ],
+            "flight_numbers": [
+              "QR 124",
+              "QR 960"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 08:55",
+            "arrival_time": "2027-02-19 22:40",
+            "total_duration": 1845,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "DOH",
+                "name": "Aeroportul Internațional Hamad",
+                "duration": 930,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Qatar Airways",
+                "flight_number": "QR 124",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "DOH",
+                "to_name": "Aeroportul Internațional Hamad",
+                "departure_time": "2027-02-18 08:55",
+                "arrival_time": "2027-02-18 16:40",
+                "duration": 345,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 326 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Qatar Airways",
+                "flight_number": "QR 960",
+                "from": "DOH",
+                "from_name": "Aeroportul Internațional Hamad",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 08:10",
+                "arrival_time": "2027-02-19 22:40",
+                "duration": 570,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 512 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RSVWpFeU5IeFJVamsyTUJvTENNZVJCUkFDR2dORlZWSTRISENxN0FVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": 847,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+            "carbon_diff": 10,
+            "airlines": [
+              "Emirates",
+              "Batik Air"
+            ],
+            "flight_numbers": [
+              "EK 206",
+              "EK 346",
+              "OD 177"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 13:55",
+            "arrival_time": "2027-02-19 19:55",
+            "total_duration": 1380,
+            "stops": 2,
+            "layovers": [
+              {
+                "airport": "DXB",
+                "name": "Aeroportul Internațional Dubai",
+                "duration": 280,
+                "overnight": false
+              },
+              {
+                "airport": "KUL",
+                "name": "Aeroportul Internațional din Kuala Lumpur",
+                "duration": 120,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Emirates",
+                "flight_number": "EK 206",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "DXB",
+                "to_name": "Aeroportul Internațional Dubai",
+                "departure_time": "2027-02-18 13:55",
+                "arrival_time": "2027-02-18 23:00",
+                "duration": 365,
+                "airplane": "Airbus A380",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 360 kg"
+                ],
+                "overnight": false,
+                "often_delayed": true
+              },
+              {
+                "airline": "Emirates",
+                "flight_number": "EK 346",
+                "from": "DXB",
+                "from_name": "Aeroportul Internațional Dubai",
+                "to": "KUL",
+                "to_name": "Aeroportul Internațional din Kuala Lumpur",
+                "departure_time": "2027-02-19 03:40",
+                "arrival_time": "2027-02-19 14:45",
+                "duration": 425,
+                "airplane": "Boeing 777",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 401 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              },
+              {
+                "airline": "Batik Air",
+                "flight_number": "OD 177",
+                "from": "KUL",
+                "from_name": "Aeroportul Internațional din Kuala Lumpur",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 16:45",
+                "arrival_time": "2027-02-19 19:55",
+                "duration": 190,
+                "airplane": "Boeing 737MAX 8 Passenger",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
+                "legroom": "74 cm",
+                "extensions": [
+                  "Below average legroom (74 cm)",
+                  "Stream media to your device",
+                  "Carbon emissions estimate: 138 kg"
+                ],
+                "overnight": false,
+                "often_delayed": true
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ0xpVkJSQUNHZ05GVlZJNEhIRGc4QVU9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": 864,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+            "carbon_diff": 4,
+            "airlines": [
+              "Emirates"
+            ],
+            "flight_numbers": [
+              "EK 102",
+              "EK 368"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 10:25",
+            "arrival_time": "2027-02-19 16:30",
+            "total_duration": 1385,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "DXB",
+                "name": "Aeroportul Internațional Dubai",
+                "duration": 470,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Emirates",
+                "flight_number": "EK 102",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "DXB",
+                "to_name": "Aeroportul Internațional Dubai",
+                "departure_time": "2027-02-18 10:25",
+                "arrival_time": "2027-02-18 19:20",
+                "duration": 355,
+                "airplane": "Boeing 777",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 363 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Emirates",
+                "flight_number": "EK 368",
+                "from": "DXB",
+                "from_name": "Aeroportul Internațional Dubai",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 03:10",
+                "arrival_time": "2027-02-19 16:30",
+                "duration": 560,
+                "airplane": "Boeing 777",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 490 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RGU3pFd01ueEZTek0yT0JvTENOZWlCUkFDR2dORlZWSTRISERwL3dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": 864,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+            "carbon_diff": 4,
+            "airlines": [
+              "Emirates"
+            ],
+            "flight_numbers": [
+              "EK 102",
+              "EK 398"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 10:25",
+            "arrival_time": "2027-02-19 22:35",
+            "total_duration": 1750,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "DXB",
+                "name": "Aeroportul Internațional Dubai",
+                "duration": 830,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Emirates",
+                "flight_number": "EK 102",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "DXB",
+                "to_name": "Aeroportul Internațional Dubai",
+                "departure_time": "2027-02-18 10:25",
+                "arrival_time": "2027-02-18 19:20",
+                "duration": 355,
+                "airplane": "Boeing 777",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 363 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              },
+              {
+                "airline": "Emirates",
+                "flight_number": "EK 398",
+                "from": "DXB",
+                "from_name": "Aeroportul Internațional Dubai",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 09:10",
+                "arrival_time": "2027-02-19 22:35",
+                "duration": 565,
+                "airplane": "Airbus A380",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 486 kg"
+                ],
+                "overnight": false,
+                "often_delayed": true
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RGU3pFd01ueEZTek01T0JvTENOZWlCUkFDR2dORlZWSTRISERwL3dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": 864,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+            "carbon_diff": 4,
+            "airlines": [
+              "Emirates"
+            ],
+            "flight_numbers": [
+              "EK 206",
+              "EK 368"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 13:55",
+            "arrival_time": "2027-02-19 16:30",
+            "total_duration": 1175,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "DXB",
+                "name": "Aeroportul Internațional Dubai",
+                "duration": 250,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Emirates",
+                "flight_number": "EK 206",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "DXB",
+                "to_name": "Aeroportul Internațional Dubai",
+                "departure_time": "2027-02-18 13:55",
+                "arrival_time": "2027-02-18 23:00",
+                "duration": 365,
+                "airplane": "Airbus A380",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 360 kg"
+                ],
+                "overnight": false,
+                "often_delayed": true
+              },
+              {
+                "airline": "Emirates",
+                "flight_number": "EK 368",
+                "from": "DXB",
+                "from_name": "Aeroportul Internațional Dubai",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 03:10",
+                "arrival_time": "2027-02-19 16:30",
+                "duration": 560,
+                "airplane": "Boeing 777",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 490 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZzFGU3pJd05ueEZTek0yT0NNeEdnc0kxNklGRUFJYUEwVlZVamdjY09uL0JRPT0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJEWEIiLG51bGwsIkVLIiwiMjA2Il0sWyJEWEIiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJFSyIsIjM2OCJdXV0=",
+            "booking_token": null
+          },
+          {
+            "price": 864,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+            "carbon_diff": 4,
+            "airlines": [
+              "Emirates"
+            ],
+            "flight_numbers": [
+              "EK 206",
+              "EK 398"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 13:55",
+            "arrival_time": "2027-02-19 22:35",
+            "total_duration": 1540,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "DXB",
+                "name": "Aeroportul Internațional Dubai",
+                "duration": 610,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Emirates",
+                "flight_number": "EK 206",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "DXB",
+                "to_name": "Aeroportul Internațional Dubai",
+                "departure_time": "2027-02-18 13:55",
+                "arrival_time": "2027-02-18 23:00",
+                "duration": 365,
+                "airplane": "Airbus A380",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 360 kg"
+                ],
+                "overnight": false,
+                "often_delayed": true
+              },
+              {
+                "airline": "Emirates",
+                "flight_number": "EK 398",
+                "from": "DXB",
+                "from_name": "Aeroportul Internațional Dubai",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 09:10",
+                "arrival_time": "2027-02-19 22:35",
+                "duration": 565,
+                "airplane": "Airbus A380",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 486 kg"
+                ],
+                "overnight": false,
+                "often_delayed": true
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RGU3pJd05ueEZTek01T0JvTENOZWlCUkFDR2dORlZWSTRISERwL3dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": 864,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+            "carbon_diff": 4,
+            "airlines": [
+              "Emirates"
+            ],
+            "flight_numbers": [
+              "EK 92",
+              "EK 398"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 21:20",
+            "arrival_time": "2027-02-19 22:35",
+            "total_duration": 1095,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "DXB",
+                "name": "Aeroportul Internațional Dubai",
+                "duration": 160,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Emirates",
+                "flight_number": "EK 92",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "DXB",
+                "to_name": "Aeroportul Internațional Dubai",
+                "departure_time": "2027-02-18 21:20",
+                "arrival_time": "2027-02-19 06:30",
+                "duration": 370,
+                "airplane": "Airbus A380",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 361 kg"
+                ],
+                "overnight": true,
+                "often_delayed": true
+              },
+              {
+                "airline": "Emirates",
+                "flight_number": "EK 398",
+                "from": "DXB",
+                "from_name": "Aeroportul Internațional Dubai",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 09:10",
+                "arrival_time": "2027-02-19 22:35",
+                "duration": 565,
+                "airplane": "Airbus A380",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 486 kg"
+                ],
+                "overnight": false,
+                "often_delayed": true
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3hGU3preWZFVkxNems0SXpFYUN3alhvZ1VRQWhvRFJWVlNPQnh3NmY4RiIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
+            "booking_token": null
+          },
+          {
+            "price": null,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+            "carbon_diff": -12,
+            "airlines": [
+              "Singapore Airlines"
+            ],
+            "flight_numbers": [
+              "SQ 355",
+              "SQ 936"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 12:20",
+            "arrival_time": "2027-02-19 11:05",
+            "total_duration": 945,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "SIN",
+                "name": "Aeroportul Internațional Changi",
+                "duration": 50,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 355",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "SIN",
+                "to_name": "Aeroportul Internațional Changi",
+                "departure_time": "2027-02-18 12:20",
+                "arrival_time": "2027-02-19 07:30",
+                "duration": 730,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 617 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              },
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 936",
+                "from": "SIN",
+                "from_name": "Aeroportul Internațional Changi",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 08:20",
+                "arrival_time": "2027-02-19 11:05",
+                "duration": 165,
+                "airplane": "Boeing 787",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 99 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RUVVRNMU5YeFRVVGt6TmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTM2Il1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": null,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+            "carbon_diff": -12,
+            "airlines": [
+              "Singapore Airlines"
+            ],
+            "flight_numbers": [
+              "SQ 355",
+              "SQ 938"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 12:20",
+            "arrival_time": "2027-02-19 12:05",
+            "total_duration": 1005,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "SIN",
+                "name": "Aeroportul Internațional Changi",
+                "duration": 105,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 355",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "SIN",
+                "to_name": "Aeroportul Internațional Changi",
+                "departure_time": "2027-02-18 12:20",
+                "arrival_time": "2027-02-19 07:30",
+                "duration": 730,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 617 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              },
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 938",
+                "from": "SIN",
+                "from_name": "Aeroportul Internațional Changi",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 09:15",
+                "arrival_time": "2027-02-19 12:05",
+                "duration": 170,
+                "airplane": "Boeing 787",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 99 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RUVVRNMU5YeFRVVGt6T0RnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTM4Il1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": null,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+            "carbon_diff": -5,
+            "airlines": [
+              "Singapore Airlines",
+              "Garuda Indonesia"
+            ],
+            "flight_numbers": [
+              "SQ 355",
+              "GA 843"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 12:20",
+            "arrival_time": "2027-02-19 12:35",
+            "total_duration": 1035,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "SIN",
+                "name": "Aeroportul Internațional Changi",
+                "duration": 130,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 355",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "SIN",
+                "to_name": "Aeroportul Internațional Changi",
+                "departure_time": "2027-02-18 12:20",
+                "arrival_time": "2027-02-19 07:30",
+                "duration": 730,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 617 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              },
+              {
+                "airline": "Garuda Indonesia",
+                "flight_number": "GA 843",
+                "from": "SIN",
+                "from_name": "Aeroportul Internațional Changi",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 09:40",
+                "arrival_time": "2027-02-19 12:35",
+                "duration": 175,
+                "airplane": "Boeing 737",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/GA.png",
+                "legroom": "79 cm",
+                "extensions": [
+                  "Average legroom (79 cm)",
+                  "On-demand video",
+                  "Carbon emissions estimate: 159 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZzFUVVRNMU5YeEhRVGcwTXlNeE9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJHQSIsIjg0MyJdXV0=",
+            "booking_token": null
+          },
+          {
+            "price": null,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+            "carbon_diff": -11,
+            "airlines": [
+              "Singapore Airlines",
+              "Scoot"
+            ],
+            "flight_numbers": [
+              "SQ 355",
+              "TR 288"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 12:20",
+            "arrival_time": "2027-02-19 13:25",
+            "total_duration": 1085,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "SIN",
+                "name": "Aeroportul Internațional Changi",
+                "duration": 175,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 355",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "SIN",
+                "to_name": "Aeroportul Internațional Changi",
+                "departure_time": "2027-02-18 12:20",
+                "arrival_time": "2027-02-19 07:30",
+                "duration": 730,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 617 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              },
+              {
+                "airline": "Scoot",
+                "flight_number": "TR 288",
+                "from": "SIN",
+                "from_name": "Aeroportul Internațional Changi",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 10:25",
+                "arrival_time": "2027-02-19 13:25",
+                "duration": 180,
+                "airplane": "Airbus A320neo",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TR.png",
+                "legroom": "71 cm",
+                "extensions": [
+                  "Below average legroom (71 cm)",
+                  "Carbon emissions estimate: 114 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RUVVRNMU5YeFVVakk0T0RnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRSIiwiMjg4Il1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": null,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+            "carbon_diff": -12,
+            "airlines": [
+              "Singapore Airlines"
+            ],
+            "flight_numbers": [
+              "SQ 355",
+              "SQ 944"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 12:20",
+            "arrival_time": "2027-02-19 18:45",
+            "total_duration": 1405,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "SIN",
+                "name": "Aeroportul Internațional Changi",
+                "duration": 500,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 355",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "SIN",
+                "to_name": "Aeroportul Internațional Changi",
+                "departure_time": "2027-02-18 12:20",
+                "arrival_time": "2027-02-19 07:30",
+                "duration": 730,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 617 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              },
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 944",
+                "from": "SIN",
+                "from_name": "Aeroportul Internațional Changi",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 15:50",
+                "arrival_time": "2027-02-19 18:45",
+                "duration": 175,
+                "airplane": "Boeing 787",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 99 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RUVVRNMU5YeFRVVGswTkRnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ0Il1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": null,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+            "carbon_diff": -10,
+            "airlines": [
+              "Singapore Airlines",
+              "Scoot"
+            ],
+            "flight_numbers": [
+              "SQ 355",
+              "TR 282"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 12:20",
+            "arrival_time": "2027-02-19 19:00",
+            "total_duration": 1420,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "SIN",
+                "name": "Aeroportul Internațional Changi",
+                "duration": 515,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 355",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "SIN",
+                "to_name": "Aeroportul Internațional Changi",
+                "departure_time": "2027-02-18 12:20",
+                "arrival_time": "2027-02-19 07:30",
+                "duration": 730,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 617 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              },
+              {
+                "airline": "Scoot",
+                "flight_number": "TR 282",
+                "from": "SIN",
+                "from_name": "Aeroportul Internațional Changi",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 16:05",
+                "arrival_time": "2027-02-19 19:00",
+                "duration": 175,
+                "airplane": "Boeing 787",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/TR.png",
+                "legroom": "76 cm",
+                "extensions": [
+                  "Average legroom (76 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power outlet",
+                  "Carbon emissions estimate: 118 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RUVVRNMU5YeFVVakk0TWpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRSIiwiMjgyIl1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": null,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+            "carbon_diff": -7,
+            "airlines": [
+              "Singapore Airlines"
+            ],
+            "flight_numbers": [
+              "SQ 355",
+              "SQ 946"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 12:20",
+            "arrival_time": "2027-02-19 20:40",
+            "total_duration": 1520,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "SIN",
+                "name": "Aeroportul Internațional Changi",
+                "duration": 610,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 355",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "SIN",
+                "to_name": "Aeroportul Internațional Changi",
+                "departure_time": "2027-02-18 12:20",
+                "arrival_time": "2027-02-19 07:30",
+                "duration": 730,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 617 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              },
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 946",
+                "from": "SIN",
+                "from_name": "Aeroportul Internațional Changi",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 17:40",
+                "arrival_time": "2027-02-19 20:40",
+                "duration": 180,
+                "airplane": "Boeing 737MAX 8 Passenger",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "76 cm",
+                "extensions": [
+                  "Average legroom (76 cm)",
+                  "Free Wi-Fi",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 143 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RUVVRNMU5YeFRVVGswTmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ2Il1dXQ==",
+            "booking_token": null
+          },
+          {
+            "price": null,
+            "is_best": false,
+            "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+            "carbon_diff": -7,
+            "airlines": [
+              "Singapore Airlines"
+            ],
+            "flight_numbers": [
+              "SQ 355",
+              "SQ 948"
+            ],
+            "from": "MXP",
+            "to": "DPS",
+            "departure_time": "2027-02-18 12:20",
+            "arrival_time": "2027-02-20 00:25",
+            "total_duration": 1745,
+            "stops": 1,
+            "layovers": [
+              {
+                "airport": "SIN",
+                "name": "Aeroportul Internațional Changi",
+                "duration": 840,
+                "overnight": false
+              }
+            ],
+            "legs": [
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 355",
+                "from": "MXP",
+                "from_name": "Aeroportul Internațional Milano-Malpensa",
+                "to": "SIN",
+                "to_name": "Aeroportul Internațional Changi",
+                "departure_time": "2027-02-18 12:20",
+                "arrival_time": "2027-02-19 07:30",
+                "duration": 730,
+                "airplane": "Airbus A350",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "81 cm",
+                "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Free Wi-Fi",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 617 kg"
+                ],
+                "overnight": true,
+                "often_delayed": false
+              },
+              {
+                "airline": "Singapore Airlines",
+                "flight_number": "SQ 948",
+                "from": "SIN",
+                "from_name": "Aeroportul Internațional Changi",
+                "to": "DPS",
+                "to_name": "Aeroportul Internațional Ngurah Rai",
+                "departure_time": "2027-02-19 21:30",
+                "arrival_time": "2027-02-20 00:25",
+                "duration": 175,
+                "airplane": "Boeing 737MAX 8 Passenger",
+                "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
+                "legroom": "76 cm",
+                "extensions": [
+                  "Average legroom (76 cm)",
+                  "Free Wi-Fi",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 143 kg"
+                ],
+                "overnight": false,
+                "often_delayed": false
+              }
+            ],
+            "departure_token": "WyJDalJJZVZjeGNUTjVlSGQ0TUZGQlIyaGZZbWRDUnkwdExTMHRMUzF3Wm1WMU5DMXVNVUZCUVVGQlIzRTFaMUZaU1hwd2RYZEJFZ3RUVVRNMU5YeFRVVGswT0RnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ4Il1dXQ==",
+            "booking_token": null
+          }
+        ],
+        "lowest_price": 720,
+        "price_insights": {
+          "lowest_price": null,
+          "price_level": null,
+          "typical_price_range": null
+        },
+        "google_flights_url": "https://www.google.com/travel/flights?hl=ro&gl=ro&curr=EUR&tfs=CBwQAhoyEgoyMDI3LTAyLTE4MgJUSzICRUsyAlFSMgJFWTICU1FqBwgBEgNNWFByBwgBEgNEUFMaMhIKMjAyNy0wMi0yNjICVEsyAkVLMgJRUjICRVkyAlNRagcIARIDRFBTcgcIARIDTVhQQAFIAXABmAEB&tfu=EgQIARAB",
+        "return_flight": null
+      }
+    ]
+  }
 }

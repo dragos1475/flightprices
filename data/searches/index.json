@@ -1,3 +1,28 @@
 {
-  "searches": []
+  "searches": [
+    {
+      "id": "s-20260927-234740-1q1q",
+      "title": "Milan Bali",
+      "created_at": "2026-09-27T20:47:40.024Z",
+      "status": "done",
+      "message": null,
+      "lowest_price": 720,
+      "currency": "EUR",
+      "departures": [
+        {
+          "date": "2027-02-18",
+          "nights": [
+            8
+          ]
+        }
+      ],
+      "destination": {
+        "id": "DPS",
+        "name": "Bali (Denpasar)",
+        "codes": [
+          "DPS"
+        ]
+      }
+    }
+  ]
 }
