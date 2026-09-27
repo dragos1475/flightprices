@@ -163,7 +163,9 @@ function draw(app, rawAlert, rawResults, rawHistory, animate) {
   }
 
   const resultsEl = app.querySelector('#results');
-  const ctx = { combos: sum.combos, maxPrice: max, cur, view, oneWay: isOneWay(alert), route: routeLabel };
+  const ctx = {
+    combos: sum.combos, maxPrice: max, cur, view, oneWay: isOneWay(alert), route: routeLabel, airlineCodes: alert.airlines,
+  };
   resultsEl.innerHTML = resultsSections(ctx);
   bindResults(resultsEl, ctx);
 

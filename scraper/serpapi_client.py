@@ -162,6 +162,11 @@ def _parse_flight(item, is_best):
             "arrival_time": leg.get("arrival_airport", {}).get("time", ""),
             "duration": leg.get("duration"),
             "airplane": leg.get("airplane", ""),
+            "logo": leg.get("airline_logo", ""),
+            "legroom": leg.get("legroom", ""),
+            "extensions": leg.get("extensions", []) or [],  # ex. „Wi-Fi”, „Priză”, „Spațiu mediu pentru picioare”
+            "overnight": bool(leg.get("overnight")),
+            "often_delayed": bool(leg.get("often_delayed_by_over_30_min")),
         })
     layovers = [{
         "airport": lay.get("id", ""),
@@ -175,9 +180,12 @@ def _parse_flight(item, is_best):
         if leg["airline"] and leg["airline"] not in airlines:
             airlines.append(leg["airline"])
 
+    carbon = item.get("carbon_emissions") or {}
     return {
         "price": item.get("price"),
         "is_best": is_best,
+        "logo": item.get("airline_logo", ""),
+        "carbon_diff": carbon.get("difference_percent"),  # % față de tipicul rutei (negativ = mai puțin CO₂)
         "airlines": airlines,
         "flight_numbers": [leg["flight_number"] for leg in legs if leg["flight_number"]],
         "from": legs[0]["from"] if legs else "",

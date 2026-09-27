@@ -353,9 +353,22 @@ function renderDestination() {
   btn.innerHTML = `
     <span class="row-icon">${icon('pin', 16)}</span>
     <span class="row-main">${d
-      ? `<span class="row-sub">Destinația</span><b>${destFlag(d) ? `${destFlag(d)} ` : ''}${h(d.name)}</b><span class="row-sub">${h(d.codes.join(', '))}</span>`
-      : '<span class="row-title">Alege destinația</span><span class="row-sub">Oraș, țară sau cod IATA</span>'}</span>
+      ? `<span class="row-sub">${d.parts?.length > 1 ? `${d.parts.length} destinații, căutate împreună` : 'Destinația'}</span>
+         <b>${destFlag(d) ? `${destFlag(d)} ` : ''}${h(d.name)}</b><span class="row-sub">${h(d.codes.join(', '))}</span>`
+      : '<span class="row-title">Alege destinația</span><span class="row-sub">Una sau mai multe: oraș, țară sau cod IATA</span>'}</span>
     <span class="chev muted">${icon('chevron', 18)}</span>`;
+}
+
+/** Mai multe destinații -> una singură, cu toate codurile (căutată într-un singur apel). */
+function mergeDestinations(parts) {
+  if (!parts.length) return null;
+  if (parts.length === 1) return { id: parts[0].id, name: parts[0].name, codes: [...parts[0].codes] };
+  return {
+    id: `multi:${parts.map((p) => p.id).join('+')}`,
+    name: parts.map((p) => p.name.replace(/\s*\(toate[^)]*\)/i, '')).join(' / '),
+    codes: [...new Set(parts.flatMap((p) => p.codes))],
+    parts: parts.map((p) => ({ id: p.id, name: p.name, codes: p.codes })),
+  };
 }
 
 function openDestinationSheet() {
@@ -363,8 +376,10 @@ function openDestinationSheet() {
   sheet.innerHTML = `
     <div class="sheet-head">
       <div class="sheet-grip"></div>
-      <div class="sheet-title"><h2>Destinația</h2><button type="button" class="nav-btn" id="sheet-close" aria-label="Închide">${icon('close', 22)}</button></div>
+      <div class="sheet-title"><h2>Destinații</h2>
+        <button type="button" class="btn primary sm" id="sheet-done">Gata</button></div>
       <div class="search-box">${icon('search', 18)}<input type="search" id="dest-search" placeholder="Caută: Roma, Bali, Japonia, FCO…" autocomplete="off"></div>
+      <div class="dest-selected" id="dest-selected"></div>
     </div>
     <div class="sheet-body">
       <div id="dest-list"></div>
@@ -384,6 +399,22 @@ function openDestinationSheet() {
 
   const search = sheet.querySelector('#dest-search');
   const list = sheet.querySelector('#dest-list');
+  const selectedBox = sheet.querySelector('#dest-selected');
+  const MAX_CODES = 7;
+  // selecția curentă (poate avea mai multe destinații, căutate împreună într-un singur apel)
+  let picked = draft.destination ? (draft.destination.parts || [draft.destination]).map((p) => ({ ...p })) : [];
+  const totalCodes = () => new Set(picked.flatMap((p) => p.codes)).size;
+  const drawSelected = () => {
+    selectedBox.innerHTML = picked.length ? `${picked.map((p) => `
+      <button type="button" class="dest-chip" data-unpick="${h(p.id)}">${destFlag(p) ? `${destFlag(p)} ` : ''}${h(p.name)} ${icon('close', 12)}</button>`).join('')}
+      <span class="small ${totalCodes() > MAX_CODES ? 'bad-text' : 'muted'}">${totalCodes()} aeroporturi${totalCodes() > MAX_CODES ? ` (maxim ${MAX_CODES})` : ''}</span>`
+      : '<span class="small muted">Atinge una sau mai multe destinații. Toate se caută împreună, fără credite în plus.</span>';
+    selectedBox.querySelectorAll('[data-unpick]').forEach((b) => b.addEventListener('click', () => {
+      picked = picked.filter((p) => p.id !== b.dataset.unpick);
+      drawSelected();
+      draw();
+    }));
+  };
   const draw = () => {
     const q = fold(search.value.trim());
     let items = state.config.destinations;
@@ -401,28 +432,38 @@ function openDestinationSheet() {
     list.innerHTML = groups.map(({ g, items: its }) => `
       <div class="pick-group">${countryFlag(its[0].country) ? `${countryFlag(its[0].country)} ` : ''}${h(g)}</div>
       <div class="group">${its.map((d) => `
-        <button type="button" class="pick-item" data-id="${h(d.id)}">
+        <button type="button" class="pick-item ${picked.some((p) => p.id === d.id) ? 'picked' : ''}" data-id="${h(d.id)}" aria-pressed="${picked.some((p) => p.id === d.id)}">
           <span class="pick-code ${d.codes.length > 1 ? 'multi' : ''}">${d.codes.length > 1 ? `${d.codes.length}×` : h(d.codes[0])}</span>
           <span class="row-main"><span class="row-title">${h(d.name)}</span>${d.codes.length > 1 ? `<span class="row-sub">${h(d.codes.join(', '))}</span>` : ''}</span>
+          <span class="pick-check">${icon('check', 14)}</span>
         </button>`).join('')}</div>`).join('')
       || '<p class="muted" style="padding:16px 4px">Nicio destinație găsită. Adaug-o mai jos după codul IATA.</p>';
   };
   draw();
+  drawSelected();
   search.addEventListener('input', draw);
 
-  const choose = (dest) => {
-    draft.destination = dest;
-    renderDestination();
-    renderBudget();
-    sheet.close();
+  const toggle = (dest) => {
+    picked = picked.some((p) => p.id === dest.id) ? picked.filter((p) => p.id !== dest.id) : [...picked, dest];
+    drawSelected();
+    draw();
   };
   list.addEventListener('click', (e) => {
     const b = e.target.closest('.pick-item');
     if (!b) return;
     const d = state.config.destinations.find((x) => x.id === b.dataset.id);
-    choose({ id: d.id, name: d.name, codes: [...d.codes] });
+    toggle({ id: d.id, name: d.name, codes: [...d.codes] });
   });
-  sheet.querySelector('#sheet-close').onclick = () => sheet.close();
+  sheet.querySelector('#sheet-done').onclick = () => {
+    if (totalCodes() > MAX_CODES) {
+      toast(`Prea multe aeroporturi (${totalCodes()}). Maxim ${MAX_CODES} într-o căutare.`);
+      return;
+    }
+    draft.destination = mergeDestinations(picked);
+    renderDestination();
+    renderBudget();
+    sheet.close();
+  };
   sheet.addEventListener('click', (e) => { if (e.target === sheet) sheet.close(); });
 
   sheet.querySelector('#nd-add').onclick = async () => {
@@ -443,7 +484,10 @@ function openDestinationSheet() {
         toast(`Folosită, dar nesalvată în listă: ${e.message}`, 6000);
       }
     }
-    choose({ id: dest.id, name, codes });
+    if (!picked.some((p) => p.id === dest.id)) picked.push({ id: dest.id, name, codes });
+    drawSelected();
+    draw();
+    toast('Destinația a fost adăugată în selecție');
   };
 
   sheet.showModal();

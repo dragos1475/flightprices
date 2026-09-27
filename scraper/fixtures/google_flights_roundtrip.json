@@ -25,20 +25,25 @@
           "duration": 155,
           "airplane": "Airbus A321neo",
           "airline": "Wizz Air",
-          "airline_logo": "",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/W6.png",
           "travel_class": "Economy",
           "flight_number": "W6 3131",
           "legroom": "71 cm",
-          "extensions": []
+          "extensions": [
+            "Spațiu mediu pentru picioare (71 cm)",
+            "Priză USB"
+          ]
         }
       ],
       "total_duration": 155,
       "carbon_emissions": {
-        "this_flight": 150000
+        "this_flight": 150000,
+        "typical_for_this_route": 160000,
+        "difference_percent": -6
       },
       "price": 168,
       "type": "Dus-întors",
-      "airline_logo": "",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/W6.png",
       "departure_token": "T1"
     },
     {
@@ -57,20 +62,24 @@
           "duration": 155,
           "airplane": "Boeing 737",
           "airline": "Ryanair",
-          "airline_logo": "",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
           "travel_class": "Economy",
           "flight_number": "FR 1234",
           "legroom": "71 cm",
-          "extensions": []
+          "extensions": [
+            "Spațiu sub medie pentru picioare (69 cm)"
+          ]
         }
       ],
       "total_duration": 155,
       "carbon_emissions": {
-        "this_flight": 150000
+        "this_flight": 150000,
+        "typical_for_this_route": 160000,
+        "difference_percent": 4
       },
       "price": 182,
       "type": "Dus-întors",
-      "airline_logo": "",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/FR.png",
       "departure_token": "T2"
     }
   ],
@@ -85,26 +94,31 @@
           },
           "arrival_airport": {
             "name": "Aeroportul Roma Fiumicino",
-            "id": "FCO",
+            "id": "CIA",
             "time": "2026-01-01 11:05"
           },
           "duration": 155,
           "airplane": "Airbus A321neo",
           "airline": "Wizz Air",
-          "airline_logo": "",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/W6.png",
           "travel_class": "Economy",
           "flight_number": "W6 3301",
           "legroom": "71 cm",
-          "extensions": []
+          "extensions": [
+            "Spațiu mediu pentru picioare (71 cm)",
+            "Priză USB"
+          ]
         }
       ],
       "total_duration": 155,
       "carbon_emissions": {
-        "this_flight": 150000
+        "this_flight": 150000,
+        "typical_for_this_route": 160000,
+        "difference_percent": -2
       },
       "price": 195,
       "type": "Dus-întors",
-      "airline_logo": "",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/W6.png",
       "departure_token": "T3"
     },
     {
@@ -123,20 +137,25 @@
           "duration": 160,
           "airplane": "Boeing 737",
           "airline": "TAROM",
-          "airline_logo": "",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/RO.png",
           "travel_class": "Economy",
           "flight_number": "RO 401",
           "legroom": "71 cm",
-          "extensions": []
+          "extensions": [
+            "Spațiu mediu pentru picioare (71 cm)",
+            "Priză USB"
+          ]
         }
       ],
       "total_duration": 160,
       "carbon_emissions": {
-        "this_flight": 150000
+        "this_flight": 150000,
+        "typical_for_this_route": 160000,
+        "difference_percent": 12
       },
       "price": 289,
       "type": "Dus-întors",
-      "airline_logo": "",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/RO.png",
       "departure_token": "T4"
     },
     {
@@ -155,11 +174,14 @@
           "duration": 100,
           "airplane": "Airbus A320",
           "airline": "Austrian",
-          "airline_logo": "",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/OS.png",
           "travel_class": "Economy",
           "flight_number": "OS 792",
           "legroom": "71 cm",
-          "extensions": []
+          "extensions": [
+            "Spațiu mediu pentru picioare (71 cm)",
+            "Priză USB"
+          ]
         },
         {
           "departure_airport": {
@@ -175,20 +197,25 @@
           "duration": 95,
           "airplane": "Airbus A320",
           "airline": "Austrian",
-          "airline_logo": "",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/OS.png",
           "travel_class": "Economy",
           "flight_number": "OS 501",
           "legroom": "71 cm",
-          "extensions": []
+          "extensions": [
+            "Spațiu mediu pentru picioare (71 cm)",
+            "Priză USB"
+          ]
         }
       ],
       "total_duration": 285,
       "carbon_emissions": {
-        "this_flight": 150000
+        "this_flight": 150000,
+        "typical_for_this_route": 160000,
+        "difference_percent": 25
       },
       "price": 341,
       "type": "Dus-întors",
-      "airline_logo": "",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/OS.png",
       "departure_token": "T5",
       "layovers": [
         {
@@ -214,11 +241,14 @@
           "duration": 100,
           "airplane": "Airbus A321",
           "airline": "Turkish Airlines",
-          "airline_logo": "",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
           "travel_class": "Economy",
           "flight_number": "TK 1044",
           "legroom": "71 cm",
-          "extensions": []
+          "extensions": [
+            "Spațiu mediu pentru picioare (71 cm)",
+            "Priză USB"
+          ]
         },
         {
           "departure_airport": {
@@ -234,26 +264,32 @@
           "duration": 190,
           "airplane": "Airbus A321",
           "airline": "Turkish Airlines",
-          "airline_logo": "",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
           "travel_class": "Economy",
           "flight_number": "TK 1861",
           "legroom": "71 cm",
-          "extensions": []
+          "extensions": [
+            "Spațiu mediu pentru picioare (71 cm)",
+            "Priză USB"
+          ]
         }
       ],
       "total_duration": 385,
       "carbon_emissions": {
-        "this_flight": 150000
+        "this_flight": 150000,
+        "typical_for_this_route": 160000,
+        "difference_percent": 31
       },
       "price": 376,
       "type": "Dus-întors",
-      "airline_logo": "",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
       "departure_token": "T6",
       "layovers": [
         {
           "duration": 95,
           "name": "Aeroportul Istanbul",
-          "id": "IST"
+          "id": "IST",
+          "overnight": true
         }
       ]
     }

@@ -9,7 +9,7 @@ import { locateDestination, nameCandidates } from './geo.js';
 import { cityPhoto, loadImage } from './media.js';
 import { routeArc, skyPhase } from './motion.js';
 import { airportName, priceLevel, state } from './state.js';
-import { dateTime, dayDate, duration, h, hour, money, share } from './util.js';
+import { dateTime, dayDate, duration, fold, h, hour, money, share } from './util.js';
 
 /**
  * Textul unei oferte, pentru partajare.
@@ -34,7 +34,7 @@ export function shareCombo(ctx, combo) {
 
 /** Preferințe de afișare (păstrate cât timp aplicația e deschisă). */
 export function newView() {
-  return { sort: 'price', onlyUnder: false, comboSort: 'date', flightsShown: 25 };
+  return { sort: 'price', onlyUnder: false, comboSort: 'date', flightsShown: 25, route: null, airline: null, airlineAll: false };
 }
 
 /** Datele unei combinații: 'joi 12.11 → lun 16.11' sau 'joi 12.11' (doar dus). */
@@ -50,16 +50,81 @@ export function comboNights(c) {
 
 const isUnder = (price, maxPrice) => maxPrice > 0 && price !== null && price !== undefined && price <= maxPrice;
 
-/** Un zbor, afișat ca bilet. */
+/** Numele unui loc după codul IATA (din destinații sau aeroporturile de plecare). */
+export function placeName(code) {
+  const d = state.config?.destinations.find((x) => x.codes.length === 1 && x.codes[0] === code);
+  return d?.name || airportName(code) || code;
+}
+
+/** Logo-ul unei companii (de la Google), cu inițialele ca rezervă dacă imaginea lipsește. */
+function logo(url, name, size = 28) {
+  const initials = String(name || '?').split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+  return `<span class="al-logo" style="--s:${size}px" data-initials="${h(initials)}">${url
+    ? `<img src="${h(url)}" alt="" loading="lazy" onerror="this.remove()">` : ''}</span>`;
+}
+
+/**
+ * Logo-ul unui segment: cel trimis de Google sau, pentru rezultatele mai vechi,
+ * dedus din codul companiei din numărul de zbor („LO 640” -> LO).
+ */
+function legLogo(l) {
+  if (l?.logo) return l.logo;
+  const code = String(l?.flight_number || '').split(' ')[0];
+  return /^[A-Z0-9]{2}$/.test(code) ? `https://www.gstatic.com/flights/airline_logos/70px/${code}.png` : '';
+}
+
+/** Logo-urile companiilor unui zbor (maxim 2, suprapuse). */
+function flightLogos(f) {
+  const seen = new Map();
+  (f.legs || []).forEach((l) => { if (l.airline && !seen.has(l.airline)) seen.set(l.airline, legLogo(l)); });
+  if (!seen.size && f.airlines?.length) seen.set(f.airlines[0], f.logo || '');
+  return `<span class="al-logos">${[...seen].slice(0, 2).map(([n, u]) => logo(u, n)).join('')}</span>`;
+}
+
+/** Detaliile unui zbor: segmentele, escalele, avionul, spațiul pentru picioare, facilitățile. */
+function flightDetails(f) {
+  const legs = f.legs || [];
+  if (!legs.length) return '';
+  const parts = [];
+  legs.forEach((l, i) => {
+    const extras = [l.airplane, ...(l.extensions || []).slice(0, 3)].filter(Boolean);
+    parts.push(`<div class="seg-leg">
+      <div class="seg-time"><b>${hour(l.departure_time)}</b><span>${h(l.from)}</span></div>
+      <div class="seg-body">
+        <div class="seg-place">${h(l.from_name || placeName(l.from))}</div>
+        <div class="seg-flight">${logo(legLogo(l), l.airline, 18)} ${h(l.airline)} · ${h(l.flight_number)} · ${duration(l.duration)}</div>
+        ${extras.length ? `<div class="seg-extras">${extras.map((x) => `<span>${h(x)}</span>`).join('')}</div>` : ''}
+        ${l.often_delayed ? `<div class="seg-warn">${icon('clock', 12)} Des întârziat peste 30 de minute</div>` : ''}
+        <div class="seg-place arr">${h(l.to_name || placeName(l.to))}</div>
+      </div>
+      <div class="seg-time end"><b>${hour(l.arrival_time)}</b><span>${h(l.to)}</span></div>
+    </div>`);
+    const lay = f.layovers?.[i];
+    if (lay && i < legs.length - 1) {
+      parts.push(`<div class="seg-layover ${lay.overnight ? 'night' : ''}">
+        ${icon('clock', 13)} Escală ${duration(lay.duration)} la ${h(lay.name || placeName(lay.airport))} (${h(lay.airport)})
+        ${lay.overnight ? '<b>· peste noapte</b>' : ''}</div>`);
+    }
+  });
+  const co2 = typeof f.carbon_diff === 'number'
+    ? `<span class="badge ${f.carbon_diff <= 0 ? 'good' : ''}">CO₂ ${f.carbon_diff > 0 ? '+' : ''}${f.carbon_diff}% față de tipic</span>` : '';
+  return `<details class="ticket-more"><summary>Detalii zbor ${icon('chevronDown', 14)}</summary>
+    <div class="seg-list">${parts.join('')}</div>
+    ${co2 ? `<div class="seg-foot">${co2}</div>` : ''}
+  </details>`;
+}
+
+/** Un zbor, afișat ca bilet (card). */
 export function ticket(f, ctx, showCombo) {
   const under = isUnder(f.price, ctx.maxPrice);
   const nextDay = f.arrival_time && f.departure_time && f.arrival_time.slice(0, 10) !== f.departure_time.slice(0, 10);
   const stops = f.stops
     ? `${f.stops} ${f.stops === 1 ? 'escală' : 'escale'}`
     : '<span class="stops-direct">direct</span>';
+  const overnight = (f.layovers || []).some((l) => l.overnight);
   return `<div class="ticket">
     <div class="ticket-head">
-      <div class="ticket-airline">${h(f.airlines.join(' / '))}<small>${h(f.flight_numbers.join(', '))}</small></div>
+      <div class="ticket-airline">${flightLogos(f)}<span class="ticket-names">${h(f.airlines.join(' / '))}<small>${h(f.flight_numbers.join(', '))}</small></span></div>
       <div class="ticket-price ${under ? 'under' : ''}">${money(f.price, ctx.cur)}</div>
     </div>
     <div class="ticket-times">
@@ -67,10 +132,11 @@ export function ticket(f, ctx, showCombo) {
       <div class="ticket-line"><span>${duration(f.total_duration)} · ${stops}</span></div>
       <div class="end"><div class="t">${hour(f.arrival_time)}${nextDay ? '<sup class="small muted">+1</sup>' : ''}</div><div class="ap">${h(f.to)}</div></div>
     </div>
-    ${showCombo || f.stops ? `<div class="ticket-foot">
+    <div class="ticket-foot">
       <span>${showCombo ? `${comboDates(f.combo)} · ${comboNights(f.combo)}` : ''}</span>
-      <span>${f.stops ? `prin ${h(f.layovers.map((l) => l.airport).join(', '))}` : ''}</span>
-    </div>` : ''}
+      <span>${f.stops ? `prin ${h(f.layovers.map((l) => l.airport).join(', '))}` : ''}${overnight ? ' · 🌙 peste noapte' : ''}</span>
+    </div>
+    ${flightDetails(f)}
   </div>`;
 }
 
@@ -86,7 +152,10 @@ export function resultsSections(ctx) {
     </div>
     <div class="group" data-box="combos"></div>
 
+    <div data-box="routes"></div>
+
     <div class="section-label"><span>Toate zborurile</span></div>
+    <div class="air-tabs" data-box="airlines" role="tablist" aria-label="Companii aeriene"></div>
     <div class="list-toolbar">
       ${ctx.maxPrice > 0 ? `<div class="seg" role="group" aria-label="Filtru">
         <button type="button" data-filter="all" aria-pressed="${!view.onlyUnder}">Toate</button>
@@ -110,8 +179,14 @@ export function bindResults(root, ctx) {
   if (!(ctx.maxPrice > 0)) view.onlyUnder = false;
   const combosBox = root.querySelector('[data-box="combos"]');
   const flightsBox = root.querySelector('[data-box="flights"]');
+  const routesBox = root.querySelector('[data-box="routes"]');
+  const airlinesBox = root.querySelector('[data-box="airlines"]');
   const redrawCombos = () => renderCombos(combosBox, ctx);
-  const redrawFlights = () => renderFlights(flightsBox, ctx);
+  const redrawFlights = () => {
+    renderRoutes(routesBox, ctx, redrawFlights);
+    renderAirlineTabs(airlinesBox, ctx, redrawFlights);
+    renderFlights(flightsBox, ctx);
+  };
   redrawCombos();
   redrawFlights();
 
@@ -193,10 +268,117 @@ export function focusCombo(root, combo) {
   setTimeout(() => el.classList.remove('flash'), 1200);
 }
 
+/** Toate zborurile (din toate combinațiile), cu combinația atașată. */
+function allFlights(ctx) {
+  let rows = ctx.combos.flatMap((c) => (c.flights || []).map((f) => ({ ...f, combo: c })));
+  if (ctx.view.onlyUnder) rows = rows.filter((f) => isUnder(f.price, ctx.maxPrice));
+  return rows;
+}
+const routeOf = (f) => `${f.from}→${f.to}`;
+const minPrice = (rows) => Math.min(...rows.map((f) => f.price ?? Infinity));
+
+/** Cardurile pe rute (perechi de aeroporturi), doar dacă rezultatul are mai multe rute. */
+function renderRoutes(box, ctx, redraw) {
+  const rows = allFlights(ctx);
+  const groups = new Map();
+  rows.forEach((f) => {
+    const k = routeOf(f);
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k).push(f);
+  });
+  if (groups.size < 2) {
+    box.innerHTML = '';
+    if (ctx.view.route && !groups.has(ctx.view.route)) ctx.view.route = null;
+    return;
+  }
+  const routes = [...groups].map(([k, fl]) => ({
+    k, fl, min: minPrice(fl), direct: fl.some((f) => !f.stops), airlines: new Set(fl.flatMap((f) => f.airlines)).size,
+  })).sort((a, b) => a.min - b.min);
+  const best = routes[0].min;
+  box.innerHTML = `<div class="section-label"><span>Rute găsite</span><span class="muted" style="text-transform:none;letter-spacing:0">${routes.length} rute · un singur apel</span></div>
+    <div class="route-tiles">
+      <button type="button" class="route-tile ${!ctx.view.route ? 'active' : ''}" data-route="">
+        <span class="rt-codes">Toate rutele</span>
+        <span class="rt-price">${money(best, ctx.cur)}</span>
+        <span class="rt-meta">${rows.length} variante</span>
+      </button>
+      ${routes.map((r) => {
+        const [a, b] = r.k.split('→');
+        return `<button type="button" class="route-tile ${ctx.view.route === r.k ? 'active' : ''}" data-route="${h(r.k)}">
+          <span class="rt-codes">${h(a)} <i>→</i> ${h(b)}</span>
+          <span class="rt-names">${h(placeName(a))} – ${h(placeName(b))}</span>
+          <span class="rt-price ${r.min === best ? 'best' : ''}">${money(r.min, ctx.cur)}</span>
+          <span class="rt-meta">${r.fl.length} variante · ${r.airlines} ${r.airlines === 1 ? 'companie' : 'companii'}${r.direct ? ' · <b>direct</b>' : ''}</span>
+        </button>`;
+      }).join('')}
+    </div>`;
+  box.querySelectorAll('[data-route]').forEach((b) => b.addEventListener('click', () => {
+    ctx.view.route = b.dataset.route || null;
+    ctx.view.flightsShown = 25;
+    redraw();
+  }));
+}
+
+/** Numele companiilor alese în alertă (pentru a arăta și companiile fără rezultate). */
+function expectedAirlines(ctx) {
+  const codes = new Set(ctx.airlineCodes || []);
+  if (!codes.size) return [];
+  return (state.config?.airlines || [])
+    .filter((a) => a.codes.some((c) => codes.has(c)) && !a.codes.some((c) => c.includes('_')))
+    .map((a) => a.name);
+}
+/** Potrivește numele din configurare cu numele trimis de Google (ex. „Austrian Airlines” ~ „Austrian”). */
+const sameAirline = (cfgName, googleName) => {
+  const a = fold(cfgName);
+  const b = fold(googleName);
+  const first = a.split(' ')[0];
+  return a === b || b.startsWith(first === 'air' ? a : first) || a.startsWith(b);
+};
+
+/** Taburile pe companii: „Toate” + fiecare companie, cu prețul minim. */
+function renderAirlineTabs(box, ctx, redraw) {
+  const rows = allFlights(ctx).filter((f) => !ctx.view.route || routeOf(f) === ctx.view.route);
+  const map = new Map();
+  rows.forEach((f) => {
+    (f.airlines || []).forEach((name) => {
+      if (!map.has(name)) map.set(name, { name, count: 0, min: Infinity, logo: '' });
+      const e = map.get(name);
+      e.count += 1;
+      e.min = Math.min(e.min, f.price ?? Infinity);
+      e.logo = e.logo || legLogo((f.legs || []).find((l) => l.airline === name));
+    });
+  });
+  const list = [...map.values()].sort((a, b) => a.min - b.min);
+  const missing = expectedAirlines(ctx).filter((n) => !list.some((e) => sameAirline(n, e.name)));
+  if (ctx.view.airline && !map.has(ctx.view.airline)) ctx.view.airline = null;
+  if (list.length < 2 && !missing.length) {
+    box.innerHTML = '';
+    return;
+  }
+  box.innerHTML = `
+    <button type="button" role="tab" class="air-tab ${!ctx.view.airline ? 'active' : ''}" data-airline="" aria-selected="${!ctx.view.airline}">
+      <span class="at-name">Toate</span><span class="at-price">${rows.length} zboruri</span></button>
+    ${list.map((e) => `
+      <button type="button" role="tab" class="air-tab ${ctx.view.airline === e.name ? 'active' : ''}" data-airline="${h(e.name)}" aria-selected="${ctx.view.airline === e.name}">
+        ${logo(e.logo, e.name, 22)}<span class="at-name">${h(e.name)}</span>
+        <span class="at-price">de la ${money(e.min, ctx.cur)} · ${e.count}</span></button>`).join('')}
+    ${missing.map((n) => `
+      <span class="air-tab none" title="Compania a fost inclusă în căutare, dar Google nu a întors zboruri">
+        ${logo('', n, 22)}<span class="at-name">${h(n)}</span><span class="at-price">fără zboruri</span></span>`).join('')}`;
+  box.querySelectorAll('[data-airline]').forEach((b) => b.addEventListener('click', () => {
+    ctx.view.airline = b.dataset.airline || null;
+    ctx.view.airlineAll = false;
+    ctx.view.flightsShown = 25;
+    redraw();
+    b.scrollIntoView?.({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }));
+}
+
 function renderFlights(box, ctx) {
-  const { combos, view } = ctx;
-  let rows = combos.flatMap((c) => (c.flights || []).map((f) => ({ ...f, combo: c })));
-  if (view.onlyUnder) rows = rows.filter((f) => isUnder(f.price, ctx.maxPrice));
+  const { view } = ctx;
+  let rows = allFlights(ctx);
+  if (view.route) rows = rows.filter((f) => routeOf(f) === view.route);
+  if (view.airline) rows = rows.filter((f) => (f.airlines || []).includes(view.airline));
   if (!rows.length) {
     box.innerHTML = `<div class="row"><span class="row-icon">${icon('search', 16)}</span><span class="row-main">
       <span class="row-title">${view.onlyUnder ? 'Niciun zbor sub prag momentan' : 'Niciun zbor încă'}</span>
@@ -214,6 +396,22 @@ function renderFlights(box, ctx) {
     for (let i = 0; i < x.length; i++) if (x[i] !== y[i]) return x[i] < y[i] ? -1 : 1;
     return (a.price ?? 0) - (b.price ?? 0);
   });
+
+  // Pe o companie: primele 10 variante (cu opțiunea „Arată toate”)
+  if (view.airline) {
+    const shown = view.airlineAll ? rows : rows.slice(0, 10);
+    box.innerHTML = `<div class="air-head">${h(view.airline)} · ${view.airlineAll || rows.length <= 10
+      ? `${rows.length} ${rows.length === 1 ? 'variantă' : 'variante'}` : `primele 10 din ${rows.length}`}</div>`
+      + shown.map((f) => ticket(f, ctx, true)).join('')
+      + (rows.length > shown.length
+        ? `<button type="button" class="add-row" data-all style="justify-content:center">Arată toate cele ${rows.length}</button>` : '');
+    box.querySelector('[data-all]')?.addEventListener('click', () => {
+      view.airlineAll = true;
+      renderFlights(box, ctx);
+    });
+    return;
+  }
+
   const shown = rows.slice(0, view.flightsShown);
   box.innerHTML = shown.map((f) => ticket(f, ctx, true)).join('')
     + (rows.length > shown.length

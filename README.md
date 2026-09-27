@@ -268,6 +268,12 @@ companiile și escalele, iar în 1–2 minute vezi toate prețurile. Primești �
   Google (minim istoric, câte zile la rând scade/crește prețul, comparația cu media, nivelul Google). E orientativ.
 - **Calendar de prețuri**: zilele de plecare × numărul de nopți, colorate după preț (mai intens = mai ieftin, ★ = cel mai
   ieftin, ✓ = sub prag). Atingi un pătrat și se deschide combinația respectivă.
+- **Mai multe aeroporturi, destinații și companii într-o singură căutare**: toate se trimit într-un singur apel
+  SerpApi (fără credite în plus). Poți alege mai multe destinații odată (ex. Roma + Napoli + Bari).
+- **Rute și companii**: rezultatele sunt grupate pe rute (ex. OTP→FCO, CLJ→CIA) și în taburi pe companii, cu
+  primele 10 variante ale fiecăreia. Companiile alese care n-au zboruri apar marcate „fără zboruri”.
+- **Detalii zbor**: logo-ul companiei, segmentele cu ore și aeroporturi, escalele (inclusiv cele peste noapte),
+  avionul, spațiul pentru picioare, facilitățile și emisiile CO₂ față de tipic.
 - **Partajare**: butonul de lângă „Google Flights” trimite oferta (rută, preț, zboruri, link) pe WhatsApp, Mesaje etc.
 - **Gesturi**: trage o alertă spre stânga ca s-o oprești sau s-o ștergi; trage lista în jos ca s-o reîmprospătezi.
 - **Primii pași**: pe ecranul principal, o listă cu bife te ghidează prin configurare (dispare când e totul gata).

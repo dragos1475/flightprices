@@ -223,7 +223,7 @@ export async function renderSearchResult(app, id) {
     if (doc.status === 'done') {
       const el = app.querySelector('#results');
       const ctx = {
-        combos, maxPrice, cur, view, oneWay: req.trip_type === 'one_way',
+        combos, maxPrice, cur, view, oneWay: req.trip_type === 'one_way', airlineCodes: req.airlines,
         route: `${deps.join(', ')} → ${req.destination?.name || ''}`,
       };
       el.innerHTML = resultsSections(ctx);
