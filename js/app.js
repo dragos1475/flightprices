@@ -96,11 +96,36 @@ function setupSplash() {
     splash.remove();
     return;
   }
-  splash.querySelector('#splash-enter').addEventListener('click', () => {
-    haptic(12);
-    splash.classList.add('hide');
-    setTimeout(() => splash.remove(), 520);
+  const btn = splash.querySelector('#splash-enter');
+  btn.addEventListener('click', () => {
+    if (btn.classList.contains('takeoff')) return;
+    haptic([8, 30, 14]);
+    // decolarea: avionul rulează pe pistă până la capătul butonului, apoi urcă; ecranul pleacă după el
+    const gate = btn.querySelector('.sb-gate');
+    btn.style.setProperty('--fly', `${Math.max(120, btn.clientWidth - gate.offsetLeft - gate.offsetWidth / 2 - 24)}px`);
+    btn.classList.add('takeoff');
+    flipText(btn, 'Decolare', 'Bun venit la bord');
+    setTimeout(() => {
+      splash.classList.add('hide');
+      setTimeout(() => splash.remove(), 520);
+    }, reducedMotion() ? 0 : 720);
   });
+}
+/** Schimbă textul butonului ca pe un panou de plecări (se întoarce). */
+function flipText(btn, kicker, label) {
+  const box = btn.querySelector('.sb-text');
+  const apply = () => {
+    box.querySelector('.sb-kicker').textContent = kicker;
+    box.querySelector('.sb-label').textContent = label;
+  };
+  if (reducedMotion()) return apply();
+  box.classList.remove('flip-in');
+  box.classList.add('flip-out');
+  setTimeout(() => {
+    apply();
+    box.classList.remove('flip-out');
+    box.classList.add('flip-in');
+  }, 180);
 }
 function splashReady() {
   const btn = document.getElementById('splash-enter');
@@ -108,9 +133,8 @@ function splashReady() {
   const wait = Math.max(0, (reducedMotion() ? 0 : 1100) - (performance.now() - splashShownAt));
   setTimeout(() => {
     btn.disabled = false;
-    btn.querySelector('.sb-label').textContent = 'Intră în aplicație';
     btn.classList.add('ready');
-    btn.parentElement.classList.add('ready');
+    flipText(btn, 'Îmbarcare · Poarta 01', 'Intră în aplicație');
   }, wait);
 }
 setupSplash();
