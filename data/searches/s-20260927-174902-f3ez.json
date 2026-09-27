@@ -1,0 +1,7 @@
+{
+  "id": "s-20260927-174902-f3ez",
+  "status": "pending",
+  "created_at": "2026-09-27T14:49:02.241Z",
+  "request": "{\"id\":\"s-20260927-174902-f3ez\",\"created_at\":\"2026-09-27T14:49:02.241Z\",\"title\":\"Bali Ubud\",\"departure_airports\":[\"IST\"],\"destination\":{\"id\":\"DPS\",\"name\":\"Bali (Denpasar)\",\"codes\":[\"DPS\"]},\"departures\":[{\"date\":\"2027-02-18\",\"nights\":[9]}],\"airlines\":[],\"max_price\":950,\"currency\":\"EUR\",\"adults\":1,\"bags\":0,\"max_stops\":null,\"return_details\":false}",
+  "sig": "d01503cc902a3e20f3e0865a4778289ddccab001638403ef9578511885bcd9d6"
+}
