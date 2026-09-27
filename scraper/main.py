@@ -131,17 +131,6 @@ def main():
     status["estimate"] = {**estimate, "limit": limit}
     print(f"Estimare: {estimate['per_day']} căutări/zi, ~{estimate['per_month']} în următoarele 30 de zile (limită {limit}).")
 
-    # 2) Clientul SerpApi (real sau de test)
-    if args.dry_run:
-        client = FakeSerpApiClient(day)
-    else:
-        api_key = os.environ.get("SERPAPI_KEY", "").strip()
-        if not api_key:
-            print("❌ Lipsește secretul SERPAPI_KEY. Adaugă-l în GitHub > Settings > Secrets and variables > Actions.")
-            sys.exit(1)
-        record_dir = FIXTURES_DIR / "recorded" if args.save_responses else None
-        client = SerpApiClient(api_key, record_dir=record_dir)
-
     notifier = Notifier(settings, really_send=(not args.dry_run) or args.send_notifications)
     print("Canale de notificare:", ", ".join(notifier.channels()) or "niciunul configurat")
     vapid_problem = notifier.check_vapid_keys()
@@ -156,9 +145,22 @@ def main():
     status["planned_searches"] = needed
     print(f"Căutări necesare acum: {needed}")
 
-    # 3) Verificăm creditele rămase (Account API nu consumă căutări)
+    # 2) Clientul SerpApi (real sau de test). Cheia e necesară doar dacă avem ce căuta.
     link = app_url(settings)
     waiting = one_time.pending(storage)
+    if args.dry_run:
+        client = FakeSerpApiClient(day)
+    else:
+        api_key = os.environ.get("SERPAPI_KEY", "").strip()
+        if not api_key and (needed > 0 or waiting):
+            print("❌ Lipsește secretul SERPAPI_KEY. Adaugă-l în GitHub > Settings > Secrets and variables > Actions.")
+            sys.exit(1)
+        record_dir = FIXTURES_DIR / "recorded" if args.save_responses else None
+        client = SerpApiClient(api_key, record_dir=record_dir)
+        if not api_key:
+            print("ℹ️  SERPAPI_KEY nu este setat încă, dar nu e nimic de căutat acum.")
+
+    # 3) Verificăm creditele rămase (Account API nu consumă căutări)
     credits = Credits()
     if needed > 0 or waiting:
         try:
