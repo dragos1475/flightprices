@@ -1,0 +1,7 @@
+{
+  "id": "s-20260928-000021-crd1",
+  "status": "pending",
+  "created_at": "2026-09-27T21:00:21.977Z",
+  "request": "{\"id\":\"s-20260928-000021-crd1\",\"created_at\":\"2026-09-27T21:00:21.977Z\",\"title\":\"Milano Bali earlier\",\"departure_airports\":[\"MXP\"],\"destination\":{\"id\":\"DPS\",\"name\":\"Bali (Denpasar)\",\"codes\":[\"DPS\"]},\"trip_type\":\"round_trip\",\"departures\":[{\"date\":\"2027-02-17\",\"nights\":[9]}],\"airlines\":[],\"max_price\":800,\"currency\":\"EUR\",\"adults\":1,\"bags\":0,\"max_stops\":null,\"return_details\":false}",
+  "sig": "79b04d3399730d291fae89a5f38a934e4affb074c61e1748428f171353065d42"
+}
