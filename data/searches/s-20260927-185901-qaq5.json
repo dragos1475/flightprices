@@ -1,0 +1,7 @@
+{
+  "id": "s-20260927-185901-qaq5",
+  "status": "pending",
+  "created_at": "2026-09-27T15:59:01.209Z",
+  "request": "{\"id\":\"s-20260927-185901-qaq5\",\"created_at\":\"2026-09-27T15:59:01.209Z\",\"title\":\"Bucuresti Lisabona\",\"departure_airports\":[\"OTP\"],\"destination\":{\"id\":\"LIS\",\"name\":\"Lisabona\",\"codes\":[\"LIS\"]},\"trip_type\":\"round_trip\",\"departures\":[{\"date\":\"2026-12-24\",\"nights\":[7]}],\"airlines\":[],\"max_price\":null,\"currency\":\"EUR\",\"adults\":1,\"bags\":0,\"max_stops\":null,\"return_details\":false}",
+  "sig": "9d7346b4a605ae5c079bc6988c642f158849d46923cd2dde5f2ffbcc1ed08b47"
+}
