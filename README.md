@@ -259,6 +259,16 @@ companiile și escalele, iar în 1–2 minute vezi toate prețurile. Primești �
   cu aceiași parametri sau o poți **șterge**.
 - Ai nevoie și de tokenul GitHub pe telefon (pasul 7), la fel ca pentru alerte.
 
+### Ce găsești în aplicație
+
+- **Verdict „Cumpără acum / Mai așteaptă”** pentru fiecare alertă, calculat din istoricul prețurilor tale și din datele
+  Google (minim istoric, câte zile la rând scade/crește prețul, comparația cu media, nivelul Google). E orientativ.
+- **Calendar de prețuri**: zilele de plecare × numărul de nopți, colorate după preț (mai intens = mai ieftin, ★ = cel mai
+  ieftin, ✓ = sub prag). Atingi un pătrat și se deschide combinația respectivă.
+- **Partajare**: butonul de lângă „Google Flights” trimite oferta (rută, preț, zboruri, link) pe WhatsApp, Mesaje etc.
+- **Gesturi**: trage o alertă spre stânga ca s-o oprești sau s-o ștergi; trage lista în jos ca s-o reîmprospătezi.
+- **Primii pași**: pe ecranul principal, o listă cu bife te ghidează prin configurare (dispare când e totul gata).
+
 ---
 
 ## 4. Test local fără credite (`--dry-run`)
@@ -401,7 +411,11 @@ compară prețul din aplicație cu cel de pe linkul Google Flights ca să confir
 index.html, css/, js/          aplicația (PWA)
   js/app.js                    navigarea între ecrane
   js/screens/                  ecranele: listă, formular, detaliu, căutare rapidă, setări
-  js/results-view.js           afișarea rezultatelor (bilete, combinații, filtre)
+  js/results-view.js           afișarea rezultatelor (bilete, combinații, filtre, partajare)
+  js/insights.js               verdictul „Cumpără acum / Mai așteaptă”
+  js/heatmap.js                calendarul de prețuri
+  js/motion.js, gestures.js    animații, ruta animată, glisare, tragere pentru reîmprospătare
+  js/flags.js, onboarding.js   steaguri pe destinații, ghidul „Primii pași”
   js/budget.js                 calculul combinațiilor și al bugetului (la fel ca scraper/alerts.py)
   js/data.js                   citirea datelor și salvarea prin GitHub API
   js/push.js                   notificări push + generator chei VAPID

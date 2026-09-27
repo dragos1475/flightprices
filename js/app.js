@@ -11,6 +11,8 @@
 //   #/setari               setări
 
 import { registerServiceWorker } from './push.js';
+import { disablePullToRefresh } from './gestures.js';
+import { reducedMotion } from './motion.js';
 import { setTabbarVisible } from './ui.js';
 import { h } from './util.js';
 import { renderList } from './screens/list.js';
@@ -37,8 +39,22 @@ function route() {
   return { tab: 'list', show: () => renderList(app) };
 }
 
-async function render() {
+/** Tranziție fluidă între ecrane (unde browserul o suportă): cardul din listă „devine” ecranul de detaliu. */
+function render() {
+  if (!document.startViewTransition || reducedMotion()) return renderScreen();
+  let screen = null;
+  // Browserul fotografiază ecranul vechi, apoi apelează funcția de mai jos care desenează ecranul nou.
+  // Așteptăm maxim 350 ms să fie gata (altfel tranziția pornește cu scheletul de încărcare).
+  const transition = document.startViewTransition(() => {
+    screen = renderScreen();
+    return Promise.race([screen, new Promise((r) => { setTimeout(r, 350); })]);
+  });
+  return transition.updateCallbackDone.then(() => screen).catch(() => screen);
+}
+
+async function renderScreen() {
   const r = route();
+  disablePullToRefresh();
   document.querySelectorAll('.tabbar a').forEach((a) => a.classList.toggle('active', a.dataset.tab === r.tab));
   // curățăm elementele lăsate de ecranul anterior (bara „Salvează”, ferestre deschise)
   document.getElementById('savebar')?.remove();

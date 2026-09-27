@@ -6,9 +6,15 @@
 //   status "rejected" -> refuzată (parolă greșită, credite insuficiente etc.), fără credite consumate
 
 import { deleteFile, githubLinks, hasWriteAccess, listDir, loadJSON } from '../data.js';
+import { destFlag } from '../flags.js';
+import { enablePullToRefresh } from '../gestures.js';
+import { renderHeatmap } from '../heatmap.js';
 import { icon } from '../icons.js';
+import { verdict } from '../insights.js';
+import { countUp } from '../motion.js';
 import {
-  bindResults, comboDates, comboNights, maxStopsOf, newView, resultsSections, stopsLabel, tripLabel,
+  bindResults, comboDates, comboNights, focusCombo, heroRoute, maxStopsOf, newView, resultsSections, shareCombo,
+  stopsLabel, tripLabel, verdictCard,
 } from '../results-view.js';
 import { airlineNames, ensureConfig } from '../state.js';
 import { setNav, skeleton } from '../ui.js';
@@ -38,6 +44,7 @@ function summaryOf(id, doc) {
     lowest_price: res.lowest_price ?? null,
     currency: res.currency || req.currency,
     departures: req.departures || [],
+    destination: req.destination,
   };
 }
 
@@ -69,6 +76,7 @@ export async function renderSearchList(app) {
   setNav({ title: 'Căutare rapidă', large: true, actions: [{ icon: 'refresh', label: 'Reîncarcă', id: 'nav-refresh' }] });
   app.innerHTML = skeleton(2);
   document.getElementById('nav-refresh').onclick = () => renderSearchList(app);
+  enablePullToRefresh(() => renderSearchList(app));
   await ensureConfig();
   let list = [];
   let error = '';
@@ -93,7 +101,7 @@ export async function renderSearchList(app) {
     ${list.length ? `<div class="group">${list.map((s) => `
       <a class="row" href="#/cautare/${encodeURIComponent(s.id)}">
         ${statusIcon(s.status)}
-        <span class="row-main"><span class="row-title">${h(s.title)}</span>
+        <span class="row-main"><span class="row-title">${s.destination && destFlag(s.destination) ? `${destFlag(s.destination)} ` : ''}${h(s.title)}</span>
           <span class="row-sub">${dateTime(s.created_at)}${s.departures?.length ? ` · plecări ${s.departures.map((d) => shortDate(d.date)).join(', ')}` : ''}</span></span>
         <span class="row-value">${s.status === 'done'
           ? (s.lowest_price !== null ? `<b>${money(s.lowest_price, s.currency)}</b>` : 'fără zboruri')
@@ -143,8 +151,9 @@ export async function renderSearchResult(app, id) {
     });
 
     const deps = req.departure_airports || [];
-    const destCodes = req.destination?.codes || [];
+    const hero = heroRoute(deps, req.destination);
     const links = githubLinks();
+    const v = doc.status === 'done' ? verdict({ series: [], best, maxPrice, currency: cur }) : null;
 
     let head = '';
     if (doc.status === 'pending') {
@@ -162,17 +171,14 @@ export async function renderSearchResult(app, id) {
     }
 
     app.innerHTML = `
-      <div class="card hero">
-        <div class="hero-route">
-          <div class="end"><div class="iata">${h(deps.length > 2 ? `${deps[0]} +${deps.length - 1}` : deps.join(' · '))}</div><div class="place">${deps.length} ${deps.length === 1 ? 'aeroport' : 'aeroporturi'}</div></div>
-          <div class="path"><i></i>${icon('plane', 18)}<i></i></div>
-          <div class="end"><div class="iata">${h(destCodes.length > 2 ? `${destCodes[0]} +${destCodes.length - 1}` : destCodes.join(' · '))}</div><div class="place">${h(req.destination?.name || '')}</div></div>
-        </div>
+      <div class="card hero" style="${hero.tint ? `--dest-tint:${hero.tint}` : ''}">
+        ${hero.html}
         ${doc.status === 'done' ? `
         <div class="hero-price">
           <div>
             <div class="label">Cel mai mic preț ${tripLabel(req)}</div>
-            <div class="price-xl ${best && maxPrice && best.lowest_price <= maxPrice ? 'good-text' : ''}">${best ? money(best.lowest_price) : '—'}<small>${cur}</small></div>
+            <div class="price-xl ${best && maxPrice && best.lowest_price <= maxPrice ? 'good-text' : ''}">${best
+              ? `<span data-count="${best.lowest_price}">${money(best.lowest_price)}</span>` : '—'}<small>${cur}</small></div>
           </div>
           ${maxPrice ? `<span class="small muted">prag ${money(maxPrice, cur)}</span>` : ''}
         </div>
@@ -186,17 +192,36 @@ export async function renderSearchResult(app, id) {
           <span>${icon('zap')}${stopsLabel(maxStopsOf(req))}</span>
           <span>${icon('plane')}${h(airlineNames(req.airlines).join(', '))}</span>
         </div>
-        ${best?.google_flights_url ? `<a class="btn primary block" style="margin-top:14px" href="${h(best.google_flights_url)}" target="_blank" rel="noopener">Vezi pe Google Flights ${icon('external', 16)}</a>` : ''}
+        ${best?.google_flights_url ? `<div class="btn-row" style="margin-top:14px">
+          <a class="btn primary" href="${h(best.google_flights_url)}" target="_blank" rel="noopener">Vezi pe Google Flights ${icon('external', 16)}</a>
+          <button type="button" class="btn icon-share" id="hero-share" aria-label="Partajează">${icon('share', 18)}</button>
+        </div>` : ''}
         <div class="small muted" style="text-align:center;margin-top:10px">Trimis ${dateTime(doc.created_at || req.created_at)}${doc.processed_at ? ` · procesat ${dateTime(doc.processed_at)}` : ''}</div>
       </div>
       ${head}
+      ${verdictCard(v)}
+      <div id="heat-section" hidden>
+        <div class="section-label"><span>Calendar de prețuri</span></div>
+        <div class="card"><div id="heatmap"></div></div>
+      </div>
       <div id="results"></div>`;
 
     if (doc.status === 'done') {
       const el = app.querySelector('#results');
-      const ctx = { combos, maxPrice, cur, view, oneWay: req.trip_type === 'one_way' };
+      const ctx = {
+        combos, maxPrice, cur, view, oneWay: req.trip_type === 'one_way',
+        route: `${deps.join(', ')} → ${req.destination?.name || ''}`,
+      };
       el.innerHTML = resultsSections(ctx);
       bindResults(el, ctx);
+      const heat = app.querySelector('#heatmap');
+      renderHeatmap(heat, { combos, maxPrice, currency: cur, onPick: (c) => focusCombo(el, c) });
+      app.querySelector('#heat-section').hidden = heat.hidden;
+      app.querySelector('#hero-share')?.addEventListener('click', () => shareCombo(ctx, best));
+      if (!animated) {
+        countUp(app);
+        animated = true;
+      }
     }
 
     document.getElementById('search-delete')?.addEventListener('click', async () => {
@@ -211,6 +236,7 @@ export async function renderSearchResult(app, id) {
     });
   };
 
+  let animated = false;
   draw();
 
   // Cât timp e „în lucru”, verificăm periodic (doar dacă utilizatorul a rămas pe acest ecran)

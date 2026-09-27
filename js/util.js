@@ -108,6 +108,23 @@ export async function copyText(text) {
   }
 }
 
+/**
+ * Partajează un text (meniul de partajare al telefonului: WhatsApp, Mesaje etc.).
+ * Dacă telefonul nu are partajare, copiază textul în clipboard.
+ */
+export async function share({ title, text, url }) {
+  if (navigator.share) {
+    try {
+      await navigator.share({ title, text, url });
+      return;
+    } catch (e) {
+      if (e.name === 'AbortError') return; // utilizatorul a renunțat
+    }
+  }
+  const ok = await copyText(url ? `${text}\n${url}` : text);
+  toast(ok ? 'Copiat. Îl poți lipi unde vrei.' : 'Nu am putut partaja.');
+}
+
 /** Citire/scriere sigură în localStorage (poate lipsi în modul privat). */
 export const store = {
   get(key, fallback = null) {

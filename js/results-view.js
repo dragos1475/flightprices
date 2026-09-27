@@ -2,9 +2,33 @@
 // bilete de zbor, lista combinațiilor și lista tuturor zborurilor cu filtre și sortare.
 
 import { comboKey } from './budget.js';
+import { airportFlag, countryTint, destFlag, destinationIso } from './flags.js';
 import { icon } from './icons.js';
-import { priceLevel } from './state.js';
-import { dateTime, dayDate, duration, h, hour, money } from './util.js';
+import { VERDICT_STYLE } from './insights.js';
+import { routeArc } from './motion.js';
+import { airportName, priceLevel } from './state.js';
+import { dateTime, dayDate, duration, h, hour, money, share } from './util.js';
+
+/**
+ * Textul unei oferte, pentru partajare.
+ * ctx: {cur, route: 'OTP → Roma'}; combo: combinația; flight: zborul (opțional, altfel cel mai ieftin).
+ */
+export function dealText(ctx, combo, flight = combo.flights?.[0]) {
+  const lines = [`✈️ ${ctx.route}: ${money(combo.lowest_price, ctx.cur)} ${combo.return_date ? 'dus-întors' : 'doar dus'}`,
+    `📅 ${comboDates(combo)} · ${comboNights(combo)}`];
+  if (flight) {
+    lines.push(`🛫 ${flight.airlines.join('/')} ${flight.flight_numbers.join(', ')} · ${hour(flight.departure_time)}–${hour(flight.arrival_time)} · ${flight.stops ? `${flight.stops} escale` : 'direct'}`);
+  }
+  if (combo.return_flight) {
+    const r = combo.return_flight;
+    lines.push(`🛬 ${r.airlines.join('/')} ${r.flight_numbers.join(', ')} · ${hour(r.departure_time)}–${hour(r.arrival_time)}`);
+  }
+  return lines.join('\n');
+}
+
+export function shareCombo(ctx, combo) {
+  return share({ title: `Zbor ${ctx.route}`, text: dealText(ctx, combo), url: combo.google_flights_url || '' });
+}
 
 /** Preferințe de afișare (păstrate cât timp aplicația e deschisă). */
 export function newView() {
@@ -127,7 +151,7 @@ function renderCombos(box, ctx) {
     if (c.status === 'error') price = `<span class="badge bad">${icon('warning')}Eroare</span>`;
     if (c.status === 'no_results') price = '<span class="small muted">fără zboruri</span>';
     const flights = (c.flights || []).map((f) => ({ ...f, combo: c }));
-    return `<details class="combo">
+    return `<details class="combo" data-combo="${h(comboKey(c))}">
       <summary>
         <div style="min-width:0">
           <div class="combo-dates">${comboDates(c, '<span class="arrow">→</span>')}</div>
@@ -143,11 +167,28 @@ function renderCombos(box, ctx) {
         ${ret ? `<div class="combo-return">${icon('plane', 14)}<span><b>Întoarcere:</b> ${h(ret.airlines.join('/'))} ${h(ret.flight_numbers.join(', '))} · ${hour(ret.departure_time)}–${hour(ret.arrival_time)} · ${ret.stops ? `${ret.stops} escale` : 'direct'}</span></div>` : ''}
         ${flights.length ? `<div class="group" style="box-shadow:none">${flights.slice(0, 5).map((f) => ticket(f, ctx, false)).join('')}</div>` : ''}
         ${flights.length > 5 ? `<p class="small muted" style="margin:8px 2px 0">+${flights.length - 5} zboruri în lista completă de mai jos</p>` : ''}
-        ${c.google_flights_url ? `<a class="btn tonal block sm" style="margin-top:10px" href="${h(c.google_flights_url)}" target="_blank" rel="noopener">Deschide în Google Flights ${icon('external', 14)}</a>` : ''}
+        <div class="btn-row" style="margin-top:10px">
+          ${c.google_flights_url ? `<a class="btn tonal sm" href="${h(c.google_flights_url)}" target="_blank" rel="noopener">Google Flights ${icon('external', 14)}</a>` : ''}
+          ${c.lowest_price !== null && c.lowest_price !== undefined ? `<button type="button" class="btn sm" data-share="${h(comboKey(c))}">${icon('share', 14)} Partajează</button>` : ''}
+        </div>
         <p class="small muted" style="margin:8px 2px 0">Căutat ${dateTime(c.searched_at)}</p>
       </div>
     </details>`;
   }).join('');
+  box.querySelectorAll('[data-share]').forEach((b) => b.addEventListener('click', () => {
+    const combo = combos.find((c) => comboKey(c) === b.dataset.share);
+    if (combo) shareCombo(ctx, combo);
+  }));
+}
+
+/** Deschide o combinație din listă și o aduce în ecran (folosit de calendarul de prețuri). */
+export function focusCombo(root, combo) {
+  const el = root.querySelector(`details.combo[data-combo="${CSS.escape(comboKey(combo))}"]`);
+  if (!el) return;
+  el.open = true;
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  el.classList.add('flash');
+  setTimeout(() => el.classList.remove('flash'), 1200);
 }
 
 function renderFlights(box, ctx) {
@@ -199,4 +240,38 @@ export function stopsLabel(maxStops) {
 export function maxStopsOf(x) {
   if (x.max_stops === 0 || x.max_stops === 1 || x.max_stops === 2) return x.max_stops;
   return x.direct_only ? 0 : null;
+}
+
+/** Ruta din cardul principal: coduri, steaguri și arcul animat. Întoarce {html, tint}. */
+export function heroRoute(deps = [], destination = {}) {
+  const codes = destination?.codes || [];
+  const fromCode = deps.length > 2 ? `${deps[0]} +${deps.length - 1}` : deps.join(' · ');
+  const fromPlace = deps.length === 1 ? airportName(deps[0]) : `${deps.length} aeroporturi`;
+  const toCode = codes.length > 2 ? `${codes[0]} +${codes.length - 1}` : codes.join(' · ');
+  const fromFlag = airportFlag(deps[0]);
+  const toFlag = destFlag(destination);
+  return {
+    tint: countryTint(destinationIso(destination)),
+    html: `<div class="hero-route v2">
+      <div class="iata">${h(fromCode)}</div>
+      <div class="iata right">${h(toCode)}</div>
+      <div class="path">${routeArc()}</div>
+      <div class="place">${fromFlag ? `${fromFlag} ` : ''}${h(fromPlace)}</div>
+      <div class="place right">${toFlag ? `${toFlag} ` : ''}${h(destination?.name || '')}</div>
+    </div>`,
+  };
+}
+
+/** Cardul cu verdictul „Cumpără acum / Mai așteaptă”. */
+export function verdictCard(v) {
+  if (!v) return '';
+  const st = VERDICT_STYLE[v.kind];
+  return `<div class="card verdict verdict-${v.kind}">
+    <div class="verdict-head">
+      <span class="row-icon ${st.cls}">${icon(st.icon, 18)}</span>
+      <div class="row-main"><b>${h(v.title)}</b><span class="row-sub">${h(v.text)}</span></div>
+    </div>
+    ${v.tags.length ? `<div class="verdict-tags">${v.tags.map((t) => `<span class="badge ${t.tone}">${h(t.label)}</span>`).join('')}</div>` : ''}
+    <p class="small muted" style="margin:10px 0 0">Orientativ, pe baza istoricului tău și a datelor Google. Prețurile nu se pot prezice sigur.</p>
+  </div>`;
 }

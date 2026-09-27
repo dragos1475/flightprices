@@ -17,7 +17,8 @@ function niceStep(range, ticks) {
  * Desenează graficul în `container`.
  * series: [{label, color: '--s1', points: [{date: 'AAAA-LL-ZZ', price: 123}]}]
  */
-export function renderChart(container, { series, threshold, currency }) {
+export function renderChart(container, { series, threshold, currency, animate = false }) {
+  let drawAnimated = animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const dates = [...new Set(series.flatMap((s) => s.points.map((p) => p.date)))].sort();
   if (!dates.length) {
     container.innerHTML = '<p class="muted small">Încă nu există istoric. Graficul apare după primele rulări.</p>';
@@ -85,7 +86,7 @@ export function renderChart(container, { series, threshold, currency }) {
       if (!pts.length) continue;
       if (pts.length > 1) {
         const d = pts.map((p, i) => `${i ? 'L' : 'M'}${x(p.date).toFixed(1)},${y(p.price).toFixed(1)}`).join('');
-        html += `<path class="series" d="${d}" style="stroke:var(${s.color})"/>`;
+        html += `<path class="series ${drawAnimated ? 'draw' : ''}" pathLength="1" d="${d}" style="stroke:var(${s.color})"/>`;
       }
       const end = pts[pts.length - 1];
       html += `<circle class="dot" r="4" cx="${x(end.date)}" cy="${y(end.price)}" style="fill:var(${s.color})"/>`;
@@ -98,6 +99,7 @@ export function renderChart(container, { series, threshold, currency }) {
     html += `<rect x="${m.left}" y="0" width="${iw}" height="${H}" fill="transparent" class="hit"/>`;
     svg.innerHTML = html;
     wrap.prepend(svg);
+    drawAnimated = false; // la redesenare (ex. rotirea telefonului) nu mai animăm
 
     // Interacțiune: cursor / atingere -> linie verticală + valorile din acea zi
     const cross = svg.querySelector('.crosshair');

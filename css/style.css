@@ -606,3 +606,115 @@ a.search-cta .cta-ico { background: rgba(255, 255, 255, .18); color: #fff; box-s
 .tabbar { grid-template-rows: minmax(0, 1fr); } /* rândul nu crește după butonul central ridicat */
 .tabbar a { height: auto; align-self: stretch; margin: 5px; min-width: 0; }
 .tabbar .tab-new.active { background: none; } /* butonul central are deja propriul fundal colorat */
+
+/* =====================================================================
+   UX „wow”: rută animată, verdict, calendar de prețuri, gesturi, animații
+   ===================================================================== */
+
+/* ---------- culoarea destinației pe cardul principal ---------- */
+.hero { background:
+  radial-gradient(320px 170px at 100% 0%, color-mix(in srgb, var(--dest-tint, var(--wow-cyan)) 20%, transparent), transparent 72%),
+  linear-gradient(135deg, color-mix(in srgb, var(--wow-violet) 9%, var(--surface)), var(--surface)); }
+.flag { font-size: 1.05em; }
+
+/* ---------- ruta animată (arc stilizat) ---------- */
+.hero-route.v2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 12px; align-items: end; }
+.hero-route.v2 .right { text-align: right; }
+.hero-route.v2 .path { grid-column: 1 / -1; display: block; margin: 2px 0; }
+.hero-route.v2 .place { min-width: 0; }
+.route-arc { display: block; width: 100%; height: 40px; overflow: visible; }
+.route-arc .arc-bg { fill: none; stroke: var(--surface-3); stroke-width: 1.2; stroke-dasharray: 2 3; }
+.route-arc .arc-line { fill: none; stroke: var(--wow-violet, var(--accent)); stroke-width: 1.6; stroke-linecap: round; }
+.route-arc .arc-line.draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: arc-draw 1.6s .15s cubic-bezier(.3, 0, .2, 1) forwards; }
+.route-arc .arc-dot { fill: var(--surface); stroke: var(--wow-violet, var(--accent)); stroke-width: 1.4; }
+.route-arc .arc-dot.end { fill: var(--wow-violet, var(--accent)); }
+.route-arc .arc-plane path { fill: var(--wow-violet, var(--accent)); stroke: none; }
+@keyframes arc-draw { to { stroke-dashoffset: 0.5; } }
+
+/* ---------- verdict „Cumpără / Mai așteaptă” ---------- */
+.verdict { padding: 14px; }
+.verdict-head { display: flex; gap: 12px; align-items: center; }
+.verdict-head b { font: 800 17px/1.2 var(--font-display); letter-spacing: -.02em; }
+.verdict-buy { border-color: color-mix(in srgb, var(--good) 35%, var(--border)); background: linear-gradient(135deg, var(--good-soft), var(--surface) 70%); }
+.verdict-wait { background: linear-gradient(135deg, var(--warn-soft), var(--surface) 70%); }
+.verdict-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+
+/* ---------- calendar de prețuri ---------- */
+.heat { display: grid; grid-template-columns: auto repeat(var(--cols), minmax(58px, 1fr)); gap: 4px; overflow-x: auto; }
+.heat-corner, .heat-col { font-size: 11px; font-weight: 600; color: var(--muted); text-align: center; padding: 4px 2px; white-space: nowrap; }
+.heat-corner { text-align: left; }
+.heat-row { font-size: 12px; font-weight: 600; color: var(--text-2); display: flex; align-items: center; padding-right: 6px; white-space: nowrap; }
+.heat-cell {
+  position: relative; height: 44px; border: 0; border-radius: 10px; cursor: pointer;
+  background: color-mix(in srgb, var(--s1) var(--s, 30%), var(--surface));
+  color: var(--text); font: 700 13px/1 var(--font-ui); font-variant-numeric: tabular-nums;
+  transition: transform .12s ease;
+}
+.heat-cell.dark { color: #fff; }
+.heat-cell.heat-none { background: var(--surface-2); color: var(--muted); font-weight: 500; cursor: default; display: grid; place-items: center; }
+.heat-cell:active { transform: scale(.95); }
+.heat-cell.best { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--s1); }
+.heat-star { position: absolute; top: 3px; left: 5px; font-size: 9px; font-style: normal; }
+.heat-ok { position: absolute; top: 3px; right: 5px; font-size: 10px; font-style: normal; }
+.heat-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 11px; color: var(--text-2); margin-top: 10px; }
+.heat-scale { display: inline-block; width: 70px; height: 8px; border-radius: 4px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--s1) 92%, var(--surface)), color-mix(in srgb, var(--s1) 18%, var(--surface))); }
+details.combo.flash { animation: flash 1.2s ease; }
+@keyframes flash { 0%, 100% { background: transparent; } 25% { background: color-mix(in srgb, var(--s1) 14%, transparent); } }
+
+/* ---------- partajare ---------- */
+.btn.icon-share { flex: 0 0 46px; padding: 0; }
+
+/* ---------- glisare pe carduri ---------- */
+.swipe-wrap { position: relative; margin-bottom: 10px; border-radius: 22px; }
+.swipe-wrap > .card { margin-bottom: 0; }
+.swipe-card { position: relative; z-index: 1; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; transition: transform .25s cubic-bezier(.2, .8, .2, 1); }
+.swipe-card.dragging { transition: none; }
+.swipe-actions { position: absolute; inset: 0 0 0 auto; width: 160px; display: flex; gap: 6px; justify-content: flex-end; align-items: stretch; padding: 6px 0 6px 12px; }
+.swipe-actions button {
+  flex: 1; border: 0; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  background: var(--accent-soft); color: var(--accent); font: 600 11px/1 var(--font-ui); cursor: pointer;
+}
+.swipe-actions button.danger { background: var(--bad-soft); color: var(--bad); }
+
+/* ---------- tragere pentru reîmprospătare ---------- */
+.ptr {
+  position: fixed; left: 50%; top: calc(58px + env(safe-area-inset-top)); z-index: 30; width: 38px; height: 38px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--surface); color: var(--wow-violet, var(--accent));
+  box-shadow: var(--shadow-lg); opacity: 0; transform: translate(-50%, 0); pointer-events: none; transition: opacity .15s;
+}
+.ptr.ready { color: var(--good); }
+.ptr.spinning { opacity: 1 !important; animation: spin .8s linear infinite; transform: translate(-50%, 46px) !important; }
+
+/* ---------- ghid de pornire ---------- */
+.onboarding { padding: 14px; }
+.onb-head { display: flex; justify-content: space-between; align-items: baseline; }
+.onb-head b { font: 700 15px/1.2 var(--font-display); }
+.onb-step { display: flex; align-items: center; gap: 12px; padding: 9px 2px; color: inherit; border-top: 1px solid var(--border); }
+.onb-step:first-of-type { border-top: 0; }
+.onb-step.is-done .row-title { color: var(--muted); text-decoration: line-through; }
+.onb-step .chev { color: var(--muted); }
+.onb-check { width: 22px; height: 22px; flex: none; border-radius: 50%; border: 2px solid var(--surface-3); display: grid; place-items: center; }
+.onb-check.done { background: var(--good); border-color: var(--good); color: #fff; }
+
+/* ---------- animații: mini-grafice, grafic, confetti ---------- */
+.spark-line { stroke-dasharray: 1; stroke-dashoffset: 0; animation: line-draw 1s .1s ease-out backwards; }
+.chart .series.draw { stroke-dasharray: 1; animation: line-draw 1.1s ease-out backwards; }
+@keyframes line-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.hero { isolation: isolate; }
+.confetti { position: absolute; left: 50%; top: 40%; width: 0; height: 0; pointer-events: none; z-index: 5; }
+.confetti i { position: absolute; width: 7px; height: 11px; border-radius: 2px; opacity: 0;
+  animation: confetti 1.4s var(--d) cubic-bezier(.2, .7, .3, 1) forwards; }
+@keyframes confetti {
+  0% { opacity: 1; transform: translate(0, 0) rotate(0); }
+  100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)); }
+}
+
+/* ---------- tranziții între ecrane ---------- */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .22s; }
+::view-transition-group(*) { animation-duration: .32s; animation-timing-function: cubic-bezier(.2, .8, .2, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .route-arc .arc-line.draw, .spark-line, .chart .series.draw { animation: none; stroke-dashoffset: 0; }
+  .route-arc .arc-line.draw { stroke-dashoffset: .5; }
+}

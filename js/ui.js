@@ -21,6 +21,11 @@ export function setNav({ title = '', back = null, actions = [], large = false } 
     : `<button class="nav-btn" type="button" id="${h(a.id)}" aria-label="${h(a.label)}" title="${h(a.label)}">${icon(a.icon, 22)}</button>`).join('');
 }
 
+/** Nume pentru tranzițiile între ecrane (cardul din listă „se transformă” în ecranul de detaliu). */
+export function vtName(id) {
+  return `vt-${String(id).toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
+}
+
 /** Ascunde/afișează bara de jos (în formular folosim bara „Salvează”). */
 export function setTabbarVisible(visible) {
   document.body.classList.toggle('no-tabbar', !visible);
@@ -55,7 +60,7 @@ export function sparkline(points, { width = 84, height = 30, threshold = null } 
   const under = threshold !== null && last.price <= threshold;
   return `<svg class="spark ${under ? 'is-under' : ''}" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" aria-hidden="true">
     ${threshold !== null ? `<line x1="0" x2="${width}" y1="${y(threshold)}" y2="${y(threshold)}" class="spark-th"/>` : ''}
-    <path d="${d}" class="spark-line"/>
+    <path d="${d}" class="spark-line" pathLength="1"/>
     <circle cx="${x(points.length - 1)}" cy="${y(last.price)}" r="2.6" class="spark-dot"/>
   </svg>`;
 }

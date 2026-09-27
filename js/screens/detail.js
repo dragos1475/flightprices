@@ -1,24 +1,28 @@
-// Ecranul 3: detaliul unei alerte – preț curent, grafic, combinații și toate zborurile.
+// Ecranul 3: detaliul unei alerte – preț curent, verdict, calendar de prețuri, grafic, combinații și zboruri.
 
 import { alertStatus, comboKey, isOneWay } from '../budget.js';
 import { renderChart, SERIES_COLORS } from '../chart.js';
 import { hasWriteAccess, saveAlert } from '../data.js';
+import { renderHeatmap } from '../heatmap.js';
 import { icon } from '../icons.js';
+import { verdict } from '../insights.js';
+import { celebrate, countUp } from '../motion.js';
 import {
-  bindResults, comboDates, comboNights, maxStopsOf, newView, resultsSections, stopsLabel, tripLabel,
+  bindResults, comboDates, comboNights, focusCombo, heroRoute, maxStopsOf, newView, resultsSections, shareCombo,
+  stopsLabel, tripLabel, verdictCard,
 } from '../results-view.js';
 import {
-  airlineNames, airportName, ensureAlerts, ensureConfig, loadHistory, loadResults, state, summarize,
+  airlineNames, ensureAlerts, ensureConfig, loadHistory, loadResults, state, summarize,
 } from '../state.js';
-import { setNav, skeleton } from '../ui.js';
+import { overallMinSeries, setNav, skeleton, vtName } from '../ui.js';
 import { dateTime, h, money, shortDate, toast, todayRO } from '../util.js';
 
 // preferințele de afișare (păstrate cât timp aplicația e deschisă)
 const view = newView();
 
 export async function renderDetail(app, id) {
+  const route = location.hash;
   setNav({ title: '', back: '#/' });
-  app.innerHTML = skeleton(2);
   await ensureConfig();
   const alerts = await ensureAlerts();
   const alert = alerts.find((a) => a.id === id);
@@ -27,12 +31,28 @@ export async function renderDetail(app, id) {
       <h2>Alerta nu există</h2><p>Poate a fost ștearsă.</p><a class="btn primary" href="#/">Înapoi la alerte</a></div>`;
     return;
   }
+
+  // Dacă venim din listă, datele sunt deja în memorie: afișăm imediat, apoi verificăm dacă există ceva mai nou
+  const cached = id in state.results;
+  if (cached) {
+    draw(app, alert, state.results[id], state.history[id], true);
+  } else {
+    app.innerHTML = skeleton(2);
+  }
+  const before = state.results[id]?.updated_at;
   const [results, history] = await Promise.all([loadResults(id), loadHistory(id)]);
+  if (location.hash !== route) return;
+  if (!cached || results?.updated_at !== before) draw(app, alert, results, history, !cached);
+}
+
+function draw(app, alert, results, history, animate) {
+  const id = alert.id;
   const today = todayRO();
   const st = alertStatus(alert, today);
   const sum = summarize(alert, results, today);
   const cur = alert.currency || 'EUR';
   const max = Number(alert.max_price) || 0;
+  const vt = vtName(id);
 
   setNav({
     title: alert.name,
@@ -44,33 +64,31 @@ export async function renderDetail(app, id) {
   });
   view.flightsShown = 25;
 
-  // Rută: coduri de plecare -> destinație
   const deps = alert.departure_airports || [];
-  const destCodes = alert.destination?.codes || [];
-  const fromCode = deps.length > 2 ? `${deps[0]} +${deps.length - 1}` : deps.join(' · ');
-  const fromPlace = deps.length === 1 ? airportName(deps[0]) : `${deps.length} aeroporturi`;
-  const toCode = destCodes.length > 2 ? `${destCodes[0]} +${destCodes.length - 1}` : destCodes.join(' · ');
+  const routeLabel = `${deps.join(', ')} → ${alert.destination?.name || ''}`;
+  const hero = heroRoute(deps, alert.destination);
 
   // Bara „preț vs. prag”
   const scale = Math.max(max, sum.lowest || 0) * 1.25 || 1;
   const fillPct = sum.lowest !== null ? Math.min(100, (sum.lowest / scale) * 100) : 0;
   const markPct = Math.min(100, (max / scale) * 100);
   const diff = sum.lowest !== null ? max - sum.lowest : null;
-
   const bestFlight = sum.best?.flights?.[0];
 
+  // Verdict din istoric (minimul zilnic pe toată alerta) + datele Google
+  const keys = sum.combos.map(comboKey);
+  const overall = overallMinSeries(history, keys, cur);
+  const v = !sum.stale && st.key !== 'expired' ? verdict({ series: overall, best: sum.best, maxPrice: max, currency: cur }) : null;
+
   app.innerHTML = `
-    <div class="card hero">
-      <div class="hero-route">
-        <div class="end"><div class="iata">${h(fromCode)}</div><div class="place">${h(fromPlace)}</div></div>
-        <div class="path"><i></i>${icon('plane', 18)}<i></i></div>
-        <div class="end"><div class="iata">${h(toCode)}</div><div class="place">${h(alert.destination?.name || '')}</div></div>
-      </div>
+    <div class="card hero" style="view-transition-name:${vt};${hero.tint ? `--dest-tint:${hero.tint}` : ''}">
+      ${hero.html}
 
       <div class="hero-price">
         <div>
           <div class="label">Cel mai mic preț ${tripLabel(alert)}</div>
-          <div class="price-xl ${sum.under ? 'good-text' : ''}">${sum.lowest !== null ? money(sum.lowest) : '—'}<small>${cur}</small></div>
+          <div class="price-xl ${sum.under ? 'good-text' : ''}" style="view-transition-name:${vt}-price">${sum.lowest !== null
+            ? `<span data-count="${sum.lowest}">${money(sum.lowest)}</span>` : '—'}<small>${cur}</small></div>
         </div>
         ${sum.lowest !== null
           ? (sum.under ? `<span class="badge good">${icon('check')}Sub prag</span>` : '<span class="badge">Peste prag</span>')
@@ -95,9 +113,18 @@ export async function renderDetail(app, id) {
 
       ${sum.stale ? `<div class="banner warn">${icon('warning', 18)}<div>Moneda a fost schimbată. Prețurile vor fi în ${cur} după următoarea căutare.</div></div>` : ''}
 
-      ${sum.best?.google_flights_url ? `<a class="btn primary block" style="margin-top:14px" href="${h(sum.best.google_flights_url)}" target="_blank" rel="noopener">
-        Vezi pe Google Flights ${icon('external', 16)}</a>` : ''}
+      ${sum.best?.google_flights_url ? `<div class="btn-row" style="margin-top:14px">
+        <a class="btn primary" href="${h(sum.best.google_flights_url)}" target="_blank" rel="noopener">Vezi pe Google Flights ${icon('external', 16)}</a>
+        <button type="button" class="btn icon-share" id="hero-share" aria-label="Partajează">${icon('share', 18)}</button>
+      </div>` : ''}
       <div class="small muted" style="text-align:center;margin-top:10px">Actualizat ${dateTime(results?.updated_at)}</div>
+    </div>
+
+    ${verdictCard(v)}
+
+    <div id="heat-section">
+      <div class="section-label"><span>Calendar de prețuri</span></div>
+      <div class="card"><div id="heatmap"></div></div>
     </div>
 
     <div class="section-label"><span>Evoluția prețului minim</span></div>
@@ -107,7 +134,7 @@ export async function renderDetail(app, id) {
   `;
 
   // Grafic: câte o linie pentru fiecare combinație încă valabilă (culoare fixă după ordinea datelor)
-  const activeKeys = sum.combos.map(comboKey).sort();
+  const activeKeys = [...keys].sort();
   const series = activeKeys.slice(0, SERIES_COLORS.length).map((key, i) => {
     const [o, r] = key.split('_');
     return {
@@ -116,16 +143,26 @@ export async function renderDetail(app, id) {
       points: (history?.series?.[key] || []).filter((p) => (p.currency || cur) === cur),
     };
   });
-  renderChart(app.querySelector('#chart'), { series, threshold: max || null, currency: cur });
+  renderChart(app.querySelector('#chart'), { series, threshold: max || null, currency: cur, animate });
   if (activeKeys.length > SERIES_COLORS.length) {
     app.querySelector('#chart').insertAdjacentHTML('beforeend',
       `<p class="small muted" style="margin-top:8px">Graficul arată primele ${SERIES_COLORS.length} combinații din ${activeKeys.length}.</p>`);
   }
 
   const resultsEl = app.querySelector('#results');
-  const ctx = { combos: sum.combos, maxPrice: max, cur, view, oneWay: isOneWay(alert) };
+  const ctx = { combos: sum.combos, maxPrice: max, cur, view, oneWay: isOneWay(alert), route: routeLabel };
   resultsEl.innerHTML = resultsSections(ctx);
   bindResults(resultsEl, ctx);
+
+  // Calendarul de prețuri: atingerea unui pătrat deschide combinația respectivă
+  const heat = app.querySelector('#heatmap');
+  renderHeatmap(heat, { combos: sum.combos, maxPrice: max, currency: cur, onPick: (c) => focusCombo(resultsEl, c) });
+  app.querySelector('#heat-section').hidden = heat.hidden;
+
+  app.querySelector('#hero-share')?.addEventListener('click', () => shareCombo(ctx, sum.best));
+
+  if (animate) countUp(app);
+  if (sum.under && st.key === 'active') celebrate(app.querySelector('.hero'), id, today);
 
   document.getElementById('toggle-active')?.addEventListener('click', async (e) => {
     const btn = e.currentTarget;
@@ -135,7 +172,7 @@ export async function renderDetail(app, id) {
       const doc = await saveAlert(updated);
       state.alerts = doc.alerts;
       toast(updated.active ? 'Alerta a fost pornită' : 'Alerta a fost oprită');
-      renderDetail(app, id);
+      draw(app, updated, results, history, false);
     } catch (err) {
       toast(err.message, 6000);
       btn.disabled = false;

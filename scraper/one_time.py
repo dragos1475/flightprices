@@ -219,5 +219,6 @@ def _prune_and_index(storage):
             "lowest_price": res.get("lowest_price"),
             "currency": res.get("currency") or req.get("currency"),
             "departures": req.get("departures", []),
+            "destination": req.get("destination"),
         })
     write_json(folder / "index.json", {"searches": index})

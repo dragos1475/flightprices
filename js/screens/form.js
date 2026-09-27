@@ -5,6 +5,7 @@ import { combinations, estimateBudget } from '../budget.js';
 import {
   createFile, deleteAlert, githubLinks, hasWriteAccess, loadJSON, saveAlert, saveCustomDestination, signSearch,
 } from '../data.js';
+import { countryFlag, destFlag } from '../flags.js';
 import { icon } from '../icons.js';
 import { maxStopsOf } from '../results-view.js';
 import { ensureAlerts, ensureConfig, loadStatus, state } from '../state.js';
@@ -337,7 +338,7 @@ function renderDestination() {
   btn.innerHTML = `
     <span class="row-icon">${icon('pin', 16)}</span>
     <span class="row-main">${d
-      ? `<span class="row-sub">Destinația</span><b>${h(d.name)}</b><span class="row-sub">${h(d.codes.join(', '))}</span>`
+      ? `<span class="row-sub">Destinația</span><b>${destFlag(d) ? `${destFlag(d)} ` : ''}${h(d.name)}</b><span class="row-sub">${h(d.codes.join(', '))}</span>`
       : '<span class="row-title">Alege destinația</span><span class="row-sub">Oraș, țară sau cod IATA</span>'}</span>
     <span class="chev muted">${icon('chevron', 18)}</span>`;
 }
@@ -383,7 +384,7 @@ function openDestinationSheet() {
       groups[groups.length - 1].items.push(d);
     }
     list.innerHTML = groups.map(({ g, items: its }) => `
-      <div class="pick-group">${h(g)}</div>
+      <div class="pick-group">${countryFlag(its[0].country) ? `${countryFlag(its[0].country)} ` : ''}${h(g)}</div>
       <div class="group">${its.map((d) => `
         <button type="button" class="pick-item" data-id="${h(d.id)}">
           <span class="pick-code ${d.codes.length > 1 ? 'multi' : ''}">${d.codes.length > 1 ? `${d.codes.length}×` : h(d.codes[0])}</span>
