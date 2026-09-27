@@ -50,7 +50,7 @@ export function celebrate(anchor, key, day) {
 
 /**
  * Ruta animată: un arc punctat care se desenează, cu un avion care îl parcurge.
- * (Arc stilizat, nu o hartă geografică reală. Avionul se oprește la jumătate: „în zbor”.)
+ * (Arc stilizat, nu o hartă geografică reală. Avionul pleacă din stânga și aterizează la destinație.)
  */
 export function routeArc() {
   const plane = 'M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z';
@@ -60,12 +60,12 @@ export function routeArc() {
     <path d="${d}" class="arc-bg"/>
     <path d="${d}" class="arc-line ${animate ? 'draw' : ''}" pathLength="1"/>
     <circle cx="8" cy="34" r="3.5" class="arc-dot"/>
-    <circle cx="292" cy="34" r="3.5" class="arc-dot end"/>
+    <circle cx="292" cy="34" r="3.5" class="arc-dot end ${animate ? 'arrive' : ''}"/>
     <g class="arc-plane">
       <g transform="rotate(45) scale(0.75) translate(-12 -12)"><path d="${plane}"/></g>
       ${animate
-        ? `<animateMotion dur="1.6s" begin="0.15s" fill="freeze" rotate="auto" keyPoints="0;0.5" keyTimes="0;1" calcMode="spline" keySplines="0.3 0 0.2 1" path="${d}"/>`
-        : `<animateMotion dur="0.01s" fill="freeze" rotate="auto" keyPoints="0.5;0.5" keyTimes="0;1" path="${d}"/>`}
+        ? `<animateMotion dur="2s" begin="0.15s" fill="freeze" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.35 0 0.25 1" path="${d}"/>`
+        : `<animateMotion dur="0.01s" fill="freeze" rotate="auto" keyPoints="1;1" keyTimes="0;1" path="${d}"/>`}
     </g>
   </svg>`;
 }

@@ -625,11 +625,13 @@ a.search-cta .cta-ico { background: rgba(255, 255, 255, .18); color: #fff; box-s
 .route-arc { display: block; width: 100%; height: 40px; overflow: visible; }
 .route-arc .arc-bg { fill: none; stroke: var(--surface-3); stroke-width: 1.2; stroke-dasharray: 2 3; }
 .route-arc .arc-line { fill: none; stroke: var(--wow-violet, var(--accent)); stroke-width: 1.6; stroke-linecap: round; }
-.route-arc .arc-line.draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: arc-draw 1.6s .15s cubic-bezier(.3, 0, .2, 1) forwards; }
+.route-arc .arc-line.draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: arc-draw 2s .15s cubic-bezier(.35, 0, .25, 1) forwards; }
+.route-arc .arc-dot.end.arrive { transform-box: fill-box; transform-origin: center; animation: arrive .6s 2.1s ease-out; }
+@keyframes arrive { 0% { transform: scale(1); } 45% { transform: scale(2.1); } 100% { transform: scale(1); } }
 .route-arc .arc-dot { fill: var(--surface); stroke: var(--wow-violet, var(--accent)); stroke-width: 1.4; }
 .route-arc .arc-dot.end { fill: var(--wow-violet, var(--accent)); }
 .route-arc .arc-plane path { fill: var(--wow-violet, var(--accent)); stroke: none; }
-@keyframes arc-draw { to { stroke-dashoffset: 0.5; } }
+@keyframes arc-draw { to { stroke-dashoffset: 0; } }
 
 /* ---------- verdict „Cumpără / Mai așteaptă” ---------- */
 .verdict { padding: 14px; }
@@ -716,5 +718,5 @@ details.combo.flash { animation: flash 1.2s ease; }
 
 @media (prefers-reduced-motion: reduce) {
   .route-arc .arc-line.draw, .spark-line, .chart .series.draw { animation: none; stroke-dashoffset: 0; }
-  .route-arc .arc-line.draw { stroke-dashoffset: .5; }
+  .route-arc .arc-line.draw { stroke-dashoffset: 0; }
 }
