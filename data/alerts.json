@@ -2,7 +2,7 @@
   "alerts": [
     {
       "id": "bali-n-februarie-3of2",
-      "name": "Bali in Februarie",
+      "name": "Bali from Istanbul",
       "active": true,
       "monitor_start": "2026-09-28",
       "monitor_end": "2026-12-01",
@@ -41,7 +41,7 @@
       "search_hours": [
         12
       ],
-      "updated_at": "2026-09-27T21:38:29.582Z",
+      "updated_at": "2026-09-27T21:45:42.492Z",
       "created_at": "2026-09-27T16:23:26.605Z"
     },
     {
