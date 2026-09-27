@@ -5,7 +5,7 @@
   "search_reserve": 5,
   "one_time_max_searches": 20,
   "return_details_for_cheapest": true,
-  "vapid_public_key": "PUNE_AICI_CHEIA_PUBLICA_VAPID",
+  "vapid_public_key": "BLl29xm8_gCxagn42yE0GMNe_eS2yhSXW3T1jZ_EKyaacHsqx_j-bdwa0_peg5YyM5k1Y4Tx1dgfwLlLf-gGM9Q",
   "vapid_subject": "mailto:notificari@example.com",
   "notifications": {
     "web_push": true,
