@@ -180,17 +180,26 @@ def main():
         if not api_key:
             print("ℹ️  SERPAPI_KEY nu este setat încă, dar nu e nimic de căutat acum.")
 
-    # 3) Verificăm creditele rămase (Account API nu consumă căutări)
+    # 3) Verificăm creditele rămase (Account API e gratuit, deci verificăm la fiecare rulare)
     credits = Credits()
-    if needed > 0 or waiting:
+    previous_status = read_json(out_dir / "status.json", default=None) or {}
+    month_usage = None
+    if args.dry_run or os.environ.get("SERPAPI_KEY", "").strip():
         try:
             account = client.account()
             credits.left = account.get("total_searches_left", account.get("plan_searches_left"))
+            month_usage = account.get("this_month_usage")
             status["searches_left_before"] = credits.left
-            print(f"Credite SerpApi rămase: {credits.left} (folosite luna aceasta: {account.get('this_month_usage')})")
+            status["credits_checked_at"] = now().isoformat(timespec="seconds")
+            print(f"Credite SerpApi rămase: {credits.left} (folosite luna aceasta: {month_usage})")
         except SearchError as e:
             status["warnings"].append(str(e))
             print("⚠️ ", e, "- continui fără verificare.")
+    if credits.left is None and previous_status.get("searches_left_after") is not None:
+        # nu am putut verifica acum: păstrăm ultima valoare cunoscută (doar pentru afișare)
+        status["searches_left_before"] = previous_status.get("searches_left_after")
+        status["credits_checked_at"] = previous_status.get("credits_checked_at")
+        month_usage = previous_status.get("this_month_usage")
 
     # 4) Căutările rapide (pornite din aplicație) au prioritate: cineva așteaptă rezultatul
     status["errors"].extend(one_time.process(storage, client, credits, notifier, settings, day, state, link))
@@ -292,7 +301,12 @@ def main():
 
     status["notifications_sent"] = notifier.sent
     status["notification_errors"] = notifier.errors
-    status["searches_left_after"] = credits.left
+    if credits.left is not None:
+        status["searches_left_after"] = credits.left
+        status["this_month_usage"] = (month_usage or 0) + client.searches_done if month_usage is not None else None
+    else:
+        status["searches_left_after"] = status.get("searches_left_before")
+        status["this_month_usage"] = month_usage
     storage.save_state(state)
     storage.save_status(status)
 

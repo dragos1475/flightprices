@@ -11,7 +11,7 @@ import { successCheck } from '../motion.js';
 import { maxStopsOf } from '../results-view.js';
 import { ensureAlerts, ensureConfig, loadStatus, state } from '../state.js';
 import { setNav, setTabbarVisible, skeleton, stepper, toggle } from '../ui.js';
-import { addDays, copyText, dayDate, fold, h, slugify, toast, todayRO } from '../util.js';
+import { addDays, copyText, dayDate, fold, h, shortDate, slugify, toast, todayRO } from '../util.js';
 
 let draft = null;    // alerta în lucru (starea formularului)
 let original = null; // alerta originală (la editare)
@@ -275,6 +275,7 @@ export async function renderForm(app, id, options = {}) {
             <div><label class="label" for="f-end">Până la</label><input id="f-end" type="date" value="${h(draft.monitor_end)}"></div>
           </div>
           <p class="hint">Gol la „Până la” = până la ultima zi de plecare.</p>
+          <p class="hint warn-text" id="monitor-warn"></p>
         </div>
         <div class="row-stack">
           <span class="label">De câte ori pe zi caut</span>
@@ -544,9 +545,28 @@ function syncTripTexts() {
 // ---------------------------------------------------------------------------
 // Estimarea bugetului de căutări
 // ---------------------------------------------------------------------------
+/** Avertisment: monitorizarea începe mai târziu sau se oprește mult înainte de plecare. */
+function renderMonitorWarning(alert) {
+  const el = document.getElementById('monitor-warn');
+  if (!el) return;
+  const today = todayRO();
+  const last = alert.departures.map((d) => d.date).sort().pop();
+  const msgs = [];
+  if (alert.monitor_start > today) {
+    msgs.push(`Căutarea începe abia pe ${shortDate(alert.monitor_start)} (până atunci alerta e „programată”).`);
+  }
+  if (last && alert.monitor_end && alert.monitor_end < last) {
+    const days = Math.round((new Date(last) - new Date(alert.monitor_end)) / 86400000);
+    if (days > 7) msgs.push(`Monitorizarea se oprește pe ${shortDate(alert.monitor_end)}, cu ${days} de zile înainte de plecare.`);
+  }
+  el.textContent = msgs.join(' ');
+  el.hidden = !msgs.length;
+}
+
 function renderBudget() {
   const box = document.getElementById('budget-box');
   if (!box) return;
+  if (mode === 'alert') renderMonitorWarning(buildAlert());
   if (mode === 'search') {
     renderSearchCost(box);
     return;

@@ -63,6 +63,14 @@ function draw(app, animate) {
     || (x.a.name || '').localeCompare(y.a.name || ''));
   const activeCount = rows.filter((r) => r.st.key === 'active').length;
   const underCount = rows.filter((r) => r.st.key === 'active' && r.sum.under).length;
+  const scheduled = rows.filter((r) => r.st.key === 'scheduled');
+  const nextStart = scheduled.map((r) => r.a.monitor_start).sort()[0];
+  const headline = [
+    `${activeCount} ${activeCount === 1 ? 'alertă activă' : 'alerte active'}`,
+    scheduled.length ? `${scheduled.length} ${scheduled.length === 1 ? 'programată' : 'programate'} (de la ${shortDate(nextStart)})` : '',
+    underCount ? `<b>${underCount} sub prag</b>` : '',
+  ].filter(Boolean).join(' · ');
+  const usage = status?.this_month_usage;
 
   const onboarding = onboardingCard({ status, alerts });
   app.innerHTML = `
@@ -70,7 +78,7 @@ function draw(app, animate) {
       <div class="sky-orb" aria-hidden="true"></div>
       <div class="sky-greeting">${greeting()}</div>
       <h1>Zborurile mele</h1>
-      <p>${activeCount} ${activeCount === 1 ? 'alertă activă' : 'alerte active'}${underCount ? ` · <b>${underCount} sub prag</b>` : ''}</p>
+      <p>${headline}</p>
     </div>
 
     ${onboarding}
@@ -80,15 +88,16 @@ function draw(app, animate) {
     <div class="section-label"><span>Buget căutări</span><span class="muted" style="text-transform:none;letter-spacing:0">${status ? `rulat ${dateTime(status.last_run)}` : ''}</span></div>
     <div class="card" style="padding:0">
       <div class="summary">
-        <div><b>${budget.perDay}</b><span>căutări / zi</span></div>
-        <div><b class="${level === 'bad' ? 'bad-text' : ''}">~${budget.perMonth}</b><span>în 30 de zile</span></div>
-        <div><b>${left ?? '—'}</b><span>credite rămase</span></div>
+        <div><b>${budget.perDay}</b><span>căutări azi</span></div>
+        <div><b class="${level === 'bad' ? 'bad-text' : ''}">~${budget.perMonth}</b><span>estimare 30 de zile</span></div>
+        <div><b>${left ?? '—'}</b><span>credite rămase${status?.credits_checked_at ? ` (${shortDate(status.credits_checked_at.slice(0, 10))})` : ''}</span></div>
       </div>
       <div class="budget-foot">
         <div class="meter ${level}"><div style="width:${Math.min(100, ratio * 100)}%"></div></div>
         <div class="small ${level === 'bad' ? 'bad-text' : 'muted'}">${level === 'bad'
-          ? `Depășești limita de ${limit}/lună. Restrânge sau oprește unele alerte.`
-          : `${Math.round(ratio * 100)}% din limita de ${limit} căutări pe lună`}</div>
+          ? `Estimarea pe următoarele 30 de zile depășește limita de ${limit}/lună. Restrânge sau oprește unele alerte.`
+          : `Estimare pentru următoarele 30 de zile: ${Math.round(ratio * 100)}% din limita de ${limit}/lună (nu sunt căutări făcute).`}</div>
+        ${usage !== undefined && usage !== null ? `<div class="small muted" style="margin-top:2px">Folosite efectiv luna aceasta (SerpApi): <b>${usage}</b></div>` : ''}
       </div>
     </div>
 
@@ -249,7 +258,7 @@ function alertCard(rawAlert, st, rawSum, today) {
       </div>
       <div class="alert-price">${priceHtml}</div>
       <div class="alert-meta">
-        ${st.key !== 'active' ? `<span class="badge">${st.label}</span>` : ''}
+        ${st.key !== 'active' ? `<span class="badge ${st.key === 'scheduled' ? 'info' : ''}">${st.label}${st.key === 'scheduled' ? ` · de la ${shortDate(alert.monitor_start)}` : ''}</span>` : ''}
         ${v ? `<span class="badge ${VERDICT_STYLE[v.kind].cls}">${icon(VERDICT_STYLE[v.kind].icon)}${v.title}</span>` : ''}
         <span>${icon('calendar')}${h(dateText)}${isOneWay(alert) ? ' · doar dus' : ''}</span>
         ${searchesPerDay(alert) > 1 ? `<span>${icon('clock')}${searchesPerDay(alert)}×/zi</span>` : ''}
