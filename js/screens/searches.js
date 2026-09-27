@@ -9,6 +9,7 @@ import { bindCurrencyToggle, convertedNote, currencyToggle } from '../currency-u
 import { forDisplay } from '../currency.js';
 import { deleteFile, githubLinks, hasWriteAccess, listDir, loadJSON } from '../data.js';
 import { destFlag } from '../flags.js';
+import { creditsChanged } from '../credits.js';
 import { enablePullToRefresh } from '../gestures.js';
 import { renderHeatmap } from '../heatmap.js';
 import { icon } from '../icons.js';
@@ -259,6 +260,7 @@ export async function renderSearchResult(app, id) {
     if (location.hash !== route) return;
     const fresh = await load();
     if (fresh) doc = fresh;
+    if (doc.status !== 'pending') creditsChanged(); // s-au consumat credite: bara de sus se actualizează
     draw();
   }
   if (doc.status === 'pending' && location.hash === route) {

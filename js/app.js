@@ -11,6 +11,7 @@
 //   #/setari               setări
 
 import { registerServiceWorker } from './push.js';
+import { watchCredits } from './credits.js';
 import { refreshRate } from './currency.js';
 import { disablePullToRefresh } from './gestures.js';
 import { haptic, reducedMotion } from './motion.js';
@@ -79,18 +80,41 @@ async function renderScreen() {
 
 window.addEventListener('hashchange', render);
 
-// Ecranul de pornire: rămâne minim ~1 s (animația avionului), apoi dispare lin
 const splashShownAt = performance.now();
-function hideSplash() {
+// Ecranul de pornire „Flight Prices”: butonul „Intră” devine activ după animația de intrare
+// și după ce primul ecran e gata. La reîncărcarea pentru o versiune nouă nu îl mai arătăm.
+const SKIP_SPLASH = 'zboruri.skip_splash';
+function setupSplash() {
   const splash = document.getElementById('splash');
-  if (!splash || splash.classList.contains('hide')) return;
-  const wait = Math.max(0, (reducedMotion() ? 300 : 1250) - (performance.now() - splashShownAt));
-  setTimeout(() => {
+  if (!splash) return;
+  let skip = false;
+  try {
+    skip = sessionStorage.getItem(SKIP_SPLASH) === '1';
+    sessionStorage.removeItem(SKIP_SPLASH);
+  } catch { /* indisponibil */ }
+  if (skip) {
+    splash.remove();
+    return;
+  }
+  splash.querySelector('#splash-enter').addEventListener('click', () => {
+    haptic(12);
     splash.classList.add('hide');
-    setTimeout(() => splash.remove(), 450);
+    setTimeout(() => splash.remove(), 520);
+  });
+}
+function splashReady() {
+  const btn = document.getElementById('splash-enter');
+  if (!btn || !btn.disabled) return;
+  const wait = Math.max(0, (reducedMotion() ? 0 : 1100) - (performance.now() - splashShownAt));
+  setTimeout(() => {
+    btn.disabled = false;
+    btn.querySelector('.sb-label').textContent = 'Intră în aplicație';
+    btn.classList.add('ready');
+    btn.parentElement.classList.add('ready');
   }, wait);
 }
-setTimeout(hideSplash, 4000); // siguranță: nu rămâne blocat dacă datele întârzie
+setupSplash();
+setTimeout(splashReady, 4000); // siguranță: butonul devine activ chiar dacă datele întârzie
 
 // Vibrație scurtă (Android) la butoanele de tip comutator, segment, +/- și tab-uri
 document.addEventListener('click', (e) => {
@@ -101,23 +125,28 @@ document.addEventListener('change', (e) => {
 });
 
 refreshRate(); // cursul EUR/RON pentru afișare (o dată pe zi, în fundal)
+watchCredits(); // creditele SerpApi din bara de sus, ținute la zi
 // bara de sus capătă umbră și titlu când pagina e derulată
 const navbar = document.querySelector('.navbar');
 const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 36);
 window.addEventListener('scroll', onScroll, { passive: true });
-Promise.resolve(render()).finally(hideSplash);
+Promise.resolve(render()).finally(splashReady);
 
 // Actualizare automată: aplicația instalată rămâne deschisă în memorie și ar rula codul vechi.
 // Când revii în ea, verificăm dacă s-a publicat o versiune nouă (sw.js diferit); dacă da, service
 // worker-ul nou preia controlul și reîncărcăm pagina. Nu întrerupem un formular deschis.
 const isForm = () => /^#\/(alerta\/nou|alerta\/[^/]+\/editeaza|cautare\/noua)/.test(location.hash);
 let reloadWaiting = false;
+function reloadNow() {
+  try { sessionStorage.setItem(SKIP_SPLASH, '1'); } catch { /* indisponibil */ }
+  location.reload();
+}
 function reloadForUpdate() {
   if (isForm()) {
     reloadWaiting = true; // după ce ieși din formular
     return;
   }
-  location.reload();
+  reloadNow();
 }
 registerServiceWorker().then((reg) => {
   if (!reg) return;
@@ -133,5 +162,5 @@ registerServiceWorker().then((reg) => {
   });
 });
 window.addEventListener('hashchange', () => {
-  if (reloadWaiting && !isForm()) location.reload();
+  if (reloadWaiting && !isForm()) reloadNow();
 });

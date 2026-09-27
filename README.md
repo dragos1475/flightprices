@@ -238,6 +238,12 @@ La **doar dus**, aceleași 2 zile = 2 căutări/zi = ~60 pe lună (și nu exist�
 Aplicația îți arată estimarea la crearea alertei și pe ecranul principal și te avertizează dacă depășești 250/lună.
 Estimarea ține cont că plecările trecute nu se mai caută și că alertele expiră.
 
+**Creditele rămase** apar mereu în bara de sus a aplicației (⚡ 205). Telefonul nu poate întreba SerpApi direct
+(cheia stă în GitHub Secrets), așa că GitHub scrie valoarea exactă în `data/status.json`: după fiecare rulare cu
+căutări și, la fiecare oră, doar dacă s-a schimbat (resetarea lunară, căutări făcute în afara aplicației).
+Aplicația recitește valoarea la fiecare minut, când revii în ea și imediat după o căutare rapidă sau un
+„Preț la companie”. Atinge insigna pentru detalii (folosite luna aceasta, ora verificării).
+
 **Protecție automată:** înainte de fiecare rulare, scriptul verifică gratuit creditele rămase. Dacă nu ajung
 pentru toate căutările, **nu caută nimic** și îți trimite o notificare de avertizare, fără să dea eroare.
 Detaliile de întoarcere se caută doar dacă rămân peste 5 credite de rezervă (setarea `search_reserve`).
@@ -464,6 +470,7 @@ index.html, css/, js/          aplicația (PWA)
   js/map.js, trip.js, weather.js  harta traseului, secțiunea „Călătoria”, vremea
   js/currency.js               afișarea în EUR/RON
   js/price-check.js            butonul „Preț la companie” din bilete
+  js/credits.js                creditele SerpApi din bara de sus
   js/password.js               parola de căutare (comună)
   js/budget.js                 calculul combinațiilor și al bugetului (la fel ca scraper/alerts.py)
   js/data.js                   citirea datelor și salvarea prin GitHub API

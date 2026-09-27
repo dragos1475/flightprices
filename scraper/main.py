@@ -22,7 +22,7 @@ from pathlib import Path
 
 from . import alerts as A
 from . import one_time, price_check
-from .config import DATA_DIR, FIXTURES_DIR, ROOT, TIMEZONE, app_url, load_settings, now, read_json, today
+from .config import DATA_DIR, FIXTURES_DIR, ROOT, TIMEZONE, app_url, load_settings, now, read_json, today, write_json
 from .notify import Notifier, alert_summary
 from .search import Credits, new_entry, search_combination
 from .serpapi_client import FakeSerpApiClient, SearchError, SerpApiClient
@@ -97,6 +97,32 @@ def send_test_notification(settings):
     print("Notificare de test trimisă.")
 
 
+def refresh_credits_only(out_dir, dry_run, day):
+    """Actualizează doar creditele din status.json, dacă s-au schimbat (Account API nu consumă credite)."""
+    api_key = os.environ.get("SERPAPI_KEY", "").strip()
+    if not (api_key or dry_run):
+        return
+    client = FakeSerpApiClient(day) if dry_run else SerpApiClient(api_key)
+    try:
+        account = client.account()
+    except SearchError as e:
+        print("⚠️  Nu am putut verifica creditele:", e)
+        return
+    left = account.get("total_searches_left", account.get("plan_searches_left"))
+    usage = account.get("this_month_usage")
+    path = out_dir / "status.json"
+    status = read_json(path, default=None) or {}
+    print(f"Credite SerpApi rămase: {left} (folosite luna aceasta: {usage})")
+    if left is None or (status.get("searches_left_after") == left and status.get("this_month_usage") == usage):
+        print("Creditele nu s-au schimbat. Gata (fără salvare).")
+        return
+    status.update(searches_left_after=left, this_month_usage=usage,
+                  credits_checked_at=now().isoformat(timespec="seconds"))
+    status.setdefault("searches_left_before", left)
+    write_json(path, status)
+    print("Creditele s-au schimbat: status.json actualizat.")
+
+
 def main():
     args = parse_args()
     if args.test_notification:
@@ -165,8 +191,10 @@ def main():
     link = app_url(settings)
     waiting = one_time.pending(storage) + price_check.pending(storage)
     if needed == 0 and not waiting and args.trigger == "schedule":
-        # Rularea din oră în oră: nimic programat acum -> ne oprim fără să scriem nimic (fără commit)
-        print("Nimic programat la ora asta. Gata.")
+        # Rularea din oră în oră: nimic programat acum. Verificăm doar creditele (gratuit) și salvăm
+        # numai dacă s-au schimbat (resetarea lunară, căutări făcute în afara aplicației) -> rar un commit
+        print("Nimic programat la ora asta.")
+        refresh_credits_only(out_dir, args.dry_run, day)
         return
     if args.dry_run:
         client = FakeSerpApiClient(day)
@@ -305,6 +333,21 @@ def main():
     if credits.left is not None:
         status["searches_left_after"] = credits.left
         status["this_month_usage"] = (month_usage or 0) + client.searches_done if month_usage is not None else None
+        if client.searches_done:
+            # valoarea exactă de la SerpApi după căutări (gratuit). SerpApi poate întârzia câteva secunde
+            # actualizarea, așa că păstrăm valoarea mai mică dintre cea calculată și cea citită.
+            try:
+                account = client.account()
+                fresh = account.get("total_searches_left", account.get("plan_searches_left"))
+                if fresh is not None:
+                    status["searches_left_after"] = min(fresh, credits.left)
+                    status["credits_checked_at"] = now().isoformat(timespec="seconds")
+                usage = account.get("this_month_usage")
+                if usage is not None:
+                    status["this_month_usage"] = max(usage, status["this_month_usage"] or 0)
+                print(f"Credite SerpApi rămase după căutări: {status['searches_left_after']}")
+            except SearchError as e:
+                print("⚠️  Nu am putut reciti creditele:", e)
     else:
         status["searches_left_after"] = status.get("searches_left_before")
         status["this_month_usage"] = month_usage

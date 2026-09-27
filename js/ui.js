@@ -1,5 +1,6 @@
 // Elemente de interfață comune: bara de sus, schelete de încărcare, mini-grafice.
 
+import { creditsSlot } from './credits.js';
 import { icon } from './icons.js';
 import { h } from './util.js';
 
@@ -13,9 +14,10 @@ export function setNav({ title = '', back = null, actions = [], large = false } 
   document.getElementById('nav-title').textContent = title;
   // large = titlul mare e în pagină; în bara de sus apare doar după derulare (ca pe iOS)
   document.querySelector('.navbar').classList.toggle('large', large);
-  document.getElementById('nav-left').innerHTML = back
+  // stânga: „înapoi” (dacă e cazul) + creditele SerpApi rămase (mereu vizibile)
+  document.getElementById('nav-left').innerHTML = (back
     ? `<a class="nav-btn" href="${h(back)}" aria-label="Înapoi">${icon('back', 24)}</a>`
-    : '';
+    : '') + creditsSlot();
   document.getElementById('nav-right').innerHTML = actions.map((a) => a.href
     ? `<a class="nav-btn" href="${h(a.href)}" aria-label="${h(a.label)}" title="${h(a.label)}">${icon(a.icon, 22)}</a>`
     : `<button class="nav-btn" type="button" id="${h(a.id)}" aria-label="${h(a.label)}" title="${h(a.label)}">${icon(a.icon, 22)}</button>`).join('');

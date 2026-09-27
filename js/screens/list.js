@@ -91,7 +91,7 @@ function draw(app, animate) {
       <div class="summary">
         <div><b>${budget.perDay}</b><span>căutări azi</span></div>
         <div><b class="${level === 'bad' ? 'bad-text' : ''}">~${budget.perMonth}</b><span>estimare 30 de zile</span></div>
-        <div><b>${left ?? '—'}</b><span>credite rămase${status?.credits_checked_at ? ` (${shortDate(status.credits_checked_at.slice(0, 10))})` : ''}</span></div>
+        <div><b id="home-credits">${left ?? '—'}</b><span>credite rămase${status?.credits_checked_at ? ` (${shortDate(status.credits_checked_at.slice(0, 10))})` : ''}</span></div>
       </div>
       <div class="budget-foot">
         <div class="meter ${level}"><div style="width:${Math.min(100, ratio * 100)}%"></div></div>

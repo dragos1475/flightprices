@@ -3,6 +3,7 @@
 // Nimic automat: doar când utilizatorul apasă butonul din bilet. Costă 1–2 credite SerpApi.
 // Cererea se scrie semnat în data/prices/<id>.json; GitHub Actions (scraper/price_check.py) o procesează.
 
+import { creditsChanged } from './credits.js';
 import { convertPrice } from './currency.js';
 import { createFile, hasWriteAccess, loadJSON, signSearch } from './data.js';
 import { icon } from './icons.js';
@@ -244,6 +245,7 @@ async function poll(key, id, since) {
       if (!doc || doc.status === 'pending') continue;
       docs.set(id, doc);
       setPending(key, null);
+      creditsChanged(); // bara de sus arată imediat creditele rămase
       if (doc.status === 'done') {
         live.set(key, { phase: 'done', doc });
         index.set(key, { id, created_at: doc.created_at, processed_at: doc.processed_at, ...doc.result });
