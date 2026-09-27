@@ -106,4 +106,32 @@ const navbar = document.querySelector('.navbar');
 const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 36);
 window.addEventListener('scroll', onScroll, { passive: true });
 Promise.resolve(render()).finally(hideSplash);
-registerServiceWorker();
+
+// Actualizare automată: aplicația instalată rămâne deschisă în memorie și ar rula codul vechi.
+// Când revii în ea, verificăm dacă s-a publicat o versiune nouă (sw.js diferit); dacă da, service
+// worker-ul nou preia controlul și reîncărcăm pagina. Nu întrerupem un formular deschis.
+const isForm = () => /^#\/(alerta\/nou|alerta\/[^/]+\/editeaza|cautare\/noua)/.test(location.hash);
+let reloadWaiting = false;
+function reloadForUpdate() {
+  if (isForm()) {
+    reloadWaiting = true; // după ce ieși din formular
+    return;
+  }
+  location.reload();
+}
+registerServiceWorker().then((reg) => {
+  if (!reg) return;
+  const hadController = Boolean(navigator.serviceWorker.controller);
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (hadController) reloadForUpdate(); // (nu la prima instalare)
+  });
+  let lastCheck = Date.now();
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState !== 'visible' || Date.now() - lastCheck < 60 * 1000) return;
+    lastCheck = Date.now();
+    reg.update().catch(() => { /* fără internet */ });
+  });
+});
+window.addEventListener('hashchange', () => {
+  if (reloadWaiting && !isForm()) location.reload();
+});
