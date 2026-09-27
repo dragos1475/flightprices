@@ -83,7 +83,6 @@ function draw(app, animate) {
     </div>
 
     ${onboarding}
-    ${localWeatherSlot()}
     ${statusBanner(status)}
     ${!hasWriteAccess() && !onboarding ? `<a class="banner info" href="#/setari">${icon('key', 18)}<div>Adaugă tokenul GitHub în <b>Setări</b> ca să poți crea și salva alerte din aplicație.</div></a>` : ''}
 
@@ -111,6 +110,8 @@ function draw(app, animate) {
         <p>Creează o alertă și îți spunem când prețul scade sub bugetul tău.</p>
         <a class="btn primary" href="#/alerta/nou">${icon('plus', 18)} Creează prima alertă</a>
       </div>`}
+
+    ${localWeatherSlot()}
   `;
   bindRefresh(app);
   bindOnboarding(app);
