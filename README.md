@@ -273,7 +273,9 @@ apare direct în biletul respectiv:
 - toate opțiunile de rezervare, cu butonul **„Rezervă”** care te duce la companie (prin Google).
 
 **Cost:** 2 credite la dus-întors (zborurile de întoarcere + opțiunile de rezervare; se alege întoarcerea cea mai
-ieftină), 1 credit la doar dus. **Nu se face nimic automat:** doar când apeși butonul. Parola se verifică la fel ca la
+ieftină), 1 credit la doar dus. Excepție: dacă alerta/căutarea are bifat „detaliile întoarcerii”, pentru cel mai ieftin
+zbor al combinației întoarcerea e deja cunoscută, deci costă tot **1 credit** (dacă între timp Google a schimbat datele,
+GitHub reîncearcă singur prin zborurile de întoarcere). **Nu se face nimic automat:** doar când apeși butonul. Parola se verifică la fel ca la
 căutarea rapidă (greșită = niciun credit consumat). Verificările rămân salvate în `data/prices/` (ultimele 100) și le
 vezi din nou în bilet, cu ora verificării.
 

@@ -9,6 +9,9 @@ Cum funcționează:
   2. Aici verificăm semnătura, apoi:
        - dus-întors: departure_token -> zborurile de întoarcere (1 credit) -> alegem întoarcerea
          cea mai ieftină -> booking_token -> opțiunile de rezervare (1 credit)
+       - dus-întors, când întoarcerea e deja cunoscută (detaliile întoarcerii din căutare):
+         direct booking_token-ul ei -> opțiunile de rezervare (1 credit); dacă jetonul a expirat,
+         revenim la varianta de mai sus (încă 1 credit)
        - doar dus: booking_token -> opțiunile de rezervare (1 credit)
   3. Rezultatul se scrie în același fișier (status "done") și în data/prices/index.json.
 Nimic nu se face automat: doar când utilizatorul apasă „Preț la companie”.
@@ -70,6 +73,15 @@ def parse_booking_options(data):
     return options
 
 
+def _booking_options(client, params, booking_token, credits):
+    """Opțiunile de rezervare pentru un booking_token (1 credit)."""
+    data = client.search({**params, "booking_token": booking_token})
+    credits.use()
+    if data.get("error") and not is_no_results(data):
+        raise SearchError(data["error"])
+    return parse_booking_options(data)
+
+
 def process(storage, client, credits, settings, state):
     """Procesează cererile „Preț la companie”. Întoarce lista de erori (pentru status)."""
     items = pending(storage)
@@ -121,27 +133,34 @@ def process(storage, client, credits, settings, state):
             continue
 
         label = f"{pid} {' '.join(req.get('flight_numbers', []))}"
-        result = {"currency": params.get("currency", "EUR"), "return_flight": None}
+        result = {"currency": params.get("currency", "EUR"), "return_flight": req.get("return_flight")}
         try:
-            if not booking_token:
-                # dus-întors: alegem întoarcerea cea mai ieftină pentru zborul de dus ales
+            options = None
+            if booking_token:
+                # jetonul deja cunoscut (doar dus, sau întoarcerea salvată la căutare): 1 credit
+                try:
+                    options = _booking_options(client, params, booking_token, credits)
+                except SearchError as e:
+                    print(f"  {label}: jetonul salvat nu a mers ({e})")
+                    if not departure_token:
+                        raise
+            if not options and departure_token and credits.enough(2):
+                # dus-întors: alegem întoarcerea cea mai ieftină pentru zborul de dus ales (+2 credite)
+                if booking_token:
+                    print(f"  {label}: reîncerc cu zborurile de întoarcere")
                 data = client.search({**params, "departure_token": departure_token})
                 credits.use()
                 returning = [] if is_no_results(data) else parse_response(data)["flights"]
                 if not returning:
                     raise SearchError("Google nu mai are zboruri de întoarcere pentru acest zbor. Caută din nou ruta.")
-                wanted = req.get("return_flight_numbers")
-                chosen = next((f for f in returning if wanted and f["flight_numbers"] == wanted), returning[0])
-                booking_token = chosen.get("booking_token")
+                chosen = returning[0]
                 result["return_flight"] = strip_private({k: v for k, v in chosen.items()
                                                          if k not in ("departure_token", "booking_token")})
-                if not booking_token:
+                if not chosen.get("booking_token"):
                     raise SearchError("Google nu oferă opțiuni de rezervare pentru acest zbor.")
-            data = client.search({**params, "booking_token": booking_token})
-            credits.use()
-            if data.get("error") and not is_no_results(data):
-                raise SearchError(data["error"])
-            options = parse_booking_options(data)
+                options = _booking_options(client, params, chosen["booking_token"], credits)
+            if options is None:
+                raise SearchError("Nu am putut obține opțiunile de rezervare. Caută din nou ruta.")
         except SearchError as e:
             reject(f"{e}")
             errors.append({"alert_id": pid, "combination": label, "message": str(e)})

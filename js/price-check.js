@@ -26,10 +26,33 @@ export function flightKey(f) {
   return `${f.combo?.search_key || ''}|${(f.flight_numbers || []).join(',')}|${f.departure_time || ''}`;
 }
 
-/** Ce trimitem și cât costă; null pentru rezultatele vechi (fără jetoanele Google). */
+const sameFlight = (a, b) => (a.flight_numbers || []).join(',') === (b.flight_numbers || []).join(',')
+  && a.departure_time === b.departure_time;
+
+/**
+ * Ce trimitem și cât costă; null pentru rezultatele vechi (fără jetoanele Google).
+ * - doar dus: jetonul de rezervare al zborului -> 1 credit
+ * - dus-întors, zborul pentru care căutarea a aflat deja întoarcerea: jetonul întoarcerii -> 1 credit
+ *   (dacă a expirat, GitHub reîncearcă singur prin zborurile de întoarcere: încă 1–2 credite)
+ * - dus-întors, restul zborurilor: întâi zborurile de întoarcere, apoi rezervarea -> 2 credite
+ */
 function plan(f) {
-  if (!f.combo?.search_params) return null;
+  const c = f.combo;
+  if (!c?.search_params) return null;
   if (f.booking_token) return { booking_token: f.booking_token, cost: 1 };
+  const ret = c.return_flight;
+  const owner = c.return_for || c.flights?.[0];
+  if (ret?.booking_token && owner && sameFlight(owner, f)) {
+    return {
+      booking_token: ret.booking_token,
+      departure_token: f.departure_token || null,
+      return_flight: {
+        flight_numbers: ret.flight_numbers, departure_time: ret.departure_time, stops: ret.stops, airlines: ret.airlines,
+      },
+      cost: 1,
+      fallback: Boolean(f.departure_token),
+    };
+  }
   if (f.departure_token) return { departure_token: f.departure_token, cost: 2 };
   return null;
 }
@@ -63,7 +86,7 @@ function slotInner(key) {
     const left = state.status?.searches_left_after ?? state.status?.searches_left_before;
     return `<div class="co-box co-confirm">
       <div class="co-text">Verific cât costă zborul direct la <b>${h(airline)}</b>, fără agenții?
-        <small>Costă ${credits(p.cost)} SerpApi${left !== undefined && left !== null ? ` · rămase ${left}` : ''}. Rezultatul apare aici în 1–2 minute.</small></div>
+        <small>Costă ${credits(p.cost)} SerpApi${p.fallback ? ' (întoarcerea e deja cunoscută; 3 doar dacă Google a schimbat între timp datele)' : ''}${left !== undefined && left !== null ? ` · rămase ${left}` : ''}. Rezultatul apare aici în 1–2 minute.</small></div>
       <div class="co-actions">
         <button type="button" class="btn sm" data-pc="cancel">Renunță</button>
         <button type="button" class="btn primary sm" data-pc="go">${icon('check', 14)} Verifică</button>
@@ -266,6 +289,7 @@ async function send(key) {
     search_params: f.combo.search_params,
     booking_token: p.booking_token || null,
     departure_token: p.departure_token || null,
+    return_flight: p.return_flight || null,
   };
   try {
     const text = JSON.stringify(req);

@@ -88,6 +88,9 @@ def search_combination(client, params, entry, credits, *, return_details=False, 
                 credits.use()
                 returning = parse_response(ret)["flights"]
                 entry["return_flight"] = strip_private(returning[0]) if returning else None
+                # pentru ce zbor de dus e întoarcerea (la „Preț la companie” costă atunci doar 1 credit)
+                entry["return_for"] = {"flight_numbers": flights[0]["flight_numbers"],
+                                       "departure_time": flights[0]["departure_time"]}
             except SearchError as e:
                 print(f"  {label}: detaliile întoarcerii nu au putut fi obținute: {e}")
         return None
