@@ -1,0 +1,22 @@
+{
+  "_info": "Aeroporturile de PLECARE afișate în formular. Poți adăuga oricâte (cod IATA de 3 litere + nume).",
+  "airports": [
+    {"code": "OTP", "name": "București Otopeni"},
+    {"code": "BBU", "name": "București Băneasa"},
+    {"code": "CLJ", "name": "Cluj-Napoca"},
+    {"code": "IAS", "name": "Iași"},
+    {"code": "TSR", "name": "Timișoara"},
+    {"code": "SBZ", "name": "Sibiu"},
+    {"code": "SCV", "name": "Suceava"},
+    {"code": "CND", "name": "Constanța"},
+    {"code": "BCM", "name": "Bacău"},
+    {"code": "CRA", "name": "Craiova"},
+    {"code": "OMR", "name": "Oradea"},
+    {"code": "TGM", "name": "Târgu Mureș"},
+    {"code": "IST", "name": "Istanbul"},
+    {"code": "SAW", "name": "Istanbul Sabiha Gökçen"},
+    {"code": "SOF", "name": "Sofia"},
+    {"code": "BUD", "name": "Budapesta"},
+    {"code": "RMO", "name": "Chișinău"}
+  ]
+}

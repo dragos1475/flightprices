@@ -1,0 +1,15 @@
+{
+  "_info": "Setări generale. Fișierul este public: NU pune aici chei secrete.",
+  "timezone": "Europe/Bucharest",
+  "monthly_search_limit": 250,
+  "search_reserve": 5,
+  "one_time_max_searches": 20,
+  "return_details_for_cheapest": true,
+  "vapid_public_key": "PUNE_AICI_CHEIA_PUBLICA_VAPID",
+  "vapid_subject": "mailto:notificari@example.com",
+  "notifications": {
+    "web_push": true,
+    "ntfy": true,
+    "ntfy_server": "https://ntfy.sh"
+  }
+}

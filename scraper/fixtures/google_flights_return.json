@@ -1,0 +1,74 @@
+{
+  "search_metadata": {
+    "id": "exemplu-retur",
+    "status": "Success",
+    "google_flights_url": "https://www.google.com/travel/flights?hl=ro&curr=EUR"
+  },
+  "best_flights": [
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aeroportul Roma Fiumicino",
+            "id": "FCO",
+            "time": "2026-01-01 08:40"
+          },
+          "arrival_airport": {
+            "name": "Aeroportul Internațional Henri Coandă",
+            "id": "OTP",
+            "time": "2026-01-01 11:55"
+          },
+          "duration": 135,
+          "airplane": "Airbus A321neo",
+          "airline": "Wizz Air",
+          "airline_logo": "",
+          "travel_class": "Economy",
+          "flight_number": "W6 3132",
+          "legroom": "71 cm",
+          "extensions": []
+        }
+      ],
+      "total_duration": 135,
+      "carbon_emissions": {
+        "this_flight": 150000
+      },
+      "price": 168,
+      "type": "Dus-întors",
+      "airline_logo": "",
+      "booking_token": "BOOKING"
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aeroportul Roma Fiumicino",
+            "id": "FCO",
+            "time": "2026-01-01 21:10"
+          },
+          "arrival_airport": {
+            "name": "Aeroportul Internațional Henri Coandă",
+            "id": "OTP",
+            "time": "2026-01-01 00:25"
+          },
+          "duration": 135,
+          "airplane": "Airbus A321neo",
+          "airline": "Wizz Air",
+          "airline_logo": "",
+          "travel_class": "Economy",
+          "flight_number": "W6 3134",
+          "legroom": "71 cm",
+          "extensions": []
+        }
+      ],
+      "total_duration": 135,
+      "carbon_emissions": {
+        "this_flight": 150000
+      },
+      "price": 174,
+      "type": "Dus-întors",
+      "airline_logo": "",
+      "booking_token": "BOOKING"
+    }
+  ],
+  "other_flights": []
+}

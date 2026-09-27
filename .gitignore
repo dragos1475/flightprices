@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Fișiere locale care NU trebuie publicate
+.env
+*.pem
+dry-run-output/
+scraper/fixtures/recorded/*.json
+
+# macOS
+.DS_Store
+
+# Setări locale Claude Code
+.claude/

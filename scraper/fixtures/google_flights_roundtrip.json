@@ -1,0 +1,275 @@
+{
+  "search_metadata": {
+    "id": "exemplu",
+    "status": "Success",
+    "google_flights_url": "https://www.google.com/travel/flights?hl=ro&curr=EUR&q=Flights%20to%20ROM%20from%20OTP"
+  },
+  "search_parameters": {
+    "engine": "google_flights",
+    "type": "1"
+  },
+  "best_flights": [
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aeroportul Internațional Henri Coandă",
+            "id": "OTP",
+            "time": "2026-01-01 06:10"
+          },
+          "arrival_airport": {
+            "name": "Aeroportul Roma Fiumicino",
+            "id": "FCO",
+            "time": "2026-01-01 07:45"
+          },
+          "duration": 155,
+          "airplane": "Airbus A321neo",
+          "airline": "Wizz Air",
+          "airline_logo": "",
+          "travel_class": "Economy",
+          "flight_number": "W6 3131",
+          "legroom": "71 cm",
+          "extensions": []
+        }
+      ],
+      "total_duration": 155,
+      "carbon_emissions": {
+        "this_flight": 150000
+      },
+      "price": 168,
+      "type": "Dus-întors",
+      "airline_logo": "",
+      "departure_token": "T1"
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aeroportul Internațional Henri Coandă",
+            "id": "OTP",
+            "time": "2026-01-01 13:20"
+          },
+          "arrival_airport": {
+            "name": "Aeroportul Roma Ciampino",
+            "id": "CIA",
+            "time": "2026-01-01 14:55"
+          },
+          "duration": 155,
+          "airplane": "Boeing 737",
+          "airline": "Ryanair",
+          "airline_logo": "",
+          "travel_class": "Economy",
+          "flight_number": "FR 1234",
+          "legroom": "71 cm",
+          "extensions": []
+        }
+      ],
+      "total_duration": 155,
+      "carbon_emissions": {
+        "this_flight": 150000
+      },
+      "price": 182,
+      "type": "Dus-întors",
+      "airline_logo": "",
+      "departure_token": "T2"
+    }
+  ],
+  "other_flights": [
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aeroportul Internațional Cluj",
+            "id": "CLJ",
+            "time": "2026-01-01 09:30"
+          },
+          "arrival_airport": {
+            "name": "Aeroportul Roma Fiumicino",
+            "id": "FCO",
+            "time": "2026-01-01 11:05"
+          },
+          "duration": 155,
+          "airplane": "Airbus A321neo",
+          "airline": "Wizz Air",
+          "airline_logo": "",
+          "travel_class": "Economy",
+          "flight_number": "W6 3301",
+          "legroom": "71 cm",
+          "extensions": []
+        }
+      ],
+      "total_duration": 155,
+      "carbon_emissions": {
+        "this_flight": 150000
+      },
+      "price": 195,
+      "type": "Dus-întors",
+      "airline_logo": "",
+      "departure_token": "T3"
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aeroportul Internațional Henri Coandă",
+            "id": "OTP",
+            "time": "2026-01-01 11:40"
+          },
+          "arrival_airport": {
+            "name": "Aeroportul Roma Fiumicino",
+            "id": "FCO",
+            "time": "2026-01-01 13:20"
+          },
+          "duration": 160,
+          "airplane": "Boeing 737",
+          "airline": "TAROM",
+          "airline_logo": "",
+          "travel_class": "Economy",
+          "flight_number": "RO 401",
+          "legroom": "71 cm",
+          "extensions": []
+        }
+      ],
+      "total_duration": 160,
+      "carbon_emissions": {
+        "this_flight": 150000
+      },
+      "price": 289,
+      "type": "Dus-întors",
+      "airline_logo": "",
+      "departure_token": "T4"
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aeroportul Internațional Henri Coandă",
+            "id": "OTP",
+            "time": "2026-01-01 07:00"
+          },
+          "arrival_airport": {
+            "name": "Aeroportul Viena",
+            "id": "VIE",
+            "time": "2026-01-01 07:40"
+          },
+          "duration": 100,
+          "airplane": "Airbus A320",
+          "airline": "Austrian",
+          "airline_logo": "",
+          "travel_class": "Economy",
+          "flight_number": "OS 792",
+          "legroom": "71 cm",
+          "extensions": []
+        },
+        {
+          "departure_airport": {
+            "name": "Aeroportul Viena",
+            "id": "VIE",
+            "time": "2026-01-01 09:10"
+          },
+          "arrival_airport": {
+            "name": "Aeroportul Roma Fiumicino",
+            "id": "FCO",
+            "time": "2026-01-01 10:45"
+          },
+          "duration": 95,
+          "airplane": "Airbus A320",
+          "airline": "Austrian",
+          "airline_logo": "",
+          "travel_class": "Economy",
+          "flight_number": "OS 501",
+          "legroom": "71 cm",
+          "extensions": []
+        }
+      ],
+      "total_duration": 285,
+      "carbon_emissions": {
+        "this_flight": 150000
+      },
+      "price": 341,
+      "type": "Dus-întors",
+      "airline_logo": "",
+      "departure_token": "T5",
+      "layovers": [
+        {
+          "duration": 90,
+          "name": "Aeroportul Viena",
+          "id": "VIE"
+        }
+      ]
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aeroportul Internațional Henri Coandă",
+            "id": "OTP",
+            "time": "2026-01-01 05:50"
+          },
+          "arrival_airport": {
+            "name": "Aeroportul Istanbul",
+            "id": "IST",
+            "time": "2026-01-01 07:30"
+          },
+          "duration": 100,
+          "airplane": "Airbus A321",
+          "airline": "Turkish Airlines",
+          "airline_logo": "",
+          "travel_class": "Economy",
+          "flight_number": "TK 1044",
+          "legroom": "71 cm",
+          "extensions": []
+        },
+        {
+          "departure_airport": {
+            "name": "Aeroportul Istanbul",
+            "id": "IST",
+            "time": "2026-01-01 09:05"
+          },
+          "arrival_airport": {
+            "name": "Aeroportul Roma Fiumicino",
+            "id": "FCO",
+            "time": "2026-01-01 10:15"
+          },
+          "duration": 190,
+          "airplane": "Airbus A321",
+          "airline": "Turkish Airlines",
+          "airline_logo": "",
+          "travel_class": "Economy",
+          "flight_number": "TK 1861",
+          "legroom": "71 cm",
+          "extensions": []
+        }
+      ],
+      "total_duration": 385,
+      "carbon_emissions": {
+        "this_flight": 150000
+      },
+      "price": 376,
+      "type": "Dus-întors",
+      "airline_logo": "",
+      "departure_token": "T6",
+      "layovers": [
+        {
+          "duration": 95,
+          "name": "Aeroportul Istanbul",
+          "id": "IST"
+        }
+      ]
+    }
+  ],
+  "price_insights": {
+    "lowest_price": 168,
+    "price_level": "low",
+    "typical_price_range": [
+      190,
+      320
+    ],
+    "price_history": [
+      [
+        1790000000,
+        210
+      ]
+    ]
+  }
+}

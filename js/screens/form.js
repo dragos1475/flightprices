@@ -1,0 +1,733 @@
+// Ecranul 2: formularul de creare / editare a unei alerte, cu estimarea căutărilor.
+// Același formular servește și pentru căutarea rapidă (mode = 'search').
+
+import { combinations, estimateBudget } from '../budget.js';
+import {
+  createFile, deleteAlert, githubLinks, hasWriteAccess, loadJSON, saveAlert, saveCustomDestination, signSearch,
+} from '../data.js';
+import { icon } from '../icons.js';
+import { maxStopsOf } from '../results-view.js';
+import { ensureAlerts, ensureConfig, loadStatus, state } from '../state.js';
+import { setNav, setTabbarVisible, skeleton, stepper, toggle } from '../ui.js';
+import { addDays, copyText, dayDate, fold, h, slugify, toast, todayRO } from '../util.js';
+
+let draft = null;    // alerta în lucru (starea formularului)
+let original = null; // alerta originală (la editare)
+let mode = 'alert';  // 'alert' = alertă zilnică, 'search' = căutare rapidă (o singură dată)
+const PASSWORD_KEY = 'zboruri.search_password';
+
+/** Transformă o alertă salvată în starea formularului. */
+function toDraft(alert, config) {
+  const codes = new Set(alert.airlines || []);
+  const groups = new Set();
+  for (const a of config.airlines) {
+    if (a.codes.every((c) => codes.has(c))) {
+      groups.add(a.id);
+      a.codes.forEach((c) => codes.delete(c));
+    }
+  }
+  const knownAirports = new Set(config.airports.map((a) => a.code));
+  return {
+    id: alert.id,
+    name: alert.name || '',
+    active: alert.active !== false,
+    monitor_start: alert.monitor_start || todayRO(),
+    monitor_end: alert.monitor_end || '',
+    airports: new Set((alert.departure_airports || []).filter((c) => knownAirports.has(c))),
+    extraAirports: (alert.departure_airports || []).filter((c) => !knownAirports.has(c)).join(', '),
+    destination: alert.destination || null,
+    departures: (alert.departures || []).map((d) => ({ date: d.date, nights: (d.nights || []).join(', ') })),
+    anyAirline: !(alert.airlines || []).length,
+    airlineGroups: groups,
+    extraAirlines: [...codes].join(', '),
+    max_price: alert.max_price ?? '',
+    currency: alert.currency || 'EUR',
+    adults: alert.adults || 1,
+    bags: alert.bags || 0,
+    max_stops: maxStopsOf(alert),
+    return_details: Boolean(alert.return_details),
+  };
+}
+
+function emptyDraft() {
+  return {
+    id: null, name: '', active: true, monitor_start: todayRO(), monitor_end: '',
+    airports: new Set(['OTP']), extraAirports: '', destination: null,
+    departures: [{ date: '', nights: '' }],
+    anyAirline: true, airlineGroups: new Set(), extraAirlines: '',
+    max_price: '', currency: 'EUR', adults: 1, bags: 0, max_stops: null, return_details: false,
+  };
+}
+
+/** Citește o listă de coduri IATA scrise de mână: 'vy, u2' -> ['VY', 'U2'] */
+function parseCodes(text, len) {
+  const re = len === 2 ? /^[A-Z0-9]{2}$/ : /^[A-Z]{3}$/;
+  return String(text || '').toUpperCase().split(/[\s,;]+/).filter((c) => re.test(c));
+}
+
+function parseNights(text) {
+  return [...new Set(String(text || '').split(/[\s,;]+/).map((n) => parseInt(n, 10)).filter((n) => n >= 0 && n <= 60))]
+    .sort((a, b) => a - b);
+}
+
+/** Construiește alerta (formatul din data/alerts.json) din starea formularului. */
+function buildAlert() {
+  const cfg = state.config;
+  const departures = draft.departures
+    .filter((d) => d.date)
+    .map((d) => ({ date: d.date, nights: parseNights(d.nights) }))
+    .filter((d) => d.nights.length)
+    .sort((a, b) => a.date.localeCompare(b.date));
+  let airlines = [];
+  if (!draft.anyAirline) {
+    for (const a of cfg.airlines) if (draft.airlineGroups.has(a.id)) airlines.push(...a.codes);
+    airlines.push(...parseCodes(draft.extraAirlines, 2));
+    airlines = [...new Set(airlines)];
+  }
+  const lastDeparture = departures.length ? departures[departures.length - 1].date : '';
+  return {
+    id: draft.id || `${slugify(draft.name)}-${Math.random().toString(36).slice(2, 6)}`,
+    name: draft.name.trim(),
+    active: draft.active,
+    monitor_start: draft.monitor_start || todayRO(),
+    monitor_end: draft.monitor_end || lastDeparture,
+    departure_airports: [...new Set([...draft.airports, ...parseCodes(draft.extraAirports, 3)])],
+    destination: draft.destination,
+    departures,
+    airlines,
+    max_price: Number(draft.max_price) || 0,
+    currency: draft.currency,
+    adults: Number(draft.adults) || 1,
+    bags: Number(draft.bags) || 0,
+    max_stops: draft.max_stops,
+    updated_at: new Date().toISOString(),
+  };
+}
+
+/** Cererea pentru o căutare rapidă (aceleași câmpuri ca o alertă, fără perioadă de monitorizare). */
+function buildSearchRequest() {
+  const a = buildAlert();
+  const d = new Date();
+  const pad = (n) => String(n).padStart(2, '0');
+  const id = `s-${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}-${Math.random().toString(36).slice(2, 6)}`;
+  const firstDate = a.departures[0]?.date;
+  return {
+    id,
+    created_at: d.toISOString(),
+    title: a.name || `${a.departure_airports.join(',')} → ${a.destination?.name || '?'}${firstDate ? ` · ${firstDate.slice(8, 10)}.${firstDate.slice(5, 7)}` : ''}`,
+    departure_airports: a.departure_airports,
+    destination: a.destination,
+    departures: a.departures,
+    airlines: a.airlines,
+    max_price: a.max_price || null,
+    currency: a.currency,
+    adults: a.adults,
+    bags: a.bags,
+    max_stops: a.max_stops,
+    return_details: Boolean(draft.return_details),
+  };
+}
+
+function validate(alert) {
+  const errors = [];
+  const today = todayRO();
+  if (mode === 'alert' && !alert.name) errors.push('Dă un nume alertei.');
+  if (!alert.departure_airports.length) errors.push('Alege cel puțin un aeroport de plecare.');
+  if (!alert.destination?.codes?.length) errors.push('Alege destinația.');
+  if (!alert.departures.length) errors.push('Adaugă cel puțin o zi de plecare cu numărul de nopți (ex. 4, 5).');
+  if (alert.departures.length && alert.departures.every((d) => d.date < today)) {
+    errors.push('Toate zilele de plecare au trecut deja. Adaugă o dată viitoare.');
+  }
+  if (!draft.anyAirline && !alert.airlines.length) errors.push('Alege cel puțin o companie sau activează „Oricare companie”.');
+  if (mode === 'alert' && !(alert.max_price > 0)) errors.push('Introdu prețul maxim dus-întors.');
+  if (mode === 'alert' && alert.monitor_end && alert.monitor_start > alert.monitor_end) {
+    errors.push('Perioada de monitorizare: începutul este după sfârșit.');
+  }
+  if (mode === 'search') {
+    const max = state.config.settings.one_time_max_searches || 20;
+    const n = combinations(alert, today).length;
+    if (n > max) errors.push(`O căutare rapidă poate avea cel mult ${max} combinații (acum ${n}).`);
+  }
+  if (alert.bags > alert.adults) errors.push('Numărul de trolere nu poate depăși numărul de adulți.');
+  return errors;
+}
+
+function returnsText(d) {
+  const nights = parseNights(d.nights);
+  if (!d.date || !nights.length) return '';
+  return nights.map((n) => `<span>${icon('plane')}${dayDate(addDays(d.date, n))} · ${n} ${n === 1 ? 'noapte' : 'nopți'}</span>`).join('');
+}
+
+// ---------------------------------------------------------------------------
+
+/**
+ * id: alerta de editat (sau null)
+ * options.mode: 'alert' (implicit) sau 'search' (căutare rapidă)
+ * options.fromSearch: id-ul unei căutări rapide anterioare, ca punct de plecare („Repetă”)
+ */
+export async function renderForm(app, id, options = {}) {
+  mode = options.mode || 'alert';
+  const isSearch = mode === 'search';
+  setTabbarVisible(false);
+  setNav(isSearch
+    ? { title: 'Căutare rapidă', back: '#/cautare' }
+    : { title: id ? 'Editează alerta' : 'Alertă nouă', back: id ? `#/alerta/${encodeURIComponent(id)}` : '#/' });
+  app.innerHTML = skeleton(3);
+  const cfg = await ensureConfig();
+  const alerts = await ensureAlerts();
+  if (!state.status) await loadStatus();
+  original = !isSearch && id ? alerts.find((a) => a.id === id) : null;
+  if (!isSearch && id && !original) {
+    setTabbarVisible(true);
+    app.innerHTML = `<div class="card empty"><h2>Alerta nu există</h2><a class="btn primary" href="#/">Înapoi</a></div>`;
+    return;
+  }
+  draft = original ? toDraft(original, cfg) : emptyDraft();
+  if (isSearch && options.fromSearch) {
+    // „Repetă căutarea”: pornim de la parametrii unei căutări anterioare
+    try {
+      const doc = await loadJSON(`data/searches/${options.fromSearch}.json`);
+      const req = JSON.parse(doc?.request || '{}');
+      draft = { ...toDraft({ ...req, name: '' }, cfg), id: null };
+      const today = todayRO();
+      draft.departures = draft.departures.filter((d) => d.date >= today);
+      if (!draft.departures.length) draft.departures = [{ date: '', nights: '' }];
+    } catch { /* pornim de la zero */ }
+  }
+
+  app.innerHTML = `
+    <div id="form-errors"></div>
+    <form id="alert-form" novalidate autocomplete="off">
+      ${isSearch ? `
+      <div class="banner info" style="margin-top:4px">${icon('search', 18)}<div>O singură căutare, făcută acum. Costă câte un credit
+        pe combinație și cere parola de căutare. Rezultatele apar în 1–2 minute.</div></div>
+      <div class="section-label"><span>Căutare</span></div>
+      <div class="group">
+        <div class="row-stack">
+          <label class="label" for="f-name">Titlu (opțional)</label>
+          <input id="f-name" type="text" maxlength="60" placeholder="ex. Lisabona weekend" value="${h(draft.name)}">
+        </div>
+      </div>` : `
+      <div class="section-label"><span>Alertă</span></div>
+      <div class="group">
+        <div class="row-stack">
+          <label class="label" for="f-name">Nume</label>
+          <input id="f-name" type="text" maxlength="60" placeholder="ex. Roma în noiembrie" value="${h(draft.name)}">
+        </div>
+        ${toggle('f-active', draft.active, 'Alertă pornită', 'Oprită, nu consumă căutări')}
+      </div>`}
+
+      <div class="section-label"><span>Rută</span></div>
+      <div class="group">
+        <div class="row-stack">
+          <span class="label">Pleci din</span>
+          <div class="chips">${cfg.airports.map((a) => `
+            <label class="chip"><input type="checkbox" name="airport" value="${h(a.code)}" ${draft.airports.has(a.code) ? 'checked' : ''}>
+            <span><b>${h(a.code)}</b>${h(a.name)}</span></label>`).join('')}
+          </div>
+          <details style="margin-top:10px" ${draft.extraAirports ? 'open' : ''}>
+            <summary class="small" style="color:var(--accent);cursor:pointer;font-weight:600">Alt aeroport (cod IATA)</summary>
+            <input type="text" id="f-extra-airports" style="margin-top:8px" placeholder="ex. VIE, BEG" value="${h(draft.extraAirports)}" autocapitalize="characters">
+          </details>
+        </div>
+        <button type="button" class="dest-pick" id="dest-open"></button>
+      </div>
+
+      <div class="section-label"><span>Plecări</span></div>
+      <div class="group">
+        <div id="departures"></div>
+        <button type="button" class="add-row" id="add-dep">${icon('plus', 18)} Adaugă zi de plecare</button>
+      </div>
+      <p class="section-note">Poți scrie mai multe variante de nopți separate prin virgulă (ex. „4, 5”). Data întoarcerii = plecarea + nopțile.</p>
+
+      ${isSearch ? '' : `<div class="section-label"><span>Perioada de monitorizare</span></div>
+      <div class="group">
+        <div class="row-stack">
+          <div class="grid2">
+            <div><label class="label" for="f-start">De la</label><input id="f-start" type="date" value="${h(draft.monitor_start)}"></div>
+            <div><label class="label" for="f-end">Până la</label><input id="f-end" type="date" value="${h(draft.monitor_end)}"></div>
+          </div>
+          <p class="hint">Gol la „Până la” = până la ultima zi de plecare.</p>
+        </div>
+      </div>`}
+
+      <div class="section-label"><span>Companii aeriene</span></div>
+      <div class="group">
+        ${toggle('f-any-airline', draft.anyAirline, 'Oricare companie')}
+        <div class="row-stack" id="airline-box" ${draft.anyAirline ? 'hidden' : ''}>
+          <div class="chips">${cfg.airlines.map((a) => `
+            <label class="chip" title="${h(a.codes.join(', '))}"><input type="checkbox" name="airline" value="${h(a.id)}" ${draft.airlineGroups.has(a.id) ? 'checked' : ''}>
+            <span>${h(a.name)}</span></label>`).join('')}
+          </div>
+          <label class="label" for="f-extra-airlines" style="margin-top:12px">Alte coduri IATA (opțional)</label>
+          <input type="text" id="f-extra-airlines" placeholder="ex. VY, U2" value="${h(draft.extraAirlines)}" autocapitalize="characters">
+        </div>
+      </div>
+
+      <div class="section-label"><span>Preț și pasageri</span></div>
+      <div class="group">
+        <div class="row-stack">
+          <label class="label" for="f-price">${isSearch ? 'Preț maxim (opțional, doar pentru evidențiere)' : 'Preț maxim dus-întors (total, toți pasagerii)'}</label>
+          <div class="price-input">
+            <input id="f-price" type="number" inputmode="numeric" min="1" step="1" placeholder="250" value="${h(draft.max_price)}">
+            <div class="seg" role="group" aria-label="Moneda">
+              <button type="button" data-cur="EUR" aria-pressed="${draft.currency === 'EUR'}">EUR</button>
+              <button type="button" data-cur="RON" aria-pressed="${draft.currency === 'RON'}">RON</button>
+            </div>
+          </div>
+        </div>
+        ${stepper('f-adults', draft.adults, 1, 9, 'Adulți')}
+        ${stepper('f-bags', draft.bags, 0, draft.adults, 'Bagaje de mână', 'troler în cabină')}
+        <div class="row-stack">
+          <span class="label">Număr maxim de escale</span>
+          <div class="seg full" role="group" aria-label="Număr maxim de escale">
+            ${[[null, 'Oricâte'], [0, 'Direct'], [1, 'Max. 1'], [2, 'Max. 2']].map(([v, l]) => `
+              <button type="button" data-stops="${v === null ? '' : v}" aria-pressed="${draft.max_stops === v}">${l}</button>`).join('')}
+          </div>
+        </div>
+        ${isSearch ? toggle('f-return', draft.return_details, 'Detalii zbor de întoarcere', 'Pentru cel mai ieftin zbor: +1 credit pe combinație') : ''}
+      </div>
+
+      <div class="section-label"><span>${isSearch ? 'Cost' : 'Consum de căutări'}</span></div>
+      <div class="card budget-card" id="budget-box"></div>
+
+      ${original ? `<button type="button" class="btn danger block" id="delete-btn" style="margin-top:18px">${icon('trash', 18)} Șterge alerta</button>` : ''}
+    </form>
+
+    <dialog class="sheet" id="dest-sheet" aria-label="Alege destinația"></dialog>
+    <dialog class="modal" id="json-dialog"></dialog>
+    <dialog class="modal" id="password-dialog"></dialog>
+  `;
+
+  // Bara fixă de jos cu estimarea și butonul Salvează (în afara <main>)
+  document.getElementById('savebar')?.remove();
+  document.body.insertAdjacentHTML('beforeend', `
+    <div class="savebar" id="savebar"><div class="savebar-inner">
+      <div class="savebar-info" id="savebar-info"></div>
+      <button type="submit" form="alert-form" class="btn primary" id="save-btn">${isSearch ? `${icon('search', 16)} Caută acum` : hasWriteAccess() ? 'Salvează' : 'Pregătește'}</button>
+    </div></div>`);
+
+  renderDestination();
+  renderDepartures();
+  renderBudget();
+  bindEvents(app);
+}
+
+// ---------------------------------------------------------------------------
+// Destinația: ecran de căutare (sheet) + adăugare destinație nouă
+// ---------------------------------------------------------------------------
+function renderDestination() {
+  const btn = document.getElementById('dest-open');
+  const d = draft.destination;
+  btn.innerHTML = `
+    <span class="row-icon">${icon('pin', 16)}</span>
+    <span class="row-main">${d
+      ? `<span class="row-sub">Destinația</span><b>${h(d.name)}</b><span class="row-sub">${h(d.codes.join(', '))}</span>`
+      : '<span class="row-title">Alege destinația</span><span class="row-sub">Oraș, țară sau cod IATA</span>'}</span>
+    <span class="chev muted">${icon('chevron', 18)}</span>`;
+}
+
+function openDestinationSheet() {
+  const sheet = document.getElementById('dest-sheet');
+  sheet.innerHTML = `
+    <div class="sheet-head">
+      <div class="sheet-grip"></div>
+      <div class="sheet-title"><h2>Destinația</h2><button type="button" class="nav-btn" id="sheet-close" aria-label="Închide">${icon('close', 22)}</button></div>
+      <div class="search-box">${icon('search', 18)}<input type="search" id="dest-search" placeholder="Caută: Roma, Bali, Japonia, FCO…" autocomplete="off"></div>
+    </div>
+    <div class="sheet-body">
+      <div id="dest-list"></div>
+      <div class="section-label"><span>Nu o găsești? Adaug-o</span></div>
+      <div class="group"><div class="row-stack">
+        <label class="label" for="nd-name">Nume</label>
+        <input type="text" id="nd-name" placeholder="ex. Mauritius">
+        <div class="grid2" style="margin-top:10px">
+          <div><label class="label" for="nd-codes">Cod(uri) IATA</label><input type="text" id="nd-codes" placeholder="MRU" autocapitalize="characters"></div>
+          <div><label class="label" for="nd-country">Țara</label><input type="text" id="nd-country" placeholder="Mauritius"></div>
+        </div>
+        ${hasWriteAccess() ? '<label class="check small" style="display:flex;gap:8px;align-items:center;margin-top:10px"><input type="checkbox" id="nd-save" checked> Salvează în lista mea</label>' : ''}
+        <button type="button" class="btn tonal block" id="nd-add" style="margin-top:12px">Folosește destinația</button>
+        <p class="hint">Codul IATA îl găsești căutând „cod IATA aeroport &lt;oraș&gt;”. Mai multe coduri se separă prin virgulă.</p>
+      </div></div>
+    </div>`;
+
+  const search = sheet.querySelector('#dest-search');
+  const list = sheet.querySelector('#dest-list');
+  const draw = () => {
+    const q = fold(search.value.trim());
+    let items = state.config.destinations;
+    if (q) {
+      items = items.filter((d) => fold(`${d.name} ${d.country} ${d.codes.join(' ')} ${d.id}`).includes(q));
+      items = [...items].sort((a, b) => (fold(b.id) === q) - (fold(a.id) === q));
+    }
+    items = items.slice(0, 120);
+    const groups = [];
+    for (const d of items) {
+      const g = `${d.country} · ${d.region}`;
+      if (!groups.length || groups[groups.length - 1].g !== g) groups.push({ g, items: [] });
+      groups[groups.length - 1].items.push(d);
+    }
+    list.innerHTML = groups.map(({ g, items: its }) => `
+      <div class="pick-group">${h(g)}</div>
+      <div class="group">${its.map((d) => `
+        <button type="button" class="pick-item" data-id="${h(d.id)}">
+          <span class="pick-code ${d.codes.length > 1 ? 'multi' : ''}">${d.codes.length > 1 ? `${d.codes.length}×` : h(d.codes[0])}</span>
+          <span class="row-main"><span class="row-title">${h(d.name)}</span>${d.codes.length > 1 ? `<span class="row-sub">${h(d.codes.join(', '))}</span>` : ''}</span>
+        </button>`).join('')}</div>`).join('')
+      || '<p class="muted" style="padding:16px 4px">Nicio destinație găsită. Adaug-o mai jos după codul IATA.</p>';
+  };
+  draw();
+  search.addEventListener('input', draw);
+
+  const choose = (dest) => {
+    draft.destination = dest;
+    renderDestination();
+    renderBudget();
+    sheet.close();
+  };
+  list.addEventListener('click', (e) => {
+    const b = e.target.closest('.pick-item');
+    if (!b) return;
+    const d = state.config.destinations.find((x) => x.id === b.dataset.id);
+    choose({ id: d.id, name: d.name, codes: [...d.codes] });
+  });
+  sheet.querySelector('#sheet-close').onclick = () => sheet.close();
+  sheet.addEventListener('click', (e) => { if (e.target === sheet) sheet.close(); });
+
+  sheet.querySelector('#nd-add').onclick = async () => {
+    const name = sheet.querySelector('#nd-name').value.trim();
+    const codes = parseCodes(sheet.querySelector('#nd-codes').value, 3);
+    const country = sheet.querySelector('#nd-country').value.trim() || 'Altele';
+    if (!name || !codes.length) {
+      toast('Completează numele și cel puțin un cod IATA de 3 litere');
+      return;
+    }
+    const dest = { id: codes.join('-'), name, country, region: 'Adăugate de mine', codes };
+    if (sheet.querySelector('#nd-save')?.checked) {
+      try {
+        await saveCustomDestination(dest);
+        state.config.destinations = [{ ...dest, custom: true }, ...state.config.destinations.filter((d) => d.id !== dest.id)];
+        toast('Destinația a fost salvată în lista ta');
+      } catch (e) {
+        toast(`Folosită, dar nesalvată în listă: ${e.message}`, 6000);
+      }
+    }
+    choose({ id: dest.id, name, codes });
+  };
+
+  sheet.showModal();
+  setTimeout(() => search.focus(), 250);
+}
+
+// ---------------------------------------------------------------------------
+// Zilele de plecare
+// ---------------------------------------------------------------------------
+function renderDepartures() {
+  const box = document.getElementById('departures');
+  const today = todayRO();
+  box.innerHTML = draft.departures.map((d, i) => `
+    <div class="dep-card" data-i="${i}">
+      <div class="dep-grid">
+        <input type="date" class="dep-date" min="${today}" value="${h(d.date)}" aria-label="Data plecării ${i + 1}">
+        <input type="text" class="dep-nights" inputmode="text" placeholder="nopți: 4, 5" value="${h(d.nights)}" aria-label="Nopți pentru plecarea ${i + 1}">
+        <button type="button" class="icon-btn dep-del" aria-label="Șterge ziua ${i + 1}" ${draft.departures.length === 1 ? 'disabled' : ''}>${icon('trash', 17)}</button>
+      </div>
+      <div class="dep-returns">${returnsText(d) || '<span class="muted" style="background:none;padding:0">Alege data și numărul de nopți</span>'}</div>
+    </div>`).join('');
+}
+
+// ---------------------------------------------------------------------------
+// Estimarea bugetului de căutări
+// ---------------------------------------------------------------------------
+function renderBudget() {
+  const box = document.getElementById('budget-box');
+  if (!box) return;
+  if (mode === 'search') {
+    renderSearchCost(box);
+    return;
+  }
+  const today = todayRO();
+  const limit = state.config.settings.monthly_search_limit || 250;
+  const alert = buildAlert();
+  const others = (state.alerts || []).filter((a) => a.id !== alert.id);
+  const mine = estimateBudget([alert], today);
+  const all = estimateBudget([...others, alert], today);
+  const combos = combinations(alert).length;
+  const ratio = all.perMonth / limit;
+  const level = ratio > 1 ? 'bad' : ratio > 0.8 ? 'warn' : '';
+  const left = state.status?.searches_left_after ?? state.status?.searches_left_before;
+
+  box.innerHTML = `
+    ${!alert.active ? `<div class="banner info" style="margin-top:0">${icon('pause', 16)}<div>Alerta este oprită și nu consumă căutări.</div></div>` : ''}
+    <div class="nums">
+      <div><b>${mine.perDay}</b> <span>căutări / zi</span></div>
+      <div style="text-align:right"><b>~${mine.perMonth}</b> <span>în 30 de zile</span></div>
+    </div>
+    <div class="small muted" style="margin-bottom:6px">${combos} ${combos === 1 ? 'combinație' : 'combinații'} × 1 căutare pe zi</div>
+    <div class="meter ${level}"><div style="width:${Math.min(100, ratio * 100)}%"></div></div>
+    <div class="small ${level === 'bad' ? 'bad-text' : 'muted'}" style="margin-top:6px">
+      Toate alertele: <b>~${all.perMonth}</b> din ${limit} pe lună${level === 'bad' ? ' — depășești limita!' : level === 'warn' ? ' — aproape de limită' : ''}</div>
+    <p>Când o combinație e sub prag, se face încă o căutare pentru zborul de întoarcere (maxim ${mine.extraMax} în 30 de zile).
+      ${left !== undefined && left !== null ? `Credite rămase: <b>${left}</b>.` : ''}</p>`;
+
+  const info = document.getElementById('savebar-info');
+  if (info) {
+    info.innerHTML = `<b class="${level === 'bad' ? 'bad' : ''}">${mine.perDay} căutări/zi · ~${mine.perMonth}/lună</b>
+      total ~${all.perMonth} din ${limit}`;
+  }
+}
+
+/** Costul unei căutări rapide (credite consumate o singură dată). */
+function renderSearchCost(box) {
+  const today = todayRO();
+  const req = buildAlert();
+  const n = combinations(req, today).length;
+  const extra = draft.return_details ? n : 0;
+  const max = state.config.settings.one_time_max_searches || 20;
+  const left = state.status?.searches_left_after ?? state.status?.searches_left_before;
+  const tooMany = n > max;
+  const notEnough = left !== undefined && left !== null && n + extra > left;
+  box.innerHTML = `
+    <div class="nums">
+      <div><b class="${tooMany || notEnough ? 'bad-text' : ''}">${n}${extra ? `–${n + extra}` : ''}</b> <span>credite</span></div>
+      <div style="text-align:right"><b>${n}</b> <span>${n === 1 ? 'combinație' : 'combinații'}</span></div>
+    </div>
+    ${tooMany ? `<div class="small bad-text">Maxim ${max} combinații pe căutare.</div>` : ''}
+    ${notEnough ? `<div class="small bad-text">Nu ai destule credite (rămase: ${left}).</div>` : ''}
+    <p>1 credit pentru fiecare combinație${extra ? ', plus până la 1 credit pentru detaliile întoarcerii' : ''}.
+      ${left !== undefined && left !== null ? `Credite rămase: <b>${left}</b>.` : ''}
+      Dacă parola e greșită, nu se consumă nimic.</p>`;
+  const info = document.getElementById('savebar-info');
+  if (info) {
+    info.innerHTML = `<b class="${tooMany || notEnough ? 'bad' : ''}">${n}${extra ? `–${n + extra}` : ''} credite</b>
+      ${n} ${n === 1 ? 'combinație' : 'combinații'}, o singură dată`;
+  }
+}
+
+/** Cere parola de căutare (sau o folosește pe cea memorată până la închiderea aplicației). */
+function askPassword(app) {
+  let remembered = '';
+  try { remembered = sessionStorage.getItem(PASSWORD_KEY) || ''; } catch { /* indisponibil */ }
+  if (remembered) return Promise.resolve(remembered);
+  const dlg = app.querySelector('#password-dialog');
+  dlg.innerHTML = `
+    <form method="dialog" id="pw-form">
+      <h2>${icon('key', 18, 'inline')} Parola de căutare</h2>
+      <p>Parola nu pleacă de pe telefon: se trimite doar o semnătură, verificată de GitHub cu secretul <code>SEARCH_PASSWORD</code>.</p>
+      <input type="password" id="pw-input" autocomplete="current-password" placeholder="Parola" required>
+      <label class="small" style="display:flex;gap:8px;align-items:center;margin-top:10px">
+        <input type="checkbox" id="pw-remember"> Ține minte până închid aplicația</label>
+      <div class="btn-row">
+        <button type="button" class="btn" id="pw-cancel">Renunță</button>
+        <button type="submit" class="btn primary">Caută</button>
+      </div>
+    </form>`;
+  return new Promise((resolve) => {
+    dlg.querySelector('#pw-cancel').onclick = () => { dlg.close(); resolve(null); };
+    dlg.querySelector('#pw-form').onsubmit = (e) => {
+      e.preventDefault();
+      const pw = dlg.querySelector('#pw-input').value;
+      if (!pw) return;
+      if (dlg.querySelector('#pw-remember').checked) {
+        try { sessionStorage.setItem(PASSWORD_KEY, pw); } catch { /* indisponibil */ }
+      }
+      dlg.close();
+      resolve(pw);
+    };
+    dlg.showModal();
+    setTimeout(() => dlg.querySelector('#pw-input').focus(), 50);
+  });
+}
+
+/** Trimite căutarea rapidă: semnează cererea și o scrie în data/searches/<id>.json. */
+async function submitSearch(app, errBox) {
+  const req = buildSearchRequest();
+  const password = await askPassword(app);
+  if (!password) return;
+  const btn = document.getElementById('save-btn');
+  btn.disabled = true;
+  btn.textContent = 'Se trimite…';
+  try {
+    const text = JSON.stringify(req);
+    const sig = await signSearch(req.id, text, password);
+    const doc = { id: req.id, status: 'pending', created_at: req.created_at, request: text, sig };
+    await createFile(`data/searches/${req.id}.json`, JSON.stringify(doc, null, 2) + '\n', `Căutare rapidă: ${req.title}`);
+    toast('Căutarea a pornit. Rezultatele apar în 1–2 minute.', 4500);
+    location.hash = `#/cautare/${encodeURIComponent(req.id)}`;
+  } catch (err) {
+    errBox.innerHTML = `<div class="banner bad">${icon('warning', 18)}<div><b>Nu am putut porni căutarea.</b><br>${h(err.message)}</div></div>`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    btn.disabled = false;
+    btn.innerHTML = `${icon('search', 16)} Caută acum`;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Evenimente
+// ---------------------------------------------------------------------------
+function bindEvents(app) {
+  const form = app.querySelector('#alert-form');
+
+  form.addEventListener('input', (e) => {
+    const t = e.target;
+    if (t.id === 'f-name') draft.name = t.value;
+    if (t.id === 'f-start') draft.monitor_start = t.value;
+    if (t.id === 'f-end') draft.monitor_end = t.value;
+    if (t.id === 'f-extra-airports') draft.extraAirports = t.value;
+    if (t.id === 'f-extra-airlines') draft.extraAirlines = t.value;
+    if (t.id === 'f-price') draft.max_price = t.value;
+    if (t.classList.contains('dep-date') || t.classList.contains('dep-nights')) {
+      const card = t.closest('.dep-card');
+      const d = draft.departures[Number(card.dataset.i)];
+      if (t.classList.contains('dep-date')) d.date = t.value;
+      else d.nights = t.value;
+      card.querySelector('.dep-returns').innerHTML = returnsText(d)
+        || '<span class="muted" style="background:none;padding:0">Alege data și numărul de nopți</span>';
+    }
+    renderBudget();
+  });
+
+  form.addEventListener('change', (e) => {
+    const t = e.target;
+    if (t.id === 'f-active') draft.active = t.checked;
+    if (t.name === 'airport') t.checked ? draft.airports.add(t.value) : draft.airports.delete(t.value);
+    if (t.name === 'airline') t.checked ? draft.airlineGroups.add(t.value) : draft.airlineGroups.delete(t.value);
+    if (t.id === 'f-any-airline') {
+      draft.anyAirline = t.checked;
+      app.querySelector('#airline-box').hidden = t.checked;
+    }
+    if (t.id === 'f-return') draft.return_details = t.checked;
+    renderBudget();
+  });
+
+  // numărul maxim de escale
+  app.querySelectorAll('[data-stops]').forEach((b) => b.addEventListener('click', () => {
+    draft.max_stops = b.dataset.stops === '' ? null : Number(b.dataset.stops);
+    app.querySelectorAll('[data-stops]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  }));
+
+  // moneda
+  app.querySelectorAll('[data-cur]').forEach((b) => b.addEventListener('click', () => {
+    draft.currency = b.dataset.cur;
+    app.querySelectorAll('[data-cur]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  }));
+
+  // butoanele +/−
+  const syncSteppers = () => {
+    app.querySelectorAll('[data-stepper]').forEach((s) => {
+      const key = s.dataset.stepper === 'f-adults' ? 'adults' : 'bags';
+      const max = key === 'bags' ? draft.adults : Number(s.dataset.max);
+      s.querySelector('output').textContent = draft[key];
+      s.querySelector('[data-step="-1"]').disabled = draft[key] <= Number(s.dataset.min);
+      s.querySelector('[data-step="1"]').disabled = draft[key] >= max;
+    });
+  };
+  app.querySelectorAll('[data-stepper]').forEach((s) => s.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-step]');
+    if (!b) return;
+    const key = s.dataset.stepper === 'f-adults' ? 'adults' : 'bags';
+    const max = key === 'bags' ? draft.adults : Number(s.dataset.max);
+    draft[key] = Math.min(max, Math.max(Number(s.dataset.min), draft[key] + Number(b.dataset.step)));
+    if (draft.bags > draft.adults) draft.bags = draft.adults;
+    syncSteppers();
+  }));
+  syncSteppers();
+
+  app.querySelector('#dest-open').onclick = openDestinationSheet;
+
+  app.querySelector('#add-dep').onclick = () => {
+    const last = draft.departures[draft.departures.length - 1];
+    draft.departures.push({ date: last?.date ? addDays(last.date, 1) : '', nights: last?.nights || '' });
+    renderDepartures();
+    renderBudget();
+  };
+  app.querySelector('#departures').addEventListener('click', (e) => {
+    const del = e.target.closest('.dep-del');
+    if (!del) return;
+    draft.departures.splice(Number(del.closest('.dep-card').dataset.i), 1);
+    renderDepartures();
+    renderBudget();
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    draft.name = app.querySelector('#f-name').value;
+    const alert = buildAlert();
+    const errors = validate(alert);
+    const errBox = app.querySelector('#form-errors');
+    if (errors.length) {
+      errBox.innerHTML = `<div class="banner bad">${icon('warning', 18)}<div><b>Mai ai de completat:</b>
+        <ul>${errors.map((x) => `<li>${h(x)}</li>`).join('')}</ul></div></div>`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    errBox.innerHTML = '';
+    if (mode === 'search') {
+      if (!hasWriteAccess()) {
+        errBox.innerHTML = `<div class="banner warn">${icon('key', 18)}<div>Pentru căutarea rapidă ai nevoie de tokenul GitHub.
+          Adaugă-l în <a href="#/setari">Setări</a>.</div></div>`;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      await submitSearch(app, errBox);
+      return;
+    }
+    alert.created_at = original?.created_at || alert.updated_at;
+
+    if (!hasWriteAccess()) {
+      showJsonDialog(app, alert);
+      return;
+    }
+    const btn = document.getElementById('save-btn');
+    btn.disabled = true;
+    btn.textContent = 'Se salvează…';
+    try {
+      const doc = await saveAlert(alert);
+      state.alerts = doc.alerts;
+      toast('Salvat. Căutarea pornește în 1–2 minute.', 4500);
+      location.hash = `#/alerta/${encodeURIComponent(alert.id)}`;
+    } catch (err) {
+      errBox.innerHTML = `<div class="banner bad">${icon('warning', 18)}<div><b>Nu am putut salva.</b><br>${h(err.message)}</div></div>`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      btn.disabled = false;
+      btn.textContent = 'Salvează';
+    }
+  });
+
+  app.querySelector('#delete-btn')?.addEventListener('click', async () => {
+    if (!hasWriteAccess()) {
+      toast('Pentru ștergere adaugă tokenul GitHub în Setări sau editează data/alerts.json.', 6000);
+      return;
+    }
+    if (!confirm(`Ștergi alerta „${original.name}”?`)) return;
+    try {
+      const doc = await deleteAlert(original.id, original.name);
+      state.alerts = doc.alerts;
+      toast('Alerta a fost ștearsă');
+      location.hash = '#/';
+    } catch (err) {
+      toast(`Nu am putut șterge: ${err.message}`, 6000);
+    }
+  });
+}
+
+/** Fără token: arătăm fișierul alerts.json complet, de copiat manual pe GitHub. */
+function showJsonDialog(app, alert) {
+  const alerts = (state.alerts || []).filter((a) => a.id !== alert.id).concat(alert);
+  const text = JSON.stringify({ alerts }, null, 2);
+  const links = githubLinks();
+  const dlg = app.querySelector('#json-dialog');
+  dlg.innerHTML = `
+    <h2>Salvează alerta manual</h2>
+    <p>Fără token, aplicația nu poate salva singură. Copiază textul și înlocuiește tot conținutul fișierului
+    <code>data/alerts.json</code> pe GitHub, apoi apasă „Commit changes”.</p>
+    <textarea readonly rows="8">${h(text)}</textarea>
+    <div class="btn-row">
+      <button type="button" class="btn primary" id="dlg-copy">${icon('copy', 16)} Copiază</button>
+      ${links.editAlerts ? `<a class="btn tonal" href="${links.editAlerts}" target="_blank" rel="noopener">GitHub ${icon('external', 14)}</a>` : ''}
+    </div>
+    <button type="button" class="btn block" id="dlg-close" style="margin-top:8px">Închide</button>`;
+  dlg.querySelector('#dlg-copy').onclick = async () => toast((await copyText(text)) ? 'Copiat!' : 'Nu am putut copia automat');
+  dlg.querySelector('#dlg-close').onclick = () => dlg.close();
+  dlg.showModal();
+}

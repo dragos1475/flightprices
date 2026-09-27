@@ -1,0 +1,93 @@
+# Căutarea zilnică a prețurilor la zboruri.
+# Pornește:
+#   1) zilnic (cron)                          - caută toate alertele active
+#   2) manual, din tab-ul Actions             - "Run workflow"
+#   3) când se modifică data/alerts.json      - caută doar ce e nou/modificat
+#   4) când aplicația cere o căutare rapidă   - fișier nou în data/searches/
+name: Căutare zboruri
+
+on:
+  schedule:
+    # Cron-ul GitHub este în UTC. 06:17 UTC = 08:17 iarna / 09:17 vara, ora României.
+    # Minutul 17 (nu :00) evită aglomerația de la ora fixă, când GitHub întârzie rulările.
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Caută din nou chiar dacă s-a căutat deja azi (consumă credite)"
+        type: boolean
+        default: false
+      test_notificari:
+        description: "Doar trimite o notificare de TEST (nu caută, nu consumă credite)"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - data/alerts.json
+      - data/searches/**
+
+permissions:
+  contents: write # necesar pentru a salva rezultatele în repository
+
+# Nu lăsăm două rulări simultane (ar încerca să salveze aceleași fișiere)
+concurrency:
+  group: cautare-zboruri
+  cancel-in-progress: false
+
+jobs:
+  cauta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Descarcă codul
+        uses: actions/checkout@v4
+
+      - name: Instalează Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip # păstrează pachetele între rulări (mai rapid)
+
+      - name: Instalează dependențele
+        run: pip install -r requirements.txt
+
+      - name: Trimite notificarea de test
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_notificari }}
+        env:
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python -m scraper.main --test-notification
+
+      - name: Caută prețurile
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.test_notificari) }}
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          SEARCH_PASSWORD: ${{ secrets.SEARCH_PASSWORD }}
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force && '--force' || '' }}
+        run: python -m scraper.main $FORCE
+
+      - name: Salvează rezultatele în repository
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.test_notificari) }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "Nimic nou de salvat."
+            exit 0
+          fi
+          git commit -m "Rezultate zboruri $(TZ=Europe/Bucharest date '+%Y-%m-%d %H:%M')"
+          # Dacă între timp s-a modificat ceva (ex. o alertă din aplicație), ne sincronizăm și reîncercăm
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          echo "Nu am reușit să salvez rezultatele."
+          exit 1

@@ -1,0 +1,69 @@
+// Punctul de pornire al aplicației: navigarea între ecrane.
+//
+// Ecrane (adresa după #):
+//   #/                     lista alertelor
+//   #/alerta/nou           formular alertă nouă
+//   #/alerta/<id>          detaliul unei alerte
+//   #/alerta/<id>/editeaza formular de editare
+//   #/cautare              căutări rapide (istoric)
+//   #/cautare/noua         formular căutare rapidă (opțional /<id> = repetă o căutare)
+//   #/cautare/<id>         rezultatul unei căutări rapide
+//   #/setari               setări
+
+import { registerServiceWorker } from './push.js';
+import { setTabbarVisible } from './ui.js';
+import { h } from './util.js';
+import { renderList } from './screens/list.js';
+import { renderForm } from './screens/form.js';
+import { renderDetail } from './screens/detail.js';
+import { renderSettings } from './screens/settings.js';
+import { renderSearchList, renderSearchResult } from './screens/searches.js';
+
+const app = document.getElementById('app');
+
+function route() {
+  const hash = location.hash.replace(/^#/, '') || '/';
+  const parts = hash.split('/').filter(Boolean).map(decodeURIComponent);
+
+  if (parts[0] === 'cautare' && parts[1] === 'noua') {
+    return { tab: 'search', show: () => renderForm(app, null, { mode: 'search', fromSearch: parts[2] }) };
+  }
+  if (parts[0] === 'cautare' && parts[1]) return { tab: 'search', show: () => renderSearchResult(app, parts[1]) };
+  if (parts[0] === 'cautare') return { tab: 'search', show: () => renderSearchList(app) };
+  if (parts[0] === 'alerta' && parts[1] === 'nou') return { tab: 'list', show: () => renderForm(app, null) };
+  if (parts[0] === 'alerta' && parts[1] && parts[2] === 'editeaza') return { tab: 'list', show: () => renderForm(app, parts[1]) };
+  if (parts[0] === 'alerta' && parts[1]) return { tab: 'list', show: () => renderDetail(app, parts[1]) };
+  if (parts[0] === 'setari') return { tab: 'settings', show: () => renderSettings(app) };
+  return { tab: 'list', show: () => renderList(app) };
+}
+
+async function render() {
+  const r = route();
+  document.querySelectorAll('.tabbar a').forEach((a) => a.classList.toggle('active', a.dataset.tab === r.tab));
+  // curățăm elementele lăsate de ecranul anterior (bara „Salvează”, ferestre deschise)
+  document.getElementById('savebar')?.remove();
+  document.querySelectorAll('dialog[open]').forEach((d) => d.close());
+  setTabbarVisible(true);
+  window.scrollTo(0, 0);
+  navbar.classList.remove('scrolled');
+  // reluăm animația de intrare a ecranului
+  app.style.animation = 'none';
+  void app.offsetWidth;
+  app.style.animation = '';
+  try {
+    await r.show();
+  } catch (e) {
+    console.error(e);
+    setTabbarVisible(true);
+    app.innerHTML = `<div class="banner bad"><div><b>A apărut o eroare.</b><br>${h(e.message)}</div></div>
+      <a href="#/" class="btn block">Înapoi la alerte</a>`;
+  }
+}
+
+window.addEventListener('hashchange', render);
+// bara de sus capătă umbră și titlu când pagina e derulată
+const navbar = document.querySelector('.navbar');
+const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 36);
+window.addEventListener('scroll', onScroll, { passive: true });
+render();
+registerServiceWorker();

@@ -1,0 +1,41 @@
+{
+  "alerts": [
+    {
+      "id": "roma-martie",
+      "name": "Roma în martie",
+      "active": true,
+      "monitor_start": "2026-09-01",
+      "monitor_end": "2027-03-01",
+      "departure_airports": ["OTP", "BBU", "CLJ"],
+      "destination": {"id": "ROM-ALL", "name": "Roma (toate aeroporturile)", "codes": ["FCO", "CIA"]},
+      "departures": [
+        {"date": "2027-03-12", "nights": [4, 5]},
+        {"date": "2027-03-13", "nights": [3]}
+      ],
+      "airlines": ["W6", "W4", "W9", "5W", "FR", "RK", "AL", "RR", "RO"],
+      "max_price": 200,
+      "currency": "EUR",
+      "adults": 1,
+      "bags": 0,
+      "direct_only": false
+    },
+    {
+      "id": "bali-iarna",
+      "name": "Bali în februarie",
+      "active": true,
+      "monitor_start": "2026-09-01",
+      "monitor_end": "2027-02-01",
+      "departure_airports": ["OTP", "IST"],
+      "destination": {"id": "DPS", "name": "Bali (Denpasar)", "codes": ["DPS"]},
+      "departures": [
+        {"date": "2027-02-10", "nights": [14]}
+      ],
+      "airlines": [],
+      "max_price": 150,
+      "currency": "EUR",
+      "adults": 2,
+      "bags": 1,
+      "direct_only": false
+    }
+  ]
+}
