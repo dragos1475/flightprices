@@ -2,7 +2,7 @@
   "alerts": [
     {
       "id": "bali-n-februarie-3of2",
-      "name": "Bali n Februarie",
+      "name": "Bali in Februarie",
       "active": true,
       "monitor_start": "2026-09-28",
       "monitor_end": "2026-12-01",
@@ -41,7 +41,7 @@
       "search_hours": [
         8
       ],
-      "updated_at": "2026-09-27T16:23:26.605Z",
+      "updated_at": "2026-09-27T16:25:04.230Z",
       "created_at": "2026-09-27T16:23:26.605Z"
     }
   ]
