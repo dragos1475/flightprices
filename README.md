@@ -220,9 +220,13 @@ Jos vezi **câte căutări consumă** alerta. Apasă **Salvează alerta**. Căut
 - **Unde vezi ce s-a întâmplat:** în Actions, click pe rulare → „cauta” → pașii au mesaje în română.
 
 **Când rulează automat:**
-- **în fiecare oră** (la minutul 17). Scriptul caută doar alertele care au o oră programată la care nu s-au căutat încă;
-  rulările fără nimic programat se opresc în câteva secunde, fără credite și fără commit. GitHub poate întârzia uneori
-  rularea cu 5–20 de minute; dacă o rulare e sărită, următoarea o recuperează;
+- **la fiecare 15 minute** (la :07, :22, :37, :52). Scriptul caută doar alertele care au o oră programată la care nu s-au
+  căutat încă; rulările fără nimic programat se opresc în câteva secunde, fără credite și fără commit. GitHub nu garantează
+  rulările programate (când e aglomerat le întârzie sau le sare); dacă o rulare e sărită, următoarea o recuperează;
+- **când deschizi aplicația și o căutare programată a întârziat** (ex. e 12:40, ora aleasă a fost 12:00 și GitHub încă n-a
+  căutat): aplicația modifică `data/wake.json`, iar GitHub pornește imediat. Se întâmplă doar dacă chiar e ceva întârziat,
+  cel mult o dată la 20 de minute, și nu se caută de două ori: ce s-a căutat deja după ora programată nu se mai caută.
+  Pe fiecare alertă vezi **„Last search … · next …”**;
 - la fiecare modificare a `data/alerts.json`. Atunci caută **doar combinațiile noi sau modificate**:
   ce s-a căutat deja azi cu aceiași parametri nu se mai caută;
 - la fiecare căutare rapidă pornită din aplicație (fișier nou în `data/searches/`).

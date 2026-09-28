@@ -11,14 +11,14 @@ import { verdict } from '../insights.js';
 import { celebrate, countUp } from '../motion.js';
 import {
   bindResults, comboDates, comboNights, decorateHero, focusCombo, heroRoute, maxStopsOf, newView, resultsSections,
-  shareCombo, stopsLabel, tripLabel, verdictCard,
+  scheduleLine, shareCombo, stopsLabel, tripLabel, verdictCard,
 } from '../results-view.js';
 import { fillTrip, tripDates, tripSection } from '../trip.js';
 import {
   airlineNames, ensureAlerts, ensureConfig, loadHistory, loadResults, state, summarize,
 } from '../state.js';
 import { overallMinSeries, setNav, skeleton, vtName } from '../ui.js';
-import { dateTime, h, money, shortDate, toast, todayRO } from '../util.js';
+import { h, money, shortDate, toast, todayRO } from '../util.js';
 
 // preferințele de afișare (păstrate cât timp aplicația e deschisă)
 const view = newView();
@@ -128,7 +128,7 @@ function draw(app, rawAlert, rawResults, rawHistory, animate) {
         <a class="btn primary" href="${h(sum.best.google_flights_url)}" target="_blank" rel="noopener">View on Google Flights ${icon('external', 16)}</a>
         <button type="button" class="btn icon-share" id="hero-share" aria-label="Share">${icon('share', 18)}</button>
       </div>` : ''}
-      <div class="small muted" style="text-align:center;margin-top:10px">Updated ${dateTime(results?.updated_at)}</div>
+      <div class="hero-sched">${scheduleLine(rawAlert, rawResults)}</div>
     </div>
 
     ${verdictCard(v)}

@@ -107,3 +107,66 @@ export function estimateBudget(alerts, day, days = 30) {
   }
   return { perDay, perMonth, extraMax };
 }
+
+// ---------------------------------------------------------------------------
+// Programul căutărilor: ultima căutare, următoarea și dacă GitHub a întârziat.
+// Aceeași regulă ca plan_searches() din scraper/main.py: o combinație e „la zi” dacă a fost căutată azi
+// după ultima oră programată care a trecut (ex. la 15:xx, pentru [8, 20], trebuie căutată azi după 08:00).
+// ---------------------------------------------------------------------------
+
+/** Ora curentă în România (0–23). */
+export function hourRO(date = new Date()) {
+  return Number(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Bucharest', hour: '2-digit', hourCycle: 'h23' }).format(date));
+}
+
+/** Data și ora din România pentru un moment ISO: {day: 'AAAA-LL-ZZ', hour}. */
+function roParts(iso) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  return { day: new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Bucharest' }).format(d), hour: hourRO(d) };
+}
+
+/** Ultima oră programată care a trecut azi (null dacă n-a venit încă prima). */
+export function currentSlot(alert, hour) {
+  const past = searchHours(alert).filter((h) => h <= hour);
+  return past.length ? Math.max(...past) : null;
+}
+
+/** Cea mai recentă căutare a alertei (ISO) sau null. */
+export function lastSearchedAt(results) {
+  const times = (results?.combinations || []).map((c) => c.searched_at).filter(Boolean).sort();
+  return times.length ? times[times.length - 1] : null;
+}
+
+/**
+ * Căutarea programată a întârziat? (a trecut ora programată și combinațiile active nu au fost căutate după ea)
+ * day = 'AAAA-LL-ZZ' (azi, ora României), hour = ora curentă în România.
+ */
+export function isOverdue(alert, results, day, hour) {
+  const slot = currentSlot(alert, hour);
+  if (slot === null) return false;
+  const combos = activeCombinations(alert, day);
+  if (!combos.length) return false;
+  const byKey = new Map((results?.combinations || []).map((c) => [comboKey(c), c]));
+  return combos.some((c) => {
+    const old = byKey.get(comboKey(c));
+    const at = old?.searched_at && roParts(old.searched_at);
+    return !at || at.day !== day || at.hour < slot || !['ok', 'no_results'].includes(old.status);
+  });
+}
+
+/**
+ * Următoarea căutare programată: {when: 'now' | 'today' | 'tomorrow' | 'later', hour, day} sau null (alertă oprită/expirată).
+ * 'now' = ora a trecut, dar GitHub încă nu a căutat.
+ */
+export function nextSearch(alert, results, day, hour) {
+  const hours = searchHours(alert);
+  if (alert.active === false) return null;
+  if (alert.monitor_start && day < alert.monitor_start) return { when: 'later', hour: hours[0], day: alert.monitor_start };
+  if (!isActive(alert, day)) return null;
+  if (isOverdue(alert, results, day, hour)) return { when: 'now', hour: currentSlot(alert, hour), day };
+  const later = hours.find((h) => h > hour);
+  if (later !== undefined) return { when: 'today', hour: later, day };
+  const tomorrow = addDays(day, 1);
+  return isMonitoringOn(alert, tomorrow) && combinations(alert, tomorrow).length ? { when: 'tomorrow', hour: hours[0], day: tomorrow } : null;
+}

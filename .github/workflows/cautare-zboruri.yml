@@ -5,14 +5,16 @@
 #   3) când se modifică data/alerts.json      - caută doar ce e nou/modificat
 #   4) când aplicația cere o căutare rapidă   - fișier nou în data/searches/
 #   5) când aplicația cere „preț la companie” - fișier nou în data/prices/
+#   6) când aplicația vede o căutare întârziată - se modifică data/wake.json
 name: Flight search
 
 on:
   schedule:
-    # În fiecare oră, la minutul 17 (nu :00, când GitHub e aglomerat și întârzie rulările).
+    # La fiecare 15 minute (nu la :00, când GitHub e cel mai aglomerat). GitHub mai sare rulări programate;
+    # verificând des, căutarea se face aproape de ora aleasă chiar dacă unele rulări lipsesc.
     # Scriptul caută doar alertele care au o oră programată (ora României) la care nu s-au căutat încă.
     # Rulările fără nimic programat se opresc în câteva secunde: fără credite și fără commit.
-    - cron: "17 * * * *"
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
     inputs:
       force:
@@ -29,6 +31,7 @@ on:
       - data/alerts.json
       - data/searches/**
       - data/prices/**
+      - data/wake.json
 
 permissions:
   contents: write # necesar pentru a salva rezultatele în repository

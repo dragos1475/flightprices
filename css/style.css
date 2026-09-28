@@ -1196,3 +1196,10 @@ details.combo.flash { animation: flash 1.2s ease; }
   .splash-name { color: var(--text); background: none; }
   .splash-btn.ready .sb-lights i { background: rgba(255, 255, 255, .5); }
 }
+
+/* ---------- ultima / următoarea căutare (pe fiecare alertă) ---------- */
+.sched-line { grid-column: 1 / -1; display: flex; align-items: center; gap: 5px; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);
+  font-size: 11.5px; color: var(--muted); line-height: 1.35; }
+.sched-line svg { flex-shrink: 0; }
+.sched-line b { font-weight: 600; }
+.hero-sched .sched-line { justify-content: center; border-top: 0; margin-top: 10px; padding-top: 0; }

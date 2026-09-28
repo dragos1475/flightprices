@@ -53,6 +53,16 @@ export function dateTime(isoDateTime) {
   }).format(d);
 }
 
+/** Scurt, fără an: '2026-09-28T00:42:10+03:00' -> '28 Sept, 00:42' (ora României) */
+export function shortDateTime(isoDateTime) {
+  if (!isoDateTime) return '—';
+  const d = new Date(isoDateTime);
+  if (isNaN(d)) return isoDateTime;
+  return new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Bucharest', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit',
+  }).format(d);
+}
+
 /** '2026-11-12 06:10' -> '06:10' */
 export function hour(t) {
   return t && t.length >= 16 ? t.slice(11, 16) : t || '';

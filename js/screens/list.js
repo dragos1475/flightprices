@@ -12,6 +12,7 @@ import { VERDICT_STYLE, verdict } from '../insights.js';
 import { countUp, skyPhase } from '../motion.js';
 import { localWeatherSlot, mountLocalWeather } from '../local-weather.js';
 import { bindOnboarding, onboardingCard } from '../onboarding.js';
+import { scheduleLine } from '../results-view.js';
 import {
   ensureAlerts, ensureConfig, loadHistory, loadResults, loadStatus, state, summarize,
 } from '../state.js';
@@ -269,6 +270,7 @@ function alertCard(rawAlert, st, rawSum, today) {
         <span>${icon('wallet')}target ${money(alert.max_price, cur)}</span>
         ${live && series.length >= 2 ? `<span style="margin-left:auto">${sparkline(series, { threshold: Number(alert.max_price) || null })}</span>` : ''}
       </div>
+      ${scheduleLine(alert, results)}
     </a>
     </div>`;
 }

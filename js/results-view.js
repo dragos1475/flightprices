@@ -1,7 +1,7 @@
 // Afișarea rezultatelor (comună pentru alerte și căutări rapide):
 // bilete de zbor, lista combinațiilor și lista tuturor zborurilor cu filtre și sortare.
 
-import { comboKey } from './budget.js';
+import { comboKey, hourRO, lastSearchedAt, nextSearch } from './budget.js';
 import { airportFlag, countryTint, destFlag, destinationIso } from './flags.js';
 import { icon } from './icons.js';
 import { VERDICT_STYLE } from './insights.js';
@@ -10,7 +10,7 @@ import { cityPhoto, loadImage } from './media.js';
 import { bindPriceChecks, priceSlot } from './price-check.js';
 import { routeArc, skyPhase } from './motion.js';
 import { airportName, priceLevel, state } from './state.js';
-import { dateTime, dayDate, duration, fold, h, hour, money, share } from './util.js';
+import { dateTime, dayDate, duration, fold, h, hour, money, share, shortDate, shortDateTime, todayRO } from './util.js';
 
 /**
  * Textul unei oferte, pentru partajare.
@@ -424,6 +424,23 @@ function renderFlights(box, ctx) {
     view.flightsShown += 25;
     renderFlights(box, ctx);
   });
+}
+
+/**
+ * Rândul „Last search … · Next …” pentru o alertă (results = rezultatele brute, necovertite).
+ * „due now” = ora programată a trecut, dar GitHub încă n-a căutat (aplicația îl trezește singură).
+ */
+export function scheduleLine(alert, results) {
+  const last = lastSearchedAt(results);
+  const n = nextSearch(alert, results, todayRO(), hourRO());
+  const hh = (x) => `${String(x).padStart(2, '0')}:00`;
+  let next = '';
+  if (n?.when === 'now') next = `<b class="warn-text">next: due now (${hh(n.hour)}, GitHub is late)</b>`;
+  else if (n?.when === 'today') next = `next: today ${hh(n.hour)}`;
+  else if (n?.when === 'tomorrow') next = `next: tomorrow ${hh(n.hour)}`;
+  else if (n?.when === 'later') next = `first search: ${shortDate(n.day)} ${hh(n.hour)}`;
+  const parts = [last ? `Last search: ${shortDateTime(last)}` : 'Not searched yet', next].filter(Boolean);
+  return `<div class="sched-line">${icon('clock', 12)}<span>${parts.join(' · ')}</span></div>`;
 }
 
 /** Tipul călătoriei, ca text. */

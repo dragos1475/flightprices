@@ -12,6 +12,7 @@
 
 import { registerServiceWorker } from './push.js';
 import { watchCredits } from './credits.js';
+import { wakeIfOverdue } from './wake.js';
 import { refreshRate } from './currency.js';
 import { disablePullToRefresh } from './gestures.js';
 import { haptic, reducedMotion } from './motion.js';
@@ -154,7 +155,13 @@ watchCredits(); // creditele SerpApi din bara de sus, ținute la zi
 const navbar = document.querySelector('.navbar');
 const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 36);
 window.addEventListener('scroll', onScroll, { passive: true });
-Promise.resolve(render()).finally(splashReady);
+Promise.resolve(render()).finally(() => {
+  splashReady();
+  wakeIfOverdue(); // căutarea programată a întârziat? GitHub e trezit (cel mult o dată la 20 de minute)
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') wakeIfOverdue();
+});
 
 // Actualizare automată: aplicația instalată rămâne deschisă în memorie și ar rula codul vechi.
 // Când revii în ea, verificăm dacă s-a publicat o versiune nouă (sw.js diferit); dacă da, service
