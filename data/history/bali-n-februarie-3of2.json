@@ -6,12 +6,22 @@
         "date": "2026-09-28",
         "price": 730,
         "currency": "EUR"
+      },
+      {
+        "date": "2026-09-29",
+        "price": 745,
+        "currency": "EUR"
       }
     ],
     "2027-02-18_2027-02-27": [
       {
         "date": "2026-09-28",
         "price": 730,
+        "currency": "EUR"
+      },
+      {
+        "date": "2026-09-29",
+        "price": 745,
         "currency": "EUR"
       }
     ]
