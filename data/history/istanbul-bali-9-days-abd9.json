@@ -1,0 +1,12 @@
+{
+  "alert_id": "istanbul-bali-9-days-abd9",
+  "series": {
+    "2027-02-18_2027-02-27": [
+      {
+        "date": "2026-09-29",
+        "price": 745,
+        "currency": "EUR"
+      }
+    ]
+  }
+}
