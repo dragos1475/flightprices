@@ -1,13 +1,14 @@
 {
-  "last_run": "2026-10-07T08:50:45+03:00",
-  "trigger": "push",
+  "last_run": "2026-10-07T15:06:17+03:00",
+  "trigger": "schedule",
   "dry_run": false,
-  "searches_left_before": 203,
-  "searches_used": 1,
-  "planned_searches": 1,
+  "searches_left_before": 202,
+  "searches_used": 3,
+  "planned_searches": 3,
   "skipped_budget": false,
   "alerts_searched": [
-    "istanbul-bali-9-days-abd9"
+    "bali-n-februarie-3of2",
+    "bali-from-malpensa-qn6u"
   ],
   "errors": [],
   "warnings": [],
@@ -18,8 +19,8 @@
     "extra_max_per_month": 120,
     "limit": 250
   },
-  "credits_checked_at": "2026-10-07T08:50:49+03:00",
+  "credits_checked_at": "2026-10-07T15:06:36+03:00",
   "notification_errors": [],
-  "searches_left_after": 202,
-  "this_month_usage": 48
+  "searches_left_after": 199,
+  "this_month_usage": 51
 }
