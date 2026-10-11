@@ -1,8 +1,8 @@
 {
   "alert_id": "bali-n-februarie-3of2",
   "alert_name": "Bali from Istanbul",
-  "updated_at": "2026-10-10T16:33:46+03:00",
-  "day": "2026-10-10",
+  "updated_at": "2026-10-11T16:08:28+03:00",
+  "day": "2026-10-11",
   "currency": "EUR",
   "max_price": 700,
   "lowest_price": 750,
@@ -12,7 +12,7 @@
       "return_date": "2027-02-26",
       "nights": 8,
       "search_key": "c722ff02dc930e69",
-      "searched_on": "2026-10-10",
+      "searched_on": "2026-10-11",
       "search_params": {
         "engine": "google_flights",
         "type": "1",
@@ -27,87 +27,10 @@
         "return_date": "2027-02-26",
         "include_airlines": "TK,EK,QR,EY,SQ"
       },
-      "searched_at": "2026-10-10T16:33:43+03:00",
+      "searched_at": "2026-10-11T16:08:25+03:00",
       "status": "ok",
       "error": null,
       "flights": [
-        {
-          "price": 750,
-          "is_best": true,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
-          "carbon_diff": -5,
-          "airlines": [
-            "Qatar Airways"
-          ],
-          "flight_numbers": [
-            "QR 246",
-            "QR 962"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 20:10",
-          "arrival_time": "2027-02-19 17:20",
-          "total_duration": 970,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "DOH",
-              "name": "Hamad International Airport",
-              "duration": 145,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Qatar Airways",
-              "flight_number": "QR 246",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "DOH",
-              "to_name": "Hamad International Airport",
-              "departure_time": "2027-02-18 20:10",
-              "arrival_time": "2027-02-19 00:25",
-              "duration": 255,
-              "airplane": "Boeing 787",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "Free Wi-Fi",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 202 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            },
-            {
-              "airline": "Qatar Airways",
-              "flight_number": "QR 962",
-              "from": "DOH",
-              "from_name": "Hamad International Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 02:50",
-              "arrival_time": "2027-02-19 17:20",
-              "duration": 570,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "Free Wi-Fi",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 478 kg"
-              ],
-              "overnight": true,
-              "often_delayed": true
-            }
-          ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RSVWpJME5ueFJVamsyTWhvTENMREpCQkFDR2dORlZWSTRISERtandVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDYiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
-          "booking_token": null
-        },
         {
           "price": 750,
           "is_best": false,
@@ -182,7 +105,84 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RSVWpJME1IeFJVamsyTWhvTENMREpCQkFDR2dORlZWSTRISERtandVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDAiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RSVWpJME1IeFJVamsyTWhvTENMREpCQkFDR2dORlZWSTRISERtandVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDAiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "booking_token": null
+        },
+        {
+          "price": 750,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+          "carbon_diff": -5,
+          "airlines": [
+            "Qatar Airways"
+          ],
+          "flight_numbers": [
+            "QR 246",
+            "QR 962"
+          ],
+          "from": "IST",
+          "to": "DPS",
+          "departure_time": "2027-02-18 20:10",
+          "arrival_time": "2027-02-19 17:20",
+          "total_duration": 970,
+          "stops": 1,
+          "layovers": [
+            {
+              "airport": "DOH",
+              "name": "Hamad International Airport",
+              "duration": 145,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "Qatar Airways",
+              "flight_number": "QR 246",
+              "from": "IST",
+              "from_name": "Istanbul Airport",
+              "to": "DOH",
+              "to_name": "Hamad International Airport",
+              "departure_time": "2027-02-18 20:10",
+              "arrival_time": "2027-02-19 00:25",
+              "duration": 255,
+              "airplane": "Boeing 787",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+              "legroom": "31 in",
+              "extensions": [
+                "Average legroom (31 in)",
+                "Free Wi-Fi",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 202 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            },
+            {
+              "airline": "Qatar Airways",
+              "flight_number": "QR 962",
+              "from": "DOH",
+              "from_name": "Hamad International Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 02:50",
+              "arrival_time": "2027-02-19 17:20",
+              "duration": 570,
+              "airplane": "Airbus A350",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+              "legroom": "31 in",
+              "extensions": [
+                "Average legroom (31 in)",
+                "Free Wi-Fi",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 478 kg"
+              ],
+              "overnight": true,
+              "often_delayed": true
+            }
+          ],
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RSVWpJME5ueFJVamsyTWhvTENMREpCQkFDR2dORlZWSTRISERtandVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDYiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
@@ -259,7 +259,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RSVWpJME5ueFJVamsyTUJvTENMREpCQkFDR2dORlZWSTRISERtandVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDYiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RSVWpJME5ueFJVamsyTUJvTENMREpCQkFDR2dORlZWSTRISERtandVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDYiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
@@ -336,7 +336,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RSVWpJME1IeFJVamsyTUJvTENKakxCQkFDR2dORlZWSTRISERxa1FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDAiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RSVWpJME1IeFJVamsyTUJvTENKakxCQkFDR2dORlZWSTRISERxa1FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDAiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
@@ -413,7 +413,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RGV1RVME1ueEZXVFEzTmhvTENJck1CQkFDR2dORlZWSTRISERwa2dVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI1NDIiXSxbIkFVSCIsIjIwMjctMDItMTgiLCJEUFMiLG51bGwsIkVZIiwiNDc2Il1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RGV1RVME1ueEZXVFEzTmhvTENJck1CQkFDR2dORlZWSTRISERwa2dVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI1NDIiXSxbIkFVSCIsIjIwMjctMDItMTgiLCJEUFMiLG51bGwsIkVZIiwiNDc2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -490,7 +490,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RGV1RVME1ueEZXVFEzT0JvTENJck1CQkFDR2dORlZWSTRISERwa2dVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI1NDIiXSxbIkFVSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVZIiwiNDc4Il1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RGV1RVME1ueEZXVFEzT0JvTENJck1CQkFDR2dORlZWSTRISERwa2dVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI1NDIiXSxbIkFVSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVZIiwiNDc4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -567,7 +567,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RGU3pFeU1ueEZTek0yT0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RGU3pFeU1ueEZTek0yT0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -644,7 +644,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RGU3pFeU5IeEZTek0yT0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjQiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RGU3pFeU5IeEZTek0yT0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjQiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -721,7 +721,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RGU3pFeU5IeEZTek01T0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjQiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RGU3pFeU5IeEZTek01T0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjQiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -798,7 +798,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RHV2pjeU9IeEZTek0yT0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRloiLCI3MjgiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RHV2pjeU9IeEZTek0yT0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRloiLCI3MjgiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -875,7 +875,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RHV2pjeU9IeEZTek01T0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRloiLCI3MjgiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RHV2pjeU9IeEZTek01T0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRloiLCI3MjgiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -952,7 +952,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RGU3pFeU1ueEZTek01T0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RGU3pFeU1ueEZTek01T0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1029,7 +1029,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RGU3pFeE9IeEZTek01T0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMTgiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RGU3pFeE9IeEZTek01T0JvTENQalhCQkFDR2dORlZWSTRISENPb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMTgiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1075,7 +1075,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ1JVU3pZMkdnc0l5ZWdFRUFJYUEwVlZVamdjY04reUJRPT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJEUFMiLG51bGwsIlRLIiwiNjYiXV1d",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ1JVU3pZMkdnc0l5ZWdFRUFJYUEwVlZVamdjY04reUJRPT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJEUFMiLG51bGwsIlRLIiwiNjYiXV1d",
           "booking_token": null
         },
         {
@@ -1121,7 +1121,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ1ZVU3pNeE1Cb0xDTW5vQkJBQ0dnTkZWVkk0SEhEZnNnVT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJEUFMiLG51bGwsIlRLIiwiMzEwIl1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ1ZVU3pNeE1Cb0xDTW5vQkJBQ0dnTkZWVkk0SEhEZnNnVT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJEUFMiLG51bGwsIlRLIiwiMzEwIl1dXQ==",
           "booking_token": null
         },
         {
@@ -1228,7 +1228,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFaEJGU3pFeU1ueEZTek0xTkh4S1VUZzNHZ3NJdjVZRkVBSWFBMFZWVWpnY2NKam1CUT09IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIlNJTiIsbnVsbCwiRUsiLCIzNTQiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkpRIiwiODciXV1d",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFaEpGU3pFeU1ueEZTek0xTkh4S1VUZzNJekVhQ3dpL2xnVVFBaG9EUlZWU09CeHdtT1lGIixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIlNJTiIsbnVsbCwiRUsiLCIzNTQiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkpRIiwiODciXV1d",
           "booking_token": null
         },
         {
@@ -1335,7 +1335,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFaEJGU3pFeU1ueEZTek0wT0h4S1VUZzNHZ3NJdjVZRkVBSWFBMFZWVWpnY2NKam1CUT09IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIlNJTiIsbnVsbCwiRUsiLCIzNDgiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkpRIiwiODciXV1d",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFaEpGU3pFeU1ueEZTek0wT0h4S1VUZzNJekVhQ3dpL2xnVVFBaG9EUlZWU09CeHdtT1lGIixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIlNJTiIsbnVsbCwiRUsiLCIzNDgiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkpRIiwiODciXV1d",
           "booking_token": null
         },
         {
@@ -1411,7 +1411,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3BVU3pVMmZFZEJOalV5R2dzSXg3Z0ZFQUlhQTBWVlVqZ2NjSzJNQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkNHSyIsbnVsbCwiVEsiLCI1NiJdLFsiQ0dLIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiR0EiLCI2NTIiXV1d",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3BVU3pVMmZFZEJOalV5R2dzSXg3Z0ZFQUlhQTBWVlVqZ2NjSzJNQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkNHSyIsbnVsbCwiVEsiLCI1NiJdLFsiQ0dLIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiR0EiLCI2NTIiXV1d",
           "booking_token": null
         },
         {
@@ -1518,7 +1518,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFaE5GU3pFeU1ueEZTek0xTm54SFFUUXlOaU14R2dzSXU5SUZFQUlhQTBWVlVqZ2NjTENwQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJDR0siLG51bGwsIkVLIiwiMzU2Il0sWyJDR0siLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJHQSIsIjQyNiJdXV0=",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFaE5GU3pFeU1ueEZTek0xTm54SFFUUXlOaU14R2dzSXU5SUZFQUlhQTBWVlVqZ2NjTENwQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJDR0siLG51bGwsIkVLIiwiMzU2Il0sWyJDR0siLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJHQSIsIjQyNiJdXV0=",
           "booking_token": null
         },
         {
@@ -1624,7 +1624,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFaEZGU3pFeU1ueEZTek0wTm54UFJERTNOeG9MQ01mYUJSQUNHZ05GVlZJNEhIQzRzZ1k9IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFaEZGU3pFeU1ueEZTek0wTm54UFJERTNOeG9MQ01mYUJSQUNHZ05GVlZJNEhIQzRzZ1k9IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1700,7 +1700,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3BVU3pZeWZFOUVNVGN4R2dzSTVPSUZFQUlhQTBWVlVqZ2NjTlM3Qmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiVEsiLCI2MiJdLFsiS1VMIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiT0QiLCIxNzEiXV1d",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3BVU3pZeWZFOUVNVGN4R2dzSTVPSUZFQUlhQTBWVlVqZ2NjTlM3Qmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiVEsiLCI2MiJdLFsiS1VMIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiT0QiLCIxNzEiXV1d",
           "booking_token": null
         },
         {
@@ -1778,7 +1778,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RVU3pnMk9IeEZXVFEzT0JvTENQN29CUkFDR2dORlZWSTRISERPd2dZPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiVEsiLCI4NjgiXSxbIkFVSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVZIiwiNDc4Il1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RVU3pnMk9IeEZXVFEzT0JvTENPbm9CUkFDR2dORlZWSTRISEMyd2dZPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiVEsiLCI4NjgiXSxbIkFVSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVZIiwiNDc4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1884,7 +1884,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFaEZGU3pFeU1ueEZTek0wTm54UFJERTNNUm9MQ0pucEJSQUNHZ05GVlZJNEhIRHN3Z1k9IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTcxIl1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFaEZGU3pFeU1ueEZTek0wTm54UFJERTNNUm9MQ0pucEJSQUNHZ05GVlZJNEhIRHN3Z1k9IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTcxIl1dXQ==",
           "booking_token": null
         },
         {
@@ -1961,7 +1961,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3BVU3pVNGZGUkhORE14R2dzSTVQRUZFQUlhQTBWVlVqZ2NjTHZNQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEsiLCI1OCJdLFsiQktLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEciLCI0MzEiXV1d",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3BVU3pVNGZGUkhORE14R2dzSTVQRUZFQUlhQTBWVlVqZ2NjTHZNQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEsiLCI1OCJdLFsiQktLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEciLCI0MzEiXV1d",
           "booking_token": null
         },
         {
@@ -2037,7 +2037,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3BVU3pVNGZGUkhORE01R2dzSTVQRUZFQUlhQTBWVlVqZ2NjTHZNQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEsiLCI1OCJdLFsiQktLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEciLCI0MzkiXV1d",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3BVU3pVNGZGUkhORE01R2dzSTVQRUZFQUlhQTBWVlVqZ2NjTHZNQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEsiLCI1OCJdLFsiQktLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEciLCI0MzkiXV1d",
           "booking_token": null
         },
         {
@@ -2112,7 +2112,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RVUnprd01YeFVSelF6TVJvTENNK2JCaEFDR2dORlZWSTRISENxK3dZPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEciLCI5MDEiXSxbIkJLSyIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRHIiwiNDMxIl1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RVUnprd01YeFVSelF6TVJvTENNK2JCaEFDR2dORlZWSTRISENxK3dZPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEciLCI5MDEiXSxbIkJLSyIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRHIiwiNDMxIl1dXQ==",
           "booking_token": null
         },
         {
@@ -2186,7 +2186,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3RVUnprd01YeFVSelF6T1JvTENNK2JCaEFDR2dORlZWSTRISENxK3dZPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEciLCI5MDEiXSxbIkJLSyIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRHIiwiNDM5Il1dXQ==",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3RVUnprd01YeFVSelF6T1JvTENNK2JCaEFDR2dORlZWSTRISENxK3dZPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEciLCI5MDEiXSxbIkJLSyIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRHIiwiNDM5Il1dXQ==",
           "booking_token": null
         },
         {
@@ -2262,7 +2262,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3BVU3pZeWZFOUVNVGMzR2dzSXZxOEdFQUlhQTBWVlVqZ2NjTXVSQnc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiVEsiLCI2MiJdLFsiS1VMIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiT0QiLCIxNzciXV1d",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3BVU3pZeWZFOUVNVGMzR2dzSXZxOEdFQUlhQTBWVlVqZ2NjTXVSQnc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiVEsiLCI2MiJdLFsiS1VMIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiT0QiLCIxNzciXV1d",
           "booking_token": null
         },
         {
@@ -2338,7 +2338,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3BVU3pZMGZGUkhORE01R2dzSTljOEdFQUlhQTBWVlVqZ2NjUGExQnc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEsiLCI2NCJdLFsiQktLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEciLCI0MzkiXV1d",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3BVU3pZMGZGUkhORE01R2dzSTljOEdFQUlhQTBWVlVqZ2NjUGExQnc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEsiLCI2NCJdLFsiQktLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEciLCI0MzkiXV1d",
           "booking_token": null
         },
         {
@@ -2414,7 +2414,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3BVU3pVMmZFZEJOREF5R2dzSXk3QUxFQUlhQTBWVlVqZ2NjT2pmREE9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkNHSyIsbnVsbCwiVEsiLCI1NiJdLFsiQ0dLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiR0EiLCI0MDIiXV1d",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3BVU3pVMmZFZEJOREF5R2dzSXk3QUxFQUlhQTBWVlVqZ2NjT2pmREE9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkNHSyIsbnVsbCwiVEsiLCI1NiJdLFsiQ0dLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiR0EiLCI0MDIiXV1d",
           "booking_token": null
         },
         {
@@ -2490,7 +2490,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVm1OUWJYbEhORXBST0ZGQlRVSm1kbEZDUnkwdExTMHRMUzB0TFhaMFptd3hNVUZCUVVGQlIzSkxVSEpuUTBGM1JGTkJFZ3BVU3pVMmZFZEJOREEyR2dzSXk3QUxFQUlhQTBWVlVqZ2NjT2pmREE9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkNHSyIsbnVsbCwiVEsiLCI1NiJdLFsiQ0dLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiR0EiLCI0MDYiXV1d",
+          "departure_token": "WyJDalJJYjBSc1drVmZSVUZqWkZGQlVqYzBOMUZDUnkwdExTMHRMUzB0TFc5NVoyOHlPRUZCUVVGQlIzSk1hV3R2UVdabFIxZEJFZ3BVU3pVMmZFZEJOREEyR2dzSXk3QUxFQUlhQTBWVlVqZ2NjT2pmREE9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkNHSyIsbnVsbCwiVEsiLCI1NiJdLFsiQ0dLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiR0EiLCI0MDYiXV1d",
           "booking_token": null
         }
       ],
