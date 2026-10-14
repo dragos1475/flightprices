@@ -1,18 +1,18 @@
 {
   "alert_id": "bali-from-malpensa-qn6u",
   "alert_name": "Bali from Malpensa",
-  "updated_at": "2026-10-13T14:40:41+03:00",
-  "day": "2026-10-13",
+  "updated_at": "2026-10-14T15:29:35+03:00",
+  "day": "2026-10-14",
   "currency": "EUR",
   "max_price": 700,
-  "lowest_price": 860,
+  "lowest_price": 861,
   "combinations": [
     {
       "outbound_date": "2027-02-18",
       "return_date": "2027-02-26",
       "nights": 8,
       "search_key": "377fe77a4bfcf44e",
-      "searched_on": "2026-10-13",
+      "searched_on": "2026-10-14",
       "search_params": {
         "engine": "google_flights",
         "type": "1",
@@ -27,89 +27,12 @@
         "return_date": "2027-02-26",
         "include_airlines": "TK,EK,QR,EY,SQ"
       },
-      "searched_at": "2026-10-13T14:40:33+03:00",
+      "searched_at": "2026-10-14T15:29:28+03:00",
       "status": "ok",
       "error": null,
       "flights": [
         {
-          "price": 860,
-          "is_best": true,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
-          "carbon_diff": -3,
-          "airlines": [
-            "Etihad"
-          ],
-          "flight_numbers": [
-            "EY 80",
-            "EY 478"
-          ],
-          "from": "MXP",
-          "to": "DPS",
-          "departure_time": "2027-02-18 21:45",
-          "arrival_time": "2027-02-19 22:15",
-          "total_duration": 1050,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "AUH",
-              "name": "Zayed International Airport",
-              "duration": 110,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Etihad",
-              "flight_number": "EY 80",
-              "from": "MXP",
-              "from_name": "Milano Malpensa Airport",
-              "to": "AUH",
-              "to_name": "Zayed International Airport",
-              "departure_time": "2027-02-18 21:45",
-              "arrival_time": "2027-02-19 07:00",
-              "duration": 375,
-              "airplane": "Airbus A321neo",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
-              "legroom": "30 in",
-              "extensions": [
-                "Average legroom (30 in)",
-                "Wi-Fi for a fee",
-                "In-seat USB outlet",
-                "On-demand video",
-                "Carbon emissions estimate: 398 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "Etihad",
-              "flight_number": "EY 478",
-              "from": "AUH",
-              "from_name": "Zayed International Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 08:50",
-              "arrival_time": "2027-02-19 22:15",
-              "duration": 565,
-              "airplane": "Boeing 787-10",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 392 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3BGV1Rnd2ZFVlpORGM0R2dzSTFKOEZFQUlhQTBWVlVqZ2NjTVB2QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
-          "booking_token": null
-        },
-        {
-          "price": 860,
+          "price": 861,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": -12,
@@ -182,7 +105,84 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3BGV1RneWZFVlpORGM0R2dzSTFKOEZFQUlhQTBWVlVqZ2NjTVB2QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3BGV1RneWZFVlpORGM0R2dzSWpxQUZFQUlhQTBWVlVqZ2NjTC93QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+          "booking_token": null
+        },
+        {
+          "price": 861,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+          "carbon_diff": -3,
+          "airlines": [
+            "Etihad"
+          ],
+          "flight_numbers": [
+            "EY 80",
+            "EY 478"
+          ],
+          "from": "MXP",
+          "to": "DPS",
+          "departure_time": "2027-02-18 21:45",
+          "arrival_time": "2027-02-19 22:15",
+          "total_duration": 1050,
+          "stops": 1,
+          "layovers": [
+            {
+              "airport": "AUH",
+              "name": "Zayed International Airport",
+              "duration": 110,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "Etihad",
+              "flight_number": "EY 80",
+              "from": "MXP",
+              "from_name": "Milano Malpensa Airport",
+              "to": "AUH",
+              "to_name": "Zayed International Airport",
+              "departure_time": "2027-02-18 21:45",
+              "arrival_time": "2027-02-19 07:00",
+              "duration": 375,
+              "airplane": "Airbus A321neo",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+              "legroom": "30 in",
+              "extensions": [
+                "Average legroom (30 in)",
+                "Wi-Fi for a fee",
+                "In-seat USB outlet",
+                "On-demand video",
+                "Carbon emissions estimate: 398 kg"
+              ],
+              "overnight": true,
+              "often_delayed": true
+            },
+            {
+              "airline": "Etihad",
+              "flight_number": "EY 478",
+              "from": "AUH",
+              "from_name": "Zayed International Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 08:50",
+              "arrival_time": "2027-02-19 22:15",
+              "duration": 565,
+              "airplane": "Boeing 787-10",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+              "legroom": "31 in",
+              "extensions": [
+                "Average legroom (31 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 392 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            }
+          ],
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3BGV1Rnd2ZFVlpORGM0R2dzSWpxQUZFQUlhQTBWVlVqZ2NjTC93QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
           "booking_token": null
         },
         {
@@ -259,7 +259,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3BGU3preWZFVkxNems0R2dzSWxxTUZFQUlhQTBWVlVqZ2NjTHZ6QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3BGU3preWZFVkxNems0R2dzSW1xTUZFQUlhQTBWVlVqZ2NjUHJ6QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
           "booking_token": null
         },
         {
@@ -336,7 +336,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RGU3pFd01ueEZTek0yT0JvTENKYWpCUkFDR2dORlZWSTRISEM3OHdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3RGU3pFd01ueEZTek0yT0JvTENKcWpCUkFDR2dORlZWSTRISEQ2OHdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -413,7 +413,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RGU3pFd01ueEZTek01T0JvTENKYWpCUkFDR2dORlZWSTRISEM3OHdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3RGU3pFd01ueEZTek01T0JvTENKcWpCUkFDR2dORlZWSTRISEQ2OHdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -490,7 +490,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RSVWpFeU9IeFJVamsyTWhvTENOeWtCUkFDR2dORlZWSTRISENZOVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3RSVWpFeU9IeFJVamsyTWhvTENQQ2tCUkFDR2dORlZWSTRISERxOVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
@@ -567,7 +567,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RSVWpFeU5IeFJVamsyTWhvTENOeWtCUkFDR2dORlZWSTRISENZOVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3RSVWpFeU5IeFJVamsyTWhvTENQQ2tCUkFDR2dORlZWSTRISERxOVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
@@ -644,7 +644,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RSVWpFeU9IeFJVamsyTUJvTENOeWtCUkFDR2dORlZWSTRISENZOVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3RSVWpFeU9IeFJVamsyTUJvTENQQ2tCUkFDR2dORlZWSTRISERxOVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
@@ -721,12 +721,12 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RSVWpFeU5IeFJVamsyTUJvTENNU21CUkFDR2dORlZWSTRISENjOXdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3RSVWpFeU5IeFJVamsyTUJvTENObW1CUkFDR2dORlZWSTRISER2OXdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 886,
-          "is_best": false,
+          "price": 887,
+          "is_best": true,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": 5,
           "airlines": [
@@ -798,11 +798,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3BGV1RneWZFVlpORGMyR2dzSS9MTUZFQUlhQTBWVlVqZ2NjS0dHQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3BGV1RneWZFVlpORGMyR2dzSXRyUUZFQUlhQTBWVlVqZ2NjSjZIQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
           "booking_token": null
         },
         {
-          "price": 886,
+          "price": 887,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": 14,
@@ -849,7 +849,7 @@
                 "Carbon emissions estimate: 398 kg"
               ],
               "overnight": true,
-              "often_delayed": false
+              "often_delayed": true
             },
             {
               "airline": "Etihad",
@@ -875,7 +875,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3BGV1Rnd2ZFVlpORGMyR2dzSS9MTUZFQUlhQTBWVlVqZ2NjS0dHQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3BGV1Rnd2ZFVlpORGMyR2dzSXRyUUZFQUlhQTBWVlVqZ2NjSjZIQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
           "booking_token": null
         },
         {
@@ -981,7 +981,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ0xXNEJSQUNHZ05GVlZJNEhIQ2Rpd1k9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ0xxNEJSQUNHZ05GVlZJNEhIRGZpd1k9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1058,7 +1058,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RGU3pJd05ueEZTek0yT0JvTENKYThCUkFDR2dORlZWSTRISEMzandZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3RGU3pJd05ueEZTek0yT0JvTENKcThCUkFDR2dORlZWSTRISEQ1andZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1135,7 +1135,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RGU3pJd05ueEZTek01T0JvTENKYThCUkFDR2dORlZWSTRISEMzandZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3RGU3pJd05ueEZTek01T0JvTENKcThCUkFDR2dORlZWSTRISEQ1andZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1241,7 +1241,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFaE5GU3pJd05ueEZTek0wTm54UFJERTNNU014R2dzSTJjVUZFQUlhQTBWVlVqZ2NjSXVhQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJLVUwiLG51bGwsIkVLIiwiMzQ2Il0sWyJLVUwiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJPRCIsIjE3MSJdXV0=",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFaE5GU3pJd05ueEZTek0wTm54UFJERTNNU014R2dzSTNzVUZFQUlhQTBWVlVqZ2NjTSthQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJLVUwiLG51bGwsIkVLIiwiMzQ2Il0sWyJLVUwiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJPRCIsIjE3MSJdXV0=",
           "booking_token": null
         },
         {
@@ -1318,7 +1318,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RVU3pFNE56aDhWRXMyTmhvTENNM0xCUkFDR2dORlZWSTRISERab0FZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3RVU3pFNE56aDhWRXMyTmhvTENNM0xCUkFDR2dORlZWSTRISENZb1FZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1395,7 +1395,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3hVU3pFNE56aDhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3MmFBRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3hVU3pFNE56aDhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3bUtFRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
           "booking_token": null
         },
         {
@@ -1472,7 +1472,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RVU3pFNE56UjhWRXMyTmhvTENNM0xCUkFDR2dORlZWSTRISERab0FZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3RVU3pFNE56UjhWRXMyTmhvTENNM0xCUkFDR2dORlZWSTRISENZb1FZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1549,7 +1549,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3hVU3pFNE56UjhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3MmFBRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3hVU3pFNE56UjhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3bUtFRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
           "booking_token": null
         },
         {
@@ -1626,7 +1626,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RVU3pFNE9UWjhWRXMyTmhvTENNM0xCUkFDR2dORlZWSTRISERab0FZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3RVU3pFNE9UWjhWRXMyTmhvTENNM0xCUkFDR2dORlZWSTRISENZb1FZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1703,7 +1703,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3hVU3pFNE9UWjhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3MmFBRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3hVU3pFNE9UWjhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3bUtFRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
           "booking_token": null
         },
         {
@@ -1780,7 +1780,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3hVU3pFNE56WjhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3MmFBRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3hVU3pFNE56WjhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3bUtFRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
           "booking_token": null
         },
         {
@@ -1857,7 +1857,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RVU3pFNE56WjhWRXMyTmhvTENOSG9CaEFDR2dORlZWSTRISEN6MEFjPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZ3RVU3pFNE56WjhWRXMyTmhvTENOSG9CaEFDR2dORlZWSTRISEQvMEFjPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1934,7 +1934,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RUVVRNMU5YeFRVVGt6TmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTM2Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZzFUVVRNMU5YeFRVVGt6TmlNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzNiJdXV0=",
           "booking_token": null
         },
         {
@@ -2011,7 +2011,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RUVVRNMU5YeFRVVGt6T0RnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTM4Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZzFUVVRNMU5YeFRVVGt6T0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzOCJdXV0=",
           "booking_token": null
         },
         {
@@ -2087,82 +2087,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RUVVRNMU5YeEhRVGcwTXpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkdBIiwiODQzIl1dXQ==",
-          "booking_token": null
-        },
-        {
-          "price": null,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": -11,
-          "airlines": [
-            "Singapore Airlines",
-            "Scoot"
-          ],
-          "flight_numbers": [
-            "SQ 355",
-            "TR 288"
-          ],
-          "from": "MXP",
-          "to": "DPS",
-          "departure_time": "2027-02-18 12:20",
-          "arrival_time": "2027-02-19 13:25",
-          "total_duration": 1085,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "SIN",
-              "name": "Singapore Changi Airport",
-              "duration": 175,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Singapore Airlines",
-              "flight_number": "SQ 355",
-              "from": "MXP",
-              "from_name": "Milano Malpensa Airport",
-              "to": "SIN",
-              "to_name": "Singapore Changi Airport",
-              "departure_time": "2027-02-18 12:20",
-              "arrival_time": "2027-02-19 07:30",
-              "duration": 730,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Free Wi-Fi",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 617 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "Scoot",
-              "flight_number": "TR 288",
-              "from": "SIN",
-              "from_name": "Singapore Changi Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 10:25",
-              "arrival_time": "2027-02-19 13:25",
-              "duration": 180,
-              "airplane": "Airbus A320neo",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TR.png",
-              "legroom": "28 in",
-              "extensions": [
-                "Below average legroom (28 in)",
-                "Carbon emissions estimate: 114 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RUVVRNMU5YeFVVakk0T0RnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRSIiwiMjg4Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZzFUVVRNMU5YeEhRVGcwTXlNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJHQSIsIjg0MyJdXV0=",
           "booking_token": null
         },
         {
@@ -2239,84 +2164,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RUVVRNMU5YeFRVVGswTkRnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ0Il1dXQ==",
-          "booking_token": null
-        },
-        {
-          "price": null,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": -10,
-          "airlines": [
-            "Singapore Airlines",
-            "Scoot"
-          ],
-          "flight_numbers": [
-            "SQ 355",
-            "TR 282"
-          ],
-          "from": "MXP",
-          "to": "DPS",
-          "departure_time": "2027-02-18 12:20",
-          "arrival_time": "2027-02-19 19:00",
-          "total_duration": 1420,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "SIN",
-              "name": "Singapore Changi Airport",
-              "duration": 515,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Singapore Airlines",
-              "flight_number": "SQ 355",
-              "from": "MXP",
-              "from_name": "Milano Malpensa Airport",
-              "to": "SIN",
-              "to_name": "Singapore Changi Airport",
-              "departure_time": "2027-02-18 12:20",
-              "arrival_time": "2027-02-19 07:30",
-              "duration": 730,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Free Wi-Fi",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 617 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "Scoot",
-              "flight_number": "TR 282",
-              "from": "SIN",
-              "from_name": "Singapore Changi Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 16:05",
-              "arrival_time": "2027-02-19 19:00",
-              "duration": 175,
-              "airplane": "Boeing 787",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TR.png",
-              "legroom": "30 in",
-              "extensions": [
-                "Average legroom (30 in)",
-                "Wi-Fi for a fee",
-                "In-seat power outlet",
-                "Carbon emissions estimate: 118 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RUVVRNMU5YeFVVakk0TWpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRSIiwiMjgyIl1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZzFUVVRNMU5YeFRVVGswTkNNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0NCJdXV0=",
           "booking_token": null
         },
         {
@@ -2393,7 +2241,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZ3RUVVRNMU5YeFRVVGswTmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ2Il1dXQ==",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZzFUVVRNMU5YeFRVVGswTmlNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0NiJdXV0=",
           "booking_token": null
         },
         {
@@ -2470,11 +2318,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVjNJNFJVNTZkRnBGVlRCQlF5MU9WMmRDUnkwdExTMHRMUzB0TFMxNWJHdDVOMEZCUVVGQlIzSlBSMHhOUlZOaVR6UkJFZzFUVVRNMU5YeFRVVGswT0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0OCJdXV0=",
+          "departure_token": "WyJDalJJWDE5bVNWOUdhMkpwY1VWQlIwRkNaRkZDUnkwdExTMHRMUzB0TFhscFltSnlOa0ZCUVVGQlIzSlFaR0ZyU1hjNFp6QkJFZzFUVVRNMU5YeFRVVGswT0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0OCJdXV0=",
           "booking_token": null
         }
       ],
-      "lowest_price": 860,
+      "lowest_price": 861,
       "price_insights": {
         "lowest_price": null,
         "price_level": null,
@@ -2488,7 +2336,7 @@
       "return_date": "2027-02-27",
       "nights": 9,
       "search_key": "1e6df38b8794a061",
-      "searched_on": "2026-10-13",
+      "searched_on": "2026-10-14",
       "search_params": {
         "engine": "google_flights",
         "type": "1",
@@ -2503,7 +2351,7 @@
         "return_date": "2027-02-27",
         "include_airlines": "TK,EK,QR,EY,SQ"
       },
-      "searched_at": "2026-10-13T14:40:37+03:00",
+      "searched_at": "2026-10-14T15:29:31+03:00",
       "status": "ok",
       "error": null,
       "flights": [
@@ -2581,7 +2429,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RSVWpFeU9IeFJVamsyTWhvTENOeWtCUkFDR2dORlZWSTRISENZOVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RSVWpFeU9IeFJVamsyTWhvTENQQ2tCUkFDR2dORlZWSTRISERxOVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
@@ -2658,7 +2506,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RSVWpFeU5IeFJVamsyTWhvTENOeWtCUkFDR2dORlZWSTRISENZOVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RSVWpFeU5IeFJVamsyTWhvTENQQ2tCUkFDR2dORlZWSTRISERxOVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
@@ -2735,7 +2583,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RSVWpFeU9IeFJVamsyTUJvTENOeWtCUkFDR2dORlZWSTRISENZOVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RSVWpFeU9IeFJVamsyTUJvTENQQ2tCUkFDR2dORlZWSTRISERxOVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
@@ -2812,7 +2660,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RSVWpFeU5IeFJVamsyTUJvTENNU21CUkFDR2dORlZWSTRISENjOXdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RSVWpFeU5IeFJVamsyTUJvTENObW1CUkFDR2dORlZWSTRISER2OXdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
@@ -2889,7 +2737,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3BGU3preWZFVkxNems0R2dzSTJyWUZFQUlhQTBWVlVqZ2NjS2lKQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3BGU3preWZFVkxNems0R2dzSTNyWUZFQUlhQTBWVlVqZ2NjT21KQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
           "booking_token": null
         },
         {
@@ -2966,7 +2814,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RGU3pFd01ueEZTek0yT0JvTENOcTJCUkFDR2dORlZWSTRISENvaVFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RGU3pFd01ueEZTek0yT0JvTENONjJCUkFDR2dORlZWSTRISERwaVFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3043,7 +2891,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RGU3pFd01ueEZTek01T0JvTENOcTJCUkFDR2dORlZWSTRISENvaVFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RGU3pFd01ueEZTek01T0JvTENONjJCUkFDR2dORlZWSTRISERwaVFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3120,7 +2968,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RVU3pFNE56aDhWRXMyTmhvTENNM0xCUkFDR2dORlZWSTRISERab0FZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RVU3pFNE56aDhWRXMyTmhvTENNM0xCUkFDR2dORlZWSTRISENZb1FZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3197,7 +3045,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3hVU3pFNE56aDhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3MmFBRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3hVU3pFNE56aDhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3bUtFRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
           "booking_token": null
         },
         {
@@ -3274,7 +3122,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RVU3pFNE56UjhWRXMyTmhvTENNM0xCUkFDR2dORlZWSTRISERab0FZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RVU3pFNE56UjhWRXMyTmhvTENNM0xCUkFDR2dORlZWSTRISENZb1FZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3351,7 +3199,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3hVU3pFNE56UjhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3MmFBRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3hVU3pFNE56UjhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3bUtFRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
           "booking_token": null
         },
         {
@@ -3428,7 +3276,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RVU3pFNE9UWjhWRXMyTmhvTENNM0xCUkFDR2dORlZWSTRISERab0FZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RVU3pFNE9UWjhWRXMyTmhvTENNM0xCUkFDR2dORlZWSTRISENZb1FZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3505,7 +3353,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3hVU3pFNE9UWjhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3MmFBRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3hVU3pFNE9UWjhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3bUtFRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
           "booking_token": null
         },
         {
@@ -3582,7 +3430,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3hVU3pFNE56WjhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3MmFBRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3hVU3pFNE56WjhWRXN6TVRBYUN3ak55d1VRQWhvRFJWVlNPQnh3bUtFRyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
           "booking_token": null
         },
         {
@@ -3688,7 +3536,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ1BuTEJSQUNHZ05GVlZJNEhIQ0tvUVk9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ1A3TEJSQUNHZ05GVlZJNEhIRE9vUVk9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3765,7 +3613,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RGU3pJd05ueEZTek0yT0JvTENOclBCUkFDR2dORlZWSTRISENscFFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RGU3pJd05ueEZTek0yT0JvTENON1BCUkFDR2dORlZWSTRISERvcFFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3842,7 +3690,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RGU3pJd05ueEZTek01T0JvTENOclBCUkFDR2dORlZWSTRISENscFFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RGU3pJd05ueEZTek01T0JvTENON1BCUkFDR2dORlZWSTRISERvcFFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3948,11 +3796,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFaEZGU3pJd05ueEZTek0wTm54UFJERTNNUm9MQ0ozWkJSQUNHZ05GVlZJNEhIRDVyd1k9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTcxIl1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFaE5GU3pJd05ueEZTek0wTm54UFJERTNNU015R2dzSW90a0ZFQUlhQTBWVlVqZ2NjTDZ3Qmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJLVUwiLG51bGwsIkVLIiwiMzQ2Il0sWyJLVUwiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJPRCIsIjE3MSJdXV0=",
           "booking_token": null
         },
         {
-          "price": 1042,
+          "price": 1043,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": -12,
@@ -4025,11 +3873,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3BGV1RneWZFVlpORGM0R2dzSTdLMEdFQUlhQTBWVlVqZ2NjTkNPQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3BGV1RneWZFVlpORGM0R2dzSXBxNEdFQUlhQTBWVlVqZ2NjTmVQQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
           "booking_token": null
         },
         {
-          "price": 1042,
+          "price": 1043,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": -3,
@@ -4076,7 +3924,7 @@
                 "Carbon emissions estimate: 398 kg"
               ],
               "overnight": true,
-              "often_delayed": false
+              "often_delayed": true
             },
             {
               "airline": "Etihad",
@@ -4102,11 +3950,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3BGV1Rnd2ZFVlpORGM0R2dzSTdLMEdFQUlhQTBWVlVqZ2NjTkNPQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3BGV1Rnd2ZFVlpORGM0R2dzSXBxNEdFQUlhQTBWVlVqZ2NjTmVQQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
           "booking_token": null
         },
         {
-          "price": 1068,
+          "price": 1069,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": 5,
@@ -4179,11 +4027,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3BGV1RneWZFVlpORGMyR2dzSWxNSUdFQUlhQTBWVlVqZ2NjSzJsQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3BGV1RneWZFVlpORGMyR2dzSXpzSUdFQUlhQTBWVlVqZ2NjTGFtQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
           "booking_token": null
         },
         {
-          "price": 1068,
+          "price": 1069,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": 14,
@@ -4230,7 +4078,7 @@
                 "Carbon emissions estimate: 398 kg"
               ],
               "overnight": true,
-              "often_delayed": false
+              "often_delayed": true
             },
             {
               "airline": "Etihad",
@@ -4256,7 +4104,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3BGV1Rnd2ZFVlpORGMyR2dzSWxNSUdFQUlhQTBWVlVqZ2NjSzJsQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3BGV1Rnd2ZFVlpORGMyR2dzSXpzSUdFQUlhQTBWVlVqZ2NjTGFtQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
           "booking_token": null
         },
         {
@@ -4333,7 +4181,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RVU3pFNE56WjhWRXMyTmhvTENOSG9CaEFDR2dORlZWSTRISEN6MEFjPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RVU3pFNE56WjhWRXMyTmhvTENOSG9CaEFDR2dORlZWSTRISEQvMEFjPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -4410,7 +4258,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZzFUVVRNMU5YeFRVVGt6TmlNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzNiJdXV0=",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RUVVRNMU5YeFRVVGt6TmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTM2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -4487,7 +4335,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZzFUVVRNMU5YeFRVVGt6T0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzOCJdXV0=",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZzFUVVRNMU5YeFRVVGt6T0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzOCJdXV0=",
           "booking_token": null
         },
         {
@@ -4563,82 +4411,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RUVVRNMU5YeEhRVGcwTXpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkdBIiwiODQzIl1dXQ==",
-          "booking_token": null
-        },
-        {
-          "price": null,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": -11,
-          "airlines": [
-            "Singapore Airlines",
-            "Scoot"
-          ],
-          "flight_numbers": [
-            "SQ 355",
-            "TR 288"
-          ],
-          "from": "MXP",
-          "to": "DPS",
-          "departure_time": "2027-02-18 12:20",
-          "arrival_time": "2027-02-19 13:25",
-          "total_duration": 1085,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "SIN",
-              "name": "Singapore Changi Airport",
-              "duration": 175,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Singapore Airlines",
-              "flight_number": "SQ 355",
-              "from": "MXP",
-              "from_name": "Milano Malpensa Airport",
-              "to": "SIN",
-              "to_name": "Singapore Changi Airport",
-              "departure_time": "2027-02-18 12:20",
-              "arrival_time": "2027-02-19 07:30",
-              "duration": 730,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Free Wi-Fi",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 617 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "Scoot",
-              "flight_number": "TR 288",
-              "from": "SIN",
-              "from_name": "Singapore Changi Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 10:25",
-              "arrival_time": "2027-02-19 13:25",
-              "duration": 180,
-              "airplane": "Airbus A320neo",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TR.png",
-              "legroom": "28 in",
-              "extensions": [
-                "Below average legroom (28 in)",
-                "Carbon emissions estimate: 114 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RUVVRNMU5YeFVVakk0T0RnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRSIiwiMjg4Il1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZzFUVVRNMU5YeEhRVGcwTXlNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJHQSIsIjg0MyJdXV0=",
           "booking_token": null
         },
         {
@@ -4715,84 +4488,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RUVVRNMU5YeFRVVGswTkRnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ0Il1dXQ==",
-          "booking_token": null
-        },
-        {
-          "price": null,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": -10,
-          "airlines": [
-            "Singapore Airlines",
-            "Scoot"
-          ],
-          "flight_numbers": [
-            "SQ 355",
-            "TR 282"
-          ],
-          "from": "MXP",
-          "to": "DPS",
-          "departure_time": "2027-02-18 12:20",
-          "arrival_time": "2027-02-19 19:00",
-          "total_duration": 1420,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "SIN",
-              "name": "Singapore Changi Airport",
-              "duration": 515,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Singapore Airlines",
-              "flight_number": "SQ 355",
-              "from": "MXP",
-              "from_name": "Milano Malpensa Airport",
-              "to": "SIN",
-              "to_name": "Singapore Changi Airport",
-              "departure_time": "2027-02-18 12:20",
-              "arrival_time": "2027-02-19 07:30",
-              "duration": 730,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/SQ.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Free Wi-Fi",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 617 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "Scoot",
-              "flight_number": "TR 282",
-              "from": "SIN",
-              "from_name": "Singapore Changi Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 16:05",
-              "arrival_time": "2027-02-19 19:00",
-              "duration": 175,
-              "airplane": "Boeing 787",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TR.png",
-              "legroom": "30 in",
-              "extensions": [
-                "Average legroom (30 in)",
-                "Wi-Fi for a fee",
-                "In-seat power outlet",
-                "Carbon emissions estimate: 118 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZ3RUVVRNMU5YeFVVakk0TWpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRSIiwiMjgyIl1dXQ==",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RUVVRNMU5YeFRVVGswTkRnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ0Il1dXQ==",
           "booking_token": null
         },
         {
@@ -4869,7 +4565,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZzFUVVRNMU5YeFRVVGswTmlNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0NiJdXV0=",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZ3RUVVRNMU5YeFRVVGswTmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -4946,7 +4642,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJVW01dFQyczNZWEJuWWpSQlJXbEpOSGRDUnkwdExTMHRMUzF2ZVc4eE1DMXVNVUZCUVVGQlIzSlBSMHhaVFZrd05TMUJFZzFUVVRNMU5YeFRVVGswT0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0OCJdXV0=",
+          "departure_token": "WyJDalJJZVdNNE4xcEtkM0IwVEhOQlJWbFlkbEZDUnkwdExTMHRMUzB0TFMxd1ptVjJORUZCUVVGQlIzSlFaR0YzVDNrNGJsVkJFZzFUVVRNMU5YeFRVVGswT0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0OCJdXV0=",
           "booking_token": null
         }
       ],
