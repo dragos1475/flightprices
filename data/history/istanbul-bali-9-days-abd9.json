@@ -81,6 +81,11 @@
         "date": "2026-10-14",
         "price": 764,
         "currency": "EUR"
+      },
+      {
+        "date": "2026-10-15",
+        "price": 763,
+        "currency": "EUR"
       }
     ]
   }
