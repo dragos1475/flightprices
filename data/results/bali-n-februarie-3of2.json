@@ -1,8 +1,8 @@
 {
   "alert_id": "bali-n-februarie-3of2",
   "alert_name": "Bali from Istanbul",
-  "updated_at": "2026-10-21T12:36:57+03:00",
-  "day": "2026-10-21",
+  "updated_at": "2026-10-22T13:34:47+03:00",
+  "day": "2026-10-22",
   "currency": "EUR",
   "max_price": 700,
   "lowest_price": 768,
@@ -12,7 +12,7 @@
       "return_date": "2027-02-26",
       "nights": 8,
       "search_key": "c722ff02dc930e69",
-      "searched_on": "2026-10-21",
+      "searched_on": "2026-10-22",
       "search_params": {
         "engine": "google_flights",
         "type": "1",
@@ -27,7 +27,7 @@
         "return_date": "2027-02-26",
         "include_airlines": "TK,EK,QR,EY,SQ"
       },
-      "searched_at": "2026-10-21T12:36:54+03:00",
+      "searched_at": "2026-10-22T13:34:44+03:00",
       "status": "ok",
       "error": null,
       "flights": [
@@ -105,7 +105,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZzFGU3pFeU1ueEZTek0yT0NNeEdnc0kxOWNFRUFJYUEwVlZVamdjY05XZ0JRPT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJEWEIiLG51bGwsIkVLIiwiMTIyIl0sWyJEWEIiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJFSyIsIjM2OCJdXV0=",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RGU3pFeU1ueEZTek0yT0JvTENOSFhCQkFDR2dORlZWSTRISEQ4b0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -182,7 +182,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZzFGU3pFeU5IeEZTek0yT0NNeEdnc0kxOWNFRUFJYUEwVlZVamdjY05XZ0JRPT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJEWEIiLG51bGwsIkVLIiwiMTI0Il0sWyJEWEIiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJFSyIsIjM2OCJdXV0=",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RGU3pFeU5IeEZTek0yT0JvTENOSFhCQkFDR2dORlZWSTRISEQ4b0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjQiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -259,7 +259,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3RGU3pFeU5IeEZTek01T0JvTENOZlhCQkFDR2dORlZWSTRISERWb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjQiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RGU3pFeU5IeEZTek01T0JvTENOSFhCQkFDR2dORlZWSTRISEQ4b0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjQiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -336,7 +336,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3RHV2pjeU9IeEZTek0yT0JvTENOZlhCQkFDR2dORlZWSTRISERWb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRloiLCI3MjgiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RHV2pjeU9IeEZTek0yT0JvTENOSFhCQkFDR2dORlZWSTRISEQ4b0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRloiLCI3MjgiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -413,7 +413,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3RHV2pjeU9IeEZTek01T0JvTENOZlhCQkFDR2dORlZWSTRISERWb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRloiLCI3MjgiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RHV2pjeU9IeEZTek01T0JvTENOSFhCQkFDR2dORlZWSTRISEQ4b0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRloiLCI3MjgiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -490,7 +490,7 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3RGU3pFeU1ueEZTek01T0JvTENOZlhCQkFDR2dORlZWSTRISERWb0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RGU3pFeU1ueEZTek01T0JvTENOSFhCQkFDR2dORlZWSTRISEQ4b0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -567,7 +567,84 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZzFGU3pFeE9IeEZTek01T0NNeEdnc0kxOWNFRUFJYUEwVlZVamdjY05XZ0JRPT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJEWEIiLG51bGwsIkVLIiwiMTE4Il0sWyJEWEIiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJFSyIsIjM5OCJdXV0=",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RGU3pFeE9IeEZTek01T0JvTENOSFhCQkFDR2dORlZWSTRISEQ4b0FVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMTgiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "booking_token": null
+        },
+        {
+          "price": 770,
+          "is_best": true,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+          "carbon_diff": 0,
+          "airlines": [
+            "Qatar Airways"
+          ],
+          "flight_numbers": [
+            "QR 246",
+            "QR 962"
+          ],
+          "from": "IST",
+          "to": "DPS",
+          "departure_time": "2027-02-18 20:10",
+          "arrival_time": "2027-02-19 17:20",
+          "total_duration": 970,
+          "stops": 1,
+          "layovers": [
+            {
+              "airport": "DOH",
+              "name": "Hamad International Airport",
+              "duration": 145,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "Qatar Airways",
+              "flight_number": "QR 246",
+              "from": "IST",
+              "from_name": "Istanbul Airport",
+              "to": "DOH",
+              "to_name": "Hamad International Airport",
+              "departure_time": "2027-02-18 20:10",
+              "arrival_time": "2027-02-19 00:25",
+              "duration": 255,
+              "airplane": "Boeing 777",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+              "legroom": "31 in",
+              "extensions": [
+                "Average legroom (31 in)",
+                "Free Wi-Fi",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 231 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            },
+            {
+              "airline": "Qatar Airways",
+              "flight_number": "QR 962",
+              "from": "DOH",
+              "from_name": "Hamad International Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 02:50",
+              "arrival_time": "2027-02-19 17:20",
+              "duration": 570,
+              "airplane": "Airbus A350",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
+              "legroom": "31 in",
+              "extensions": [
+                "Average legroom (31 in)",
+                "Free Wi-Fi",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 478 kg"
+              ],
+              "overnight": true,
+              "often_delayed": false
+            }
+          ],
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RSVWpJME5ueFJVamsyTWhvTENJN1pCQkFDR2dORlZWSTRISERRb2dVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDYiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
@@ -644,84 +721,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3RSVWpJME1IeFJVamsyTWhvTENLYlpCQkFDR2dORlZWSTRISEM5b2dVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDAiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
-          "booking_token": null
-        },
-        {
-          "price": 770,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
-          "carbon_diff": -1,
-          "airlines": [
-            "Qatar Airways"
-          ],
-          "flight_numbers": [
-            "QR 246",
-            "QR 962"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 20:10",
-          "arrival_time": "2027-02-19 17:20",
-          "total_duration": 970,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "DOH",
-              "name": "Hamad International Airport",
-              "duration": 145,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Qatar Airways",
-              "flight_number": "QR 246",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "DOH",
-              "to_name": "Hamad International Airport",
-              "departure_time": "2027-02-18 20:10",
-              "arrival_time": "2027-02-19 00:25",
-              "duration": 255,
-              "airplane": "Boeing 777",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "Free Wi-Fi",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 231 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            },
-            {
-              "airline": "Qatar Airways",
-              "flight_number": "QR 962",
-              "from": "DOH",
-              "from_name": "Hamad International Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 02:50",
-              "arrival_time": "2027-02-19 17:20",
-              "duration": 570,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "Free Wi-Fi",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 478 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3RSVWpJME5ueFJVamsyTWhvTENLYlpCQkFDR2dORlZWSTRISEM5b2dVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDYiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RSVWpJME1IeFJVamsyTWhvTENJN1pCQkFDR2dORlZWSTRISERRb2dVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDAiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
@@ -798,7 +798,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3RSVWpJME5ueFJVamsyTUJvTENLYlpCQkFDR2dORlZWSTRISEM5b2dVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDYiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RSVWpJME5ueFJVamsyTUJvTENJN1pCQkFDR2dORlZWSTRISERRb2dVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDYiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
@@ -875,104 +875,12 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3RSVWpJME1IeFJVamsyTUJvTENNTGFCQkFDR2dORlZWSTRISERzb3dVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDAiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RSVWpJME1IeFJVamsyTUJvTENQYmFCQkFDR2dORlZWSTRISERVcEFVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIyNDAiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 788,
+          "price": 812,
           "is_best": true,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
-          "carbon_diff": -24,
-          "airlines": [
-            "Turkish Airlines"
-          ],
-          "flight_numbers": [
-            "TK 66"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 01:55",
-          "arrival_time": "2027-02-18 19:30",
-          "total_duration": 755,
-          "stops": 0,
-          "layovers": [],
-          "legs": [
-            {
-              "airline": "Turkish Airlines",
-              "flight_number": "TK 66",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-18 01:55",
-              "arrival_time": "2027-02-18 19:30",
-              "duration": 755,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "Wi-Fi for a fee",
-                "In-seat USB outlet",
-                "On-demand video",
-                "Carbon emissions estimate: 540 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ1pVU3pZMkl6RWFDd2lkNXdRUUFob0RSVlZTT0J4d2piSUYiLFtbIklTVCIsIjIwMjctMDItMTgiLCJEUFMiLG51bGwsIlRLIiwiNjYiXV1d",
-          "booking_token": null
-        },
-        {
-          "price": 788,
-          "is_best": true,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
-          "carbon_diff": -22,
-          "airlines": [
-            "Turkish Airlines"
-          ],
-          "flight_numbers": [
-            "TK 310"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 02:25",
-          "arrival_time": "2027-02-18 20:05",
-          "total_duration": 760,
-          "stops": 0,
-          "layovers": [],
-          "legs": [
-            {
-              "airline": "Turkish Airlines",
-              "flight_number": "TK 310",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-18 02:25",
-              "arrival_time": "2027-02-18 20:05",
-              "duration": 760,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "Wi-Fi for a fee",
-                "In-seat USB outlet",
-                "On-demand video",
-                "Carbon emissions estimate: 554 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ2RVU3pNeE1DTXhHZ3NJbmVjRUVBSWFBMFZWVWpnY2NJMnlCUT09IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFBTIixudWxsLCJUSyIsIjMxMCJdXV0=",
-          "booking_token": null
-        },
-        {
-          "price": 813,
-          "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": 11,
           "airlines": [
@@ -1044,11 +952,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZzFGV1RVME1ueEZXVFEzTmlNeEdnc0kxL29FRUFJYUEwVlZVamdjY1BiSEJRPT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJBVUgiLG51bGwsIkVZIiwiNTQyIl0sWyJBVUgiLCIyMDI3LTAyLTE4IiwiRFBTIixudWxsLCJFWSIsIjQ3NiJdXV0=",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RGV1RVME1ueEZXVFEzTmhvTENMRDZCQkFDR2dORlZWSTRISEQ2eHdVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI1NDIiXSxbIkFVSCIsIjIwMjctMDItMTgiLCJEUFMiLG51bGwsIkVZIiwiNDc2Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 813,
+          "price": 812,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": -9,
@@ -1121,47 +1029,252 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZzFGV1RVME1ueEZXVFEzT0NNeEdnc0kxL29FRUFJYUEwVlZVamdjY1BiSEJRPT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJBVUgiLG51bGwsIkVZIiwiNTQyIl0sWyJBVUgiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJFWSIsIjQ3OCJdXV0=",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RGV1RVME1ueEZXVFEzT0JvTENMRDZCQkFDR2dORlZWSTRISEQ2eHdVPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI1NDIiXSxbIkFVSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVZIiwiNDc4Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 890,
+          "price": 848,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": -4,
+          "carbon_diff": 6,
           "airlines": [
-            "Turkish Airlines",
-            "Garuda Indonesia"
+            "Emirates",
+            "Jetstar"
           ],
           "flight_numbers": [
-            "TK 56",
-            "GA 652"
+            "EK 122",
+            "EK 354",
+            "JQ 87"
           ],
           "from": "IST",
           "to": "DPS",
-          "departure_time": "2027-02-18 02:20",
-          "arrival_time": "2027-02-19 00:20",
-          "total_duration": 1020,
-          "stops": 1,
+          "departure_time": "2027-02-18 20:05",
+          "arrival_time": "2027-02-19 22:15",
+          "total_duration": 1270,
+          "stops": 2,
           "layovers": [
             {
-              "airport": "CGK",
-              "name": "Soekarno–Hatta International Airport",
-              "duration": 205,
+              "airport": "DXB",
+              "name": "Dubai International Airport",
+              "duration": 115,
+              "overnight": false
+            },
+            {
+              "airport": "SIN",
+              "name": "Singapore Changi Airport",
+              "duration": 275,
               "overnight": false
             }
           ],
           "legs": [
             {
-              "airline": "Turkish Airlines",
-              "flight_number": "TK 56",
+              "airline": "Emirates",
+              "flight_number": "EK 122",
               "from": "IST",
               "from_name": "Istanbul Airport",
-              "to": "CGK",
-              "to_name": "Soekarno–Hatta International Airport",
-              "departure_time": "2027-02-18 02:20",
-              "arrival_time": "2027-02-18 18:00",
-              "duration": 700,
+              "to": "DXB",
+              "to_name": "Dubai International Airport",
+              "departure_time": "2027-02-18 20:05",
+              "arrival_time": "2027-02-19 01:20",
+              "duration": 255,
+              "airplane": "Boeing 777",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 234 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            },
+            {
+              "airline": "Emirates",
+              "flight_number": "EK 354",
+              "from": "DXB",
+              "from_name": "Dubai International Airport",
+              "to": "SIN",
+              "to_name": "Singapore Changi Airport",
+              "departure_time": "2027-02-19 03:15",
+              "arrival_time": "2027-02-19 14:50",
+              "duration": 455,
+              "airplane": "Airbus A380",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 405 kg"
+              ],
+              "overnight": true,
+              "often_delayed": true
+            },
+            {
+              "airline": "Jetstar",
+              "flight_number": "JQ 87",
+              "from": "SIN",
+              "from_name": "Singapore Changi Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 19:25",
+              "arrival_time": "2027-02-19 22:15",
+              "duration": 170,
+              "airplane": "Airbus A321neo",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/JQ.png",
+              "legroom": "29 in",
+              "extensions": [
+                "Below average legroom (29 in)",
+                "In-seat USB outlet",
+                "Stream media to your device",
+                "Carbon emissions estimate: 113 kg"
+              ],
+              "overnight": false,
+              "often_delayed": true
+            }
+          ],
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFaEpGU3pFeU1ueEZTek0xTkh4S1VUZzNJekVhQ3dpS2xnVVFBaG9EUlZWU09CeHdodWNGIixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIlNJTiIsbnVsbCwiRUsiLCIzNTQiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkpRIiwiODciXV1d",
+          "booking_token": null
+        },
+        {
+          "price": 848,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+          "carbon_diff": 5,
+          "airlines": [
+            "Emirates",
+            "Jetstar"
+          ],
+          "flight_numbers": [
+            "EK 122",
+            "EK 348",
+            "JQ 87"
+          ],
+          "from": "IST",
+          "to": "DPS",
+          "departure_time": "2027-02-18 20:05",
+          "arrival_time": "2027-02-19 22:15",
+          "total_duration": 1270,
+          "stops": 2,
+          "layovers": [
+            {
+              "airport": "DXB",
+              "name": "Dubai International Airport",
+              "duration": 60,
+              "overnight": false
+            },
+            {
+              "airport": "SIN",
+              "name": "Singapore Changi Airport",
+              "duration": 350,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "Emirates",
+              "flight_number": "EK 122",
+              "from": "IST",
+              "from_name": "Istanbul Airport",
+              "to": "DXB",
+              "to_name": "Dubai International Airport",
+              "departure_time": "2027-02-18 20:05",
+              "arrival_time": "2027-02-19 01:20",
+              "duration": 255,
+              "airplane": "Boeing 777",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 234 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            },
+            {
+              "airline": "Emirates",
+              "flight_number": "EK 348",
+              "from": "DXB",
+              "from_name": "Dubai International Airport",
+              "to": "SIN",
+              "to_name": "Singapore Changi Airport",
+              "departure_time": "2027-02-19 02:20",
+              "arrival_time": "2027-02-19 13:35",
+              "duration": 435,
+              "airplane": "Boeing 777",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 403 kg"
+              ],
+              "overnight": true,
+              "often_delayed": true
+            },
+            {
+              "airline": "Jetstar",
+              "flight_number": "JQ 87",
+              "from": "SIN",
+              "from_name": "Singapore Changi Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 19:25",
+              "arrival_time": "2027-02-19 22:15",
+              "duration": 170,
+              "airplane": "Airbus A321neo",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/JQ.png",
+              "legroom": "29 in",
+              "extensions": [
+                "Below average legroom (29 in)",
+                "In-seat USB outlet",
+                "Stream media to your device",
+                "Carbon emissions estimate: 113 kg"
+              ],
+              "overnight": false,
+              "often_delayed": true
+            }
+          ],
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFaEpGU3pFeU1ueEZTek0wT0h4S1VUZzNJekVhQ3dpS2xnVVFBaG9EUlZWU09CeHdodWNGIixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIlNJTiIsbnVsbCwiRUsiLCIzNDgiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkpRIiwiODciXV1d",
+          "booking_token": null
+        },
+        {
+          "price": 889,
+          "is_best": true,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+          "carbon_diff": -24,
+          "airlines": [
+            "Turkish Airlines"
+          ],
+          "flight_numbers": [
+            "TK 66"
+          ],
+          "from": "IST",
+          "to": "DPS",
+          "departure_time": "2027-02-18 01:55",
+          "arrival_time": "2027-02-18 19:30",
+          "total_duration": 755,
+          "stops": 0,
+          "layovers": [],
+          "legs": [
+            {
+              "airline": "Turkish Airlines",
+              "flight_number": "TK 66",
+              "from": "IST",
+              "from_name": "Istanbul Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-18 01:55",
+              "arrival_time": "2027-02-18 19:30",
+              "duration": 755,
               "airplane": "Airbus A350",
               "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
               "legroom": "31 in",
@@ -1170,246 +1283,166 @@
                 "Wi-Fi for a fee",
                 "In-seat USB outlet",
                 "On-demand video",
-                "Carbon emissions estimate: 576 kg"
+                "Carbon emissions estimate: 540 kg"
               ],
               "overnight": true,
               "often_delayed": false
+            }
+          ],
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ1JVU3pZMkdnc0k1clVGRUFJYUEwVlZVamdjY05PS0JnPT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJEUFMiLG51bGwsIlRLIiwiNjYiXV1d",
+          "booking_token": null
+        },
+        {
+          "price": 889,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+          "carbon_diff": -22,
+          "airlines": [
+            "Turkish Airlines"
+          ],
+          "flight_numbers": [
+            "TK 310"
+          ],
+          "from": "IST",
+          "to": "DPS",
+          "departure_time": "2027-02-18 02:25",
+          "arrival_time": "2027-02-18 20:05",
+          "total_duration": 760,
+          "stops": 0,
+          "layovers": [],
+          "legs": [
+            {
+              "airline": "Turkish Airlines",
+              "flight_number": "TK 310",
+              "from": "IST",
+              "from_name": "Istanbul Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-18 02:25",
+              "arrival_time": "2027-02-18 20:05",
+              "duration": 760,
+              "airplane": "Airbus A350",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+              "legroom": "31 in",
+              "extensions": [
+                "Average legroom (31 in)",
+                "Wi-Fi for a fee",
+                "In-seat USB outlet",
+                "On-demand video",
+                "Carbon emissions estimate: 554 kg"
+              ],
+              "overnight": true,
+              "often_delayed": false
+            }
+          ],
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ1ZVU3pNeE1Cb0xDT2ExQlJBQ0dnTkZWVkk0SEhEVGlnWT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJEUFMiLG51bGwsIlRLIiwiMzEwIl1dXQ==",
+          "booking_token": null
+        },
+        {
+          "price": 925,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+          "carbon_diff": 8,
+          "airlines": [
+            "Emirates",
+            "Garuda Indonesia"
+          ],
+          "flight_numbers": [
+            "EK 122",
+            "EK 356",
+            "GA 426"
+          ],
+          "from": "IST",
+          "to": "DPS",
+          "departure_time": "2027-02-18 20:05",
+          "arrival_time": "2027-02-19 21:50",
+          "total_duration": 1245,
+          "stops": 2,
+          "layovers": [
+            {
+              "airport": "DXB",
+              "name": "Dubai International Airport",
+              "duration": 180,
+              "overnight": false
+            },
+            {
+              "airport": "CGK",
+              "name": "Soekarno–Hatta International Airport",
+              "duration": 190,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "Emirates",
+              "flight_number": "EK 122",
+              "from": "IST",
+              "from_name": "Istanbul Airport",
+              "to": "DXB",
+              "to_name": "Dubai International Airport",
+              "departure_time": "2027-02-18 20:05",
+              "arrival_time": "2027-02-19 01:20",
+              "duration": 255,
+              "airplane": "Boeing 777",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 234 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            },
+            {
+              "airline": "Emirates",
+              "flight_number": "EK 356",
+              "from": "DXB",
+              "from_name": "Dubai International Airport",
+              "to": "CGK",
+              "to_name": "Soekarno–Hatta International Airport",
+              "departure_time": "2027-02-19 04:20",
+              "arrival_time": "2027-02-19 15:40",
+              "duration": 500,
+              "airplane": "Boeing 777",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 432 kg"
+              ],
+              "overnight": true,
+              "often_delayed": true
             },
             {
               "airline": "Garuda Indonesia",
-              "flight_number": "GA 652",
+              "flight_number": "GA 426",
               "from": "CGK",
               "from_name": "Soekarno–Hatta International Airport",
               "to": "DPS",
               "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-18 21:25",
-              "arrival_time": "2027-02-19 00:20",
-              "duration": 115,
-              "airplane": "Boeing 737",
+              "departure_time": "2027-02-19 18:50",
+              "arrival_time": "2027-02-19 21:50",
+              "duration": 120,
+              "airplane": "Airbus A330",
               "logo": "https://www.gstatic.com/flights/airline_logos/70px/GA.png",
-              "legroom": "31 in",
+              "legroom": "33 in",
               "extensions": [
-                "Average legroom (31 in)",
-                "On-demand video",
-                "Carbon emissions estimate: 107 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3BVU3pVMmZFZEJOalV5R2dzSS83WUZFQUlhQTBWVlVqZ2NjTW1MQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkNHSyIsbnVsbCwiVEsiLCI1NiJdLFsiQ0dLIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiR0EiLCI2NTIiXV1d",
-          "booking_token": null
-        },
-        {
-          "price": 935,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": 9,
-          "airlines": [
-            "Emirates",
-            "Batik Air"
-          ],
-          "flight_numbers": [
-            "EK 124",
-            "EK 346",
-            "OD 177"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 16:05",
-          "arrival_time": "2027-02-19 19:55",
-          "total_duration": 1370,
-          "stops": 2,
-          "layovers": [
-            {
-              "airport": "DXB",
-              "name": "Dubai International Airport",
-              "duration": 365,
-              "overnight": false
-            },
-            {
-              "airport": "KUL",
-              "name": "Kuala Lumpur International Airport",
-              "duration": 120,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 124",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "DXB",
-              "to_name": "Dubai International Airport",
-              "departure_time": "2027-02-18 16:05",
-              "arrival_time": "2027-02-18 21:35",
-              "duration": 270,
-              "airplane": "Airbus A380",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
+                "Above average legroom (33 in)",
                 "In-seat power & USB outlets",
                 "On-demand video",
-                "Carbon emissions estimate: 242 kg"
+                "Carbon emissions estimate: 103 kg"
               ],
               "overnight": false,
               "often_delayed": false
-            },
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 346",
-              "from": "DXB",
-              "from_name": "Dubai International Airport",
-              "to": "KUL",
-              "to_name": "Kuala Lumpur International Airport",
-              "departure_time": "2027-02-19 03:40",
-              "arrival_time": "2027-02-19 14:45",
-              "duration": 425,
-              "airplane": "Airbus A380",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 399 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "Batik Air",
-              "flight_number": "OD 177",
-              "from": "KUL",
-              "from_name": "Kuala Lumpur International Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 16:45",
-              "arrival_time": "2027-02-19 19:55",
-              "duration": 190,
-              "airplane": "Boeing 737MAX 8 Passenger",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
-              "legroom": "29 in",
-              "extensions": [
-                "Below average legroom (29 in)",
-                "Stream media to your device",
-                "Carbon emissions estimate: 138 kg"
-              ],
-              "overnight": false,
-              "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFaEZGU3pFeU5IeEZTek0wTm54UFJERTNOeG9MQ0pIYUJSQUNHZ05GVlZJNEhIRC9zZ1k9IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyNCJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
-          "booking_token": null
-        },
-        {
-          "price": 935,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": 7,
-          "airlines": [
-            "flydubai",
-            "Emirates",
-            "Batik Air"
-          ],
-          "flight_numbers": [
-            "FZ 728",
-            "EK 346",
-            "OD 177"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 18:35",
-          "arrival_time": "2027-02-19 19:55",
-          "total_duration": 1220,
-          "stops": 2,
-          "layovers": [
-            {
-              "airport": "DXB",
-              "name": "Dubai International Airport",
-              "duration": 215,
-              "overnight": false
-            },
-            {
-              "airport": "KUL",
-              "name": "Kuala Lumpur International Airport",
-              "duration": 120,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "flydubai",
-              "flight_number": "FZ 728",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "DXB",
-              "to_name": "Dubai International Airport",
-              "departure_time": "2027-02-18 18:35",
-              "arrival_time": "2027-02-19 00:05",
-              "duration": 270,
-              "airplane": "Boeing 737MAX 8 Passenger",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/FZ.png",
-              "legroom": "30 in",
-              "extensions": [
-                "Average legroom (30 in)",
-                "In-seat USB outlet",
-                "On-demand video",
-                "Carbon emissions estimate: 225 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            },
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 346",
-              "from": "DXB",
-              "from_name": "Dubai International Airport",
-              "to": "KUL",
-              "to_name": "Kuala Lumpur International Airport",
-              "departure_time": "2027-02-19 03:40",
-              "arrival_time": "2027-02-19 14:45",
-              "duration": 425,
-              "airplane": "Airbus A380",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 399 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "Batik Air",
-              "flight_number": "OD 177",
-              "from": "KUL",
-              "from_name": "Kuala Lumpur International Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 16:45",
-              "arrival_time": "2027-02-19 19:55",
-              "duration": 190,
-              "airplane": "Boeing 737MAX 8 Passenger",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
-              "legroom": "29 in",
-              "extensions": [
-                "Below average legroom (29 in)",
-                "Stream media to your device",
-                "Carbon emissions estimate: 138 kg"
-              ],
-              "overnight": false,
-              "often_delayed": true
-            }
-          ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFaEZHV2pjeU9IeEZTek0wTm54UFJERTNOeG9MQ0pIYUJSQUNHZ05GVlZJNEhIRC9zZ1k9IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJGWiIsIjcyOCJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFaE5GU3pFeU1ueEZTek0xTm54SFFUUXlOaU14R2dzSStkRUZFQUlhQTBWVlVqZ2NjSjZxQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMjIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJDR0siLG51bGwsIkVLIiwiMzU2Il0sWyJDR0siLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJHQSIsIjQyNiJdXV0=",
           "booking_token": null
         },
         {
@@ -1515,573 +1548,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFaEZGU3pFeU1ueEZTek0wTm54UFJERTNOeG9MQ0pIYUJSQUNHZ05GVlZJNEhIRC9zZ1k9IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFaEZGU3pFeU1ueEZTek0wTm54UFJERTNOeG9MQ0lMYUJSQUNHZ05GVlZJNEhIQ2xzd1k9IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 944,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": -11,
-          "airlines": [
-            "Turkish Airlines",
-            "Batik Air"
-          ],
-          "flight_numbers": [
-            "TK 62",
-            "OD 171"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 15:20",
-          "arrival_time": "2027-02-19 20:25",
-          "total_duration": 1445,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "KUL",
-              "name": "Kuala Lumpur International Airport",
-              "duration": 640,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Turkish Airlines",
-              "flight_number": "TK 62",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "KUL",
-              "to_name": "Kuala Lumpur International Airport",
-              "departure_time": "2027-02-18 15:20",
-              "arrival_time": "2027-02-19 06:35",
-              "duration": 615,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "Wi-Fi for a fee",
-                "In-seat USB outlet",
-                "On-demand video",
-                "Carbon emissions estimate: 500 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "Batik Air",
-              "flight_number": "OD 171",
-              "from": "KUL",
-              "from_name": "Kuala Lumpur International Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 17:15",
-              "arrival_time": "2027-02-19 20:25",
-              "duration": 190,
-              "airplane": "Boeing 737MAX 8 Passenger",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
-              "legroom": "29 in",
-              "extensions": [
-                "Below average legroom (29 in)",
-                "Stream media to your device",
-                "Carbon emissions estimate: 138 kg"
-              ],
-              "overnight": false,
-              "often_delayed": true
-            }
-          ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3BVU3pZeWZFOUVNVGN4R2dzSW1lRUZFQUlhQTBWVlVqZ2NjUFc2Qmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiVEsiLCI2MiJdLFsiS1VMIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiT0QiLCIxNzEiXV1d",
-          "booking_token": null
-        },
-        {
-          "price": 963,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": -10,
-          "airlines": [
-            "Turkish Airlines",
-            "THAI"
-          ],
-          "flight_numbers": [
-            "TK 58",
-            "TG 431"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 15:15",
-          "arrival_time": "2027-02-19 14:15",
-          "total_duration": 1080,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "BKK",
-              "name": "Suvarnabhumi Airport",
-              "duration": 270,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Turkish Airlines",
-              "flight_number": "TK 58",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "BKK",
-              "to_name": "Suvarnabhumi Airport",
-              "departure_time": "2027-02-18 15:15",
-              "arrival_time": "2027-02-19 04:20",
-              "duration": 545,
-              "airplane": "Boeing 787",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "Wi-Fi for a fee",
-                "In-seat USB outlet",
-                "On-demand video",
-                "Carbon emissions estimate: 435 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "THAI",
-              "flight_number": "TG 431",
-              "from": "BKK",
-              "from_name": "Suvarnabhumi Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 08:50",
-              "arrival_time": "2027-02-19 14:15",
-              "duration": 265,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 211 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3BVU3pVNGZGUkhORE14R2dzSWxQQUZFQUlhQTBWVlVqZ2NjTm5MQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEsiLCI1OCJdLFsiQktLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEciLCI0MzEiXV1d",
-          "booking_token": null
-        },
-        {
-          "price": 963,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": -1,
-          "airlines": [
-            "Turkish Airlines",
-            "THAI"
-          ],
-          "flight_numbers": [
-            "TK 58",
-            "TG 439"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 15:15",
-          "arrival_time": "2027-02-19 18:00",
-          "total_duration": 1305,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "BKK",
-              "name": "Suvarnabhumi Airport",
-              "duration": 495,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Turkish Airlines",
-              "flight_number": "TK 58",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "BKK",
-              "to_name": "Suvarnabhumi Airport",
-              "departure_time": "2027-02-18 15:15",
-              "arrival_time": "2027-02-19 04:20",
-              "duration": 545,
-              "airplane": "Boeing 787",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "Wi-Fi for a fee",
-                "In-seat USB outlet",
-                "On-demand video",
-                "Carbon emissions estimate: 435 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "THAI",
-              "flight_number": "TG 439",
-              "from": "BKK",
-              "from_name": "Suvarnabhumi Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 12:35",
-              "arrival_time": "2027-02-19 18:00",
-              "duration": 265,
-              "airplane": "Airbus A320",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
-              "legroom": "30 in",
-              "extensions": [
-                "Average legroom (30 in)",
-                "Stream media to your device",
-                "Carbon emissions estimate: 273 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3BVU3pVNGZGUkhORE01R2dzSWxQQUZFQUlhQTBWVlVqZ2NjTm5MQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEsiLCI1OCJdLFsiQktLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEciLCI0MzkiXV1d",
-          "booking_token": null
-        },
-        {
-          "price": 1013,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": -10,
-          "airlines": [
-            "Turkish Airlines",
-            "Etihad"
-          ],
-          "flight_numbers": [
-            "TK 868",
-            "EY 478"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 19:55",
-          "arrival_time": "2027-02-19 22:15",
-          "total_duration": 1280,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "AUH",
-              "name": "Zayed International Airport",
-              "duration": 440,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Turkish Airlines",
-              "flight_number": "TK 868",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "AUH",
-              "to_name": "Zayed International Airport",
-              "departure_time": "2027-02-18 19:55",
-              "arrival_time": "2027-02-19 01:30",
-              "duration": 275,
-              "airplane": "Boeing 737MAX 8 Passenger",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
-              "legroom": "30 in",
-              "extensions": [
-                "Average legroom (30 in)",
-                "Wi-Fi for a fee",
-                "In-seat USB outlet",
-                "On-demand video",
-                "Carbon emissions estimate: 253 kg"
-              ],
-              "overnight": false,
-              "often_delayed": true
-            },
-            {
-              "airline": "Etihad",
-              "flight_number": "EY 478",
-              "from": "AUH",
-              "from_name": "Zayed International Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 08:50",
-              "arrival_time": "2027-02-19 22:15",
-              "duration": 565,
-              "airplane": "Boeing 787-10",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 392 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZzFVU3pnMk9IeEZXVFEzT0NNeEdnc0luWmNHRUFJYUEwVlZVamdjY01MM0JnPT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJBVUgiLG51bGwsIlRLIiwiODY4Il0sWyJBVUgiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJFWSIsIjQ3OCJdXV0=",
-          "booking_token": null
-        },
-        {
-          "price": 1017,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
-          "carbon_diff": -6,
-          "airlines": [
-            "THAI"
-          ],
-          "flight_numbers": [
-            "TG 901",
-            "TG 431"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 16:30",
-          "arrival_time": "2027-02-19 14:15",
-          "total_duration": 1005,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "BKK",
-              "name": "Suvarnabhumi Airport",
-              "duration": 210,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "THAI",
-              "flight_number": "TG 901",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "BKK",
-              "to_name": "Suvarnabhumi Airport",
-              "departure_time": "2027-02-18 16:30",
-              "arrival_time": "2027-02-19 05:20",
-              "duration": 530,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 462 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "THAI",
-              "flight_number": "TG 431",
-              "from": "BKK",
-              "from_name": "Suvarnabhumi Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 08:50",
-              "arrival_time": "2027-02-19 14:15",
-              "duration": 265,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 211 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZzFVUnprd01YeFVSelF6TVNNeEdnc0k4NWtHRUFJYUEwVlZVamdjY01MNkJnPT0iLFtbIklTVCIsIjIwMjctMDItMTgiLCJCS0siLG51bGwsIlRHIiwiOTAxIl0sWyJCS0siLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJURyIsIjQzMSJdXV0=",
-          "booking_token": null
-        },
-        {
-          "price": 1017,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
-          "carbon_diff": 3,
-          "airlines": [
-            "THAI"
-          ],
-          "flight_numbers": [
-            "TG 901",
-            "TG 439"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 16:30",
-          "arrival_time": "2027-02-19 18:00",
-          "total_duration": 1230,
-          "stops": 1,
-          "layovers": [
-            {
-              "airport": "BKK",
-              "name": "Suvarnabhumi Airport",
-              "duration": 435,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "THAI",
-              "flight_number": "TG 901",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "BKK",
-              "to_name": "Suvarnabhumi Airport",
-              "departure_time": "2027-02-18 16:30",
-              "arrival_time": "2027-02-19 05:20",
-              "duration": 530,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
-              "legroom": "31 in",
-              "extensions": [
-                "Average legroom (31 in)",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 462 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "THAI",
-              "flight_number": "TG 439",
-              "from": "BKK",
-              "from_name": "Suvarnabhumi Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 12:35",
-              "arrival_time": "2027-02-19 18:00",
-              "duration": 265,
-              "airplane": "Airbus A320",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
-              "legroom": "30 in",
-              "extensions": [
-                "Average legroom (30 in)",
-                "Stream media to your device",
-                "Carbon emissions estimate: 273 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3RVUnprd01YeFVSelF6T1JvTENQT1pCaEFDR2dORlZWSTRISERDK2dZPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEciLCI5MDEiXSxbIkJLSyIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRHIiwiNDM5Il1dXQ==",
-          "booking_token": null
-        },
-        {
-          "price": 1021,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": 9,
-          "airlines": [
-            "Emirates",
-            "Batik Air"
-          ],
-          "flight_numbers": [
-            "EK 124",
-            "EK 346",
-            "OD 171"
-          ],
-          "from": "IST",
-          "to": "DPS",
-          "departure_time": "2027-02-18 16:05",
-          "arrival_time": "2027-02-19 20:25",
-          "total_duration": 1400,
-          "stops": 2,
-          "layovers": [
-            {
-              "airport": "DXB",
-              "name": "Dubai International Airport",
-              "duration": 365,
-              "overnight": false
-            },
-            {
-              "airport": "KUL",
-              "name": "Kuala Lumpur International Airport",
-              "duration": 150,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 124",
-              "from": "IST",
-              "from_name": "Istanbul Airport",
-              "to": "DXB",
-              "to_name": "Dubai International Airport",
-              "departure_time": "2027-02-18 16:05",
-              "arrival_time": "2027-02-18 21:35",
-              "duration": 270,
-              "airplane": "Airbus A380",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 242 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            },
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 346",
-              "from": "DXB",
-              "from_name": "Dubai International Airport",
-              "to": "KUL",
-              "to_name": "Kuala Lumpur International Airport",
-              "departure_time": "2027-02-19 03:40",
-              "arrival_time": "2027-02-19 14:45",
-              "duration": 425,
-              "airplane": "Airbus A380",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 399 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "Batik Air",
-              "flight_number": "OD 171",
-              "from": "KUL",
-              "from_name": "Kuala Lumpur International Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 17:15",
-              "arrival_time": "2027-02-19 20:25",
-              "duration": 190,
-              "airplane": "Boeing 737MAX 8 Passenger",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
-              "legroom": "29 in",
-              "extensions": [
-                "Below average legroom (29 in)",
-                "Stream media to your device",
-                "Carbon emissions estimate: 138 kg"
-              ],
-              "overnight": false,
-              "often_delayed": true
-            }
-          ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFaEZGU3pFeU5IeEZTek0wTm54UFJERTNNUm9MQ0s2ZEJoQUNHZ05GVlZJNEhIQ3ovZ1k9IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyNCJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTcxIl1dXQ==",
-          "booking_token": null
-        },
-        {
-          "price": 1021,
+          "price": 954,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
           "carbon_diff": 8,
@@ -2183,121 +1654,546 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFaEZGU3pFeU1ueEZTek0wTm54UFJERTNNUm9MQ0s2ZEJoQUNHZ05GVlZJNEhIQ3ovZ1k9IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTcxIl1dXQ==",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFaEZGU3pFeU1ueEZTek0wTm54UFJERTNNUm9MQ05Mb0JSQUNHZ05GVlZJNEhIRGF3d1k9IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEyMiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTcxIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 1021,
+          "price": 990,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": 4,
+          "carbon_diff": -4,
           "airlines": [
-            "Emirates",
-            "Batik Air"
+            "Turkish Airlines",
+            "Garuda Indonesia"
           ],
           "flight_numbers": [
-            "EK 118",
-            "EK 344",
-            "OD 193"
+            "TK 56",
+            "GA 652"
           ],
           "from": "IST",
           "to": "DPS",
-          "departure_time": "2027-02-18 23:40",
-          "arrival_time": "2027-02-20 17:00",
-          "total_duration": 2180,
-          "stops": 2,
+          "departure_time": "2027-02-18 02:20",
+          "arrival_time": "2027-02-19 00:20",
+          "total_duration": 1020,
+          "stops": 1,
           "layovers": [
             {
-              "airport": "DXB",
-              "name": "Dubai International Airport",
-              "duration": 995,
-              "overnight": false
-            },
-            {
-              "airport": "KUL",
-              "name": "Kuala Lumpur International Airport",
-              "duration": 330,
+              "airport": "CGK",
+              "name": "Soekarno–Hatta International Airport",
+              "duration": 205,
               "overnight": false
             }
           ],
           "legs": [
             {
-              "airline": "Emirates",
-              "flight_number": "EK 118",
+              "airline": "Turkish Airlines",
+              "flight_number": "TK 56",
               "from": "IST",
               "from_name": "Istanbul Airport",
-              "to": "DXB",
-              "to_name": "Dubai International Airport",
-              "departure_time": "2027-02-18 23:40",
-              "arrival_time": "2027-02-19 04:55",
-              "duration": 255,
+              "to": "CGK",
+              "to_name": "Soekarno–Hatta International Airport",
+              "departure_time": "2027-02-18 02:20",
+              "arrival_time": "2027-02-18 18:00",
+              "duration": 700,
               "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+              "legroom": "31 in",
               "extensions": [
-                "Above average legroom (32 in)",
+                "Average legroom (31 in)",
                 "Wi-Fi for a fee",
                 "In-seat USB outlet",
                 "On-demand video",
-                "Carbon emissions estimate: 211 kg"
+                "Carbon emissions estimate: 576 kg"
               ],
               "overnight": true,
               "often_delayed": false
             },
             {
-              "airline": "Emirates",
-              "flight_number": "EK 344",
-              "from": "DXB",
-              "from_name": "Dubai International Airport",
-              "to": "KUL",
-              "to_name": "Kuala Lumpur International Airport",
-              "departure_time": "2027-02-19 21:30",
-              "arrival_time": "2027-02-20 08:30",
-              "duration": 420,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
+              "airline": "Garuda Indonesia",
+              "flight_number": "GA 652",
+              "from": "CGK",
+              "from_name": "Soekarno–Hatta International Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-18 21:25",
+              "arrival_time": "2027-02-19 00:20",
+              "duration": 115,
+              "airplane": "Boeing 737",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/GA.png",
+              "legroom": "31 in",
               "extensions": [
-                "Above average legroom (32 in)",
+                "Average legroom (31 in)",
+                "On-demand video",
+                "Carbon emissions estimate: 107 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            }
+          ],
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3BVU3pVMmZFZEJOalV5R2dzSTY0UUdFQUlhQTBWVlVqZ2NjSzNqQmc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkNHSyIsbnVsbCwiVEsiLCI1NiJdLFsiQ0dLIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiR0EiLCI2NTIiXV1d",
+          "booking_token": null
+        },
+        {
+          "price": 1013,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+          "carbon_diff": -9,
+          "airlines": [
+            "Turkish Airlines",
+            "Etihad"
+          ],
+          "flight_numbers": [
+            "TK 868",
+            "EY 478"
+          ],
+          "from": "IST",
+          "to": "DPS",
+          "departure_time": "2027-02-18 19:55",
+          "arrival_time": "2027-02-19 22:15",
+          "total_duration": 1280,
+          "stops": 1,
+          "layovers": [
+            {
+              "airport": "AUH",
+              "name": "Zayed International Airport",
+              "duration": 440,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "Turkish Airlines",
+              "flight_number": "TK 868",
+              "from": "IST",
+              "from_name": "Istanbul Airport",
+              "to": "AUH",
+              "to_name": "Zayed International Airport",
+              "departure_time": "2027-02-18 19:55",
+              "arrival_time": "2027-02-19 01:30",
+              "duration": 275,
+              "airplane": "Boeing 737MAX 8 Passenger",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+              "legroom": "30 in",
+              "extensions": [
+                "Average legroom (30 in)",
                 "Wi-Fi for a fee",
                 "In-seat USB outlet",
                 "On-demand video",
-                "Carbon emissions estimate: 345 kg"
+                "Carbon emissions estimate: 253 kg"
+              ],
+              "overnight": false,
+              "often_delayed": true
+            },
+            {
+              "airline": "Etihad",
+              "flight_number": "EY 478",
+              "from": "AUH",
+              "from_name": "Zayed International Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 08:50",
+              "arrival_time": "2027-02-19 22:15",
+              "duration": 565,
+              "airplane": "Boeing 787-10",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
+              "legroom": "31 in",
+              "extensions": [
+                "Average legroom (31 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 392 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            }
+          ],
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RVU3pnMk9IeEZXVFEzT0JvTENPeVdCaEFDR2dORlZWSTRISERJOXdZPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiVEsiLCI4NjgiXSxbIkFVSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVZIiwiNDc4Il1dXQ==",
+          "booking_token": null
+        },
+        {
+          "price": 1044,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+          "carbon_diff": -10,
+          "airlines": [
+            "Turkish Airlines",
+            "Batik Air"
+          ],
+          "flight_numbers": [
+            "TK 62",
+            "OD 171"
+          ],
+          "from": "IST",
+          "to": "DPS",
+          "departure_time": "2027-02-18 15:20",
+          "arrival_time": "2027-02-19 20:25",
+          "total_duration": 1445,
+          "stops": 1,
+          "layovers": [
+            {
+              "airport": "KUL",
+              "name": "Kuala Lumpur International Airport",
+              "duration": 640,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "Turkish Airlines",
+              "flight_number": "TK 62",
+              "from": "IST",
+              "from_name": "Istanbul Airport",
+              "to": "KUL",
+              "to_name": "Kuala Lumpur International Airport",
+              "departure_time": "2027-02-18 15:20",
+              "arrival_time": "2027-02-19 06:35",
+              "duration": 615,
+              "airplane": "Airbus A350",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+              "legroom": "31 in",
+              "extensions": [
+                "Average legroom (31 in)",
+                "Wi-Fi for a fee",
+                "In-seat USB outlet",
+                "On-demand video",
+                "Carbon emissions estimate: 500 kg"
               ],
               "overnight": true,
               "often_delayed": false
             },
             {
               "airline": "Batik Air",
-              "flight_number": "OD 193",
+              "flight_number": "OD 171",
               "from": "KUL",
               "from_name": "Kuala Lumpur International Airport",
               "to": "DPS",
               "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-20 14:00",
-              "arrival_time": "2027-02-20 17:00",
-              "duration": 180,
-              "airplane": "Boeing 737",
+              "departure_time": "2027-02-19 17:15",
+              "arrival_time": "2027-02-19 20:25",
+              "duration": 190,
+              "airplane": "Boeing 737MAX 8 Passenger",
               "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
+              "legroom": "29 in",
+              "extensions": [
+                "Below average legroom (29 in)",
+                "Stream media to your device",
+                "Carbon emissions estimate: 138 kg"
+              ],
+              "overnight": false,
+              "often_delayed": true
+            }
+          ],
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3BVU3pZeWZFOUVNVGN4R2dzSS82NEdFQUlhQTBWVlVqZ2NjTldTQnc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiVEsiLCI2MiJdLFsiS1VMIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiT0QiLCIxNzEiXV1d",
+          "booking_token": null
+        },
+        {
+          "price": 1063,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+          "carbon_diff": -9,
+          "airlines": [
+            "Turkish Airlines",
+            "THAI"
+          ],
+          "flight_numbers": [
+            "TK 58",
+            "TG 431"
+          ],
+          "from": "IST",
+          "to": "DPS",
+          "departure_time": "2027-02-18 15:15",
+          "arrival_time": "2027-02-19 14:15",
+          "total_duration": 1080,
+          "stops": 1,
+          "layovers": [
+            {
+              "airport": "BKK",
+              "name": "Suvarnabhumi Airport",
+              "duration": 270,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "Turkish Airlines",
+              "flight_number": "TK 58",
+              "from": "IST",
+              "from_name": "Istanbul Airport",
+              "to": "BKK",
+              "to_name": "Suvarnabhumi Airport",
+              "departure_time": "2027-02-18 15:15",
+              "arrival_time": "2027-02-19 04:20",
+              "duration": 545,
+              "airplane": "Boeing 787",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+              "legroom": "31 in",
+              "extensions": [
+                "Average legroom (31 in)",
+                "Wi-Fi for a fee",
+                "In-seat USB outlet",
+                "On-demand video",
+                "Carbon emissions estimate: 435 kg"
+              ],
+              "overnight": true,
+              "often_delayed": false
+            },
+            {
+              "airline": "THAI",
+              "flight_number": "TG 431",
+              "from": "BKK",
+              "from_name": "Suvarnabhumi Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 08:50",
+              "arrival_time": "2027-02-19 14:15",
+              "duration": 265,
+              "airplane": "Airbus A350",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
               "legroom": "32 in",
               "extensions": [
                 "Above average legroom (32 in)",
-                "In-seat USB outlet",
+                "In-seat power & USB outlets",
                 "On-demand video",
-                "Carbon emissions estimate: 183 kg"
+                "Carbon emissions estimate: 211 kg"
               ],
               "overnight": false,
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFaEZGU3pFeE9IeEZTek0wTkh4UFJERTVNeG9MQ0s2ZEJoQUNHZ05GVlZJNEhIQ3ovZ1k9IixbWyJJU1QiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjExOCJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDQiXSxbIktVTCIsIjIwMjctMDItMjAiLCJEUFMiLG51bGwsIk9EIiwiMTkzIl1dXQ==",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3BVU3pVNGZGUkhORE14R2dzSStMMEdFQUlhQTBWVlVqZ2NjTGlqQnc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEsiLCI1OCJdLFsiQktLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEciLCI0MzEiXV1d",
           "booking_token": null
         },
         {
-          "price": 1042,
+          "price": 1063,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": -11,
+          "carbon_diff": -1,
+          "airlines": [
+            "Turkish Airlines",
+            "THAI"
+          ],
+          "flight_numbers": [
+            "TK 58",
+            "TG 439"
+          ],
+          "from": "IST",
+          "to": "DPS",
+          "departure_time": "2027-02-18 15:15",
+          "arrival_time": "2027-02-19 18:00",
+          "total_duration": 1305,
+          "stops": 1,
+          "layovers": [
+            {
+              "airport": "BKK",
+              "name": "Suvarnabhumi Airport",
+              "duration": 495,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "Turkish Airlines",
+              "flight_number": "TK 58",
+              "from": "IST",
+              "from_name": "Istanbul Airport",
+              "to": "BKK",
+              "to_name": "Suvarnabhumi Airport",
+              "departure_time": "2027-02-18 15:15",
+              "arrival_time": "2027-02-19 04:20",
+              "duration": 545,
+              "airplane": "Boeing 787",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+              "legroom": "31 in",
+              "extensions": [
+                "Average legroom (31 in)",
+                "Wi-Fi for a fee",
+                "In-seat USB outlet",
+                "On-demand video",
+                "Carbon emissions estimate: 435 kg"
+              ],
+              "overnight": true,
+              "often_delayed": false
+            },
+            {
+              "airline": "THAI",
+              "flight_number": "TG 439",
+              "from": "BKK",
+              "from_name": "Suvarnabhumi Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 12:35",
+              "arrival_time": "2027-02-19 18:00",
+              "duration": 265,
+              "airplane": "Airbus A320",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
+              "legroom": "30 in",
+              "extensions": [
+                "Average legroom (30 in)",
+                "Stream media to your device",
+                "Carbon emissions estimate: 273 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            }
+          ],
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3BVU3pVNGZGUkhORE01R2dzSStMMEdFQUlhQTBWVlVqZ2NjTGlqQnc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEsiLCI1OCJdLFsiQktLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEciLCI0MzkiXV1d",
+          "booking_token": null
+        },
+        {
+          "price": 1116,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
+          "carbon_diff": -5,
+          "airlines": [
+            "THAI"
+          ],
+          "flight_numbers": [
+            "TG 901",
+            "TG 431"
+          ],
+          "from": "IST",
+          "to": "DPS",
+          "departure_time": "2027-02-18 16:30",
+          "arrival_time": "2027-02-19 14:15",
+          "total_duration": 1005,
+          "stops": 1,
+          "layovers": [
+            {
+              "airport": "BKK",
+              "name": "Suvarnabhumi Airport",
+              "duration": 210,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "THAI",
+              "flight_number": "TG 901",
+              "from": "IST",
+              "from_name": "Istanbul Airport",
+              "to": "BKK",
+              "to_name": "Suvarnabhumi Airport",
+              "departure_time": "2027-02-18 16:30",
+              "arrival_time": "2027-02-19 05:20",
+              "duration": 530,
+              "airplane": "Airbus A350",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
+              "legroom": "31 in",
+              "extensions": [
+                "Average legroom (31 in)",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 462 kg"
+              ],
+              "overnight": true,
+              "often_delayed": false
+            },
+            {
+              "airline": "THAI",
+              "flight_number": "TG 431",
+              "from": "BKK",
+              "from_name": "Suvarnabhumi Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 08:50",
+              "arrival_time": "2027-02-19 14:15",
+              "duration": 265,
+              "airplane": "Airbus A350",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 211 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            }
+          ],
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RVUnprd01YeFVSelF6TVJvTENOWG5CaEFDR2dORlZWSTRISENpMGdjPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEciLCI5MDEiXSxbIkJLSyIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRHIiwiNDMxIl1dXQ==",
+          "booking_token": null
+        },
+        {
+          "price": 1116,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
+          "carbon_diff": 3,
+          "airlines": [
+            "THAI"
+          ],
+          "flight_numbers": [
+            "TG 901",
+            "TG 439"
+          ],
+          "from": "IST",
+          "to": "DPS",
+          "departure_time": "2027-02-18 16:30",
+          "arrival_time": "2027-02-19 18:00",
+          "total_duration": 1230,
+          "stops": 1,
+          "layovers": [
+            {
+              "airport": "BKK",
+              "name": "Suvarnabhumi Airport",
+              "duration": 435,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "THAI",
+              "flight_number": "TG 901",
+              "from": "IST",
+              "from_name": "Istanbul Airport",
+              "to": "BKK",
+              "to_name": "Suvarnabhumi Airport",
+              "departure_time": "2027-02-18 16:30",
+              "arrival_time": "2027-02-19 05:20",
+              "duration": 530,
+              "airplane": "Airbus A350",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
+              "legroom": "31 in",
+              "extensions": [
+                "Average legroom (31 in)",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 462 kg"
+              ],
+              "overnight": true,
+              "often_delayed": false
+            },
+            {
+              "airline": "THAI",
+              "flight_number": "TG 439",
+              "from": "BKK",
+              "from_name": "Suvarnabhumi Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 12:35",
+              "arrival_time": "2027-02-19 18:00",
+              "duration": 265,
+              "airplane": "Airbus A320",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/TG.png",
+              "legroom": "30 in",
+              "extensions": [
+                "Average legroom (30 in)",
+                "Stream media to your device",
+                "Carbon emissions estimate: 273 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            }
+          ],
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3RVUnprd01YeFVSelF6T1JvTENOWG5CaEFDR2dORlZWSTRISENpMGdjPSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEciLCI5MDEiXSxbIkJLSyIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlRHIiwiNDM5Il1dXQ==",
+          "booking_token": null
+        },
+        {
+          "price": 1142,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+          "carbon_diff": -10,
           "airlines": [
             "Turkish Airlines",
             "Batik Air"
@@ -2366,11 +2262,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3BVU3pZeWZFOUVNVGMzR2dzSTNxMEdFQUlhQTBWVlVqZ2NjT0tRQnc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiVEsiLCI2MiJdLFsiS1VMIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiT0QiLCIxNzciXV1d",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3BVU3pZeWZFOUVNVGMzR2dzSXZ2c0dFQUlhQTBWVlVqZ2NjTUhvQnc9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiVEsiLCI2MiJdLFsiS1VMIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiT0QiLCIxNzciXV1d",
           "booking_token": null
         },
         {
-          "price": 1164,
+          "price": 1263,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
           "carbon_diff": -1,
@@ -2442,11 +2338,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3hVU3pZMGZGUkhORE01SXpFYUN3alpqQWNRQWhvRFJWVlNPQnh3cFBzSCIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEsiLCI2NCJdLFsiQktLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEciLCI0MzkiXV1d",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3BVU3pZMGZGUkhORE01R2dzSXROb0hFQUlhQTBWVlVqZ2NjSVhUQ0E9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkJLSyIsbnVsbCwiVEsiLCI2NCJdLFsiQktLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiVEciLCI0MzkiXV1d",
           "booking_token": null
         },
         {
-          "price": 1861,
+          "price": 1960,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
           "carbon_diff": -4,
@@ -2518,11 +2414,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3BVU3pVMmZFZEJOREF5R2dzSXNxMExFQUlhQTBWVlVqZ2NjS0xlREE9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkNHSyIsbnVsbCwiVEsiLCI1NiJdLFsiQ0dLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiR0EiLCI0MDIiXV1d",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3BVU3pVMmZFZEJOREF5R2dzSTdQb0xFQUlhQTBWVlVqZ2NjSWUyRFE9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkNHSyIsbnVsbCwiVEsiLCI1NiJdLFsiQ0dLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiR0EiLCI0MDIiXV1d",
           "booking_token": null
         },
         {
-          "price": 1861,
+          "price": 1960,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
           "carbon_diff": -4,
@@ -2594,7 +2490,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJT1U5dGEyZG9VMW8zYkRCQlNuTkxXSGRDUnkwdExTMHRMVzlyZUdJeE1pMXVNa0ZCUVVGQlIzSlphRGRqU2tWUVFXOUJFZ3BVU3pVMmZFZEJOREEyR2dzSXNxMExFQUlhQTBWVlVqZ2NjS0xlREE9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkNHSyIsbnVsbCwiVEsiLCI1NiJdLFsiQ0dLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiR0EiLCI0MDYiXV1d",
+          "departure_token": "WyJDalJJVGtsMlMwWnZZMDk1YTJ0QlJIZE9TMmRDUnkwdExTMHRMVzlyYzJ3eE15MXVNa0ZCUVVGQlIzSmFOWE5WU2tvd01pMUJFZ3BVU3pVMmZFZEJOREEyR2dzSTdQb0xFQUlhQTBWVlVqZ2NjSWUyRFE9PSIsW1siSVNUIiwiMjAyNy0wMi0xOCIsIkNHSyIsbnVsbCwiVEsiLCI1NiJdLFsiQ0dLIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiR0EiLCI0MDYiXV1d",
           "booking_token": null
         }
       ],
