@@ -1,18 +1,18 @@
 {
   "alert_id": "bali-from-malpensa-qn6u",
   "alert_name": "Bali from Malpensa",
-  "updated_at": "2026-11-09T21:14:24+02:00",
-  "day": "2026-11-09",
+  "updated_at": "2026-11-10T12:00:26+02:00",
+  "day": "2026-11-10",
   "currency": "EUR",
   "max_price": 700,
-  "lowest_price": 843,
+  "lowest_price": 836,
   "combinations": [
     {
       "outbound_date": "2027-02-18",
       "return_date": "2027-02-26",
       "nights": 8,
       "search_key": "377fe77a4bfcf44e",
-      "searched_on": "2026-11-09",
+      "searched_on": "2026-11-10",
       "search_params": {
         "engine": "google_flights",
         "type": "1",
@@ -27,12 +27,12 @@
         "return_date": "2027-02-26",
         "include_airlines": "TK,EK,QR,EY,SQ"
       },
-      "searched_at": "2026-11-09T21:14:17+02:00",
+      "searched_at": "2026-11-10T12:00:13+02:00",
       "status": "ok",
       "error": null,
       "flights": [
         {
-          "price": 843,
+          "price": 836,
           "is_best": true,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
           "carbon_diff": 4,
@@ -103,11 +103,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RSVWpFeU9IeFJVamsyTWhvTENKcVNCUkFDR2dORlZWSTRISEN6NFFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RSVWpFeU9IeFJVamsyTWhvTENObU1CUkFDR2dORlZWSTRISER3M0FVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 843,
+          "price": 836,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
           "carbon_diff": 4,
@@ -178,11 +178,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RSVWpFeU5IeFJVamsyTWhvTENKcVNCUkFDR2dORlZWSTRISEN6NFFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RSVWpFeU5IeFJVamsyTWhvTENObU1CUkFDR2dORlZWSTRISER3M0FVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 843,
+          "price": 836,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
           "carbon_diff": 9,
@@ -253,11 +253,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RSVWpFeU9IeFJVamsyTUJvTENKcVNCUkFDR2dORlZWSTRISEN6NFFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RSVWpFeU9IeFJVamsyTUJvTENObU1CUkFDR2dORlZWSTRISER3M0FVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 845,
+          "price": 838,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
           "carbon_diff": 9,
@@ -328,11 +328,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RSVWpFeU5IeFJVamsyTUJvTENJS1VCUkFDR2dORlZWSTRISEMyNHdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RSVWpFeU5IeFJVamsyTUJvTENNS09CUkFDR2dORlZWSTRISEQxM2dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 856,
+          "price": 857,
           "is_best": true,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
           "carbon_diff": 16,
@@ -434,11 +434,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ042Y0JSQUNHZ05GVlZJNEhIQ1o3UVU9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ0lLZEJSQUNHZ05GVlZJNEhIQ1o3d1U9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 856,
+          "price": 857,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
           "carbon_diff": 16,
@@ -541,11 +541,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFaEZGU3pFd01ueEZTek0wTkh4UFJERTVNeG9MQ042Y0JSQUNHZ05GVlZJNEhIQ1o3UVU9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEwMiJdLFsiRFhCIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiRUsiLCIzNDQiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTkzIl1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFaEZGU3pFd01ueEZTek0wTkh4UFJERTVNeG9MQ0lLZEJSQUNHZ05GVlZJNEhIQ1o3d1U9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEwMiJdLFsiRFhCIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiRUsiLCIzNDQiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTkzIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 856,
+          "price": 857,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
           "carbon_diff": 16,
@@ -647,11 +647,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFaE5GU3pJd05ueEZTek0wTm54UFJERTNNU014R2dzSTNwd0ZFQUlhQTBWVlVqZ2NjSm50QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJLVUwiLG51bGwsIkVLIiwiMzQ2Il0sWyJLVUwiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJPRCIsIjE3MSJdXV0=",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFaE5GU3pJd05ueEZTek0wTm54UFJERTNNU014R2dzSWdwMEZFQUlhQTBWVlVqZ2NjSm52QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJLVUwiLG51bGwsIkVLIiwiMzQ2Il0sWyJLVUwiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJPRCIsIjE3MSJdXV0=",
           "booking_token": null
         },
         {
-          "price": 865,
+          "price": 866,
           "is_best": true,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
           "carbon_diff": 10,
@@ -724,11 +724,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RGU3pJd05ueEZTek0yT0JvTENNcWpCUkFDR2dORlZWSTRISER1OUFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RGU3pJd05ueEZTek0yT0JvTENPbWpCUkFDR2dORlZWSTRISERyOWdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 865,
+          "price": 866,
           "is_best": true,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
           "carbon_diff": 10,
@@ -801,11 +801,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3BGU3preWZFVkxNems0R2dzSXlxTUZFQUlhQTBWVlVqZ2NjTzcwQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3BGU3preWZFVkxNems0R2dzSTZhTUZFQUlhQTBWVlVqZ2NjT3YyQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
           "booking_token": null
         },
         {
-          "price": 865,
+          "price": 866,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
           "carbon_diff": 11,
@@ -878,11 +878,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RGU3pFd01ueEZTek0yT0JvTENNcWpCUkFDR2dORlZWSTRISER1OUFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RGU3pFd01ueEZTek0yT0JvTENPbWpCUkFDR2dORlZWSTRISERyOWdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 865,
+          "price": 866,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
           "carbon_diff": 10,
@@ -955,11 +955,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RGU3pFd01ueEZTek01T0JvTENNcWpCUkFDR2dORlZWSTRISER1OUFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RGU3pFd01ueEZTek01T0JvTENPbWpCUkFDR2dORlZWSTRISERyOWdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 865,
+          "price": 866,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
           "carbon_diff": 10,
@@ -1032,11 +1032,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RGU3pJd05ueEZTek01T0JvTENNcWpCUkFDR2dORlZWSTRISER1OUFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RGU3pJd05ueEZTek01T0JvTENPbWpCUkFDR2dORlZWSTRISERyOWdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 956,
+          "price": 959,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": -10,
@@ -1109,11 +1109,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3BGV1RneWZFVlpORGM0R2dzSXFPb0ZFQUlhQTBWVlVqZ2NjSTNFQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3BGV1RneWZFVlpORGM0R2dzSTBld0ZFQUlhQTBWVlVqZ2NjTXpJQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
           "booking_token": null
         },
         {
-          "price": 969,
+          "price": 960,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
           "carbon_diff": -7,
@@ -1186,11 +1186,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RVU3pFNE56aDhWRXMyTmhvTENORDBCUkFDR2dORlZWSTRISERVendZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RVU3pFNE56aDhWRXMyTmhvTENObnRCUkFDR2dORlZWSTRISERseVFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 983,
+          "price": 986,
           "is_best": true,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": 8,
@@ -1263,11 +1263,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3BGV1RneWZFVlpORGMyR2dzSXRQOEZFQUlhQTBWVlVqZ2NjTjdiQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3BGV1RneWZFVlpORGMyR2dzSTNZRUdFQUlhQTBWVlVqZ2NjS1RnQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
           "booking_token": null
         },
         {
-          "price": 984,
+          "price": 987,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": -1,
@@ -1340,7 +1340,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3BGV1Rnd2ZFVlpORGM0R2dzSW1JQUdFQUlhQTBWVlVqZ2NjTTdjQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3BGV1Rnd2ZFVlpORGM0R2dzSXdZSUdFQUlhQTBWVlVqZ2NjSlRoQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
           "booking_token": null
         },
         {
@@ -1417,11 +1417,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RVU3pFNE56UjhWRXMyTmhvTENJeVRCaEFDR2dORlZWSTRISERsOFFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RVU3pFNE56UjhWRXMyTmhvTENKbVRCaEFDR2dORlZWSTRISER5OHdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 1011,
+          "price": 1014,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": 17,
@@ -1494,7 +1494,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3BGV1Rnd2ZFVlpORGMyR2dzSXBKVUdFQUlhQTBWVlVqZ2NjSi8wQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3BGV1Rnd2ZFVlpORGMyR2dzSXpaY0dFQUlhQTBWVlVqZ2NjT3o0Qmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
           "booking_token": null
         },
         {
@@ -1571,7 +1571,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RVU3pFNE9UWjhWRXMyTmhvTENQeTdDQkFDR2dORlZWSTRISEN4dmdrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RVU3pFNE9UWjhWRXMyTmhvTENJbThDQkFDR2dORlZWSTRISENld1FrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1648,7 +1648,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RVU3pFNE56WjhWRXMyTmhvTENQeTdDQkFDR2dORlZWSTRISEN4dmdrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RVU3pFNE56WjhWRXMyTmhvTENJbThDQkFDR2dORlZWSTRISENld1FrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1725,7 +1725,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZzFUVVRNMU5YeFRVVGt6TmlNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzNiJdXV0=",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZzFUVVRNMU5YeFRVVGt6TmlNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzNiJdXV0=",
           "booking_token": null
         },
         {
@@ -1802,7 +1802,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZzFUVVRNMU5YeFRVVGt6T0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzOCJdXV0=",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZzFUVVRNMU5YeFRVVGt6T0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzOCJdXV0=",
           "booking_token": null
         },
         {
@@ -1878,7 +1878,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RUVVRNMU5YeEhRVGcwTXpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkdBIiwiODQzIl1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RUVVRNMU5YeEhRVGcwTXpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkdBIiwiODQzIl1dXQ==",
           "booking_token": null
         },
         {
@@ -1955,7 +1955,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZzFUVVRNMU5YeFRVVGswTkNNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0NCJdXV0=",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZzFUVVRNMU5YeFRVVGswTkNNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0NCJdXV0=",
           "booking_token": null
         },
         {
@@ -2032,7 +2032,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZ3RUVVRNMU5YeFRVVGswTmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ2Il1dXQ==",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZ3RUVVRNMU5YeFRVVGswTmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -2109,11 +2109,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJV2sxVk5FOXpZMGhCV0d0QlMzWmFTMEZDUnkwdExTMHRMUzB0ZG5kaVkyWXhNVUZCUVVGQlIzSjVSelJ2UzA5MlZXZEJFZzFUVVRNMU5YeFRVVGswT0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0OCJdXV0=",
+          "departure_token": "WyJDalJJVDNGR1ZuWnNWbWRFUkVGQlJFSTVSSGRDUnkwdExTMHRMUzB0TFhaMGJXNHhOa0ZCUVVGQlIzSjVObnBSUkVaSVpXOUJFZzFUVVRNMU5YeFRVVGswT0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0OCJdXV0=",
           "booking_token": null
         }
       ],
-      "lowest_price": 843,
+      "lowest_price": 836,
       "price_insights": {
         "lowest_price": null,
         "price_level": null,
@@ -2127,7 +2127,7 @@
       "return_date": "2027-02-27",
       "nights": 9,
       "search_key": "1e6df38b8794a061",
-      "searched_on": "2026-11-09",
+      "searched_on": "2026-11-10",
       "search_params": {
         "engine": "google_flights",
         "type": "1",
@@ -2142,12 +2142,12 @@
         "return_date": "2027-02-27",
         "include_airlines": "TK,EK,QR,EY,SQ"
       },
-      "searched_at": "2026-11-09T21:14:20+02:00",
+      "searched_at": "2026-11-10T12:00:22+02:00",
       "status": "ok",
       "error": null,
       "flights": [
         {
-          "price": 843,
+          "price": 836,
           "is_best": true,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
           "carbon_diff": 4,
@@ -2218,11 +2218,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RSVWpFeU9IeFJVamsyTWhvTENKcVNCUkFDR2dORlZWSTRISEN6NFFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RSVWpFeU9IeFJVamsyTWhvTENObU1CUkFDR2dORlZWSTRISER3M0FVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 843,
+          "price": 836,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
           "carbon_diff": 4,
@@ -2293,11 +2293,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RSVWpFeU5IeFJVamsyTWhvTENKcVNCUkFDR2dORlZWSTRISEN6NFFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RSVWpFeU5IeFJVamsyTWhvTENObU1CUkFDR2dORlZWSTRISER3M0FVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 843,
+          "price": 836,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
           "carbon_diff": 9,
@@ -2368,11 +2368,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RSVWpFeU9IeFJVamsyTUJvTENKcVNCUkFDR2dORlZWSTRISEN6NFFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RSVWpFeU9IeFJVamsyTUJvTENObU1CUkFDR2dORlZWSTRISER3M0FVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 845,
+          "price": 838,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/QR.png",
           "carbon_diff": 9,
@@ -2443,117 +2443,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RSVWpFeU5IeFJVamsyTUJvTENJS1VCUkFDR2dORlZWSTRISEMyNHdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RSVWpFeU5IeFJVamsyTUJvTENNS09CUkFDR2dORlZWSTRISEQxM2dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 881,
-          "is_best": true,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": 16,
-          "airlines": [
-            "Emirates",
-            "Batik Air"
-          ],
-          "flight_numbers": [
-            "EK 206",
-            "EK 346",
-            "OD 177"
-          ],
-          "from": "MXP",
-          "to": "DPS",
-          "departure_time": "2027-02-18 13:55",
-          "arrival_time": "2027-02-19 19:55",
-          "total_duration": 1380,
-          "stops": 2,
-          "layovers": [
-            {
-              "airport": "DXB",
-              "name": "Dubai International Airport",
-              "duration": 280,
-              "overnight": false
-            },
-            {
-              "airport": "KUL",
-              "name": "Kuala Lumpur International Airport",
-              "duration": 120,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 206",
-              "from": "MXP",
-              "from_name": "Milano Malpensa Airport",
-              "to": "DXB",
-              "to_name": "Dubai International Airport",
-              "departure_time": "2027-02-18 13:55",
-              "arrival_time": "2027-02-18 23:00",
-              "duration": 365,
-              "airplane": "Airbus A380",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 360 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            },
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 346",
-              "from": "DXB",
-              "from_name": "Dubai International Airport",
-              "to": "KUL",
-              "to_name": "Kuala Lumpur International Airport",
-              "departure_time": "2027-02-19 03:40",
-              "arrival_time": "2027-02-19 14:45",
-              "duration": 425,
-              "airplane": "Airbus A380",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 399 kg"
-              ],
-              "overnight": true,
-              "often_delayed": true
-            },
-            {
-              "airline": "Batik Air",
-              "flight_number": "OD 177",
-              "from": "KUL",
-              "from_name": "Kuala Lumpur International Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 16:45",
-              "arrival_time": "2027-02-19 19:55",
-              "duration": 190,
-              "airplane": "Boeing 737MAX 8 Passenger",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
-              "legroom": "29 in",
-              "extensions": [
-                "Below average legroom (29 in)",
-                "Stream media to your device",
-                "Carbon emissions estimate: 138 kg"
-              ],
-              "overnight": false,
-              "often_delayed": true
-            }
-          ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ0tLd0JSQUNHZ05GVlZJNEhIQ0tnd1k9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
-          "booking_token": null
-        },
-        {
-          "price": 881,
+          "price": 882,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
           "carbon_diff": 16,
@@ -2656,11 +2550,117 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFaEZGU3pFd01ueEZTek0wTkh4UFJERTVNeG9MQ0tLd0JSQUNHZ05GVlZJNEhIQ0tnd1k9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEwMiJdLFsiRFhCIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiRUsiLCIzNDQiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTkzIl1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFaEZGU3pFd01ueEZTek0wTkh4UFJERTVNeG9MQ01hd0JSQUNHZ05GVlZJNEhIQ1FoUVk9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEwMiJdLFsiRFhCIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiRUsiLCIzNDQiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTkzIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 881,
+          "price": 882,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+          "carbon_diff": 16,
+          "airlines": [
+            "Emirates",
+            "Batik Air"
+          ],
+          "flight_numbers": [
+            "EK 206",
+            "EK 346",
+            "OD 177"
+          ],
+          "from": "MXP",
+          "to": "DPS",
+          "departure_time": "2027-02-18 13:55",
+          "arrival_time": "2027-02-19 19:55",
+          "total_duration": 1380,
+          "stops": 2,
+          "layovers": [
+            {
+              "airport": "DXB",
+              "name": "Dubai International Airport",
+              "duration": 280,
+              "overnight": false
+            },
+            {
+              "airport": "KUL",
+              "name": "Kuala Lumpur International Airport",
+              "duration": 120,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "Emirates",
+              "flight_number": "EK 206",
+              "from": "MXP",
+              "from_name": "Milano Malpensa Airport",
+              "to": "DXB",
+              "to_name": "Dubai International Airport",
+              "departure_time": "2027-02-18 13:55",
+              "arrival_time": "2027-02-18 23:00",
+              "duration": 365,
+              "airplane": "Airbus A380",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 360 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            },
+            {
+              "airline": "Emirates",
+              "flight_number": "EK 346",
+              "from": "DXB",
+              "from_name": "Dubai International Airport",
+              "to": "KUL",
+              "to_name": "Kuala Lumpur International Airport",
+              "departure_time": "2027-02-19 03:40",
+              "arrival_time": "2027-02-19 14:45",
+              "duration": 425,
+              "airplane": "Airbus A380",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 399 kg"
+              ],
+              "overnight": true,
+              "often_delayed": true
+            },
+            {
+              "airline": "Batik Air",
+              "flight_number": "OD 177",
+              "from": "KUL",
+              "from_name": "Kuala Lumpur International Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 16:45",
+              "arrival_time": "2027-02-19 19:55",
+              "duration": 190,
+              "airplane": "Boeing 737MAX 8 Passenger",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
+              "legroom": "29 in",
+              "extensions": [
+                "Below average legroom (29 in)",
+                "Stream media to your device",
+                "Carbon emissions estimate: 138 kg"
+              ],
+              "overnight": false,
+              "often_delayed": true
+            }
+          ],
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ01hd0JSQUNHZ05GVlZJNEhIQ1FoUVk9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
+          "booking_token": null
+        },
+        {
+          "price": 882,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
           "carbon_diff": 16,
@@ -2762,11 +2762,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFaEZGU3pJd05ueEZTek0wTm54UFJERTNNUm9MQ0tLd0JSQUNHZ05GVlZJNEhIQ0tnd1k9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTcxIl1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFaEZGU3pJd05ueEZTek0wTm54UFJERTNNUm9MQ01hd0JSQUNHZ05GVlZJNEhIQ1FoUVk9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTcxIl1dXQ==",
           "booking_token": null
         },
         {
-          "price": 890,
+          "price": 891,
           "is_best": true,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
           "carbon_diff": 10,
@@ -2839,11 +2839,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RGU3pJd05ueEZTek0yT0JvTENJNjNCUkFDR2dORlZWSTRISERmaWdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RGU3pJd05ueEZTek0yT0JvTENLMjNCUkFDR2dORlZWSTRISERpakFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 890,
+          "price": 891,
           "is_best": true,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
           "carbon_diff": 10,
@@ -2916,11 +2916,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3BGU3preWZFVkxNems0R2dzSWpyY0ZFQUlhQTBWVlVqZ2NjTitLQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3BGU3preWZFVkxNems0R2dzSXJiY0ZFQUlhQTBWVlVqZ2NjT0tNQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
           "booking_token": null
         },
         {
-          "price": 890,
+          "price": 891,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
           "carbon_diff": 11,
@@ -2993,11 +2993,11 @@
               "often_delayed": true
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RGU3pFd01ueEZTek0yT0JvTENJNjNCUkFDR2dORlZWSTRISERmaWdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RGU3pFd01ueEZTek0yT0JvTENLMjNCUkFDR2dORlZWSTRISERpakFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 890,
+          "price": 891,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
           "carbon_diff": 10,
@@ -3070,11 +3070,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RGU3pFd01ueEZTek01T0JvTENJNjNCUkFDR2dORlZWSTRISERmaWdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RGU3pFd01ueEZTek01T0JvTENLMjNCUkFDR2dORlZWSTRISERpakFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 890,
+          "price": 891,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
           "carbon_diff": 10,
@@ -3147,11 +3147,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RGU3pJd05ueEZTek01T0JvTENJNjNCUkFDR2dORlZWSTRISERmaWdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RGU3pJd05ueEZTek01T0JvTENLMjNCUkFDR2dORlZWSTRISERpakFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 969,
+          "price": 960,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
           "carbon_diff": -7,
@@ -3224,7 +3224,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RVU3pFNE56aDhWRXMyTmhvTENORDBCUkFDR2dORlZWSTRISERVendZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RVU3pFNE56aDhWRXMyTmhvTENObnRCUkFDR2dORlZWSTRISERseVFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3301,11 +3301,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RVU3pFNE56UjhWRXMyTmhvTENJeVRCaEFDR2dORlZWSTRISERsOFFZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RVU3pFNE56UjhWRXMyTmhvTENKbVRCaEFDR2dORlZWSTRISER5OHdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
-          "price": 1024,
+          "price": 1027,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": -10,
@@ -3378,12 +3378,12 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3BGV1RneWZFVlpORGM0R2dzSXVKOEdFQUlhQTBWVlVqZ2NjTkQvQmc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3BGV1RneWZFVlpORGM0R2dzSTRhRUdFQUlhQTBWVlVqZ2NjSitFQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
           "booking_token": null
         },
         {
-          "price": 1051,
-          "is_best": true,
+          "price": 1054,
+          "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": 8,
           "airlines": [
@@ -3455,11 +3455,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3BGV1RneWZFVlpORGMyR2dzSXhMUUdFQUlhQTBWVlVqZ2NjS0NYQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3BGV1RneWZFVlpORGMyR2dzSTdiWUdFQUlhQTBWVlVqZ2NjUGViQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
           "booking_token": null
         },
         {
-          "price": 1052,
+          "price": 1055,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": -1,
@@ -3532,11 +3532,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3BGV1Rnd2ZFVlpORGM0R2dzSXFMVUdFQUlhQTBWVlVqZ2NjSkNZQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3BGV1Rnd2ZFVlpORGM0R2dzSTBiY0dFQUlhQTBWVlVqZ2NjT2VjQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
           "booking_token": null
         },
         {
-          "price": 1079,
+          "price": 1082,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/EY.png",
           "carbon_diff": 17,
@@ -3609,7 +3609,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3BGV1Rnd2ZFVlpORGMyR2dzSXRNb0dFQUlhQTBWVlVqZ2NjT0d2Qnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3BGV1Rnd2ZFVlpORGMyR2dzSTNjd0dFQUlhQTBWVlVqZ2NjTCswQnc9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
           "booking_token": null
         },
         {
@@ -3686,7 +3686,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RVU3pFNE9UWjhWRXMyTmhvTENQeTdDQkFDR2dORlZWSTRISEN4dmdrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RVU3pFNE9UWjhWRXMyTmhvTENJbThDQkFDR2dORlZWSTRISENld1FrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3763,7 +3763,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RVU3pFNE56WjhWRXMyTmhvTENQeTdDQkFDR2dORlZWSTRISEN4dmdrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RVU3pFNE56WjhWRXMyTmhvTENJbThDQkFDR2dORlZWSTRISENld1FrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3840,7 +3840,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RUVVRNMU5YeFRVVGt6TmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTM2Il1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RUVVRNMU5YeFRVVGt6TmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTM2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3917,7 +3917,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZzFUVVRNMU5YeFRVVGt6T0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzOCJdXV0=",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZzFUVVRNMU5YeFRVVGt6T0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzOCJdXV0=",
           "booking_token": null
         },
         {
@@ -3993,7 +3993,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RUVVRNMU5YeEhRVGcwTXpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkdBIiwiODQzIl1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RUVVRNMU5YeEhRVGcwTXpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkdBIiwiODQzIl1dXQ==",
           "booking_token": null
         },
         {
@@ -4070,7 +4070,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZ3RUVVRNMU5YeFRVVGswTkRnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ0Il1dXQ==",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZ3RUVVRNMU5YeFRVVGswTkRnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ0Il1dXQ==",
           "booking_token": null
         },
         {
@@ -4147,7 +4147,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZzFUVVRNMU5YeFRVVGswTmlNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0NiJdXV0=",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZzFUVVRNMU5YeFRVVGswTmlNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0NiJdXV0=",
           "booking_token": null
         },
         {
@@ -4224,11 +4224,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJUVVsb01HSkJabTl4WkRCQlNYUjFjbEZDUnkwdExTMHRMUzB0TFhCbVltSjBOVUZCUVVGQlIzSjVSelF3U2psc2NXZEJFZzFUVVRNMU5YeFRVVGswT0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0OCJdXV0=",
+          "departure_token": "WyJDalJJV2pSSU1VbGpjMHQ0YURoQlJITndlVkZDUnkwdExTMHRMUzF2ZVdOME15MXVNa0ZCUVVGQlIzSjVObnBqVERWTFNFbEJFZzFUVVRNMU5YeFRVVGswT0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0OCJdXV0=",
           "booking_token": null
         }
       ],
-      "lowest_price": 843,
+      "lowest_price": 836,
       "price_insights": {
         "lowest_price": null,
         "price_level": null,
