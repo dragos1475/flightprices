@@ -271,6 +271,11 @@
         "date": "2026-11-21",
         "price": 764,
         "currency": "EUR"
+      },
+      {
+        "date": "2026-11-22",
+        "price": 669,
+        "currency": "EUR"
       }
     ]
   }
