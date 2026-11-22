@@ -1,18 +1,18 @@
 {
   "alert_id": "bali-from-malpensa-qn6u",
   "alert_name": "Bali from Malpensa",
-  "updated_at": "2026-11-21T17:34:15+02:00",
-  "day": "2026-11-21",
+  "updated_at": "2026-11-22T18:25:14+02:00",
+  "day": "2026-11-22",
   "currency": "EUR",
   "max_price": 700,
-  "lowest_price": 855,
+  "lowest_price": 857,
   "combinations": [
     {
       "outbound_date": "2027-02-18",
       "return_date": "2027-02-26",
       "nights": 8,
       "search_key": "377fe77a4bfcf44e",
-      "searched_on": "2026-11-21",
+      "searched_on": "2026-11-22",
       "search_params": {
         "engine": "google_flights",
         "type": "1",
@@ -27,185 +27,55 @@
         "return_date": "2027-02-26",
         "include_airlines": "TK,EK,QR,EY,SQ"
       },
-      "searched_at": "2026-11-21T17:34:02+02:00",
+      "searched_at": "2026-11-22T18:25:07+02:00",
       "status": "ok",
       "error": null,
       "flights": [
         {
-          "price": 855,
+          "price": 857,
           "is_best": false,
           "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": 14,
+          "carbon_diff": 16,
           "airlines": [
             "Emirates",
-            "Jetstar"
+            "Batik Air"
           ],
           "flight_numbers": [
-            "EK 206",
-            "EK 354",
-            "JQ 87"
+            "EK 102",
+            "EK 344",
+            "OD 193"
           ],
           "from": "MXP",
           "to": "DPS",
-          "departure_time": "2027-02-18 13:55",
-          "arrival_time": "2027-02-19 22:15",
-          "total_duration": 1520,
+          "departure_time": "2027-02-18 10:25",
+          "arrival_time": "2027-02-19 17:00",
+          "total_duration": 1415,
           "stops": 2,
           "layovers": [
             {
               "airport": "DXB",
               "name": "Dubai International Airport",
-              "duration": 255,
+              "duration": 130,
               "overnight": false
             },
             {
-              "airport": "SIN",
-              "name": "Singapore Changi Airport",
-              "duration": 275,
+              "airport": "KUL",
+              "name": "Kuala Lumpur International Airport",
+              "duration": 330,
               "overnight": false
             }
           ],
           "legs": [
             {
               "airline": "Emirates",
-              "flight_number": "EK 206",
+              "flight_number": "EK 102",
               "from": "MXP",
               "from_name": "Milano Malpensa Airport",
               "to": "DXB",
               "to_name": "Dubai International Airport",
-              "departure_time": "2027-02-18 13:55",
-              "arrival_time": "2027-02-18 23:00",
-              "duration": 365,
-              "airplane": "Airbus A380",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 360 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            },
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 354",
-              "from": "DXB",
-              "from_name": "Dubai International Airport",
-              "to": "SIN",
-              "to_name": "Singapore Changi Airport",
-              "departure_time": "2027-02-19 03:15",
-              "arrival_time": "2027-02-19 14:50",
-              "duration": 455,
-              "airplane": "Airbus A380",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 405 kg"
-              ],
-              "overnight": true,
-              "often_delayed": true
-            },
-            {
-              "airline": "Jetstar",
-              "flight_number": "JQ 87",
-              "from": "SIN",
-              "from_name": "Singapore Changi Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 19:25",
-              "arrival_time": "2027-02-19 22:15",
-              "duration": 170,
-              "airplane": "Airbus A321neo",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/JQ.png",
-              "legroom": "29 in",
-              "extensions": [
-                "Below average legroom (29 in)",
-                "In-seat USB outlet",
-                "Stream media to your device",
-                "Carbon emissions estimate: 113 kg"
-              ],
-              "overnight": false,
-              "often_delayed": true
-            }
-          ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFaEJGU3pJd05ueEZTek0xTkh4S1VUZzNHZ3NJNEpzRkVBSWFBMFZWVWpnY2NMTGNCUT09IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIlNJTiIsbnVsbCwiRUsiLCIzNTQiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkpRIiwiODciXV1d",
-          "booking_token": null
-        },
-        {
-          "price": 855,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": 14,
-          "airlines": [
-            "Emirates",
-            "Jetstar"
-          ],
-          "flight_numbers": [
-            "EK 206",
-            "EK 348",
-            "JQ 87"
-          ],
-          "from": "MXP",
-          "to": "DPS",
-          "departure_time": "2027-02-18 13:55",
-          "arrival_time": "2027-02-19 22:15",
-          "total_duration": 1520,
-          "stops": 2,
-          "layovers": [
-            {
-              "airport": "DXB",
-              "name": "Dubai International Airport",
-              "duration": 200,
-              "overnight": false
-            },
-            {
-              "airport": "SIN",
-              "name": "Singapore Changi Airport",
-              "duration": 350,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 206",
-              "from": "MXP",
-              "from_name": "Milano Malpensa Airport",
-              "to": "DXB",
-              "to_name": "Dubai International Airport",
-              "departure_time": "2027-02-18 13:55",
-              "arrival_time": "2027-02-18 23:00",
-              "duration": 365,
-              "airplane": "Airbus A380",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 360 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            },
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 348",
-              "from": "DXB",
-              "from_name": "Dubai International Airport",
-              "to": "SIN",
-              "to_name": "Singapore Changi Airport",
-              "departure_time": "2027-02-19 02:20",
-              "arrival_time": "2027-02-19 13:35",
-              "duration": 435,
+              "departure_time": "2027-02-18 10:25",
+              "arrival_time": "2027-02-18 19:20",
+              "duration": 355,
               "airplane": "Boeing 777",
               "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
               "legroom": "32 in",
@@ -214,35 +84,270 @@
                 "Wi-Fi for a fee",
                 "In-seat power & USB outlets",
                 "On-demand video",
-                "Carbon emissions estimate: 404 kg"
+                "Carbon emissions estimate: 363 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            },
+            {
+              "airline": "Emirates",
+              "flight_number": "EK 344",
+              "from": "DXB",
+              "from_name": "Dubai International Airport",
+              "to": "KUL",
+              "to_name": "Kuala Lumpur International Airport",
+              "departure_time": "2027-02-18 21:30",
+              "arrival_time": "2027-02-19 08:30",
+              "duration": 420,
+              "airplane": "Airbus A350",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat USB outlet",
+                "On-demand video",
+                "Carbon emissions estimate: 345 kg"
               ],
               "overnight": true,
               "often_delayed": false
             },
             {
-              "airline": "Jetstar",
-              "flight_number": "JQ 87",
-              "from": "SIN",
-              "from_name": "Singapore Changi Airport",
+              "airline": "Batik Air",
+              "flight_number": "OD 193",
+              "from": "KUL",
+              "from_name": "Kuala Lumpur International Airport",
               "to": "DPS",
               "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 19:25",
-              "arrival_time": "2027-02-19 22:15",
-              "duration": 170,
-              "airplane": "Airbus A321neo",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/JQ.png",
+              "departure_time": "2027-02-19 14:00",
+              "arrival_time": "2027-02-19 17:00",
+              "duration": 180,
+              "airplane": "Boeing 737",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "In-seat USB outlet",
+                "On-demand video",
+                "Carbon emissions estimate: 183 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            }
+          ],
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFaEZGU3pFd01ueEZTek0wTkh4UFJERTVNeG9MQ0xPZEJSQUNHZ05GVlZJNEhIQ1ozZ1U9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEwMiJdLFsiRFhCIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiRUsiLCIzNDQiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTkzIl1dXQ==",
+          "booking_token": null
+        },
+        {
+          "price": 857,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+          "carbon_diff": 16,
+          "airlines": [
+            "Emirates",
+            "Batik Air"
+          ],
+          "flight_numbers": [
+            "EK 206",
+            "EK 346",
+            "OD 177"
+          ],
+          "from": "MXP",
+          "to": "DPS",
+          "departure_time": "2027-02-18 13:55",
+          "arrival_time": "2027-02-19 19:55",
+          "total_duration": 1380,
+          "stops": 2,
+          "layovers": [
+            {
+              "airport": "DXB",
+              "name": "Dubai International Airport",
+              "duration": 280,
+              "overnight": false
+            },
+            {
+              "airport": "KUL",
+              "name": "Kuala Lumpur International Airport",
+              "duration": 120,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "Emirates",
+              "flight_number": "EK 206",
+              "from": "MXP",
+              "from_name": "Milano Malpensa Airport",
+              "to": "DXB",
+              "to_name": "Dubai International Airport",
+              "departure_time": "2027-02-18 13:55",
+              "arrival_time": "2027-02-18 23:00",
+              "duration": 365,
+              "airplane": "Airbus A380",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 360 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            },
+            {
+              "airline": "Emirates",
+              "flight_number": "EK 346",
+              "from": "DXB",
+              "from_name": "Dubai International Airport",
+              "to": "KUL",
+              "to_name": "Kuala Lumpur International Airport",
+              "departure_time": "2027-02-19 03:40",
+              "arrival_time": "2027-02-19 14:45",
+              "duration": 425,
+              "airplane": "Airbus A380",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 399 kg"
+              ],
+              "overnight": true,
+              "often_delayed": false
+            },
+            {
+              "airline": "Batik Air",
+              "flight_number": "OD 177",
+              "from": "KUL",
+              "from_name": "Kuala Lumpur International Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 16:45",
+              "arrival_time": "2027-02-19 19:55",
+              "duration": 190,
+              "airplane": "Boeing 737MAX 8 Passenger",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
               "legroom": "29 in",
               "extensions": [
                 "Below average legroom (29 in)",
-                "In-seat USB outlet",
                 "Stream media to your device",
-                "Carbon emissions estimate: 113 kg"
+                "Carbon emissions estimate: 138 kg"
               ],
               "overnight": false,
-              "often_delayed": true
+              "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFaEJGU3pJd05ueEZTek0wT0h4S1VUZzNHZ3NJNEpzRkVBSWFBMFZWVWpnY2NMTGNCUT09IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIlNJTiIsbnVsbCwiRUsiLCIzNDgiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkpRIiwiODciXV1d",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ0xPZEJSQUNHZ05GVlZJNEhIQ1ozZ1U9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
+          "booking_token": null
+        },
+        {
+          "price": 857,
+          "is_best": false,
+          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+          "carbon_diff": 16,
+          "airlines": [
+            "Emirates",
+            "Batik Air"
+          ],
+          "flight_numbers": [
+            "EK 206",
+            "EK 346",
+            "OD 171"
+          ],
+          "from": "MXP",
+          "to": "DPS",
+          "departure_time": "2027-02-18 13:55",
+          "arrival_time": "2027-02-19 20:25",
+          "total_duration": 1410,
+          "stops": 2,
+          "layovers": [
+            {
+              "airport": "DXB",
+              "name": "Dubai International Airport",
+              "duration": 280,
+              "overnight": false
+            },
+            {
+              "airport": "KUL",
+              "name": "Kuala Lumpur International Airport",
+              "duration": 150,
+              "overnight": false
+            }
+          ],
+          "legs": [
+            {
+              "airline": "Emirates",
+              "flight_number": "EK 206",
+              "from": "MXP",
+              "from_name": "Milano Malpensa Airport",
+              "to": "DXB",
+              "to_name": "Dubai International Airport",
+              "departure_time": "2027-02-18 13:55",
+              "arrival_time": "2027-02-18 23:00",
+              "duration": 365,
+              "airplane": "Airbus A380",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 360 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            },
+            {
+              "airline": "Emirates",
+              "flight_number": "EK 346",
+              "from": "DXB",
+              "from_name": "Dubai International Airport",
+              "to": "KUL",
+              "to_name": "Kuala Lumpur International Airport",
+              "departure_time": "2027-02-19 03:40",
+              "arrival_time": "2027-02-19 14:45",
+              "duration": 425,
+              "airplane": "Airbus A380",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+              "legroom": "32 in",
+              "extensions": [
+                "Above average legroom (32 in)",
+                "Wi-Fi for a fee",
+                "In-seat power & USB outlets",
+                "On-demand video",
+                "Carbon emissions estimate: 399 kg"
+              ],
+              "overnight": true,
+              "often_delayed": false
+            },
+            {
+              "airline": "Batik Air",
+              "flight_number": "OD 171",
+              "from": "KUL",
+              "from_name": "Kuala Lumpur International Airport",
+              "to": "DPS",
+              "to_name": "I Gusti Ngurah Rai International Airport",
+              "departure_time": "2027-02-19 17:15",
+              "arrival_time": "2027-02-19 20:25",
+              "duration": 190,
+              "airplane": "Boeing 737MAX 8 Passenger",
+              "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
+              "legroom": "29 in",
+              "extensions": [
+                "Below average legroom (29 in)",
+                "Stream media to your device",
+                "Carbon emissions estimate: 138 kg"
+              ],
+              "overnight": false,
+              "often_delayed": false
+            }
+          ],
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFaE5GU3pJd05ueEZTek0wTm54UFJERTNNU014R2dzSXM1MEZFQUlhQTBWVlVqZ2NjSm5lQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJLVUwiLG51bGwsIkVLIiwiMzQ2Il0sWyJLVUwiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJPRCIsIjE3MSJdXV0=",
           "booking_token": null
         },
         {
@@ -319,7 +424,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3hGV1Rnd2ZFVlpORGM0SXpFYUN3aVVvQVVRQWhvRFJWVlNPQnh3bk9FRiIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3BGV1Rnd2ZFVlpORGM0R2dzSWxLQUZFQUlhQTBWVlVqZ2NjSnpoQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
           "booking_token": null
         },
         {
@@ -396,7 +501,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3BGV1RneWZFVlpORGM0R2dzSWxLQUZFQUlhQTBWVlVqZ2NjSnpoQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3BGV1RneWZFVlpORGM0R2dzSWxLQUZFQUlhQTBWVlVqZ2NjSnpoQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
           "booking_token": null
         },
         {
@@ -471,7 +576,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZzFSVWpFeU9IeFJVamsyTWlNeEdnc0k3cU1GRUFJYUEwVlZVamdjY0tUbEJRPT0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJET0giLG51bGwsIlFSIiwiMTI4Il0sWyJET0giLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJRUiIsIjk2MiJdXV0=",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RSVWpFeU9IeFJVamsyTWhvTENPNmpCUkFDR2dORlZWSTRISENrNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
@@ -548,7 +653,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZzFGU3pJd05ueEZTek0yT0NNeEdnc0ltS1FGRUFJYUEwVlZVamdjY05MbEJRPT0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJEWEIiLG51bGwsIkVLIiwiMjA2Il0sWyJEWEIiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJFSyIsIjM2OCJdXV0=",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RGU3pJd05ueEZTek0yT0JvTENKaWtCUkFDR2dORlZWSTRISERTNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -625,7 +730,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3hGU3preWZFVkxNems0SXpFYUN3aVlwQVVRQWhvRFJWVlNPQnh3MHVVRiIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3BGU3preWZFVkxNems0R2dzSW1LUUZFQUlhQTBWVlVqZ2NjTkxsQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
           "booking_token": null
         },
         {
@@ -700,7 +805,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RSVWpFeU5IeFJVamsyTWhvTENPNmpCUkFDR2dORlZWSTRISENrNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RSVWpFeU5IeFJVamsyTWhvTENPNmpCUkFDR2dORlZWSTRISENrNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
@@ -775,7 +880,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RSVWpFeU9IeFJVamsyTUJvTENPNmpCUkFDR2dORlZWSTRISENrNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RSVWpFeU9IeFJVamsyTUJvTENPNmpCUkFDR2dORlZWSTRISENrNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
@@ -852,7 +957,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RGU3pFd01ueEZTek0yT0JvTENKaWtCUkFDR2dORlZWSTRISERTNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RGU3pFd01ueEZTek0yT0JvTENKaWtCUkFDR2dORlZWSTRISERTNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -929,7 +1034,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RGU3pFd01ueEZTek01T0JvTENKaWtCUkFDR2dORlZWSTRISERTNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RGU3pFd01ueEZTek01T0JvTENKaWtCUkFDR2dORlZWSTRISERTNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1006,7 +1111,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RGU3pJd05ueEZTek01T0JvTENKaWtCUkFDR2dORlZWSTRISERTNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RGU3pJd05ueEZTek01T0JvTENKaWtCUkFDR2dORlZWSTRISERTNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1081,7 +1186,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RSVWpFeU5IeFJVamsyTUJvTENPT2xCUkFDR2dORlZWSTRISEN4NXdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RSVWpFeU5IeFJVamsyTUJvTENOdWxCUkFDR2dORlZWSTRISENvNXdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
@@ -1158,7 +1263,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3hGV1RneWZFVlpORGMySXpFYUN3aWd0UVVRQWhvRFJWVlNPQnh3cnZnRiIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3BGV1RneWZFVlpORGMyR2dzSW9MVUZFQUlhQTBWVlVqZ2NjSzc0QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
           "booking_token": null
         },
         {
@@ -1235,220 +1340,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3BGV1Rnd2ZFVlpORGMyR2dzSXFyVUZFQUlhQTBWVlVqZ2NjTG40QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
-          "booking_token": null
-        },
-        {
-          "price": 913,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": 16,
-          "airlines": [
-            "Emirates",
-            "Batik Air"
-          ],
-          "flight_numbers": [
-            "EK 102",
-            "EK 344",
-            "OD 193"
-          ],
-          "from": "MXP",
-          "to": "DPS",
-          "departure_time": "2027-02-18 10:25",
-          "arrival_time": "2027-02-19 17:00",
-          "total_duration": 1415,
-          "stops": 2,
-          "layovers": [
-            {
-              "airport": "DXB",
-              "name": "Dubai International Airport",
-              "duration": 130,
-              "overnight": false
-            },
-            {
-              "airport": "KUL",
-              "name": "Kuala Lumpur International Airport",
-              "duration": 330,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 102",
-              "from": "MXP",
-              "from_name": "Milano Malpensa Airport",
-              "to": "DXB",
-              "to_name": "Dubai International Airport",
-              "departure_time": "2027-02-18 10:25",
-              "arrival_time": "2027-02-18 19:20",
-              "duration": 355,
-              "airplane": "Boeing 777",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 363 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            },
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 344",
-              "from": "DXB",
-              "from_name": "Dubai International Airport",
-              "to": "KUL",
-              "to_name": "Kuala Lumpur International Airport",
-              "departure_time": "2027-02-18 21:30",
-              "arrival_time": "2027-02-19 08:30",
-              "duration": 420,
-              "airplane": "Airbus A350",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat USB outlet",
-                "On-demand video",
-                "Carbon emissions estimate: 345 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "Batik Air",
-              "flight_number": "OD 193",
-              "from": "KUL",
-              "from_name": "Kuala Lumpur International Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 14:00",
-              "arrival_time": "2027-02-19 17:00",
-              "duration": 180,
-              "airplane": "Boeing 737",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "In-seat USB outlet",
-                "On-demand video",
-                "Carbon emissions estimate: 183 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFaEZGU3pFd01ueEZTek0wTkh4UFJERTVNeG9MQ08zSUJSQUNHZ05GVlZJNEhIRHVqUVk9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEwMiJdLFsiRFhCIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiRUsiLCIzNDQiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTkzIl1dXQ==",
-          "booking_token": null
-        },
-        {
-          "price": 913,
-          "is_best": false,
-          "logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-          "carbon_diff": 16,
-          "airlines": [
-            "Emirates",
-            "Batik Air"
-          ],
-          "flight_numbers": [
-            "EK 206",
-            "EK 346",
-            "OD 177"
-          ],
-          "from": "MXP",
-          "to": "DPS",
-          "departure_time": "2027-02-18 13:55",
-          "arrival_time": "2027-02-19 19:55",
-          "total_duration": 1380,
-          "stops": 2,
-          "layovers": [
-            {
-              "airport": "DXB",
-              "name": "Dubai International Airport",
-              "duration": 280,
-              "overnight": false
-            },
-            {
-              "airport": "KUL",
-              "name": "Kuala Lumpur International Airport",
-              "duration": 120,
-              "overnight": false
-            }
-          ],
-          "legs": [
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 206",
-              "from": "MXP",
-              "from_name": "Milano Malpensa Airport",
-              "to": "DXB",
-              "to_name": "Dubai International Airport",
-              "departure_time": "2027-02-18 13:55",
-              "arrival_time": "2027-02-18 23:00",
-              "duration": 365,
-              "airplane": "Airbus A380",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 360 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            },
-            {
-              "airline": "Emirates",
-              "flight_number": "EK 346",
-              "from": "DXB",
-              "from_name": "Dubai International Airport",
-              "to": "KUL",
-              "to_name": "Kuala Lumpur International Airport",
-              "departure_time": "2027-02-19 03:40",
-              "arrival_time": "2027-02-19 14:45",
-              "duration": 425,
-              "airplane": "Airbus A380",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
-              "legroom": "32 in",
-              "extensions": [
-                "Above average legroom (32 in)",
-                "Wi-Fi for a fee",
-                "In-seat power & USB outlets",
-                "On-demand video",
-                "Carbon emissions estimate: 399 kg"
-              ],
-              "overnight": true,
-              "often_delayed": false
-            },
-            {
-              "airline": "Batik Air",
-              "flight_number": "OD 177",
-              "from": "KUL",
-              "from_name": "Kuala Lumpur International Airport",
-              "to": "DPS",
-              "to_name": "I Gusti Ngurah Rai International Airport",
-              "departure_time": "2027-02-19 16:45",
-              "arrival_time": "2027-02-19 19:55",
-              "duration": 190,
-              "airplane": "Boeing 737MAX 8 Passenger",
-              "logo": "https://www.gstatic.com/flights/airline_logos/70px/OD.png",
-              "legroom": "29 in",
-              "extensions": [
-                "Below average legroom (29 in)",
-                "Stream media to your device",
-                "Carbon emissions estimate: 138 kg"
-              ],
-              "overnight": false,
-              "often_delayed": false
-            }
-          ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ08zSUJSQUNHZ05GVlZJNEhIRHVqUVk9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3BGV1Rnd2ZFVlpORGMyR2dzSW9MVUZFQUlhQTBWVlVqZ2NjSzc0QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
           "booking_token": null
         },
         {
@@ -1525,7 +1417,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RVU3pFNE56aDhWRXMyTmhvTENQbmVCUkFDR2dORlZWSTRISENMcGdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RVU3pFNE56aDhWRXMyTmhvTENQbmVCUkFDR2dORlZWSTRISENMcGdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1602,7 +1494,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RVU3pFNE56UjhWRXMyTmhvTENQbmVCUkFDR2dORlZWSTRISENMcGdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RVU3pFNE56UjhWRXMyTmhvTENQbmVCUkFDR2dORlZWSTRISENMcGdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1679,7 +1571,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RVU3pFNE9UWjhWRXMyTmhvTENLL05DQkFDR2dORlZWSTRISEQ5dHdrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RVU3pFNE9UWjhWRXMyTmhvTENLM05DQkFDR2dORlZWSTRISEQ3dHdrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1756,7 +1648,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RVU3pFNE56WjhWRXMyTmhvTENLL05DQkFDR2dORlZWSTRISEQ5dHdrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RVU3pFNE56WjhWRXMyTmhvTENLM05DQkFDR2dORlZWSTRISEQ3dHdrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1833,7 +1725,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RUVVRNMU5YeFRVVGt6TmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTM2Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RUVVRNMU5YeFRVVGt6TmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTM2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -1910,7 +1802,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RUVVRNMU5YeFRVVGt6T0RnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTM4Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZzFUVVRNMU5YeFRVVGt6T0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzOCJdXV0=",
           "booking_token": null
         },
         {
@@ -1986,7 +1878,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RUVVRNMU5YeEhRVGcwTXpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkdBIiwiODQzIl1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZ3RUVVRNMU5YeEhRVGcwTXpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkdBIiwiODQzIl1dXQ==",
           "booking_token": null
         },
         {
@@ -2063,7 +1955,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RUVVRNMU5YeFRVVGswTkRnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ0Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZzFUVVRNMU5YeFRVVGswTkNNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0NCJdXV0=",
           "booking_token": null
         },
         {
@@ -2140,7 +2032,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RUVVRNMU5YeFRVVGswTmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ2Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZzFUVVRNMU5YeFRVVGswTmlNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0NiJdXV0=",
           "booking_token": null
         },
         {
@@ -2217,11 +2109,11 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJWnpVNWJYcE1TVUl0UzBGQlRFUmhPR2RDUnkwdExTMHRMUzB0TFc5cmRHd3hNRUZCUVVGQlIzTkNkV1Z6VFRkdlgyOUJFZ3RUVVRNMU5YeFRVVGswT0RnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ4Il1dXQ==",
+          "departure_token": "WyJDalJJVlhNd00yeGlOMjFXWWxGQlRESlpTR2RDUnkwdExTMHRMUzB0Y0daaVoyMHhOMEZCUVVGQlIzTkVSakpSU2xwU1dXMUJFZzFUVVRNMU5YeFRVVGswT0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0OCJdXV0=",
           "booking_token": null
         }
       ],
-      "lowest_price": 855,
+      "lowest_price": 857,
       "price_insights": {
         "lowest_price": null,
         "price_level": null,
@@ -2235,7 +2127,7 @@
       "return_date": "2027-02-27",
       "nights": 9,
       "search_key": "1e6df38b8794a061",
-      "searched_on": "2026-11-21",
+      "searched_on": "2026-11-22",
       "search_params": {
         "engine": "google_flights",
         "type": "1",
@@ -2250,7 +2142,7 @@
         "return_date": "2027-02-27",
         "include_airlines": "TK,EK,QR,EY,SQ"
       },
-      "searched_at": "2026-11-21T17:34:05+02:00",
+      "searched_at": "2026-11-22T18:25:11+02:00",
       "status": "ok",
       "error": null,
       "flights": [
@@ -2328,7 +2220,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3BGV1Rnd2ZFVlpORGM0R2dzSWxLQUZFQUlhQTBWVlVqZ2NjSnpoQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3BGV1Rnd2ZFVlpORGM0R2dzSWxLQUZFQUlhQTBWVlVqZ2NjSnpoQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
           "booking_token": null
         },
         {
@@ -2405,7 +2297,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3BGV1RneWZFVlpORGM0R2dzSWxLQUZFQUlhQTBWVlVqZ2NjSnpoQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3BGV1RneWZFVlpORGM0R2dzSWxLQUZFQUlhQTBWVlVqZ2NjSnpoQlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzgiXV1d",
           "booking_token": null
         },
         {
@@ -2480,7 +2372,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RSVWpFeU9IeFJVamsyTWhvTENPNmpCUkFDR2dORlZWSTRISENrNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RSVWpFeU9IeFJVamsyTWhvTENPNmpCUkFDR2dORlZWSTRISENrNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
@@ -2555,7 +2447,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RSVWpFeU5IeFJVamsyTWhvTENPNmpCUkFDR2dORlZWSTRISENrNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RSVWpFeU5IeFJVamsyTWhvTENPNmpCUkFDR2dORlZWSTRISENrNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYyIl1dXQ==",
           "booking_token": null
         },
         {
@@ -2630,7 +2522,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RSVWpFeU9IeFJVamsyTUJvTENPNmpCUkFDR2dORlZWSTRISENrNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RSVWpFeU9IeFJVamsyTUJvTENPNmpCUkFDR2dORlZWSTRISENrNVFVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjgiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
@@ -2705,7 +2597,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RSVWpFeU5IeFJVamsyTUJvTENOdWxCUkFDR2dORlZWSTRISENvNXdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RSVWpFeU5IeFJVamsyTUJvTENOdWxCUkFDR2dORlZWSTRISENvNXdVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRPSCIsbnVsbCwiUVIiLCIxMjQiXSxbIkRPSCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlFSIiwiOTYwIl1dXQ==",
           "booking_token": null
         },
         {
@@ -2812,7 +2704,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFaEZGU3pFd01ueEZTek0wTkh4UFJERTVNeG9MQ1Bld0JSQUNHZ05GVlZJNEhIRFA4d1U9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEwMiJdLFsiRFhCIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiRUsiLCIzNDQiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTkzIl1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFaEZGU3pFd01ueEZTek0wTkh4UFJERTVNeG9MQ1Bld0JSQUNHZ05GVlZJNEhIRFA4d1U9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjEwMiJdLFsiRFhCIiwiMjAyNy0wMi0xOCIsIktVTCIsbnVsbCwiRUsiLCIzNDQiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTkzIl1dXQ==",
           "booking_token": null
         },
         {
@@ -2918,7 +2810,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ1Bld0JSQUNHZ05GVlZJNEhIRFA4d1U9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFaEZGU3pJd05ueEZTek0wTm54UFJERTNOeG9MQ1Bld0JSQUNHZ05GVlZJNEhIRFA4d1U9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTc3Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3024,7 +2916,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFaEZGU3pJd05ueEZTek0wTm54UFJERTNNUm9MQ1Bld0JSQUNHZ05GVlZJNEhIRFA4d1U9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTcxIl1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFaEZGU3pJd05ueEZTek0wTm54UFJERTNNUm9MQ1Bld0JSQUNHZ05GVlZJNEhIRFA4d1U9IixbWyJNWFAiLCIyMDI3LTAyLTE4IiwiRFhCIixudWxsLCJFSyIsIjIwNiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIktVTCIsbnVsbCwiRUsiLCIzNDYiXSxbIktVTCIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIk9EIiwiMTcxIl1dXQ==",
           "booking_token": null
         },
         {
@@ -3101,7 +2993,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3BGV1RneWZFVlpORGMyR2dzSW9MVUZFQUlhQTBWVlVqZ2NjSzc0QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3BGV1RneWZFVlpORGMyR2dzSW9MVUZFQUlhQTBWVlVqZ2NjSzc0QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MiJdLFsiQVVIIiwiMjAyNy0wMi0xOCIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
           "booking_token": null
         },
         {
@@ -3178,7 +3070,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3BGV1Rnd2ZFVlpORGMyR2dzSW9MVUZFQUlhQTBWVlVqZ2NjSzc0QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3BGV1Rnd2ZFVlpORGMyR2dzSW9MVUZFQUlhQTBWVlVqZ2NjSzc0QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkFVSCIsbnVsbCwiRVkiLCI4MCJdLFsiQVVIIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRVkiLCI0NzYiXV1d",
           "booking_token": null
         },
         {
@@ -3255,7 +3147,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RGU3pJd05ueEZTek0yT0JvTENOeTNCUkFDR2dORlZWSTRISENJK3dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RGU3pJd05ueEZTek0yT0JvTENOeTNCUkFDR2dORlZWSTRISENJK3dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3332,7 +3224,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3BGU3preWZFVkxNems0R2dzSTNMY0ZFQUlhQTBWVlVqZ2NjSWo3QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3BGU3preWZFVkxNems0R2dzSTNMY0ZFQUlhQTBWVlVqZ2NjSWo3QlE9PSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCI5MiJdLFsiRFhCIiwiMjAyNy0wMi0xOSIsIkRQUyIsbnVsbCwiRUsiLCIzOTgiXV1d",
           "booking_token": null
         },
         {
@@ -3409,7 +3301,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RGU3pFd01ueEZTek0yT0JvTENOeTNCUkFDR2dORlZWSTRISENJK3dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RGU3pFd01ueEZTek0yT0JvTENOeTNCUkFDR2dORlZWSTRISENJK3dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzY4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3486,7 +3378,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RGU3pFd01ueEZTek01T0JvTENOeTNCUkFDR2dORlZWSTRISENJK3dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RGU3pFd01ueEZTek01T0JvTENOeTNCUkFDR2dORlZWSTRISENJK3dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIxMDIiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3563,7 +3455,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RGU3pJd05ueEZTek01T0JvTENOeTNCUkFDR2dORlZWSTRISENJK3dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RGU3pJd05ueEZTek01T0JvTENOeTNCUkFDR2dORlZWSTRISENJK3dVPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIkRYQiIsbnVsbCwiRUsiLCIyMDYiXSxbIkRYQiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIkVLIiwiMzk4Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3640,7 +3532,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RVU3pFNE56aDhWRXMyTmhvTENQbmVCUkFDR2dORlZWSTRISENMcGdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RVU3pFNE56aDhWRXMyTmhvTENQbmVCUkFDR2dORlZWSTRISENMcGdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc4Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3717,7 +3609,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RVU3pFNE56UjhWRXMyTmhvTENQbmVCUkFDR2dORlZWSTRISENMcGdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RVU3pFNE56UjhWRXMyTmhvTENQbmVCUkFDR2dORlZWSTRISENMcGdZPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc0Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3794,7 +3686,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RVU3pFNE9UWjhWRXMyTmhvTENLM05DQkFDR2dORlZWSTRISEQ3dHdrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RVU3pFNE9UWjhWRXMyTmhvTENLM05DQkFDR2dORlZWSTRISEQ3dHdrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODk2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3871,7 +3763,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RVU3pFNE56WjhWRXMyTmhvTENLM05DQkFDR2dORlZWSTRISEQ3dHdrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RVU3pFNE56WjhWRXMyTmhvTENLM05DQkFDR2dORlZWSTRISEQ3dHdrPSIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIklTVCIsbnVsbCwiVEsiLCIxODc2Il0sWyJJU1QiLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJUSyIsIjY2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -3948,7 +3840,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RUVVRNMU5YeFRVVGt6TmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTM2Il1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RUVVRNMU5YeFRVVGt6TmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTM2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -4025,7 +3917,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZzFUVVRNMU5YeFRVVGt6T0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzOCJdXV0=",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZzFUVVRNMU5YeFRVVGt6T0NNeE9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjkzOCJdXV0=",
           "booking_token": null
         },
         {
@@ -4101,7 +3993,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZzFUVVRNMU5YeEhRVGcwTXlNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJHQSIsIjg0MyJdXV0=",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZzFUVVRNMU5YeEhRVGcwTXlNeE9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJHQSIsIjg0MyJdXV0=",
           "booking_token": null
         },
         {
@@ -4178,7 +4070,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RUVVRNMU5YeFRVVGswTkRnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ0Il1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RUVVRNMU5YeFRVVGswTkRnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ0Il1dXQ==",
           "booking_token": null
         },
         {
@@ -4255,7 +4147,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZ3RUVVRNMU5YeFRVVGswTmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ2Il1dXQ==",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZ3RUVVRNMU5YeFRVVGswTmpnYyIsW1siTVhQIiwiMjAyNy0wMi0xOCIsIlNJTiIsbnVsbCwiU1EiLCIzNTUiXSxbIlNJTiIsIjIwMjctMDItMTkiLCJEUFMiLG51bGwsIlNRIiwiOTQ2Il1dXQ==",
           "booking_token": null
         },
         {
@@ -4332,7 +4224,7 @@
               "often_delayed": false
             }
           ],
-          "departure_token": "WyJDalJJYVZoTFZrTjFNRXRUUTFsQlJYUnFNMmRDUnkwdExTMHRMUzB0ZVd4dE5pMXVNVUZCUVVGQlIzTkNkV1pWUkhsMVRHZEJFZzFUVVRNMU5YeFRVVGswT0NNeU9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0OCJdXV0=",
+          "departure_token": "WyJDalJJTjB4Vk5YQTBTbE5XVkUxQlVFTnhhVkZDUnkwdExTMHRMUzB0TFhaM1ltWjJPRUZCUVVGQlIzTkVSakpuU3pkVmJEUkJFZzFUVVRNMU5YeFRVVGswT0NNeE9Cdz0iLFtbIk1YUCIsIjIwMjctMDItMTgiLCJTSU4iLG51bGwsIlNRIiwiMzU1Il0sWyJTSU4iLCIyMDI3LTAyLTE5IiwiRFBTIixudWxsLCJTUSIsIjk0OCJdXV0=",
           "booking_token": null
         }
       ],
