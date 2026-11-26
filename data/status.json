@@ -1,8 +1,8 @@
 {
-  "last_run": "2026-11-25T13:41:08+02:00",
+  "last_run": "2026-11-26T14:51:22+02:00",
   "trigger": "schedule",
   "dry_run": false,
-  "searches_left_before": 131,
+  "searches_left_before": 126,
   "searches_used": 5,
   "planned_searches": 4,
   "skipped_budget": false,
@@ -16,12 +16,12 @@
   "notifications_sent": 1,
   "estimate": {
     "per_day": 4,
-    "per_month": 28,
-    "extra_max_per_month": 28,
+    "per_month": 24,
+    "extra_max_per_month": 24,
     "limit": 250
   },
-  "credits_checked_at": "2026-11-25T13:41:53+02:00",
+  "credits_checked_at": "2026-11-26T14:52:02+02:00",
   "notification_errors": [],
-  "searches_left_after": 126,
-  "this_month_usage": 124
+  "searches_left_after": 121,
+  "this_month_usage": 129
 }
