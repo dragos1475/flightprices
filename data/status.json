@@ -20,8 +20,8 @@
     "extra_max_per_month": 24,
     "limit": 250
   },
-  "credits_checked_at": "2026-11-26T14:52:02+02:00",
+  "credits_checked_at": "2026-11-27T06:07:44+02:00",
   "notification_errors": [],
-  "searches_left_after": 121,
-  "this_month_usage": 129
+  "searches_left_after": 250,
+  "this_month_usage": 0
 }
